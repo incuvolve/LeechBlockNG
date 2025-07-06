@@ -9,8 +9,8 @@ const BLOCKED_PAGE_URL = browser.runtime.getURL(BLOCKED_PAGE);
 const DELAYED_PAGE_URL = browser.runtime.getURL(DELAYED_PAGE);
 const PASSWORD_PAGE_URL = browser.runtime.getURL(PASSWORD_PAGE);
 
-function log(message) { console.log("[LBNG] " + message); }
-function warn(message) { console.warn("[LBNG] " + message); }
+function log(message) { console.log("[ivBlock] " + message); }
+function warn(message) { console.warn("[ivBlock] " + message); }
 
 var gStorage = browser.storage.local;
 var gIsAndroid = false;
@@ -197,8 +197,8 @@ function retrieveOptions(update) {
 
 	function onGotSync(options) {
 		gStorage = options["sync"]
-				? browser.storage.sync
-				: browser.storage.local;
+			? browser.storage.sync
+			: browser.storage.local;
 
 		gStorage.get().then(onGot, onError);
 	}
@@ -411,7 +411,7 @@ function processTabs(active) {
 			initTab(tab.id);
 
 			let focus = tab.active && (gAllFocused || !gFocusWindowId || tab.windowId == gFocusWindowId)
-					&& (!gIsAndroid || !gUseDocFocus || gTabs[tab.id].focused);
+				&& (!gIsAndroid || !gUseDocFocus || gTabs[tab.id].focused);
 
 			gTabs[tab.id].incog = tab.incognito;
 			gTabs[tab.id].audible = tab.audible;
@@ -436,7 +436,7 @@ function processTabs(active) {
 			} else if (CLOCKABLE_URL.test(tab.url)) {
 				// Ping tab to see if content script has loaded
 				let message = { type: "ping" };
-				browser.tabs.sendMessage(tab.id, message).catch(function (error) {});
+				browser.tabs.sendMessage(tab.id, message).catch(function (error) { });
 			}
 		}
 	}
@@ -453,8 +453,8 @@ function checkTab(id, isBeforeNav, isRepeat) {
 
 	function isSameHost(host1, host2) {
 		return (host1 == host2)
-				|| (host1 == "www." + host2)
-				|| (host2 == "www." + host1);
+			|| (host1 == "www." + host2)
+			|| (host2 == "www." + host1);
 	}
 
 	let url = gTabs[id].url;
@@ -466,13 +466,13 @@ function checkTab(id, isBeforeNav, isRepeat) {
 	// - about:blank
 	// - non-blockable URLs
 	// - blocking pages
-	// - LeechBlock website (documentation should be available by default)
+	// - ivBlock website (documentation should be available by default)
 	if (url == "about:blank"
-			|| !gTabs[id].blockable
-			|| url.startsWith(BLOCKED_PAGE_URL)
-			|| url.startsWith(DELAYED_PAGE_URL)
-			|| url.startsWith(PASSWORD_PAGE_URL)
-			|| (url.startsWith(LEECHBLOCK_URL) && gOptions["allowLBWebsite"])) {
+		|| !gTabs[id].blockable
+		|| url.startsWith(BLOCKED_PAGE_URL)
+		|| url.startsWith(DELAYED_PAGE_URL)
+		|| url.startsWith(PASSWORD_PAGE_URL)
+		|| (url.startsWith(IVBLOCK_URL) && gOptions["allowLBWebsite"])) {
 		return false; // not blocked
 	}
 
@@ -540,7 +540,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 		let pageURL = parsedURL.page;
 		let pageURLWithHash = parsedURL.page;
 		if (parsedURL.hash != null) {
-			pageURLWithHash +=  "#" + parsedURL.hash;
+			pageURLWithHash += "#" + parsedURL.hash;
 			if (/^!/.test(parsedURL.hash) || !gOptions[`ignoreHash${set}`]) {
 				pageURL = pageURLWithHash;
 			}
@@ -569,9 +569,9 @@ function checkTab(id, isBeforeNav, isRepeat) {
 
 		// Test URL against block/allow regular expressions
 		if (testURL(pageURL, referrer, blockRE, allowRE, referRE, allowRefers)
-				|| (prevAddons && /^about:addons/i.test(pageURL))
-				|| (prevSupport && /^about:support/i.test(pageURL))
-				|| (prevDebugging && /^about:debugging/i.test(pageURL))) {
+			|| (prevAddons && /^about:addons/i.test(pageURL))
+			|| (prevSupport && /^about:support/i.test(pageURL))
+			|| (prevDebugging && /^about:debugging/i.test(pageURL))) {
 			// Get options for this set
 			let timedata = gOptions[`timedata${set}`];
 			let times = gOptions[`times${set}`];
@@ -641,12 +641,12 @@ function checkTab(id, isBeforeNav, isRepeat) {
 
 			// Check override condition
 			let override = (prevOverride || !isInternalPage) && (overrideEndTime > now)
-					&& allowOverride && (allowOverLock || !lockdown);
+				&& allowOverride && (allowOverLock || !lockdown);
 
 			// Determine whether this page should now be blocked
 			let doBlock = lockdown
-					|| (!conjMode && (withinTimePeriods || afterTimeLimit))
-					|| (conjMode && (withinTimePeriods && afterTimeLimit));
+				|| (!conjMode && (withinTimePeriods || afterTimeLimit))
+				|| (conjMode && (withinTimePeriods && afterTimeLimit));
 
 			// Apply block if all relevant block conditions are fulfilled
 			if (!override && doBlock && (!isRepeat || activeBlock)) {
@@ -698,7 +698,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 							name: filterName
 						};
 						browser.tabs.sendMessage(id, message).catch(
-							function (error) {}
+							function (error) { }
 						);
 					} else {
 						gTabs[id].keyword = keyword;
@@ -710,9 +710,9 @@ function checkTab(id, isBeforeNav, isRepeat) {
 
 						// Get final URL for block page
 						blockURL = getLocalizedURL(blockURL)
-								.replace(/\$K/g, keyword ? keyword : "")
-								.replace(/\$S/g, set)
-								.replace(/\$U/g, pageURLWithHash);
+							.replace(/\$K/g, keyword ? keyword : "")
+							.replace(/\$S/g, set)
+							.replace(/\$U/g, pageURLWithHash);
 
 						// Redirect page
 						browser.tabs.update(id, { url: blockURL });
@@ -729,11 +729,11 @@ function checkTab(id, isBeforeNav, isRepeat) {
 					browser.tabs.sendMessage(id, message).then(
 						function (keyword) {
 							if ((!allowKeywords && typeof keyword == "string")
-									|| (allowKeywords && keyword == null)) {
+								|| (allowKeywords && keyword == null)) {
 								applyBlock(keyword);
 							}
 						},
-						function (error) {}
+						function (error) { }
 					);
 				} else {
 					applyBlock();
@@ -756,14 +756,14 @@ function checkTab(id, isBeforeNav, isRepeat) {
 					name: null
 				};
 				browser.tabs.sendMessage(id, message).catch(
-					function (error) {}
+					function (error) { }
 				);
 			}
 
 			// Update seconds left before block
 			let secsLeft = conjMode
-					? (withinTimePeriods ? secsLeftBeforeLimit : Infinity)
-					: Math.min(secsLeftBeforePeriod, secsLeftBeforeLimit);
+				? (withinTimePeriods ? secsLeftBeforeLimit : Infinity)
+				: Math.min(secsLeftBeforePeriod, secsLeftBeforeLimit);
 			if (override) {
 				secsLeft = Math.max(secsLeft, overrideEndTime - now);
 			}
@@ -1008,14 +1008,14 @@ function updateTimer(id) {
 	} else {
 		message.text = formatTime(secsLeft); // show timer with time left
 	}
-	browser.tabs.sendMessage(id, message).catch(function (error) {});
+	browser.tabs.sendMessage(id, message).catch(function (error) { });
 
 	// Set tooltip
 	if (!gIsAndroid) {
 		if (secsLeft == Infinity) {
 			browser.action.setTitle({ title: null, tabId: id });
 		} else {
-			let title = "LeechBlock [" + formatTime(secsLeft) + "]"
+			let title = "ivBlock [" + formatTime(secsLeft) + "]"
 			browser.action.setTitle({ title: title, tabId: id });
 		}
 	}
@@ -1234,10 +1234,10 @@ function getUnblockTime(set) {
 			if (mins >= mp.start && mins < mp.end) {
 				// Return end time for time period
 				return new Date(
-						timedate.getFullYear(),
-						timedate.getMonth(),
-						timedate.getDate(),
-						0, mp.end);
+					timedate.getFullYear(),
+					timedate.getMonth(),
+					timedate.getDate(),
+					0, mp.end);
 			}
 		}
 	} else if (!timePeriods && timeLimit) {
@@ -1254,10 +1254,10 @@ function getUnblockTime(set) {
 				if (mins >= mp.start && mins < mp.end) {
 					// Return the earlier of the two end times
 					let td1 = new Date(
-							timedate.getFullYear(),
-							timedate.getMonth(),
-							timedate.getDate(),
-							0, mp.end);
+						timedate.getFullYear(),
+						timedate.getMonth(),
+						timedate.getDate(),
+						0, mp.end);
 					let td2 = new Date(timedata[2] * 1000 + limitPeriod * 1000);
 					return (td1 < td2) ? td1 : td2;
 				}
@@ -1268,7 +1268,7 @@ function getUnblockTime(set) {
 			// Determine whether time limit was exceeded
 			let secsRollover = rollover ? timedata[5] : 0;
 			let afterTimeLimit = (timedata[2] == periodStart)
-					&& (timedata[3] >= secsRollover + (limitMins * 60));
+				&& (timedata[3] >= secsRollover + (limitMins * 60));
 
 			if (afterTimeLimit) {
 				// Check against end time for current time limit period instead
@@ -1281,10 +1281,10 @@ function getUnblockTime(set) {
 				if (mins >= mp.start && mins < mp.end) {
 					// Return end time for time period
 					return new Date(
-							timedate.getFullYear(),
-							timedate.getMonth(),
-							timedate.getDate(),
-							0, mp.end);
+						timedate.getFullYear(),
+						timedate.getMonth(),
+						timedate.getDate(),
+						0, mp.end);
 				}
 			}
 
@@ -1597,7 +1597,7 @@ function handleMenuClick(info, tab) {
 function handleCommand(command) {
 	//log("handleCommand: " + command);
 
-	switch(command) {
+	switch (command) {
 
 		case "lb-options":
 			browser.runtime.openOptionsPage();
@@ -1663,9 +1663,9 @@ function handleMessage(message, sender, sendResponse) {
 		case "delayed":
 			// Delaying page countdown completed
 			allowBlockedPage(sender.tab.id,
-					message.blockedURL,
-					message.blockedSet,
-					gOptions[`delayAutoLoad${message.blockedSet}`]);
+				message.blockedURL,
+				message.blockedSet,
+				gOptions[`delayAutoLoad${message.blockedSet}`]);
 			break;
 
 		case "discard-time":
@@ -1709,9 +1709,9 @@ function handleMessage(message, sender, sendResponse) {
 		case "password":
 			// Password successfully entered
 			allowBlockedPage(sender.tab.id,
-					message.blockedURL,
-					message.blockedSet,
-					true);
+				message.blockedURL,
+				message.blockedSet,
+				true);
 			break;
 
 		case "referrer":
@@ -1757,7 +1757,7 @@ function handleTabUpdated(tabId, changeInfo, tab) {
 	}
 
 	let focus = tab.active && (gAllFocused || !gFocusWindowId || tab.windowId == gFocusWindowId)
-			&& (!gIsAndroid || !gUseDocFocus || gTabs[tab.id].focused);
+		&& (!gIsAndroid || !gUseDocFocus || gTabs[tab.id].focused);
 
 	gTabs[tab.id].incog = tab.incognito;
 	gTabs[tab.id].audible = tab.audible;

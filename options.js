@@ -2,16 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const DEFAULT_OPTIONS_FILE = "LeechBlockOptions.txt";
-const DEFAULT_JSON_FILE = "LeechBlockOptions.json";
+const DEFAULT_OPTIONS_FILE = "ivBlockOptions.txt";
+const DEFAULT_JSON_FILE = "ivBlockOptions.json";
 
 const SUB_OPTIONS = {
-	"applyFilter" : [ "filterName", "filterMute" ],
-	"allowOverride" : [ "allowOverLock" ]
+	"applyFilter": ["filterName", "filterMute"],
+	"allowOverride": ["allowOverLock"]
 };
 
-function log(message) { console.log("[LBNG] " + message); }
-function warn(message) { console.warn("[LBNG] " + message); }
+function log(message) { console.log("[ivBlock] " + message); }
+function warn(message) { console.warn("[ivBlock] " + message); }
 
 function getElement(id) { return document.getElementById(id); }
 
@@ -63,10 +63,10 @@ function initForm(numSets) {
 	let setHTML = $("#blockSet1").html();
 	for (let set = 2; set <= gNumSets; set++) {
 		let nextTabHTML = tabHTML
-				.replace(/(Block Set) 1/g, `$1 ${set}`)
-				.replace(/(id|href)="(#?\w+)1"/g, `$1="$2${set}"`);
+			.replace(/(Block Set) 1/g, `$1 ${set}`)
+			.replace(/(id|href)="(#?\w+)1"/g, `$1="$2${set}"`);
 		let nextSetHTML = setHTML
-				.replace(/(id|for)="(\w+)1"/g, `$1="$2${set}"`);
+			.replace(/(id|for)="(\w+)1"/g, `$1="$2${set}"`);
 		$("#tabGeneral").before(`<li id="tabBlockSet${set}">${nextTabHTML}</li>`);
 		$("#paneGeneral").before(`<div id="blockSet${set}">${nextSetHTML}</div>`);
 	}
@@ -191,8 +191,8 @@ function swapSets(set1, set2) {
 	updateBlockSetName(set2, $(`#setName${set2}`).val());
 	$(`#showAdvOpts${set1}`).css("display", "initial");
 	$(`#showAdvOpts${set2}`).css("display", "initial");
-	$(`#advOpts${set1}`).css("display", "none");	
-	$(`#advOpts${set2}`).css("display", "none");	
+	$(`#advOpts${set1}`).css("display", "none");
+	$(`#advOpts${set2}`).css("display", "none");
 }
 
 // Show simplified or full options
@@ -485,7 +485,7 @@ function retrieveOptions() {
 	browser.storage.local.get("sync").then(onGotSync, onError);
 
 	function onGotSync(options) {
-		if(options["sync"]) {
+		if (options["sync"]) {
 			// Get all options from sync storage
 			browser.storage.sync.get().then(onGot, onError);
 		} else {
@@ -581,16 +581,16 @@ function retrieveOptions() {
 			// Check time limit
 			let secsRollover = rollover ? timedata[5] : 0;
 			let afterTimeLimit = (onSelectedDay && limitMins && limitPeriod)
-					&& (timedata[2] == periodStart)
-					&& (timedata[3] >= secsRollover + (limitMins * 60));
+				&& (timedata[2] == periodStart)
+				&& (timedata[3] >= secsRollover + (limitMins * 60));
 
 			// Check lockdown condition
 			let lockdown = (timedata[4] > now);
 
 			// Disable options if specified block conditions are fulfilled
 			if (lockdown
-					|| (!conjMode && (withinTimePeriods || afterTimeLimit))
-					|| (conjMode && (withinTimePeriods && afterTimeLimit))) {
+				|| (!conjMode && (withinTimePeriods || afterTimeLimit))
+				|| (conjMode && (withinTimePeriods && afterTimeLimit))) {
 				if (options[`prevOpts${set}`]) {
 					gNumSetsMin = set;
 					// Disable options for this set

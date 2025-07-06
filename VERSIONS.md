@@ -53,7 +53,7 @@
 * Added option to limit number of overrides per hour/day/week.
 * Added option to block only private/non-private tabs.
 * Added option to add blocked page to browser history.
-* Added option to allow/disallow blocking LeechBlock website.
+* Added option to allow/disallow blocking ivBlock website.
 * Bug fixes and under-the-hood improvements.
 
 ### Version 1.6.1 (09 Dec 2023)

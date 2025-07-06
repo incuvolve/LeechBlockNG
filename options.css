@@ -1,4 +1,4 @@
-/* LeechBlock options style */
+/* ivBlock options style */
 
 html {
 	overflow-y: scroll;
@@ -63,13 +63,18 @@ body {
 	border: 1px solid #ccc;
 }
 
-.ui-widget fieldset, .ui-widget input, .ui-widget select, .ui-widget textarea {
+.ui-widget fieldset,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea {
 	background: #fff;
 	color: #000;
 	border: 1px solid #888;
 }
 
-.ui-widget input:disabled, .ui-widget select:disabled, .ui-widget textarea:disabled {
+.ui-widget input:disabled,
+.ui-widget select:disabled,
+.ui-widget textarea:disabled {
 	background: #eee;
 	color: #666;
 	border: 1px solid #ccc;
@@ -89,21 +94,33 @@ body {
 }
 
 .ui-widget a {
-    color: #2ca089;
-    text-decoration: none;
+	color: #2ca089;
+	text-decoration: none;
 }
 
 .ui-widget a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
-.ui-widget th, .ui-widget td {
+.ui-widget th,
+.ui-widget td {
 	text-align: center;
 	padding: 4px 12px;
 }
 
 .ui-widget code {
 	font: normal 14px monospace;
+}
+
+.ui-widget-content {
+	background: #fff;
+	color: #000;
+	border: 1px solid #888;
+}
+
+.simplifiable {
+	/* Used for showing/hiding advanced options */
+	display: block;
 }
 
 .logo {
@@ -116,7 +133,7 @@ body {
 }
 
 #form {
-  text-align: center;
+	text-align: center;
 }
 
 #tabs {

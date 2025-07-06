@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-function log(message) { console.log("[LBNG] " + message); }
-function warn(message) { console.warn("[LBNG] " + message); }
+function log(message) { console.log("[ivBlock] " + message); }
+function warn(message) { console.warn("[ivBlock] " + message); }
 
 function getElement(id) { return document.getElementById(id); }
 
@@ -27,8 +27,8 @@ function initForm(numSets) {
 	let blockSetHTML = $("#blockSets").html();
 	for (let set = 2; set <= gNumSets; set++) {
 		let nextSetHTML = blockSetHTML
-				.replace(/(Block Set) 1/g, `$1 ${set}`)
-				.replace(/(id|for)="(\w+)1"/g, `$1="$2${set}"`);
+			.replace(/(Block Set) 1/g, `$1 ${set}`)
+			.replace(/(id|for)="(\w+)1"/g, `$1="$2${set}"`);
 		$("#blockSets").append(nextSetHTML);
 	}
 
@@ -50,8 +50,8 @@ function refreshPage() {
 
 	function onGotSync(options) {
 		gStorage = options["sync"]
-				? browser.storage.sync
-				: browser.storage.local;
+			? browser.storage.sync
+			: browser.storage.local;
 
 		gStorage.get().then(onGot, onError);
 	}

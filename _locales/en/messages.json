@@ -1,12 +1,12 @@
 {
 
 	"extensionName": {
-		"message": "LeechBlock NG",
+		"message": "ivBlock",
 		"description": "Name of the extension."
 	},
 
 	"extensionDescription": {
-		"message": "LeechBlock is a simple productivity tool for blocking time-wasting sites.",
+		"message": "ivBlock is a simple productivity tool for blocking time-wasting sites.",
 		"description": "Description of the extension."
 	},
 

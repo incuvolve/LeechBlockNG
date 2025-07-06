@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-function log(message) { console.log("[LBNG] " + message); }
-function warn(message) { console.warn("[LBNG] " + message); }
+function log(message) { console.log("[ivBlock] " + message); }
+function warn(message) { console.warn("[ivBlock] " + message); }
 
 function getElement(id) { return document.getElementById(id); }
 
@@ -26,8 +26,8 @@ function initForm(numSets) {
 	let rowHTML = $("#statsRow1").html();
 	for (let set = 2; set <= gNumSets; set++) {
 		let nextRowHTML = rowHTML
-				.replace(/(Block Set) 1/g, `$1 ${set}`)
-				.replace(/id="(\w+)1"/g, `id="$1${set}"`);
+			.replace(/(Block Set) 1/g, `$1 ${set}`)
+			.replace(/id="(\w+)1"/g, `id="$1${set}"`);
 		$("#statsTable").append(`<tr id="statsRow${set}">${nextRowHTML}</tr>`);
 	}
 
@@ -96,8 +96,8 @@ function refreshPage() {
 				// Calculate total seconds left in this time period
 				let secsRollover = rollover ? timedata[5] : 0;
 				let secsLeft = (timedata[2] == periodStart)
-						? Math.max(0, secsRollover + (limitMins * 60) - timedata[3])
-						: secsRollover + (limitMins * 60);
+					? Math.max(0, secsRollover + (limitMins * 60) - timedata[3])
+					: secsRollover + (limitMins * 60);
 				let timeLeft = formatTime(secsLeft);
 				getElement(`timeLeft${set}`).innerText = timeLeft;
 				if (rollover) {
@@ -124,8 +124,8 @@ function refreshPage() {
 //
 function getFormattedStats(now, timedata) {
 	let days = 1
-			+ Math.floor(now / 86400)
-			- Math.floor(timedata[0] / 86400);
+		+ Math.floor(now / 86400)
+		- Math.floor(timedata[0] / 86400);
 	let weeks = Math.floor((days + 6) / 7);
 	return {
 		startTime: getFormattedClockTime(timedata[0] * 1000),

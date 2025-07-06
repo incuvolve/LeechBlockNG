@@ -8,8 +8,8 @@ const LIMIT_PERIOD = {
 	"604800": "this week"
 };
 
-function log(message) { console.log("[LBNG] " + message); }
-function warn(message) { console.warn("[LBNG] " + message); }
+function log(message) { console.log("[ivBlock] " + message); }
+function warn(message) { console.warn("[ivBlock] " + message); }
 
 function getElement(id) { return document.getElementById(id); }
 
@@ -218,7 +218,7 @@ function displayAccessCode(code, asImage) {
 		ctx.font = "normal 14px monospace"; // resizing canvas resets font!
 		ctx.fillStyle = "#000";
 		for (let i = 0; i < lines.length; i++) {
-			ctx.fillText(lines[i], 4, 16 * (i+1));
+			ctx.fillText(lines[i], 4, 16 * (i + 1));
 		}
 	} else {
 		// Display code as text

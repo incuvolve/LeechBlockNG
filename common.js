@@ -10,8 +10,9 @@ const PASSWORD_PAGE = "password.html";
 const DEFAULT_BLOCK_URL = "blocked.html?$S&$U";
 const DELAYED_BLOCK_URL = "delayed.html?$S&$U";
 const PASSWORD_BLOCK_URL = "password.html?$S&$U";
-const DEFAULT_ICON = { 16: "icons/leechblock16.png", 32: "icons/leechblock32.png" };
-const OVERRIDE_ICON = { 16: "icons/leechblock16o.png", 32: "icons/leechblock32o.png" };
+const DEFAULT_ICON = { 16: "icons/ivblock16.png", 32: "icons/ivblock32.png" };
+// TODO: Update this to use the new logo
+const OVERRIDE_ICON = { 16: "icons/ivblock16o.png", 32: "icons/ivblock32o.png" };
 
 const PARSE_URL = /^((([\w-]+):\/*(\w+(?::\w+)?@)?([\w-\.]+)(?::(\d*))?)([^\?#]*))(\?[^#]*)?(#.*)?$/;
 
@@ -19,7 +20,7 @@ const ABSOLUTE_URL = /^[\w-]+:/;
 
 const INTERNAL_BLOCK_URL = /^(\w+\/)?(blocked|delayed|password)\.html\?\$S&\$U$/;
 
-const LEECHBLOCK_URL = "https://www.proginosko.com/leechblock/";
+const IVBLOCK_URL = "https://www.incuvolve.de/ivblock/";
 
 const U_WORD_CHAR = "[\\p{L}\\p{N}]";
 const U_WORD_CHARS0 = `${U_WORD_CHAR}*`;
@@ -289,15 +290,15 @@ function getRegExpSites(sites, matchSubdomains) {
 	}
 	return {
 		block: (blocks.length > 0)
-				? "^" + (blockFiles ? "file:|" : "") + "(https?|file):\\/+([\\w\\:]+@)?(" + blocks.join("|") + ")"
-				: (blockFiles ? "^file:" : ""),
+			? "^" + (blockFiles ? "file:|" : "") + "(https?|file):\\/+([\\w\\:]+@)?(" + blocks.join("|") + ")"
+			: (blockFiles ? "^file:" : ""),
 		allow: (allows.length > 0)
-				? "^" + (allowFiles ? "file:|" : "") + "(https?|file):\\/+([\\w\\:]+@)?(" + allows.join("|") + ")"
-				: (allowFiles ? "^file:" : ""),
+			? "^" + (allowFiles ? "file:|" : "") + "(https?|file):\\/+([\\w\\:]+@)?(" + allows.join("|") + ")"
+			: (allowFiles ? "^file:" : ""),
 		refer: (refers.length > 0) ? "^(https?|file):\\/+([\\w\\:]+@)?(" + refers.join("|") + ")" : "",
 		keyword: (keywords.length > 0)
-				? U_WORD_BEGIN + "(" + keywords.join("|") + ")" + U_WORD_END
-				: ""
+			? U_WORD_BEGIN + "(" + keywords.join("|") + ")" + U_WORD_END
+			: ""
 	};
 }
 
@@ -307,12 +308,12 @@ function patternToRegExp(pattern, matchSubdomains) {
 	let special = /[\.\|\?\:\+\^\$\(\)\[\]\{\}\\]/g;
 	let subdomains = matchSubdomains ? "([^/]*\\.)?" : "(www\\.)?"
 	return subdomains + pattern
-			.replace(special, "\\$&")			// fix special chars
-			.replace(/^www\\\./, "")			// remove existing www prefix
-			.replace(/\*\\\+/g, ".+")			// convert plus-wildcards
-			.replace(/\*{2,}/g, ".{STAR}")		// convert super-wildcards
-			.replace(/\*/g, "[^\\/]{STAR}")		// convert wildcards
-			.replace(/{STAR}/g, "*");			// convert stars
+		.replace(special, "\\$&")			// fix special chars
+		.replace(/^www\\\./, "")			// remove existing www prefix
+		.replace(/\*\\\+/g, ".+")			// convert plus-wildcards
+		.replace(/\*{2,}/g, ".{STAR}")		// convert super-wildcards
+		.replace(/\*/g, "[^\\/]{STAR}")		// convert wildcards
+		.replace(/{STAR}/g, "*");			// convert stars
 }
 
 // Convert keyword to regular expression
@@ -320,9 +321,9 @@ function patternToRegExp(pattern, matchSubdomains) {
 function keywordToRegExp(keyword) {
 	let special = /[\.\|\?\+\^\$\(\)\[\]\{\}\\]/g;
 	return keyword
-			.replace(special, "\\$&")			// fix special chars
-			.replace(/_+/g, "\\s+")				// convert underscores
-			.replace(/\*+/g, U_WORD_CHARS0);	// convert wildcards
+		.replace(special, "\\$&")			// fix special chars
+		.replace(/_+/g, "\\s+")				// convert underscores
+		.replace(/\*+/g, U_WORD_CHARS0);	// convert wildcards
 }
 
 // Check time periods format
@@ -346,7 +347,7 @@ function checkPosNegIntFormat(value) {
 // Check positive number format (including decimals as well as whole numbers, except 0)
 //
 function checkPosNumberFormat(value) {
-  return (value == "") || /^(0\.\d+|[1-9]\d*(\.\d+)?)$/.test(value);
+	return (value == "") || /^(0\.\d+|[1-9]\d*(\.\d+)?)$/.test(value);
 }
 
 // Check blocking page URL format
@@ -421,11 +422,11 @@ function cleanTimePeriods(times) {
 		let h2 = Math.floor(mp.end / 60);
 		let m2 = (mp.end % 60);
 		let period =
-				((h1 < 10) ? "0" : "") + h1 +
-				((m1 < 10) ? "0" : "") + m1 +
-				"-" +
-				((h2 < 10) ? "0" : "") + h2 +
-				((m2 < 10) ? "0" : "") + m2;
+			((h1 < 10) ? "0" : "") + h1 +
+			((m1 < 10) ? "0" : "") + m1 +
+			"-" +
+			((h2 < 10) ? "0" : "") + h2 +
+			((m2 < 10) ? "0" : "") + m2;
 		cleanTimes.push(period);
 	}
 	return cleanTimes.join(",");
@@ -496,8 +497,8 @@ function formatTime(secs) {
 	let m = Math.floor(secs / 60) % 60;
 	let s = Math.floor(secs) % 60;
 	return (neg ? "-" : "") + ((h < 10) ? "0" + h : h)
-			+ ":" + ((m < 10) ? "0" + m : m)
-			+ ":" + ((s < 10) ? "0" + s : s);
+		+ ":" + ((m < 10) ? "0" + m : m)
+		+ ":" + ((s < 10) ? "0" + s : s);
 }
 
 // Determine whether all items in array evalate to true
@@ -558,8 +559,8 @@ function setTheme(theme) {
 //
 function getLocalizedURL(url) {
 	return (ABSOLUTE_URL.test(url))
-			? url // no localization for absolute URL
-			: browser.i18n.getMessage("localePath") + url;
+		? url // no localization for absolute URL
+		: browser.i18n.getMessage("localePath") + url;
 }
 
 // Get clean version of URL (remove source/reader prefix)

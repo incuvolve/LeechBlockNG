@@ -36,7 +36,7 @@ function updateTimer(text, size, location) {
 		if (!gTimer) {
 			// Create timer
 			gTimer = document.createElement("div");
-			gTimer.setAttribute("class", "leechblock-timer");
+			gTimer.setAttribute("class", "ivblock-timer");
 			gTimer.addEventListener("dblclick", function (e) { this.style.display = "none"; });
 		}
 
@@ -74,18 +74,18 @@ function showAlert(text) {
 	if (!gAlert) {
 		// Create container
 		gAlert = document.createElement("div");
-		gAlert.setAttribute("class", "leechblock-alert-container");
+		gAlert.setAttribute("class", "ivblock-alert-container");
 		document.body.appendChild(gAlert);
 
 		// Create message box
 		alertBox = document.createElement("div");
-		alertBox.setAttribute("class", "leechblock-alert-box");
+		alertBox.setAttribute("class", "ivblock-alert-box");
 		alertBox.addEventListener("click", hideAlert);
 		alertIcon = document.createElement("div");
-		alertIcon.setAttribute("class", "leechblock-alert-icon");
+		alertIcon.setAttribute("class", "ivblock-alert-icon");
 		alertBox.appendChild(alertIcon);
 		alertText = document.createElement("div");
-		alertText.setAttribute("class", "leechblock-alert-text");
+		alertText.setAttribute("class", "ivblock-alert-text");
 		alertBox.appendChild(alertText);
 		gAlert.appendChild(alertBox);
 	}

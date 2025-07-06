@@ -1,4 +1,4 @@
-/* LeechBlock blocking/delaying page style */
+/* ivBlock blocking/delaying page style */
 
 @media (prefers-color-scheme: light) {
 
@@ -27,24 +27,25 @@ div {
 }
 
 h1 {
-    font-size: 24px;
-    font-weight: 300;
+	font-size: 24px;
+	font-weight: 300;
 }
 
 a {
-    color: #2ca089;
-    text-decoration: none;
+	color: #2ca089;
+	text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 blockquote {
 	font-weight: bold;
 }
 
-input, button {
+input,
+button {
 	color: #333;
 	font: normal 16px "Open Sans", Arial, sans-serif;
 	padding: 2px 8px;
