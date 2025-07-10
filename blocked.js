@@ -23,6 +23,7 @@ function processBlockInfo(info) {
 
 	gBlockedURL = info.blockedURL;
 	gBlockedSet = info.blockedSet;
+	console.log('[IVB]' + info.blockedSet);
 	gHashCode = info.password ? hashCode32(info.password) : 0;
 
 	// Set theme
@@ -37,7 +38,7 @@ function processBlockInfo(info) {
 		customStyle.innerText = info.customStyle;
 	}
 
-	let blockedURL = document.getElementById("lbBlockedURL");
+	let blockedURL = document.getElementById("ivbBlockedURL");
 	if (info.blockedURL && blockedURL) {
 		if (info.blockedURL.length > 60) {
 			blockedURL.innerText = info.blockedURL.substring(0, 57) + "...";
@@ -46,12 +47,12 @@ function processBlockInfo(info) {
 		}
 	}
 
-	let blockedURLLink = document.getElementById("lbBlockedURLLink");
+	let blockedURLLink = document.getElementById("ivbBlockedURLLink");
 	if (info.blockedURL && blockedURLLink && !info.disableLink) {
 		blockedURLLink.setAttribute("href", info.blockedURL);
 	}
 
-	let blockedSet = document.getElementById("lbBlockedSet");
+	let blockedSet = document.getElementById("ivbBlockedSet");
 	if (info.blockedSet && blockedSet) {
 		if (info.blockedSetName) {
 			blockedSet.innerText = info.blockedSetName;
@@ -61,8 +62,8 @@ function processBlockInfo(info) {
 		document.title += " (" + blockedSet.innerText + ")";
 	}
 
-	let keywordMatched = document.getElementById("lbKeywordMatched");
-	let keywordMatch = document.getElementById("lbKeywordMatch");
+	let keywordMatched = document.getElementById("ivbKeywordMatched");
+	let keywordMatch = document.getElementById("ivbKeywordMatch");
 	if (keywordMatched && keywordMatch) {
 		if (info.keywordMatch) {
 			keywordMatch.innerText = info.keywordMatch;
@@ -72,15 +73,15 @@ function processBlockInfo(info) {
 		}
 	}
 
-	let passwordInput = document.getElementById("lbPasswordInput");
-	let passwordSubmit = document.getElementById("lbPasswordSubmit");
+	let passwordInput = document.getElementById("ivbPasswordInput");
+	let passwordSubmit = document.getElementById("ivbPasswordSubmit");
 	if (passwordInput && passwordSubmit) {
 		passwordInput.focus();
 		passwordSubmit.onclick = onSubmitPassword;
 	}
 
-	let customMsgDiv = document.getElementById("lbCustomMsgDiv");
-	let customMsg = document.getElementById("lbCustomMsg");
+	let customMsgDiv = document.getElementById("ivbCustomMsgDiv");
+	let customMsg = document.getElementById("ivbCustomMsg");
 	if (customMsgDiv && customMsg) {
 		if (info.customMsg) {
 			customMsg.innerText = info.customMsg;
@@ -90,12 +91,12 @@ function processBlockInfo(info) {
 		}
 	}
 
-	let unblockTime = document.getElementById("lbUnblockTime");
+	let unblockTime = document.getElementById("ivbUnblockTime");
 	if (info.unblockTime && unblockTime) {
 		unblockTime.innerText = info.unblockTime;
 	}
 
-	let delaySecs = document.getElementById("lbDelaySeconds");
+	let delaySecs = document.getElementById("ivbDelaySeconds");
 	if (info.delaySecs && delaySecs) {
 		delaySecs.innerText = info.delaySecs;
 
@@ -122,7 +123,7 @@ function onCountdownTimer(countdown) {
 		window.clearInterval(countdown.interval);
 
 		// Strike through countdown text
-		let countdownText = document.getElementById("lbCountdownText");
+		let countdownText = document.getElementById("ivbCountdownText");
 		if (countdownText) {
 			countdownText.style.textDecoration = "line-through";
 		}
@@ -133,7 +134,7 @@ function onCountdownTimer(countdown) {
 	countdown.delaySecs--;
 
 	// Update countdown seconds on page
-	let delaySecs = document.getElementById("lbDelaySeconds");
+	let delaySecs = document.getElementById("ivbDelaySeconds");
 	if (delaySecs) {
 		delaySecs.innerText = countdown.delaySecs;
 	}
@@ -155,7 +156,7 @@ function onCountdownTimer(countdown) {
 // Handle submit button on password page
 //
 function onSubmitPassword() {
-	let passwordInput = document.getElementById("lbPasswordInput");
+	let passwordInput = document.getElementById("ivbPasswordInput");
 	if (hashCode32(passwordInput.value) == gHashCode) {
 		// Notify extension that password was successfully entered
 		let message = {

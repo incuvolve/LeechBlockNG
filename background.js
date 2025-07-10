@@ -472,7 +472,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 		|| url.startsWith(BLOCKED_PAGE_URL)
 		|| url.startsWith(DELAYED_PAGE_URL)
 		|| url.startsWith(PASSWORD_PAGE_URL)
-		|| (url.startsWith(IVBLOCK_URL) && gOptions["allowLBWebsite"])) {
+		|| (url.startsWith(IVBLOCK_URL) && gOptions["allowIVBWebsite"])) {
 		return false; // not blocked
 	}
 
@@ -1599,35 +1599,35 @@ function handleCommand(command) {
 
 	switch (command) {
 
-		case "lb-options":
+		case "ivb-options":
 			browser.runtime.openOptionsPage();
 			break;
 
-		case "lb-statistics":
+		case "ivb-statistics":
 			openExtensionPage("stats.html");
 			break;
 
-		case "lb-lockdown":
+		case "ivb-lockdown":
 			openExtensionPage("lockdown.html");
 			break;
 
-		case "lb-override":
+		case "ivb-override":
 			openExtensionPage("override.html");
 			break;
 
-		case "lb-cancel-override":
+		case "ivb-cancel-override":
 			applyOverride(0);
 			break;
 
-		case "lb-add-sites":
+		case "ivb-add-sites":
 			openExtensionPage("add-sites.html");
 			break;
 
-		case "lb-reset-rollover":
+		case "ivb-reset-rollover":
 			resetRolloverTime();
 			break;
 
-		case "lb-discard-time":
+		case "ivb-discard-time":
 			discardRemainingTime();
 			break;
 
