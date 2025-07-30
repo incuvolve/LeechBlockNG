@@ -3,5 +3,5 @@
 *.xlsx
 *.xpi
 
-jquery-ui/**
+jquery-ui/external/**
 .DS_Store
