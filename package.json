@@ -1,0 +1,20 @@
+{
+  "name": "leechblockng",
+  "version": "1.0.0",
+  "description": "[![Awesome Humane Tech](https://raw.githubusercontent.com/humanetech-community/awesome-humane-tech/main/humane-tech-badge.svg?sanitize=true)](https://github.com/humanetech-community/awesome-humane-tech)",
+  "main": "add-sites.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "jsdom": "^26.1.0"
+  }
+}

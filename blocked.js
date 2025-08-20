@@ -183,3 +183,7 @@ function reloadBlockedPage() {
 
 // Request block info from extension
 browser.runtime.sendMessage({ type: "blocked" }).then(processBlockInfo);
+
+// Expose functions for testing purposes
+window.hashCode32 = hashCode32;
+window.processBlockInfo = processBlockInfo;
