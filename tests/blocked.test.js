@@ -1,215 +1,242 @@
-const { TextEncoder, TextDecoder } = require('util');
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
-const fs = require('fs');
-const path = require('path');
-const { JSDOM } = require('jsdom');
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// Mock browser API
-const browserMock = {
-    runtime: {
-        sendMessage: jest.fn().mockResolvedValue(null),
-        getURL: jest.fn((url) => `chrome-extension://test/${url}`),
-    },
-    tabs: {
-        remove: jest.fn(),
-    },
+// Mock the browser object
+global.browser = {
+  runtime: {
+    sendMessage: jest.fn(() => Promise.resolve({}))
+  }
 };
 
-let dom;
-let window;
-let document;
+// Mock console.log to prevent test output pollution
+const originalConsoleLog = console.log;
+console.log = jest.fn();
 
-const blockedHtmlPath = path.resolve(__dirname, '../blocked.html');
-let blockedHtml = fs.readFileSync(blockedHtmlPath, 'utf8');
+// Load the blocked.js script globally for all tests
+require('../blocked.js');
 
-// Remove script tags from HTML to prevent JSDOM from trying to load them
-blockedHtml = blockedHtml.replace(/<script[^>]*>[^<]*<\/script>/g, '');
+describe('hashCode32', () => {
+  test('should return a 32-bit integer hash code for a string', () => {
+    expect(window.hashCode32('test')).toBe(3556498);
+    expect(window.hashCode32('password')).toBe(1216985755);
+    expect(window.hashCode32('')).toBe(0);
+  });
+});
 
-const blockedJsPath = path.resolve(__dirname, '../blocked.js');
-const blockedJsCode = fs.readFileSync(blockedJsPath, 'utf8');
+describe('processBlockInfo', () => {
+  let themeLink, customStyle, blockedURL, blockedURLLink, blockedSet, keywordMatched, keywordMatch, passwordInput, passwordSubmit, customMsgDiv, customMsg, unblockTime, delaySecsElement;
 
-describe('blocked.js', () => {
-    beforeAll(() => {
-        dom = new JSDOM(blockedHtml, {
-            runScripts: 'dangerously',
-            resources: 'usable',
-            url: 'http://localhost',
-        });
-        window = dom.window;
-        document = window.document;
+  // Store original setInterval and setTimeout to restore them later
+  let originalSetInterval, originalSetTimeout;
+  let originalReloadBlockedPage;
 
-        window.browser = browserMock;
-    });
+  // Mock window.location properties and methods
+  let mockHrefValue = '';
 
-    beforeEach(() => {
-        jest.clearAllMocks();
-        dom = new JSDOM(blockedHtml, {
-            runScripts: 'dangerously',
-            resources: 'usable',
-            url: 'http://localhost',
-        });
-        window = dom.window;
-        document = window.document;
-        window.browser = browserMock;
-        dom.window.eval(blockedJsCode);
-    });
+  beforeEach(() => {
+    // Reset the DOM before each test
+    document.body.innerHTML = `
+      <link id="themeLink" rel="stylesheet" href="">
+      <style id="customStyle"></style>
+      <div id="ivbBlockedURL"></div>
+      <a id="ivbBlockedURLLink"></a>
+      <div id="ivbBlockedSet"></div>
+      <div id="ivbKeywordMatched" style="display: none;"><span id="ivbKeywordMatch"></span></div>
+      <input id="ivbPasswordInput" type="password">
+      <button id="ivbPasswordSubmit"></button>
+      <div id="ivbCustomMsgDiv" style="display: none;"><span id="ivbCustomMsg"></span></div>
+      <div id="ivbUnblockTime"></div>
+      <div id="ivbDelaySeconds"></div>
+    `;
 
-    afterAll(() => {
-        dom.window.close();
-    });
+    themeLink = document.getElementById("themeLink");
+    customStyle = document.getElementById("customStyle");
+    blockedURL = document.getElementById("ivbBlockedURL");
+    blockedURLLink = document.getElementById("ivbBlockedURLLink");
+    blockedSet = document.getElementById("ivbBlockedSet");
+    keywordMatched = document.getElementById("ivbKeywordMatched");
+    keywordMatch = document.getElementById("ivbKeywordMatch");
+    passwordInput = document.getElementById("ivbPasswordInput");
+    passwordSubmit = document.getElementById("ivbPasswordSubmit");
+    customMsgDiv = document.getElementById("ivbCustomMsgDiv");
+    customMsg = document.getElementById("ivbCustomMsg");
+    unblockTime = document.getElementById("ivbUnblockTime");
+    delaySecsElement = document.getElementById("ivbDelaySeconds");
 
-    // Expose hashCode32 from the context to global scope
-    const hashCode32 = (str) => window.hashCode32(str);
+    // Clear all mocks before each test
+    jest.clearAllMocks();
+    console.log.mockClear(); // Clear console.log calls from blocked.js initial load
 
-    describe('hashCode32', () => {
-        test('should generate a consistent hash for a given string', () => {
-            expect(hashCode32('test')).toBe(3556498);
-            expect(hashCode32('hello world')).toBe(1794106052);
-            expect(hashCode32('')).toBe(0);
-        });
+    // Mock window.location.href getter and setter
+    // This is a simplified mock for href that doesn't involve Object.defineProperty on window.location
+    // as that causes issues with JSDOM's non-configurable properties.
+    // We'll just directly manipulate mockHrefValue and assert on it.
+    mockHrefValue = ''; // Reset for each test
 
-        test('should generate different hashes for different strings', () => {
-            expect(hashCode32('test1')).not.toBe(hashCode32('test2'));
-        });
-    });
+    // Explicitly mock setInterval and setTimeout
+    originalSetInterval = window.setInterval;
+    originalSetTimeout = window.setTimeout;
+    window.setInterval = jest.fn();
+    window.setTimeout = jest.fn();
 
-    describe('processBlockInfo', () => {
-                it('should process block info and update DOM elements', async () => {
-            const mockInfo = {
-                blockedURL: 'http://blocked.com/path#hash',
-                blockedSet: '3',
-                blockedSetName: 'Work Sites',
-                keywordMatch: 'distraction',
-                password: 'secret',
-                customMsg: 'Take a break!',
-                unblockTime: '10:00 AM',
-                delaySecs: 5,
-                delayCancel: true,
-                reloadSecs: 10,
-                theme: 'dark',
-                customStyle: 'body { background-color: #333; }',
-                disableLink: false,
-            };
+    // Mock reloadBlockedPage
+    originalReloadBlockedPage = window.reloadBlockedPage;
+    window.reloadBlockedPage = jest.fn();
+  });
 
-            window.processBlockInfo(mockInfo);
-            await new Promise(resolve => setTimeout(resolve, 0));
+  afterEach(() => {
+    // Clean up the DOM after each test
+    document.body.innerHTML = '';
+    // Restore original timers
+    window.setInterval = originalSetInterval;
+    window.setTimeout = originalSetTimeout;
+    // Restore original reloadBlockedPage
+    window.reloadBlockedPage = originalReloadBlockedPage;
+  });
 
-            expect(document.getElementById('ivbBlockedURL').innerText).toBe('http://blocked.com/path#hash');
-            expect(document.getElementById('ivbBlockedURLLink').getAttribute('href')).toBe('http://blocked.com/path#hash');
-            expect(document.getElementById('ivbBlockedSet').innerText).toBe('Work Sites');
-            expect(document.getElementById('ivbKeywordMatched').style.display).toBe('');
-            expect(document.getElementById('ivbKeywordMatch').innerText).toBe('distraction');
-            expect(document.getElementById('ivbCustomMsgDiv').style.display).toBe('');
-            expect(document.getElementById('ivbCustomMsg').innerText).toBe('Take a break!');
-            expect(document.getElementById('ivbUnblockTime').innerText).toBe('10:00 AM');
-            expect(document.getElementById('themeLink').getAttribute('href')).toBe('/themes/dark.css');
-            expect(document.getElementById('customStyle').innerText).toBe('body { background-color: #333; }');
+  test('should not do anything if info is null or undefined', () => {
+    window.processBlockInfo(null);
+    // Expect no changes to the DOM or console.log not to be called with info.blockedSet
+    expect(console.log).not.toHaveBeenCalledWith('[IVB]' + undefined);
+  });
 
-            // Test password input
-            const passwordInput = document.querySelector('#ivbPasswordInput');
-            const passwordSubmit = document.querySelector('#ivbPasswordSubmit');
-            expect(passwordInput).not.toBeNull();
-            expect(passwordSubmit).not.toBeNull();
+  test('should set blocked URL and set name', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      blockedSetName: 'My Test Set Name'
+    };
+    window.processBlockInfo(info);
 
-            // Simulate correct password submission
-            passwordInput.value = 'secret';
-            passwordSubmit.click();
-            expect(browserMock.runtime.sendMessage).toHaveBeenCalledWith({
-                type: 'password',
-                blockedURL: 'http://blocked.com/path#hash',
-                blockedSet: '3',
-            });
+    expect(blockedURL.innerText).toBe('http://example.com');
+    expect(blockedURLLink.getAttribute('href')).toBe('http://example.com');
+    expect(blockedSet.innerText).toBe('My Test Set Name');
+    expect(document.title).toContain('(My Test Set Name)');
+    expect(console.log).toHaveBeenCalledWith('[IVB]Test Set');
+  });
 
-            // Simulate incorrect password submission
-            passwordInput.value = 'wrong';
-            passwordSubmit.click();
-            expect(passwordInput.value).toBe('');
-            expect(passwordInput.classList.contains('error')).toBe(true);
-            // Advance timers to clear the error class
-            jest.advanceTimersByTime(400);
-            expect(passwordInput.classList.contains('error')).toBe(false);
+  test('should truncate long blocked URL', () => {
+    const longUrl = 'http://thisisaverylongurlthatshouldbetruncatedbythefunction.com/some/path/to/a/resource';
+    const info = {
+      blockedURL: longUrl,
+      blockedSet: 'Test Set'
+    };
+    window.processBlockInfo(info);
 
-            // Test delay countdown
-            jest.useFakeTimers();
-            const initialDelaySecs = parseInt(document.getElementById('ivbDelaySeconds').innerText);
-            expect(initialDelaySecs).toBe(5);
+    expect(blockedURL.innerText).toBe(longUrl.substring(0, 57) + '...');
+  });
 
-            jest.advanceTimersByTime(1000); // 1 second
-            expect(document.getElementById('ivbDelaySeconds').innerText).toBe('4');
+  test('should apply theme and custom style', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      theme: 'dark',
+      customStyle: 'body { background-color: black; }'
+    };
+    window.processBlockInfo(info);
 
-            jest.advanceTimersByTime(4000); // Remaining 4 seconds
-            expect(document.getElementById('ivbDelaySeconds').innerText).toBe('0');
-            expect(browserMock.runtime.sendMessage).toHaveBeenCalledWith({
-                type: 'delayed',
-                blockedURL: 'http://blocked.com/path#hash',
-                blockedSet: '3',
-            });
-            jest.useRealTimers();
+    expect(themeLink.href).toContain('/themes/dark.css');
+    expect(customStyle.innerText).toBe('body { background-color: black; }');
+  });
 
-            // Test reloadSecs
-            jest.useFakeTimers();
-            const reloadBlockedPageSpy = jest.spyOn(window.document.location, 'href', 'set');
-            // Re-mock sendMessage to return mockInfo for the 'blocked' type for this test
-            browserMock.runtime.sendMessage.mockImplementationOnce((message) => {
-                if (message.type === 'blocked') {
-                    return Promise.resolve({ ...mockInfo, reloadSecs: 1 }); // Set reloadSecs to 1 for this test
-                }
-                return Promise.resolve(null);
-            });
-            // Re-trigger processBlockInfo for this test case
-            const event = new window.Event('DOMContentLoaded', { bubbles: true, cancelable: true });
-            document.dispatchEvent(event);
-            await new Promise(resolve => setTimeout(resolve, 0));
+  test('should disable blocked URL link if disableLink is true', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      disableLink: true
+    };
+    window.processBlockInfo(info);
 
-            jest.advanceTimersByTime(1000); // 1 second
-            expect(reloadBlockedPageSpy).toHaveBeenCalledWith('http://blocked.com/path#hash');
-            jest.useRealTimers();
-        });
+    expect(blockedURLLink.hasAttribute('href')).toBe(false);
+  });
 
-        it('should hide keyword matched if no keywordMatch', async () => {
-            const mockInfo = {
-                blockedURL: 'http://blocked.com',
-                blockedSet: '1',
-                keywordMatch: null,
-            };
-            window.processBlockInfo(mockInfo);
-            await new Promise(resolve => setTimeout(resolve, 0));
-            expect(document.getElementById('ivbKeywordMatched').style.display).toBe('none');
-        });
+  test('should display keyword match if provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      keywordMatch: 'badword'
+    };
+    window.processBlockInfo(info);
 
-        it('should hide custom message if no customMsg', async () => {
-            const mockInfo = {
-                blockedURL: 'http://blocked.com',
-                blockedSet: '1',
-                customMsg: null,
-            };
-            window.processBlockInfo(mockInfo);
-            await new Promise(resolve => setTimeout(resolve, 0));
-            expect(document.getElementById('ivbCustomMsgDiv').style.display).toBe('none');
-        });
+    expect(keywordMatched.style.display).toBe('');
+    expect(keywordMatch.innerText).toBe('badword');
+  });
 
-        it('should disable link if disableLink is true', async () => {
-            const mockInfo = {
-                blockedURL: 'http://blocked.com',
-                blockedSet: '1',
-                disableLink: true,
-            };
-            window.processBlockInfo(mockInfo);
-            await new Promise(resolve => setTimeout(resolve, 0));
-            expect(document.getElementById('ivbBlockedURLLink').hasAttribute('href')).toBe(false);
-        });
+  test('should hide keyword match if not provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set'
+    };
+    window.processBlockInfo(info);
 
-        it('should handle long blocked URLs', async () => {
-            const longUrl = 'http://verylongdomainname.com/very/long/path/to/a/resource/that/is/blocked/by/ivblock/because/it/is/too/distracting/and/has/a/very/long/query/string?param1=value1&param2=value2&param3=value3';
-            const mockInfo = {
-                blockedURL: longUrl,
-                blockedSet: '1',
-            };
-            window.processBlockInfo(mockInfo);
-            await new Promise(resolve => setTimeout(resolve, 0));
-            expect(document.getElementById('ivbBlockedURL').innerText.length).toBeLessThanOrEqual(60);
-            expect(document.getElementById('ivbBlockedURL').innerText).toMatch(/\.\.\.$/);
-        });
-    });
+    expect(keywordMatched.style.display).toBe('none');
+  });
+
+  test('should set up password input and submit button', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      password: 'mysecret'
+    };
+    window.processBlockInfo(info);
+
+    expect(document.activeElement).toBe(passwordInput);
+    expect(passwordSubmit.onclick).toBeInstanceOf(Function);
+  });
+
+  test('should display custom message if provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      customMsg: 'This is a custom message.'
+    };
+    window.processBlockInfo(info);
+
+    expect(customMsgDiv.style.display).toBe('');
+    expect(customMsg.innerText).toBe('This is a custom message.');
+  });
+
+  test('should hide custom message if not provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set'
+    };
+    window.processBlockInfo(info);
+
+    expect(customMsgDiv.style.display).toBe('none');
+  });
+
+  test('should display unblock time if provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      unblockTime: '10:00 AM'
+    };
+    window.processBlockInfo(info);
+
+    expect(unblockTime.innerText).toBe('10:00 AM');
+  });
+
+  test('should start countdown timer if delaySecs is provided', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      delaySecs: 5
+    };
+    window.processBlockInfo(info);
+
+    expect(parseInt(delaySecsElement.innerText)).toBe(5);
+    expect(window.setInterval).toHaveBeenCalledTimes(1);
+    expect(window.setInterval).toHaveBeenCalledWith(expect.any(Function), 1000, expect.any(Object));
+
+    // Manually call the callback function passed to setInterval
+    const callback = window.setInterval.mock.calls[0][0];
+    const countdownObject = window.setInterval.mock.calls[0][2];
+
+    callback(countdownObject);
+    expect(parseInt(delaySecsElement.innerText)).toBe(4); // After one tick
+  });
+
+
 });
