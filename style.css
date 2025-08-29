@@ -1,5 +1,9 @@
 /* ivBlock blocking/delaying page style */
 
+* {
+	box-sizing: border-box;
+}
+
 @media (prefers-color-scheme: light) {
 
 	body {
@@ -20,6 +24,7 @@ body {
 	color: #2e3436;
 	font: normal 16px "Open Sans", Arial, sans-serif;
 	text-align: center;
+	overflow-x: hidden;
 }
 
 div {
@@ -66,7 +71,8 @@ button:active:enabled {
 }
 
 .logo {
-	width: 408px;
+	max-width: 100%;
+	height: auto;
 }
 
 .keyword {
@@ -94,4 +100,29 @@ button:active:enabled {
 .support a {
 	color: #777;
 	text-decoration: underline;
+}
+
+.support a:hover {
+	text-decoration: none;
+}
+
+@media (max-width: 600px) {
+	body {
+		font-size: 14px;
+	}
+
+	h1 {
+		font-size: 20px;
+	}
+
+	#ivbPasswordInput {
+		width: 80%;
+		margin-bottom: 10px;
+	}
+
+	#ivbPasswordForm p {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
