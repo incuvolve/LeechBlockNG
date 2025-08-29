@@ -9,5 +9,4 @@ jquery-ui/external/**
 # Node.js
 node_modules/
 coverage/
-
-GEMINI*
+*GEMINI*
