@@ -69,7 +69,6 @@ function updateTimer(text, size, location) {
 // Show alert message
 //
 function showAlert(text) {
-	let alertBox, alertIcon, alertText;
 
 	if (!gAlert) {
 		// Create container
@@ -87,11 +86,12 @@ function showAlert(text) {
 		alertText = document.createElement("div");
 		alertText.setAttribute("class", "ivblock-alert-text");
 		alertBox.appendChild(alertText);
+		gAlert.alertText = alertText; // Store alertText as a property of gAlert
 		gAlert.appendChild(alertBox);
 	}
 
 	// Set text
-	alertText.innerText = text;
+	gAlert.alertText.innerText = text;
 
 	// Show timer
 	gAlert.style.display = "flex";
@@ -208,3 +208,15 @@ notifyLoaded();
 window.addEventListener("focus", onFocus);
 window.addEventListener("blur", onBlur);
 window.addEventListener("unload", onUnload);
+
+// Expose functions for testing purposes
+window.notifyLoaded = notifyLoaded;
+window.updateTimer = updateTimer;
+window.showAlert = showAlert;
+window.hideAlert = hideAlert;
+window.checkKeyword = checkKeyword;
+window.applyFilter = applyFilter;
+window.handleMessage = handleMessage;
+window.onFocus = onFocus;
+window.onBlur = onBlur;
+window.onUnload = onUnload;
