@@ -9,6 +9,7 @@
 	<title>ivBlock Options</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/options.css" rel="stylesheet">
+	<link href="controls.css" rel="stylesheet">
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
 	<link id="themeLink" rel="stylesheet">
@@ -43,7 +44,7 @@
 							<label>Enter a custom name for this block set (optional):</label>
 						</p>
 						<p>
-							<input id="setName1" type="text" size="60">
+							<input id="setName1" type="text" size="60" class="limited-width">
 						</p>
 						<p>
 							<label>Enter the domain names of the sites to block (one item per line):</label>
@@ -79,16 +80,16 @@
 						</p>
 						<p>
 							<input id="times1" type="text" size="60" placeholder="Example: 0900-1230,1330-1700"
-								title="Leave blank for no time periods">
+								title="Leave blank for no time periods" class="limited-width">
 							<button id="allDay1" type="button">All Day</button>
 						</p>
 						<p>
 							<label>Enter a time limit after which to block these sites (optional):</label>
 						</p>
 						<p>
-							<input id="limitMins1" type="text" size="4" title="Leave blank for no time limit">
+							<input id="limitMins1" type="text" size="4" title="Leave blank for no time limit" class="limited-width">
 							minutes in every
-							<select id="limitPeriod1">
+							<select id="limitPeriod1" class="limited-width">
 								<option value="">&nbsp;</option>
 								<option value="300">5 minutes</option>
 								<option value="600">10 minutes</option>
@@ -129,7 +130,7 @@
 						</p>
 						<p>
 							<label>Select when to block these sites:</label>
-							<select id="conjMode1">
+							<select id="conjMode1" class="limited-width">
 								<option>within time periods OR after time limit</option>
 								<option>within time periods AND after time limit</option>
 							</select>
@@ -167,10 +168,10 @@
 						</p>
 						<p>
 							<input id="blockURL1" type="text" size="60" placeholder="http://somesite.com/somepage.html"
-								title="Use $U to pass URL of blocked page">
+								title="Use $U to pass URL of blocked page" class="limited-width">
 						</p>
 						<p>
-							<label>Predefined URLs:</label>
+							<label>Predefined URLs:</label><br>
 							<button id="defaultPage1" type="button">Default Page</button>
 							<button id="delayingPage1" type="button">Delaying Page</button>
 							<button id="passwordPage1" type="button">Password Page</button>
@@ -181,7 +182,7 @@
 								<label>Select the requirement for the password page:</label>
 							</p>
 							<p>
-								<select id="passwordRequire1">
+								<select id="passwordRequire1" class="limited-width">
 									<option value="0">Require the user to enter a set-specific password (see below)
 									</option>
 									<option value="1">Require the user to enter the override password</option>
@@ -190,7 +191,7 @@
 							</p>
 							<p>
 								<label>Set-specific password:</label>
-								<input id="passwordSetSpec1" type="password" size="40">
+								<input id="passwordSetSpec1" type="password" size="40" class="limited-width">
 							</p>
 						</div>
 						<p>
@@ -203,7 +204,7 @@
 						<hr>
 						<p class="simplifiable">
 							<label>Block pages in</label>
-							<select id="incogMode1">
+							<select id="incogMode1" class="limited-width">
 								<option value="0">both non-private and private tabs</option>
 								<option value="1">only non-private tabs</option>
 								<option value="2">only private tabs</option>
@@ -212,7 +213,7 @@
 						<p class="simplifiable">
 							<input id="applyFilter1" type="checkbox">
 							<label for="applyFilter1">Apply filter instead of blocking page:</label>
-							<select id="filterName1">
+							<select id="filterName1" class="limited-width">
 								<option>blur (1px)</option>
 								<option>blur (2px)</option>
 								<option>blur (4px)</option>
@@ -254,10 +255,10 @@
 						</p>
 						<p class="simplifiable">
 							Allow access to sites for only <input id="delayAllowMins1" type="text" size="2"
-								title="Leave blank to allow indefinitely"> minutes after delaying/password page is used
+								title="Leave blank to allow indefinitely" class="limited-width"> minutes after delaying/password page is used
 						</p>
 						<p>
-							Delay access to sites by <input id="delaySecs1" type="text" size="2"> seconds when delaying
+							Delay access to sites by <input id="delaySecs1" type="text" size="2" class="limited-width"> seconds when delaying
 							page is used
 						</p>
 						<p class="simplifiable">
@@ -270,7 +271,7 @@
 							<label for="delayCancel1">Cancel delay countdown if delaying page loses focus</label>
 						</p>
 						<p class="simplifiable">
-							Attempt to reload blocked page every <input id="reloadSecs1" type="text" size="2"> seconds
+							Attempt to reload blocked page every <input id="reloadSecs1" type="text" size="2" class="limited-width"> seconds
 							(only applies to default page)
 						</p>
 						<p class="simplifiable">
@@ -317,7 +318,7 @@
 								block-conditions</label>
 						</p>
 						<p>
-							Wait <input id="waitSecs1" type="text" size="2"> second(s) after page has loaded before
+							Wait <input id="waitSecs1" type="text" size="2" class="limited-width"> second(s) after page has loaded before
 							checking blocking conditions
 						</p>
 						<hr>
@@ -354,7 +355,7 @@
 						<hr>
 						<p>
 							Offset time limit period by <input id="limitOffset1" type="text" size="2"
-								title="Leave blank for no offset"> hours
+								title="Leave blank for no offset" class="limited-width"> hours
 							&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/time-limit-offset/"
 								target="_blank">What does this do?</a>
 						</p>
@@ -364,7 +365,7 @@
 						</p>
 						<p>
 							<input id="sitesURL1" type="text" size="60"
-								title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds">
+								title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds" class="limited-width">
 							&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/load-from-url/"
 								target="_blank">What does this do?</a>
 						</p>
@@ -375,7 +376,7 @@
 								to match URLs to <strong>block</strong> (overrides list of sites):</label>
 						</p>
 						<p>
-							<input id="regexpBlock1" type="text" size="60">
+							<input id="regexpBlock1" type="text" size="60" class="limited-width">
 							<button id="clearRegExpBlock1" type="button">Clear</button>
 							<button id="genRegExpBlock1" type="button">Generate From Site List</button>
 						</p>
@@ -386,7 +387,7 @@
 								to match URLs to <strong>allow</strong> (overrides exceptions in list of sites):</label>
 						</p>
 						<p>
-							<input id="regexpAllow1" type="text" size="60">
+							<input id="regexpAllow1" type="text" size="60" class="limited-width">
 							<button id="clearRegExpAllow1" type="button">Clear</button>
 							<button id="genRegExpAllow1" type="button">Generate From Site List</button>
 						</p>
@@ -410,7 +411,7 @@
 						<legend>Block Sets</legend>
 						<p>
 							Number of block sets (1&ndash;<span id="maxSets">?</span>):
-							<input id="numSets" type="text" size="2" title="Default: 6">
+							<input id="numSets" type="text" size="2" title="Default: 6" class="limited-width">
 						</p>
 					</fieldset>
 					<fieldset>
@@ -419,7 +420,7 @@
 							<label>Select the requirement for access to options:</label>
 						</p>
 						<p>
-							<select id="optionsAccess">
+							<select id="optionsAccess" class="limited-width">
 								<option value="0">Don't require the user to enter any password or access code</option>
 								<option value="1">Require the user to enter a password</option>
 								<option value="2">Require the user to enter a random 32-character access code</option>
@@ -429,7 +430,7 @@
 						</p>
 						<p>
 							<label>Password:</label>
-							<input id="accessPassword" type="password" size="40">
+							<input id="accessPassword" type="password" size="40" class="limited-width">
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<input id="accessPasswordShow" type="checkbox">
 							<label for="accessPasswordShow">Show password</label>
@@ -443,7 +444,7 @@
 						</p>
 						<p>
 							<input id="accessPreventTimes" type="text" size="60"
-								placeholder="Example: 0900-1230,1330-1700">
+								placeholder="Example: 0900-1230,1330-1700" class="limited-width">
 						</p>
 					</fieldset>
 					<fieldset>
@@ -453,7 +454,7 @@
 							<label for="timerVisible">Show timer over page</label>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>Size:</label>
-							<select id="timerSize">
+							<select id="timerSize" class="limited-width">
 								<option value="0">small</option>
 								<option value="1">medium</option>
 								<option value="2">large</option>
@@ -461,7 +462,7 @@
 							</select>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>Location:</label>
-							<select id="timerLocation">
+							<select id="timerLocation" class="limited-width">
 								<option value="0">top left</option>
 								<option value="1">top right</option>
 								<option value="2">bottom right</option>
@@ -482,7 +483,7 @@
 						<legend>Warning Message</legend>
 						<p>
 							Display warning message <input id="warnSecs" type="text" size="2"
-								title="Leave blank for no warning"> seconds before site is blocked
+								title="Leave blank for no warning" class="limited-width"> seconds before site is blocked
 						</p>
 						<p>
 							<input id="warnImmediate" type="checkbox">
@@ -494,7 +495,7 @@
 						<legend>Temporary Override</legend>
 						<p>
 							Allow blocking to be suspended for <input id="overrideMins" type="text" size="2"
-								title="Leave blank to specify a duration when the override is activated"> minute(s)
+								title="Leave blank to specify a duration when the override is activated" class="limited-width"> minute(s)
 						</p>
 						<p>
 							Allow no more than <input id="overrideLimitNum" type="text" size="2"
@@ -510,7 +511,7 @@
 							<label>Select the requirement for activating the override:</label>
 						</p>
 						<p>
-							<select id="overrideAccess">
+							<select id="overrideAccess" class="limited-width">
 								<option value="0">Don't require the user to enter any password or access code</option>
 								<option value="1">Require the user to enter the access control password (see above)
 								</option>
@@ -525,11 +526,11 @@
 						</p>
 						<p>
 							<label>Predefined access code:</label>
-							<input id="overrideCode" type="text" size="60">
+							<input id="overrideCode" type="text" size="60" class="limited-width">
 						</p>
 						<p>
 							<label>Override password:</label>
-							<input id="overridePassword" type="password" size="20">
+							<input id="overridePassword" type="password" size="20" class="limited-width">
 						</p>
 						<p>
 							<input id="overrideConfirm" type="checkbox">
@@ -544,7 +545,7 @@
 						<legend>Appearance</legend>
 						<p>
 							<label>Theme:</label>
-							<select id="theme">
+							<select id="theme" class="limited-width">
 								<option value="">Default</option>
 								<option value="light">Light</option>
 								<option value="dark">Dark</option>
@@ -575,7 +576,7 @@
 						</p>
 						<p class="simplifiable">
 							Display clock times in
-							<select id="clockTimeFormat">
+							<select id="clockTimeFormat" class="limited-width">
 								<option value="0">default</option>
 								<option value="1">12-hour</option>
 								<option value="2">24-hour</option>
@@ -584,12 +585,12 @@
 						</p>
 						<p class="simplifiable">
 							Offset clock by <input id="clockOffset" type="text" size="4"
-								title="Leave blank for no offset"> minutes
+								title="Leave blank for no offset" class="limited-width"> minutes
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<span id="clockOffsetTime" style="display: none;"></span>
 						</p>
 						<p class="simplifiable">
-							Ignore jumps in time spent greater than <input id="ignoreJumpSecs" type="text" size="4">
+							Ignore jumps in time spent greater than <input id="ignoreJumpSecs" type="text" size="4" class="limited-width">
 							seconds
 						</p>
 						<p class="simplifiable">
@@ -622,11 +623,11 @@
 					<fieldset class="simplifiable">
 						<legend>Performance</legend>
 						<p>
-							Save time data every <input id="saveSecs" type="text" size="2" title="Default: 10">
+							Save time data every <input id="saveSecs" type="text" size="2" title="Default: 10" class="limited-width">
 							second(s)
 						</p>
 						<p>
-							Process tabs every <input id="processTabsSecs" type="text" size="2" title="Default: 1">
+							Process tabs every <input id="processTabsSecs" type="text" size="2" title="Default: 1" class="limited-width">
 							second(s)
 						</p>
 						<p>

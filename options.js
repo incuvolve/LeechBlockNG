@@ -1264,7 +1264,6 @@ function initAccessControlPrompt(prompt) {
 	$(`#${prompt}`).dialog({
 		autoOpen: false,
 		modal: true,
-		width: 600,
 		buttons: dialogButtons,
 		close: function (event, ui) { if (!gAccessConfirmed) closeOptions(); }
 	});
@@ -1307,7 +1306,6 @@ gFormHTML = $("#form").html();
 $("div[id^='alert']").dialog({
 	autoOpen: false,
 	modal: true,
-	width: 600,
 	buttons: {
 		OK: function () { $(this).dialog("close"); }
 	}

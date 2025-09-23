@@ -53,13 +53,15 @@ input,
 button {
 	color: #333;
 	font: normal 16px "Open Sans", Arial, sans-serif;
-	padding: 2px 8px;
+	padding: 10px 15px;
 	border: 1px solid #888;
 	border-radius: 6px;
+	min-height: 36px;
 }
 
 button {
 	background: #eee;
+	cursor: pointer;
 }
 
 button:hover:enabled {

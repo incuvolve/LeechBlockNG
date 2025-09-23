@@ -22,24 +22,30 @@
 
 body {
 	color: #000;
-	font-size: 14px;
+	font-size: 16px;
 	text-align: center;
 	overflow-x: hidden;
+	padding: 10px;
+	min-height: 800px;
 }
 
 #button-container {
-	display: inline-block;
-	width: 180px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
 }
 
 button {
 	display: inline;
 	width: 100%;
-	margin: 2px;
-	padding: 2px;
+	margin: 0;
+	padding: 10px;
 	background: #eee;
 	border: 1px solid #888;
-	border-radius: 6px;
+	border-radius: 8px;
+	font-size: 1em;
+	cursor: pointer;
 }
 
 button:hover:enabled {
@@ -53,4 +59,5 @@ button:active:enabled {
 .logo {
 	max-width: 100%;
 	height: auto;
+	margin-bottom: 10px;
 }
