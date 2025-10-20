@@ -12,6 +12,45 @@
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
 	<link id="themeLink" rel="stylesheet">
+	<style>
+		@media (max-width: 600px) {
+			#form fieldset {
+				width: 80%;
+				margin: 0 auto;
+			}
+			#mins {
+				width: 50px;
+			}
+			.ui-dialog {
+				width: 90vw !important;
+				max-width: 320px !important;
+			}
+
+			.ui-dialog .ui-dialog-content p {
+				font-size: 1em;
+				word-wrap: break-word;
+			}
+
+			#promptPasswordInput,
+			#promptAccessCodeInput {
+				width: 95%;
+			}
+
+			.ui-dialog .ui-dialog-buttonpane {
+				text-align: center;
+			}
+
+			.ui-dialog .ui-dialog-buttonset {
+				float: none !important;
+			}
+
+			.ui-dialog .ui-dialog-buttonpane button {
+				margin: 5px;
+				width: 120px;
+				padding: 10px;
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -23,7 +62,7 @@
 			<fieldset class="ui-widget ui-widget-content">
 				<legend>ivBlock Override</legend>
 				<p>
-					Allow blocking to be suspended for <input id="mins" type="text" size="2"> minute(s)
+					Allow blocking to be suspended for<br> <input id="mins" type="text" size="2"> minute(s)
 				</p>
 			</fieldset>
 

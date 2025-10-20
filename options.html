@@ -13,6 +13,38 @@
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
 	<link id="themeLink" rel="stylesheet">
+	<style>
+		@media (max-width: 600px) {
+			.ui-dialog {
+				width: 90vw !important;
+				max-width: 320px !important;
+			}
+
+			.ui-dialog .ui-dialog-content p {
+				font-size: 1em;
+				word-wrap: break-word;
+			}
+
+			#promptPasswordInput,
+			#promptAccessCodeInput {
+				width: 95%;
+			}
+
+			.ui-dialog .ui-dialog-buttonpane {
+				text-align: center;
+			}
+
+			.ui-dialog .ui-dialog-buttonset {
+				float: none !important;
+			}
+
+			.ui-dialog .ui-dialog-buttonpane button {
+				margin: 5px;
+				width: 120px;
+				padding: 10px;
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -280,7 +312,7 @@
 						</p>
 						<p class="simplifiable">
 							<input id="allowOverride1" type="checkbox">
-							<label for="allowOverride1">Allow temporary override for these sites</label>
+							Allow temporary override for these sites
 						</p>
 						<p class="simplifiable">
 							&nbsp;&nbsp;&nbsp;&nbsp;

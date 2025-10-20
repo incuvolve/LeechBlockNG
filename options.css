@@ -236,3 +236,45 @@ textarea {
 #saveOptions, #saveOptionsClose {
 	padding: 10px 15px;
 }
+
+/* Stats page */
+#stats-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 16px;
+}
+
+.stats-card {
+	padding: 16px;
+	border-radius: 8px;
+}
+
+.stats-card h3 {
+	margin-top: 0;
+	font-size: 1.2em;
+}
+
+.stats-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 16px 0;
+}
+
+.stats-list li {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.stats-list li:last-child {
+	border-bottom: none;
+}
+
+.restart-button {
+	width: 100%;
+}
+
+#restartAll {
+	margin-top: 16px;
+}

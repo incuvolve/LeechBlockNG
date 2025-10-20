@@ -7,7 +7,6 @@ function warn(message) { console.warn("[ivBlock] " + message); }
 
 function getElement(id) { return document.getElementById(id); }
 
-var gFormHTML;
 var gNumSets;
 var gClockOffset;
 var gClockTimeOpts;
@@ -15,21 +14,24 @@ var gClockTimeOpts;
 // Initialize form (with specified number of block sets)
 //
 function initForm(numSets) {
-	//log("initForm: " + numSets);
-
-	// Reset form to original HTML
-	$("#form").html(gFormHTML);
-
 	gNumSets = +numSets;
 
 	// Use HTML for first row to create other rows
-	let rowHTML = $("#statsRow1").html();
-	for (let set = 2; set <= gNumSets; set++) {
-		let nextRowHTML = rowHTML
-			.replace(/(Block Set) 1/g, `$1 ${set}`)
-			.replace(/id="(\w+)1"/g, `id="$1${set}"`);
-		$("#statsTable").append(`<tr id="statsRow${set}">${nextRowHTML}</tr>`);
+	let cardHTML = $("#stats-card-template").html();
+	for (let set = 1; set <= gNumSets; set++) {
+		let nextCardHTML = cardHTML
+			.replace(/class="block-set-name"/, `id="blockSetName${set}"`)
+			.replace(/class="start-time"/, `id="startTime${set}"`)
+			.replace(/class="total-time"/, `id="totalTime${set}"`)
+			.replace(/class="per-week-time"/, `id="perWeekTime${set}"`)
+			.replace(/class="per-day-time"/, `id="perDayTime${set}"`)
+			.replace(/class="time-left"/, `id="timeLeft${set}"`)
+			.replace(/class="rollover-time"/, `id="rolloverTime${set}"`)
+			.replace(/class="ld-end-time"/, `id="ldEndTime${set}"`)
+			.replace(/class="restart-button"/, `id="restart${set}"`);
+		$("#stats-container").append(`<div id="statsCard${set}" class="stats-card ui-widget-content">${nextCardHTML}</div>`);
 	}
+	$("#stats-card-template").hide();
 
 	$(":button").click(handleClick);
 }
@@ -40,6 +42,7 @@ function refreshPage() {
 	//log("refreshPage");
 
 	$("#form").hide();
+	$("#stats-container").html('<div id="stats-card-template" class="stats-card ui-widget-content" style="display: none;">' + $("#stats-card-template").html() + '</div>');
 
 	browser.storage.local.get("sync").then(onGotSync, onError);
 
@@ -72,7 +75,7 @@ function refreshPage() {
 		let now = Math.floor(Date.now() / 1000) + (gClockOffset * 60);
 
 		for (let set = 1; set <= gNumSets; set++) {
-			let setName = options[`setName${set}`];
+			let setName = options[`setName${set}`] || `Block Set ${set}`;
 			let timedata = options[`timedata${set}`];
 			let limitMins = options[`limitMins${set}`];
 			let limitPeriod = options[`limitPeriod${set}`];
@@ -82,9 +85,7 @@ function refreshPage() {
 
 			updateRolloverTime(timedata, limitMins, limitPeriod, periodStart);
 
-			if (setName) {
-				getElement(`blockSetName${set}`).innerText = setName;
-			}
+			getElement(`blockSetName${set}`).innerText = setName;
 
 			let fs = getFormattedStats(now, timedata);
 			getElement(`startTime${set}`).innerText = fs.startTime;
@@ -104,11 +105,16 @@ function refreshPage() {
 					let rolloverTime = formatTime(secsRollover);
 					getElement(`rolloverTime${set}`).innerText = rolloverTime;
 				}
+			} else {
+				getElement(`timeLeft${set}`).parentElement.style.display = "none";
+				getElement(`rolloverTime${set}`).parentElement.style.display = "none";
 			}
 
 			if (timedata[4] > now) {
 				let ldEndTime = getFormattedClockTime(timedata[4] * 1000);
 				getElement(`ldEndTime${set}`).innerText = ldEndTime;
+			} else {
+				getElement(`ldEndTime${set}`).parentElement.style.display = "none";
 			}
 		}
 
@@ -158,9 +164,6 @@ function handleClick(e) {
 }
 
 /*** STARTUP CODE BEGINS HERE ***/
-
-// Save original HTML of form
-gFormHTML = $("#form").html();
 
 document.addEventListener("DOMContentLoaded", refreshPage);
 document.addEventListener("focus", refreshPage);

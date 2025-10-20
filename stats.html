@@ -22,30 +22,22 @@
 
 				<fieldset class="ui-widget ui-widget-content">
 					<legend>ivBlock Statistics</legend>
-					<table id="statsTable" border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
-						<tr id="statsRow0">
-							<th>Block Set</th>
-							<th>Start Date/Time</th>
-							<th>Time Spent<br>Since Start</th>
-							<th>Time Spent<br>Per Week</th>
-							<th>Time Spent<br>Per Day</th>
-							<th>Time Left in<br>Limit Period</th>
-							<th>Rollover Time</th>
-							<th>Lockdown<br>End Time</th>
-							<th><button id="restartAll" type="button">Restart All</button></th>
-						</tr>
-						<tr id="statsRow1">
-							<td id="blockSetName1">Block Set 1</td>
-							<td id="startTime1">N/A</td>
-							<td id="totalTime1">N/A</td>
-							<td id="perWeekTime1">N/A</td>
-							<td id="perDayTime1">N/A</td>
-							<td id="timeLeft1">N/A</td>
-							<td id="rolloverTime1">N/A</td>
-							<td id="ldEndTime1">N/A</td>
-							<td><button id="restart1" type="button">Restart</button></td>
-						</tr>
-					</table>
+					<div id="stats-container">
+						<div id="stats-card-template" class="stats-card ui-widget-content">
+							<h3 class="block-set-name"></h3>
+							<ul class="stats-list">
+								<li><strong>Start Date/Time:</strong> <span class="start-time"></span></li>
+								<li><strong>Time Spent Since Start:</strong> <span class="total-time"></span></li>
+								<li><strong>Time Spent Per Week:</strong> <span class="per-week-time"></span></li>
+								<li><strong>Time Spent Per Day:</strong> <span class="per-day-time"></span></li>
+								<li><strong>Time Left in Limit Period:</strong> <span class="time-left"></span></li>
+								<li><strong>Rollover Time:</strong> <span class="rollover-time"></span></li>
+								<li><strong>Lockdown End Time:</strong> <span class="ld-end-time"></span></li>
+							</ul>
+							<button class="restart-button" type="button">Restart</button>
+						</div>
+					</div>
+					<button id="restartAll" type="button">Restart All</button>
 				</fieldset>
 
 			</form>
