@@ -5,52 +5,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ivBlock Override</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/options.css" rel="stylesheet">
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
 	<link id="themeLink" rel="stylesheet">
-	<style>
-		@media (max-width: 600px) {
-			#form fieldset {
-				width: 80%;
-				margin: 0 auto;
-			}
-			#mins {
-				width: 50px;
-			}
-			.ui-dialog {
-				width: 90vw !important;
-				max-width: 320px !important;
-			}
-
-			.ui-dialog .ui-dialog-content p {
-				font-size: 1em;
-				word-wrap: break-word;
-			}
-
-			#promptPasswordInput,
-			#promptAccessCodeInput {
-				width: 95%;
-			}
-
-			.ui-dialog .ui-dialog-buttonpane {
-				text-align: center;
-			}
-
-			.ui-dialog .ui-dialog-buttonset {
-				float: none !important;
-			}
-
-			.ui-dialog .ui-dialog-buttonpane button {
-				margin: 5px;
-				width: 120px;
-				padding: 10px;
-			}
-		}
-	</style>
+	<link href="/override.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,7 +28,7 @@
 				</p>
 			</fieldset>
 
-			<p style="text-align: center;">
+			<p class="button-container">
 				<button id="activate" type="submit">Activate Override</button>
 				<button id="cancel" type="button">Cancel</button>
 			</p>

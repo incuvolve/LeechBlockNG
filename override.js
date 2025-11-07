@@ -278,7 +278,7 @@ function activateOverride() {
 		if (gOverrideSetNames.length > 0) {
 			$("#alertOverrideNoSets").hide();
 			$("#alertOverrideSets").show();
-			$("#alertOverrideSetList").html("<ul><li>" + gOverrideSetNames.join("</li><li>") + "</li></ul>");
+			$("#alertOverrideSetList").html("<ul><li class='override-set-item'>" + gOverrideSetNames.join("</li><li class='override-set-item'>") + "</li></ul>");
 		}
 		if (gOverrideLimit) {
 			$("#alertOverrideLimit").show();

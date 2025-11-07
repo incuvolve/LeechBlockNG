@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ivBlock Options</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/options.css" rel="stylesheet">
@@ -702,8 +702,11 @@
 				</div>
 				<div id="paneAbout">
 					<p>
-						<a href="https://www.incuvolve.de/ivblock/" target="_blank"><img src="images/ivblock_logo.png"
-								class="logo" alt="ivBlock logo" title="ivBlock"></a>
+						<a href="https://www.incuvolve.de/ivblock/" target="_blank"><picture>
+								<source srcset="images/ivblock_logo_dark_mode.png" media="(prefers-color-scheme: dark)">
+								<img src="images/ivblock_logo.png"
+									class="logo" alt="ivBlock logo" title="ivBlock">
+							</picture></a>
 					</p>
 					<p>
 						<a href="https://www.incuvolve.de/ivblock/" target="_blank">ivBlock</a>
