@@ -214,11 +214,37 @@
 								<label>Select the requirement for the password page:</label>
 							</p>
 							<p>
-								<select id="passwordRequire1" class="limited-width">
-									<option value="0">Require the user to enter a set-specific password (see below)
-									</option>
-									<option value="1">Require the user to enter the override password</option>
-									<option value="2">Require the user to enter the access control password</option>
+								<textarea id="customMsg1" cols="60" rows="4" placeholder="Example: Get back to work!"></textarea>
+							</p>
+							<hr>
+							<p class="simplifiable">
+								<label>Block pages in</label>
+								<select id="incogMode1">
+									<option value="0">both non-private and private tabs</option>
+									<option value="1">only non-private tabs</option>
+									<option value="2">only private tabs</option>
+								</select>
+							</p>
+							<p class="simplifiable">
+								<input id="onlyActive1" type="checkbox">
+								<label for="onlyActive1">Block pages only in active tabs</label>
+							</p>
+							<p class="simplifiable">
+								<input id="applyFilter1" type="checkbox">
+								<label for="applyFilter1">Apply filter instead of blocking page:</label>
+								<select id="filterName1">
+									<option>blur (1px)</option>
+									<option>blur (2px)</option>
+									<option>blur (4px)</option>
+									<option>blur (8px)</option>
+									<option>blur (16px)</option>
+									<option>blur (32px)</option>
+									<option>fade (80%)</option>
+									<option>fade (90%)</option>
+									<option>fade (100%)</option>
+									<option>grayscale</option>
+									<option>invert</option>
+									<option>sepia</option>
 								</select>
 							</p>
 							<p>
@@ -229,182 +255,75 @@
 						<p>
 							<label>Enter a custom message for the blocking page (optional):</label>
 						</p>
-						<p>
-							<textarea id="customMsg1" cols="60" rows="4"
-								placeholder="Example: Get back to work!"></textarea>
-						</p>
-						<hr>
-						<p class="simplifiable">
-							<label>Block pages in</label>
-							<select id="incogMode1" class="limited-width">
-								<option value="0">both non-private and private tabs</option>
-								<option value="1">only non-private tabs</option>
-								<option value="2">only private tabs</option>
-							</select>
-						</p>
-						<p class="simplifiable">
-							<input id="applyFilter1" type="checkbox">
-							<label for="applyFilter1">Apply filter instead of blocking page:</label>
-							<select id="filterName1" class="limited-width">
-								<option>blur (1px)</option>
-								<option>blur (2px)</option>
-								<option>blur (4px)</option>
-								<option>blur (8px)</option>
-								<option>blur (16px)</option>
-								<option>blur (32px)</option>
-								<option>fade (80%)</option>
-								<option>fade (90%)</option>
-								<option>fade (100%)</option>
-								<option>grayscale</option>
-								<option>invert</option>
-								<option>sepia</option>
-							</select>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<input id="filterMute1" type="checkbox">
-							<label for="filterMute1">Mute tab with filter</label>
-						</p>
-						<p>
-							<input id="closeTab1" type="checkbox">
-							<label for="closeTab1">Close tab instead of blocking page</label>
-						</p>
-						<p>
-							<input id="activeBlock1" type="checkbox">
-							<label for="activeBlock1">Immediately block pages on these sites once blocking conditions
-								are met</label>
-						</p>
-						<p class="simplifiable">
-							<input id="showKeyword1" type="checkbox">
-							<label for="showKeyword1">Show matched keyword on blocking page</label>
-						</p>
-						<p class="simplifiable">
-							<input id="titleOnly1" type="checkbox">
-							<label for="titleOnly1">Check for keywords only in page title</label>
-						</p>
-						<p class="simplifiable">
-							<input id="delayFirst1" type="checkbox">
-							<label for="delayFirst1">Block only first accessed page of site when delaying/password page
-								is used</label>
-						</p>
-						<p class="simplifiable">
-							Allow access to sites for only <input id="delayAllowMins1" type="text" size="2"
-								title="Leave blank to allow indefinitely" class="limited-width"> minutes after delaying/password page is used
-						</p>
-						<p>
-							Delay access to sites by <input id="delaySecs1" type="text" size="2" class="limited-width"> seconds when delaying
-							page is used
-						</p>
-						<p class="simplifiable">
-							<input id="delayAutoLoad1" type="checkbox">
-							<label for="delayAutoLoad1">Automatically load blocked page when delay countdown reaches
-								zero</label>
-						</p>
-						<p class="simplifiable">
-							<input id="delayCancel1" type="checkbox">
-							<label for="delayCancel1">Cancel delay countdown if delaying page loses focus</label>
-						</p>
-						<p class="simplifiable">
-							Attempt to reload blocked page every <input id="reloadSecs1" type="text" size="2" class="limited-width"> seconds
-							(only applies to default page)
-						</p>
-						<p class="simplifiable">
-							<input id="addHistory1" type="checkbox">
-							<label for="addHistory1">Add blocked page to browser history</label>
-						</p>
-						<p class="simplifiable">
-							<input id="allowOverride1" type="checkbox">
-							Allow temporary override for these sites
-						</p>
-						<p class="simplifiable">
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<input id="allowOverLock1" type="checkbox">
-							<label for="allowOverLock1">Allow temporary override during lockdown</label>
-						</p>
-					</fieldset>
-					<p>
-						<button id="resetOpts1" type="button">Reset Options to Defaults</button>
-						<button id="showAdvOpts1" type="button" class="simplifiable">Show Advanced Options</button>
-					</p>
-					<fieldset id="advOpts1">
-						<legend>Advanced Options</legend>
-						<p>
-							<strong><em>Be sure you understand the consequences of these options before changing any of
-									them!</em></strong>
-						</p>
-						<hr>
-						<p>
-							<input id="disable1" type="checkbox">
-							<label for="disable1">Disable this block set (for debugging purposes)</label>
-						</p>
-						<p>
-							<input id="showTimer1" type="checkbox">
-							<label for="showTimer1">Show countdown timer for this block set</label>
-						</p>
-						<p>
-							<input id="allowRefers1" type="checkbox">
-							<label for="allowRefers1">Treat referrers as allow-conditions rather than
-								block-conditions</label>
-						</p>
-						<p>
-							<input id="allowKeywords1" type="checkbox">
-							<label for="allowKeywords1">Treat keywords as allow-conditions rather than
-								block-conditions</label>
-						</p>
-						<p>
-							Wait <input id="waitSecs1" type="text" size="2" class="limited-width"> second(s) after page has loaded before
-							checking blocking conditions
-						</p>
-						<hr>
-						<p>
-							<input id="prevOpts1" type="checkbox">
-							<label for="prevOpts1">Prevent access to options for this block set at times when these
-								sites are blocked</label>
-						</p>
-						<p>
-							<input id="prevGenOpts1" type="checkbox">
-							<label for="prevGenOpts1">Prevent access to General options at times when these sites are
-								blocked</label>
-						</p>
-						<p>
-							<input id="prevAddons1" type="checkbox">
-							<label for="prevAddons1">Prevent access to <strong>about:addons</strong> at times when these
-								sites are blocked</label>
-						</p>
-						<p>
-							<input id="prevSupport1" type="checkbox">
-							<label for="prevSupport1">Prevent access to <strong>about:support</strong> at times when
-								these sites are blocked</label>
-						</p>
-						<p>
-							<input id="prevDebugging1" type="checkbox">
-							<label for="prevDebugging1">Prevent access to <strong>about:debugging</strong> at times when
-								these sites are blocked</label>
-						</p>
-						<p>
-							<input id="prevOverride1" type="checkbox">
-							<label for="prevOverride1">Allow override to apply to <strong>about:addons</strong>,
-								<strong>about:support</strong>, and <strong>about:debugging</strong></label>
-						</p>
-						<hr>
-						<p>
-							Offset time limit period by <input id="limitOffset1" type="text" size="2"
-								title="Leave blank for no offset" class="limited-width"> hours
-							&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/time-limit-offset/"
-								target="_blank">What does this do?</a>
-						</p>
-						<hr>
-						<p>
-							<label>Load list of sites from URL:</label>
-						</p>
-						<p>
-							<input id="sitesURL1" type="text" size="60"
-								title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds" class="limited-width">
-							&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/load-from-url/"
-								target="_blank">What does this do?</a>
-						</p>
-						<p>
-							<label>Use <a
-									href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-									target="_blank">regular expression</a>
+						<fieldset id="advOpts1">
+							<legend>Advanced Options</legend>
+							<p>
+								<strong><em>Be sure you understand the consequences of these options before changing any of them!</em></strong>
+							</p>
+							<hr>
+							<p>
+								<input id="disable1" type="checkbox">
+								<label for="disable1">Disable this block set (for debugging purposes)</label>
+							</p>
+							<p>
+								<input id="showTimer1" type="checkbox">
+								<label for="showTimer1">Show countdown timer for this block set</label>
+							</p>
+							<p>
+								<input id="allowRefers1" type="checkbox">
+								<label for="allowRefers1">Treat referrers as allow-conditions rather than block-conditions</label>
+							</p>
+							<p>
+								<input id="allowKeywords1" type="checkbox">
+								<label for="allowKeywords1">Treat keywords as allow-conditions rather than block-conditions</label>
+							</p>
+							<p>
+								Wait <input id="waitSecs1" type="text" size="2"> second(s) after page has loaded before checking blocking conditions
+							</p>
+							<hr>
+							<p>
+								<input id="prevOpts1" type="checkbox">
+								<label for="prevOpts1">Prevent access to options for this block set at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevGenOpts1" type="checkbox">
+								<label for="prevGenOpts1">Prevent access to General options at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevAddons1" type="checkbox">
+								<label for="prevAddons1">Prevent access to <strong>about:addons</strong> at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevSupport1" type="checkbox">
+								<label for="prevSupport1">Prevent access to <strong>about:support</strong> at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevProfiles1" type="checkbox">
+								<label for="prevProfiles1">Prevent access to <strong>about:profiles</strong> at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevDebugging1" type="checkbox">
+								<label for="prevDebugging1">Prevent access to <strong>about:debugging</strong> at times when these sites are blocked</label>
+							</p>
+							<p>
+								<input id="prevOverride1" type="checkbox">
+								<label for="prevOverride1">Allow override to apply to <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong>, and <strong>about:debugging</strong></label>
+							</p>
+							<hr>
+							<p>
+								Offset time limit period by <input id="limitOffset1" type="text" size="2" title="Leave blank for no offset"> hours
+								&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/time-limit-offset/" target="_blank">What does this do?</a>
+							</p>
+							<hr>
+							<p>
+								<label>Load list of sites from URL:</label>
+							</p>
+							<p>
+								<input id="sitesURL1" type="text" size="60" title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds">
+								&nbsp;&nbsp;<a href="https://www.incuvolve.de/ivblock/faq/load-from-url/" target="_blank">What does this do?</a>
+							</p>
+							<p>
+								<label>Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">regular expression</a>
 								to match URLs to <strong>block</strong> (overrides list of sites):</label>
 						</p>
 						<p>
