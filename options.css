@@ -279,3 +279,9 @@ textarea {
 #restartAll {
 	margin-top: 16px;
 }
+
+/* Fix for jQuery UI dialog close icon */
+.ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+    background-image: url("jquery-ui/images/ui-icons_444444_256x240.png");
+    background-position: -96px -128px; /* This is the position for the 'closethick' icon */
+}
