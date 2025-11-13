@@ -891,20 +891,36 @@ function applyImportOptions(options) {
 //
 function downloadBlobFile(blob, filename) {
 	const reader = new FileReader();
-	reader.onload = function(e) {
-		const dataUrl = e.target.result;
-		const a = document.createElement('a');
-		a.href = dataUrl;
-		a.download = filename;
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
-	};
-	reader.onerror = function(e) {
-		warn("Cannot read blob file: " + e);
-		$("#alertExportError").dialog("open");
-	};
-	reader.readAsDataURL(blob);
+    
+    reader.onerror = function(e) {
+        warn("Cannot read blob file: " + e);
+        $("#alertExportError").dialog("open");
+    };
+    
+    reader.onloadend = function() {
+        const base64data = reader.result; // valid only here
+        const base64dataraw = reader.result.split(',')[1];
+        console.log("Base64 ready:", base64data);
+        console.log("Base64 raw:", base64dataraw);
+        
+        const dataUrl = 'data:application/octet-stream;base64,' + base64dataraw;
+
+        // Create a download link inside onloadend
+        const element = document.createElement('a');
+        element.setAttribute('href', dataUrl);
+        //element.setAttribute('href', base64data); // valid URL already
+        element.setAttribute('download', 'filename.txt');
+        element.style.display = 'none';
+
+        //anchor it
+        document.body.appendChild(element);
+        console.log("Download link ready:", dataUrl);
+        //element.click();
+        document.body.removeChild(element);
+    }
+
+    // now execute the reader conversion
+    reader.readAsDataURL(blob);
 }
 
 // Export options to text file
