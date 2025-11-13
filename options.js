@@ -890,38 +890,137 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-	const reader = new FileReader();
-    
-    reader.onerror = function(e) {
-        warn("Cannot read blob file: " + e);
-        $("#alertExportError").dialog("open");
-    };
-    
-    reader.onloadend = function() {
-        const base64data = reader.result; // valid only here
-        const base64dataraw = reader.result.split(',')[1];
-        console.log("Base64 ready:", base64data);
-        console.log("Base64 raw:", base64dataraw);
-        
-        const dataUrl = 'data:application/octet-stream;base64,' + base64dataraw;
+  // Create a blob URL for the file data
+  const url = URL.createObjectURL(blob);
 
-        // Create a download link inside onloadend
-        const element = document.createElement('a');
-        element.setAttribute('href', dataUrl);
-        //element.setAttribute('href', base64data); // valid URL already
-        element.setAttribute('download', 'filename.txt');
-        element.style.display = 'none';
+  // Open in a new tab or window
+  window.open(url, "_blank");
 
-        //anchor it
-        document.body.appendChild(element);
-        console.log("Download link ready:", dataUrl);
-        //element.click();
-        document.body.removeChild(element);
-    }
-
-    // now execute the reader conversion
-    reader.readAsDataURL(blob);
+  // Optional: revoke the blob URL after a short delay to free memory
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
+
+/*
+
+function downloadBlobFile(blob, filename) {
+  const reader = new FileReader();
+  reader.onloadend = function () {
+    // Post a message to the page with our payload
+    window.postMessage({
+      direction: "from-extension",
+      base64: reader.result.split(',')[1],
+      filename: filename
+    }, "*");
+  };
+  reader.readAsDataURL(blob);
+
+  // Inject a lightweight bridge script once
+  if (!window.__downloadBridgeInjected) {
+    const script = document.createElement("script");
+    script.textContent = `
+      window.addEventListener("message", (event) => {
+        if (event.source !== window) return;
+        if (event.data.direction !== "from-extension") return;
+
+        try {
+          const { base64, filename } = event.data;
+          const byteChars = atob(base64);
+          const byteNumbers = new Array(byteChars.length);
+          for (let i = 0; i < byteChars.length; i++) {
+            byteNumbers[i] = byteChars.charCodeAt(i);
+          }
+          const blob = new Blob([new Uint8Array(byteNumbers)], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          a.style.display = "none";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error("Page download failed:", err);
+        }
+      });
+    `;
+    document.documentElement.appendChild(script);
+    script.remove();
+    window.__downloadBridgeInjected = true;
+  }
+}
+*/
+
+/*
+function downloadBlobFile(blob, filename) {
+  const reader = new FileReader();
+  reader.onloadend = function () {
+    const base64 = reader.result.split(',')[1];
+
+    // Build the actual script source text
+    const scriptSource = `
+      (function() {
+        try {
+          const byteChars = atob("${base64}");
+          const byteNumbers = new Array(byteChars.length);
+          for (let i = 0; i < byteChars.length; i++) {
+            byteNumbers[i] = byteChars.charCodeAt(i);
+          }
+          const blob = new Blob([new Uint8Array(byteNumbers)], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "${filename}";
+          a.style.display = "none";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error("Page download error:", err);
+        }
+      })();
+    `;
+
+    // Turn the code into a blob and inject as a blob script
+    const blobUrl = URL.createObjectURL(new Blob([scriptSource], { type: 'text/javascript' }));
+    const script = document.createElement('script');
+    script.src = blobUrl;
+    document.documentElement.appendChild(script);
+    script.onload = () => {
+      script.remove();
+      URL.revokeObjectURL(blobUrl);
+    };
+  };
+  reader.readAsDataURL(blob);
+}
+*/
+
+
+/*
+function downloadBlobFile(blob, filename) {
+    if (!(blob instanceof Blob)) {
+        console.error("downloadBlob: argument is not a Blob");
+        return;
+      }
+
+      // Create a temporary object URL from the Blob
+      const url = URL.createObjectURL(blob);
+
+      // Create a hidden <a> element
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename || "download.txt";
+      a.style.display = "none";
+      document.body.appendChild(a);
+
+      // Click it from inside the same DOM world
+      a.click();
+
+      // Cleanup
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+}*/
 
 // Export options to text file
 //
