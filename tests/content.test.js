@@ -66,9 +66,22 @@ describe('content.js', () => {
     beforeEach(() => {
         jest.clearAllMocks();
 
+        // Spy on real DOM methods
+        createElementSpy = jest.spyOn(global.document, 'createElement');
+        appendChildSpy = jest.spyOn(global.document.documentElement, 'appendChild');
+        removeChildSpy = jest.spyOn(global.document.documentElement, 'removeChild'); // Spy on document.documentElement for dynamically created elements
+        addEventListenerSpy = jest.spyOn(global.HTMLElement.prototype, 'addEventListener');
+        setAttributeSpy = jest.spyOn(global.HTMLElement.prototype, 'setAttribute');
+
+
         // Reset gTimer and gAlert to ensure re-creation
         global.gTimer = document.createElement("div");
         global.gAlert = document.createElement("div");
+
+        // Attach elements to the body to ensure parentNode is set
+        document.body.appendChild(global.gTimer);
+        document.body.appendChild(global.gAlert);
+
 
         // Mock HTMLElement.prototype.style
         mockStyle = {};
@@ -93,13 +106,6 @@ describe('content.js', () => {
             }
             return null;
         });
-
-        // Spy on real DOM methods
-        createElementSpy = jest.spyOn(global.document, 'createElement');
-        appendChildSpy = jest.spyOn(global.document.body, 'appendChild');
-        removeChildSpy = jest.spyOn(global.document.body, 'removeChild'); // Spy on document.body for dynamically created elements
-        addEventListenerSpy = jest.spyOn(global.HTMLElement.prototype, 'addEventListener');
-        setAttributeSpy = jest.spyOn(global.HTMLElement.prototype, 'setAttribute');
 
         // Reset document properties
         global.document.title = 'Test Title';
@@ -241,8 +247,6 @@ describe('content.js', () => {
         });
 
         it('onUnload should remove timer and alert elements', () => {
-            global.updateTimer('10:00', 0, 0); // Create gTimer
-            global.showAlert('Test'); // Create gAlert
             jest.clearAllMocks(); // Clear mocks from setup calls
 
             global.onUnload();
