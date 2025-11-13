@@ -40,9 +40,9 @@ function updateTimer(text, size, location) {
 			gTimer.addEventListener("dblclick", function (e) { this.style.display = "none"; });
 		}
 
-		if (!document.documentElement.contains(gTimer)) {
+		if (!document.body.contains(gTimer)) {
 			// Insert timer at end of document
-			document.documentElement.appendChild(gTimer);
+			document.body.appendChild(gTimer);
 		}
 
 		// Set text
@@ -74,7 +74,7 @@ function showAlert(text) {
 		// Create container
 		gAlert = document.createElement("div");
 		gAlert.setAttribute("class", "ivblock-alert-container");
-		document.documentElement.appendChild(gAlert);
+		document.body.appendChild(gAlert);
 
 		// Create message box
 		alertBox = document.createElement("div");
