@@ -889,6 +889,7 @@ function applyImportOptions(options) {
 
 // Download blob file
 //
+/*
 function downloadBlobFile(blob, filename) {
   // Create a blob URL for the file data
   const forceShareableBlob = new Blob([blob], { type: "application/octet-stream" });
@@ -899,8 +900,19 @@ function downloadBlobFile(blob, filename) {
 
   // Optional: revoke the blob URL after a short delay to free memory
   setTimeout(() => URL.revokeObjectURL(url), 10_000);
-}
+}*/
 
+// Variant 2
+function downloadBlobFile(blob, filename) {
+  // Create a blob URL for the file data
+  const url = URL.createObjectURL(blob);
+
+  // Open in a new tab or window
+  window.open(url, "_blank");
+
+  // Optional: revoke the blob URL after a short delay to free memory
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
+}
 /*
 
 function downloadBlobFile(blob, filename) {
