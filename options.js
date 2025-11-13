@@ -927,7 +927,7 @@ function exportOptions() {
 	}
 
 	// Create blob and download it
-	let blob = new Blob(lines, { type: "text/plain", endings: "native" });
+	let blob = new Blob(lines, { type: "application/octet-stream", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
     log("Trying to download " + filename);
 	try {
@@ -1016,7 +1016,7 @@ function exportOptionsJSON() {
 	let json = JSON.stringify(options);
 
 	// Create blob and download it
-	let blob = new Blob([json], { type: "application/json", endings: "native" });
+	let blob = new Blob([json], { type: "application/octet-stream", endings: "native" });
 	let filename = DEFAULT_JSON_FILE.replace("#", getTimestampSuffix());
 	try {
 		downloadBlobFile(blob, filename);
