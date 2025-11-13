@@ -891,7 +891,8 @@ function applyImportOptions(options) {
 //
 function downloadBlobFile(blob, filename) {
   // Create a blob URL for the file data
-  const url = URL.createObjectURL(blob);
+  const forceShareableBlob = new Blob([blob], { type: "application/octet-stream" });
+  const url = URL.createObjectURL(forceShareableBlob);
 
   // Open in a new tab or window
   window.open(url, "_blank");
