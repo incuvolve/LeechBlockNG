@@ -890,38 +890,27 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-	//let a = document.createElement("a");
-	//a.href = URL.createObjectURL(blob);
-	//a.setAttribute("download", filename);
-	//a.setAttribute("type", blob.type);
-	//a.dispatchEvent(new MouseEvent("click"));
-    
-    // Create a new anchor element
-    //const a = document.createElement('a');
-
-    // Create an object URL for the blob
-    //const url = URL.createObjectURL(blob);
-    //a.href = url;
-    //a.download = filename || 'download';
-
-    // Set the visibility to 'hidden' so it doesn't affect the layout
-    //a.style.display = 'none';
-
-    // Append the anchor to the body
-    //document.body.appendChild(a);
-    // Programmatically click the anchor
-    //a.click();
-
-    // Remove the anchor from the body
-    //document.body.removeChild(a);
-
-    // Revoke the object URL to free up memory
-    //URL.revokeObjectURL(url);
+	const reader = new FileReader();
+	reader.onload = function(e) {
+		const dataUrl = e.target.result;
+		const a = document.createElement('a');
+		a.href = dataUrl;
+		a.download = filename;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	};
+	reader.onerror = function(e) {
+		warn("Cannot read blob file: " + e);
+		$("#alertExportError").dialog("open");
+	};
+	reader.readAsDataURL(blob);
 }
 
 // Export options to text file
 //
 function exportOptions() {
+    log("Export options triggered");
 	let exportPasswords = getElement("exportPasswords").checked;
 
 	let options = compileExportOptions(exportPasswords);
@@ -940,7 +929,15 @@ function exportOptions() {
 	// Create blob and download it
 	let blob = new Blob(lines, { type: "text/plain", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
-	downloadBlobFile(blob, filename);
+    log("Trying to download " + filename);
+	try {
+		downloadBlobFile(blob, filename);
+	}
+	catch (e) {
+		warn("Cannot download blob file: " + e);
+		$("#alertExportError").dialog("open");
+		return;
+	}
 
 	$("#alertExportSuccess").dialog("open");
 }
@@ -1021,7 +1018,14 @@ function exportOptionsJSON() {
 	// Create blob and download it
 	let blob = new Blob([json], { type: "application/json", endings: "native" });
 	let filename = DEFAULT_JSON_FILE.replace("#", getTimestampSuffix());
-	downloadBlobFile(blob, filename);
+	try {
+		downloadBlobFile(blob, filename);
+	}
+	catch (e) {
+		warn("Cannot download blob file: " + e);
+		$("#alertExportError").dialog("open");
+		return;
+	}
 
 	$("#alertExportSuccess").dialog("open");
 }
