@@ -13,6 +13,13 @@ const SUB_OPTIONS = {
 function log(message) { console.log("[ivBlock] " + message); }
 function warn(message) { console.warn("[ivBlock] " + message); }
 
+function promiseTimeout(ms, promise, error) {
+	return new Promise(function (resolve, reject) {
+		setTimeout(function () { reject(error) }, ms);
+		promise.then(resolve, reject);
+	});
+}
+
 function getElement(id) { return document.getElementById(id); }
 
 function isTrue(str) { return /^true$/i.test(str); }
@@ -444,7 +451,10 @@ function saveOptions(event) {
 	if (options["sync"]) {
 		// Set sync option in local storage and all options in sync storage
 		browser.storage.local.set({ sync: true });
-		browser.storage.sync.set(options).then(
+		promiseTimeout(5000,
+			browser.storage.sync.set(options),
+			"Cannot set options in sync storage"
+		).then(
 			function () {
 				browser.runtime.sendMessage(message);
 				$("#form").hide({ effect: "fade", complete: complete });
@@ -487,7 +497,10 @@ function retrieveOptions() {
 	function onGotSync(options) {
 		if (options["sync"]) {
 			// Get all options from sync storage
-			browser.storage.sync.get().then(onGot, onError);
+			promiseTimeout(5000,
+				browser.storage.sync.get(),
+				"Cannot get options from sync storage"
+			).then(onGot, onError);
 		} else {
 			// Get all options from local storage
 			browser.storage.local.get().then(onGot, onError);
@@ -890,36 +903,29 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-  // function differs from original file since some options are not
-  // working in Safari
-    // Create a blob URL for the file data
-    const url = URL.createObjectURL(blob);
+	// function differs from original file since some options are not
+	// working in Safari
+	const plain_export = True;
+	if (plain_export) {
+		// Create a blob URL for the file data
+		const url = URL.createObjectURL(blob);
 
-    // Open in a new tab or window
-    window.open(url, "_blank");
+		// Open in a new tab or window
+		window.open(url, "_blank");
 
-    // Optional: revoke the blob URL after a short delay to free memory
-    setTimeout(() => URL.revokeObjectURL(url), 10_000);
-
-    // Variant 2 - download as unknown ﬁile
-  /*
-  // 	const reader = new FileReader();
-	reader.onload = function(e) {
-		const dataUrl = e.target.result;
-		const a = document.createElement('a');
-		a.href = dataUrl;
+		// Optional: revoke the blob URL after a short delay to free memory
+		setTimeout(() => URL.revokeObjectURL(url), 10_000);
+	}
+	else {
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement("a");
+		a.href = url;
 		a.download = filename;
 		document.body.appendChild(a);
 		a.click();
 		document.body.removeChild(a);
-	};
-	reader.onerror = function(e) {
-		warn("Cannot read blob file: " + e);
-		$("#alertExportError").dialog("open");
-	};
-	reader.readAsDataURL(blob);
-  */
-
+		URL.revokeObjectURL(url);
+	}
 }
 
 // Export options to text file
@@ -943,7 +949,7 @@ function exportOptions() {
 	// Create blob and download it
 	let blob = new Blob(lines, { type: "application/octet-stream", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
-   log("Trying to download " + filename);
+	log("Trying to download " + filename);
 	try {
 		downloadBlobFile(blob, filename);
 	}
@@ -1044,7 +1050,10 @@ function exportOptionsJSON() {
 function exportOptionsSync(event) {
 	let options = compileExportOptions(true);
 
-	browser.storage.sync.set(options).then(onSuccess, onError);
+	promiseTimeout(5000,
+		browser.storage.sync.set(options),
+		"Cannot export options to sync storage"
+	).then(onSuccess, onError);
 
 	function onSuccess() {
 		if (event) {
@@ -1063,7 +1072,10 @@ function exportOptionsSync(event) {
 // Import options from sync storage
 //
 function importOptionsSync(event) {
-	browser.storage.sync.get().then(onGot, onError);
+	promiseTimeout(5000,
+		browser.storage.sync.get(),
+		"Cannot import options from sync storage"
+	).then(onGot, onError);
 
 	function onGot(options) {
 		cleanOptions(options);
