@@ -889,35 +889,48 @@ function applyImportOptions(options) {
 
 // Download blob file
 //
-/*
 function downloadBlobFile(blob, filename) {
-  // Create a blob URL for the file data
-  const forceShareableBlob = new Blob([blob], { type: "application/octet-stream" });
-  const url = URL.createObjectURL(forceShareableBlob);
+	//let a = document.createElement("a");
+	//a.href = URL.createObjectURL(blob);
+	//a.setAttribute("download", filename);
+	//a.setAttribute("type", blob.type);
+	//a.dispatchEvent(new MouseEvent("click"));
+    
+    // Create a new anchor element
+    //const a = document.createElement('a');
 
-  // Open in a new tab or window
-  window.open(url, "_blank");
+    // Create an object URL for the blob
+    //const url = URL.createObjectURL(blob);
+    //a.href = url;
+    //a.download = filename || 'download';
 
-  // Optional: revoke the blob URL after a short delay to free memory
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-}*/
+    // Set the visibility to 'hidden' so it doesn't affect the layout
+    //a.style.display = 'none';
 
-// Variant 2
-function downloadBlobFile(blob, filename) {
-  // Create a blob URL for the file data
-  const url = URL.createObjectURL(blob);
+    // Append the anchor to the body
+    //document.body.appendChild(a);
+    // Programmatically click the anchor
+    //a.click();
 
-  // Open in a new tab or window
-  window.open(url, "_blank");
+    // Remove the anchor from the body
+    //document.body.removeChild(a);
 
-  // Optional: revoke the blob URL after a short delay to free memory
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    // Revoke the object URL to free up memory
+    //URL.revokeObjectURL(url);
+    
+    // Create a blob URL for the file data
+    const url = URL.createObjectURL(blob);
+
+    // Open in a new tab or window
+    window.open(url, "_blank");
+
+    // Optional: revoke the blob URL after a short delay to free memory
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
 // Export options to text file
 //
 function exportOptions() {
-    log("Export options triggered");
 	let exportPasswords = getElement("exportPasswords").checked;
 
 	let options = compileExportOptions(exportPasswords);
@@ -934,17 +947,9 @@ function exportOptions() {
 	}
 
 	// Create blob and download it
-	let blob = new Blob(lines, { type: "application/octet-stream", endings: "native" });
+	let blob = new Blob(lines, { type: "text/plain", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
-    log("Trying to download " + filename);
-	try {
-		downloadBlobFile(blob, filename);
-	}
-	catch (e) {
-		warn("Cannot download blob file: " + e);
-		$("#alertExportError").dialog("open");
-		return;
-	}
+	downloadBlobFile(blob, filename);
 
 	$("#alertExportSuccess").dialog("open");
 }
@@ -1023,16 +1028,9 @@ function exportOptionsJSON() {
 	let json = JSON.stringify(options);
 
 	// Create blob and download it
-	let blob = new Blob([json], { type: "application/octet-stream", endings: "native" });
+	let blob = new Blob([json], { type: "application/json", endings: "native" });
 	let filename = DEFAULT_JSON_FILE.replace("#", getTimestampSuffix());
-	try {
-		downloadBlobFile(blob, filename);
-	}
-	catch (e) {
-		warn("Cannot download blob file: " + e);
-		$("#alertExportError").dialog("open");
-		return;
-	}
+	downloadBlobFile(blob, filename);
 
 	$("#alertExportSuccess").dialog("open");
 }

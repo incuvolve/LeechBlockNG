@@ -58,8 +58,10 @@
     margin-left: 20px;
 }
 
-/* Fix for jQuery UI dialog close icon */
-.ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+.ui-widget-content .ui-icon {
     background-image: url("jquery-ui/images/ui-icons_444444_256x240.png");
-    background-position: -96px -128px; /* This is the position for the 'closethick' icon */
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("jquery-ui/images/ui-icons_444444_256x240.png");
 }
