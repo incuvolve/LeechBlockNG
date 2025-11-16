@@ -890,34 +890,8 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-	//let a = document.createElement("a");
-	//a.href = URL.createObjectURL(blob);
-	//a.setAttribute("download", filename);
-	//a.setAttribute("type", blob.type);
-	//a.dispatchEvent(new MouseEvent("click"));
-    
-    // Create a new anchor element
-    //const a = document.createElement('a');
-
-    // Create an object URL for the blob
-    //const url = URL.createObjectURL(blob);
-    //a.href = url;
-    //a.download = filename || 'download';
-
-    // Set the visibility to 'hidden' so it doesn't affect the layout
-    //a.style.display = 'none';
-
-    // Append the anchor to the body
-    //document.body.appendChild(a);
-    // Programmatically click the anchor
-    //a.click();
-
-    // Remove the anchor from the body
-    //document.body.removeChild(a);
-
-    // Revoke the object URL to free up memory
-    //URL.revokeObjectURL(url);
-    
+  // function differs from original file since some options are not
+  // working in Safari
     // Create a blob URL for the file data
     const url = URL.createObjectURL(blob);
 
@@ -926,6 +900,26 @@ function downloadBlobFile(blob, filename) {
 
     // Optional: revoke the blob URL after a short delay to free memory
     setTimeout(() => URL.revokeObjectURL(url), 10_000);
+
+    // Variant 2 - download as unknown ﬁile
+  /*
+  // 	const reader = new FileReader();
+	reader.onload = function(e) {
+		const dataUrl = e.target.result;
+		const a = document.createElement('a');
+		a.href = dataUrl;
+		a.download = filename;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	};
+	reader.onerror = function(e) {
+		warn("Cannot read blob file: " + e);
+		$("#alertExportError").dialog("open");
+	};
+	reader.readAsDataURL(blob);
+  */
+
 }
 
 // Export options to text file
@@ -947,9 +941,19 @@ function exportOptions() {
 	}
 
 	// Create blob and download it
-	let blob = new Blob(lines, { type: "text/plain", endings: "native" });
+	let blob = new Blob(lines, { type: "application/octet-stream", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
-	downloadBlobFile(blob, filename);
+   log("Trying to download " + filename);
+	try {
+		downloadBlobFile(blob, filename);
+	}
+	catch (e) {
+		warn("Cannot download blob file: " + e);
+		$("#alertExportError").dialog("open");
+		return;
+	}
+
+
 
 	$("#alertExportSuccess").dialog("open");
 }
