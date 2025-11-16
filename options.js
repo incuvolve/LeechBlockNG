@@ -905,8 +905,9 @@ function applyImportOptions(options) {
 function downloadBlobFile(blob, filename) {
 	// function differs from original file since some options are not
 	// working in Safari
-	const plain_export = True;
+	let plain_export = true;
 	if (plain_export) {
+		log("Exporting the settings as plain text");
 		// Create a blob URL for the file data
 		const url = URL.createObjectURL(blob);
 
@@ -917,6 +918,7 @@ function downloadBlobFile(blob, filename) {
 		setTimeout(() => URL.revokeObjectURL(url), 10_000);
 	}
 	else {
+		log("Exporting the settings as downloadable file");
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
 		a.href = url;
