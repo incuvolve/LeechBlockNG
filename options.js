@@ -902,13 +902,31 @@ function applyImportOptions(options) {
 
 // Download blob file
 //
-function downloadBlobFile(blob, filename) {
-	const displayBlob = new Blob([blob], { type: "text/plain" });
-	const url = URL.createObjectURL(displayBlob);
-	window.open(url);
-	setTimeout(function () {
-		URL.revokeObjectURL(url);
-	}, 100);
+function downloadBlobFile(blob, filename, downloadToDisk) {
+	if (downloadToDisk) {
+		const reader = new FileReader();
+		reader.onload = function(e) {
+			const dataUrl = e.target.result;
+			const a = document.createElement('a');
+			a.href = dataUrl;
+			a.download = filename;
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+		};
+		reader.onerror = function(e) {
+			warn("Cannot read blob file: " + e);
+			$("#alertExportError").dialog("open");
+		};
+		reader.readAsDataURL(blob);
+	} else {
+		const displayBlob = new Blob([blob], { type: "text/plain" });
+		const url = URL.createObjectURL(displayBlob);
+		window.open(url);
+		setTimeout(function () {
+			URL.revokeObjectURL(url);
+		}, 100);
+	}
 }
 
 
@@ -935,8 +953,9 @@ function exportOptions() {
 	let blob = new Blob(lines, { type: "application/octet-stream", endings: "native" });
 	let filename = DEFAULT_OPTIONS_FILE.replace("#", getTimestampSuffix());
 	log("Trying to download " + filename);
+	let downloadToFile = getElement("downloadToFile").checked;
 	try {
-		downloadBlobFile(blob, filename);
+		downloadBlobFile(blob, filename, downloadToFile);
 	}
 	catch (e) {
 		warn("Cannot download blob file: " + e);
@@ -1025,7 +1044,8 @@ function exportOptionsJSON() {
 	// Create blob and download it
 	let blob = new Blob([json], { type: "application/json", endings: "native" });
 	let filename = DEFAULT_JSON_FILE.replace("#", getTimestampSuffix());
-	downloadBlobFile(blob, filename);
+	let downloadToFile = getElement("downloadToFile").checked;
+	downloadBlobFile(blob, filename, downloadToFile);
 
 	$("#alertExportSuccess").dialog("open");
 }
