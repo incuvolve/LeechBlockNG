@@ -903,14 +903,12 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-	if (blob.type === "application/octet-stream") {
-		const textBlob = blob.slice(0, blob.size, "text/plain");
-		const url = URL.createObjectURL(textBlob);
-		window.open(url);
-		setTimeout(function () {
-			URL.revokeObjectURL(url);
-		}, 100);
-	}
+	const displayBlob = new Blob([blob], { type: "text/plain" });
+	const url = URL.createObjectURL(displayBlob);
+	window.open(url);
+	setTimeout(function () {
+		URL.revokeObjectURL(url);
+	}, 100);
 }
 
 
@@ -1022,7 +1020,7 @@ function exportOptionsJSON() {
 	let options = compileExportOptions(exportPasswords);
 
 	// Convert options to JSON string
-	let json = JSON.stringify(options);
+	let json = JSON.stringify(options, null, 2);
 
 	// Create blob and download it
 	let blob = new Blob([json], { type: "application/json", endings: "native" });
