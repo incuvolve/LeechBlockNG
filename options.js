@@ -903,32 +903,17 @@ function applyImportOptions(options) {
 // Download blob file
 //
 function downloadBlobFile(blob, filename) {
-	// function differs from original file since some options are not
-	// working in Safari
-	let plain_export = true;
-	if (plain_export) {
-		log("Exporting the settings as plain text");
-		// Create a blob URL for the file data
-		const url = URL.createObjectURL(blob);
-
-		// Open in a new tab or window
-		window.open(url, "_blank");
-
-		// Optional: revoke the blob URL after a short delay to free memory
-		setTimeout(() => URL.revokeObjectURL(url), 10_000);
-	}
-	else {
-		log("Exporting the settings as downloadable file");
-		const url = URL.createObjectURL(blob);
-		const a = document.createElement("a");
-		a.href = url;
-		a.download = filename;
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
-		URL.revokeObjectURL(url);
+	if (blob.type === "application/octet-stream") {
+		const textBlob = blob.slice(0, blob.size, "text/plain");
+		const url = URL.createObjectURL(textBlob);
+		window.open(url);
+		setTimeout(function () {
+			URL.revokeObjectURL(url);
+		}, 100);
 	}
 }
+
+
 
 // Export options to text file
 //
