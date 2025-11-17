@@ -904,15 +904,19 @@ function applyImportOptions(options) {
 //
 function downloadBlobFile(blob, filename, downloadToDisk) {
 	if (downloadToDisk) {
+		log("Attempting to download file: " + filename);
 		const reader = new FileReader();
 		reader.onload = function(e) {
+			log("FileReader onload triggered for: " + filename);
 			const dataUrl = e.target.result;
 			const a = document.createElement('a');
 			a.href = dataUrl;
 			a.download = filename;
 			document.body.appendChild(a);
+			log("Clicking download link for: " + filename);
 			a.click();
 			document.body.removeChild(a);
+			log("Download link removed from DOM.");
 		};
 		reader.onerror = function(e) {
 			warn("Cannot read blob file: " + e);
