@@ -904,25 +904,18 @@ function applyImportOptions(options) {
 //
 function downloadBlobFile(blob, filename, downloadToDisk) {
 	if (downloadToDisk) {
-		log("Attempting to download file: " + filename);
-		const reader = new FileReader();
-		reader.onload = function(e) {
-			log("FileReader onload triggered for: " + filename);
-			const dataUrl = e.target.result;
-			const a = document.createElement('a');
-			a.href = dataUrl;
-			a.download = filename;
-			document.body.appendChild(a);
-			log("Clicking download link for: " + filename);
-			a.click();
-			document.body.removeChild(a);
-			log("Download link removed from DOM.");
-		};
-		reader.onerror = function(e) {
-			warn("Cannot read blob file: " + e);
-			$("#alertExportError").dialog("open");
-		};
-		reader.readAsDataURL(blob);
+		log("Attempting to open file in new tab for manual saving: " + filename);
+		const url = URL.createObjectURL(blob); // Use URL.createObjectURL
+		const newWindow = window.open(url); // Open in new tab
+		if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+			warn("Pop-up blocker might have prevented opening new tab for: " + filename);
+			$("#alertExportError").dialog("open"); // Show an alert if pop-up is blocked
+		} else {
+			log("New tab opened for: " + filename);
+		}
+		setTimeout(function () {
+			URL.revokeObjectURL(url); // Revoke URL after a short delay
+		}, 100);
 	} else {
 		const displayBlob = new Blob([blob], { type: "text/plain" });
 		const url = URL.createObjectURL(displayBlob);
