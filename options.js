@@ -904,8 +904,16 @@ function applyImportOptions(options) {
 //
 function downloadBlobFile(blob, filename, downloadToDisk) {
 	if (downloadToDisk) {
-		log("Attempting to open file in new tab for manual saving: " + filename);
-		const url = URL.createObjectURL(blob); // Use URL.createObjectURL
+		log("Attempting to trigger direct download for: " + filename);
+
+		let blobToDownload = blob;
+		// For Safari, if the blob is JSON, try to force download by changing type to octet-stream
+		if (blob.type === "application/json") {
+			log("JSON blob detected. Attempting to force download by changing type to application/octet-stream.");
+			blobToDownload = new Blob([blob], { type: "application/octet-stream", endings: "native" });
+		}
+
+		const url = URL.createObjectURL(blobToDownload); // Use URL.createObjectURL with potentially modified blob
 		const newWindow = window.open(url); // Open in new tab
 		if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
 			warn("Pop-up blocker might have prevented opening new tab for: " + filename);
