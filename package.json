@@ -1,6 +1,6 @@
 {
-  "name": "leechblockng",
-  "version": "1.0.0",
+  "name": "ivblock",
+  "version": "1.0.2",
   "description": "[![Awesome Humane Tech](https://raw.githubusercontent.com/humanetech-community/awesome-humane-tech/main/humane-tech-badge.svg?sanitize=true)](https://github.com/humanetech-community/awesome-humane-tech)",
   "main": "add-sites.js",
   "scripts": {
