@@ -650,16 +650,21 @@ function retrieveOptions() {
 
 				// Set component value
 				if (name == "sites") {
-					getElement(`${id}${set}`).value = val.replace(/\s+/g, "\n");
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.value = val.replace(/\s+/g, "\n");
 				} else if (name == "conjMode") {
-					getElement(`${id}${set}`).selectedIndex = val ? 1 : 0;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.selectedIndex = val ? 1 : 0;
 				} else if (type == "boolean") {
-					getElement(`${id}${set}`).checked = val;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.checked = val;
 				} else if (type == "string") {
-					getElement(`${id}${set}`).value = val;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.value = val;
 				} else if (type == "array") {
 					for (let i = 0; i < val.length; i++) {
-						getElement(`${id}${i}${set}`).checked = val[i];
+						let elem = getElement(`${id}${i}${set}`);
+						if (elem) elem.checked = val[i];
 					}
 				}
 			}
@@ -683,10 +688,13 @@ function retrieveOptions() {
 			let type = GENERAL_OPTIONS[name].type;
 			let id = GENERAL_OPTIONS[name].id;
 			if (id) {
-				if (type == "boolean") {
-					getElement(id).checked = options[name];
-				} else if (type == "string") {
-					getElement(id).value = options[name];
+				let elem = getElement(id);
+				if (elem) {
+					if (type == "boolean") {
+						elem.checked = options[name];
+					} else if (type == "string") {
+						elem.value = options[name];
+					}
 				}
 			}
 		}
@@ -874,16 +882,21 @@ function applyImportOptions(options) {
 			if (val != undefined) {
 				// Set component value
 				if (name == "sites") {
-					getElement(`${id}${set}`).value = val.replace(/\s+/g, "\n");
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.value = val.replace(/\s+/g, "\n");
 				} else if (name == "conjMode") {
-					getElement(`${id}${set}`).selectedIndex = val ? 1 : 0;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.selectedIndex = val ? 1 : 0;
 				} else if (type == "boolean") {
-					getElement(`${id}${set}`).checked = val;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.checked = val;
 				} else if (type == "string") {
-					getElement(`${id}${set}`).value = unescape(val);;
+					let elem = getElement(`${id}${set}`);
+					if (elem) elem.value = unescape(val);
 				} else if (type == "array") {
 					for (let i = 0; i < val.length; i++) {
-						getElement(`${id}${i}${set}`).checked = val[i];
+						let elem = getElement(`${id}${i}${set}`);
+						if (elem) elem.checked = val[i];
 					}
 				}
 			}
@@ -892,7 +905,8 @@ function applyImportOptions(options) {
 		// Apply Chrome-specific options
 		let val = options[`prevExts${set}`];
 		if (val != undefined) {
-			getElement(`prevAddons${set}`).checked = val;
+			let elem = getElement(`prevAddons${set}`);
+			if (elem) elem.checked = val;
 		}
 
 		// Apply custom set name to tab (if specified)
@@ -914,10 +928,13 @@ function applyImportOptions(options) {
 		let type = GENERAL_OPTIONS[name].type;
 		let id = GENERAL_OPTIONS[name].id;
 		if (id && options[name] != undefined) {
-			if (type == "boolean") {
-				getElement(id).checked = options[name];
-			} else if (type == "string") {
-				getElement(id).value = unescape(options[name]);
+			let elem = getElement(id);
+			if (elem) {
+				if (type == "boolean") {
+					elem.checked = options[name];
+				} else if (type == "string") {
+					elem.value = unescape(options[name]);
+				}
 			}
 		}
 	}
@@ -1200,14 +1217,18 @@ function resetSetOptions(set) {
 
 		// Set component value
 		if (name == "conjMode") {
-			getElement(`${id}${set}`).selectedIndex = val ? 1 : 0;
+			let elem = getElement(`${id}${set}`);
+			if (elem) elem.selectedIndex = val ? 1 : 0;
 		} else if (type == "boolean") {
-			getElement(`${id}${set}`).checked = val;
+			let elem = getElement(`${id}${set}`);
+			if (elem) elem.checked = val;
 		} else if (type == "string") {
-			getElement(`${id}${set}`).value = val;
+			let elem = getElement(`${id}${set}`);
+			if (elem) elem.value = val;
 		} else if (type == "array") {
 			for (let i = 0; i < val.length; i++) {
-				getElement(`${id}${i}${set}`).checked = val[i];
+				let elem = getElement(`${id}${i}${set}`);
+				if (elem) elem.checked = val[i];
 			}
 		}
 	}

@@ -69,6 +69,7 @@ function updateTimer(text, size, location) {
 // Show alert message
 //
 function showAlert(text) {
+	let alertBox, alertIcon, alertText;
 
 	if (!gAlert) {
 		// Create container
