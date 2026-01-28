@@ -212,7 +212,7 @@ describe('content.js', () => {
             expect(global.gAlert.getAttribute('style')).toContain('display: flex'); // Assuming showAlert was called
             jest.clearAllMocks();
 
-            global.handleMessage({ type: 'filter', name: 'grayscale' }, {}, jest.fn());
+            global.handleMessage({ type: 'filter', filterName: 'grayscale' }, {}, jest.fn());
             expect(global.document.documentElement.style.filter).toBe('grayscale(100%)');
             jest.clearAllMocks();
 
