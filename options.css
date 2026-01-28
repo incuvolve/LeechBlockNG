@@ -280,17 +280,16 @@ textarea {
 
 .nowrap-item {
     white-space: nowrap;
-    text-align: left; /* Align text to the left within each grid item */
-    margin: 0; /* Remove margin as gap will handle spacing */
-    display: flex; /* Use flex to align checkbox and label */
-    align-items: center; /* Vertically align checkbox and label */
-    justify-self: start; /* Left-align the item within its grid cell */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content within the flex item */
 }
 
 #days1 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Two equal columns */
-    gap: 10px 20px; /* Vertical and horizontal spacing */
+    grid-template-columns: 1fr; /* Force single column on all screen sizes to ensure stacking */
+    gap: 10px; /* Adjust gap for single column layout */
     max-width: 300px; /* Limit the overall width of the grid for better appearance */
     margin: 0 auto; /* Center the grid itself */
     justify-content: center; /* Center the grid items if they don't fill the max-width */
