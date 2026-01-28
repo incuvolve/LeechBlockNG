@@ -1422,3 +1422,8 @@ initAccessControlPrompt("promptAccessCode");
 document.addEventListener("DOMContentLoaded", retrieveOptions);
 
 window.addEventListener("keydown", handleKeyDown);
+
+window.onload = () => {
+ const myInput = document.getElementById('promptAccessCodeInput');
+ myInput.onpaste = e => e.preventDefault();
+}
