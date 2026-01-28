@@ -750,7 +750,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 					// Check for keyword(s) before blocking
 					let message = {
 						type: "keyword",
-						keywordRE: keywordRE,
+						keywordRE: { source: keywordRE.source, flags: keywordRE.flags },
 						titleOnly: titleOnly
 					};
 					browser.tabs.sendMessage(id, message).then(

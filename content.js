@@ -109,8 +109,23 @@ function hideAlert() {
 // Check page for keyword(s)
 //
 function checkKeyword(keywordRE, titleOnly) {
+
 	if (!keywordRE) {
 		return null; // nothing to find!
+	}
+
+	// Re-create RegExp object before use
+	if (keywordRE.source !== undefined) {
+		try {
+			keywordRE = new RegExp(keywordRE.source, keywordRE.flags);
+		} catch (e) {
+			console.error("[ivBlock] Error creating RegExp:", e, "Source:", keywordRE.source, "Flags:", keywordRE.flags);
+			return null;
+		}
+	} else {
+		// If we receive an object without a source, it's likely a serialization
+		// issue (e.g. on Safari). In this case we can't proceed.
+		return null;
 	}
 
 	// Get all text from document (including title)
@@ -124,7 +139,7 @@ function checkKeyword(keywordRE, titleOnly) {
 	if (!matches) {
 		return null; // keyword(s) not found
 	}
-	return matches[0]; // keyword(s) found
+    return matches[0]; // keyword(s) found
 }
 
 // Apply filter

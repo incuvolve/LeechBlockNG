@@ -279,20 +279,17 @@ textarea {
 }
 
 .nowrap-item {
-    white-space: nowrap;
-    margin: 0;
-    display: flex;
+    display: inline-grid;
+    grid-template-columns: min-content auto;
     align-items: center;
-    justify-content: center; /* Center content within the flex item */
+    gap: 6px;
 }
 
 #days1 {
     display: grid;
-    grid-template-columns: 1fr; /* Force single column on all screen sizes to ensure stacking */
-    gap: 10px; /* Adjust gap for single column layout */
-    max-width: 300px; /* Limit the overall width of the grid for better appearance */
-    margin: 0 auto; /* Center the grid itself */
-    justify-content: center; /* Center the grid items if they don't fill the max-width */
+    grid-template-columns: repeat(2, auto);
+    gap: 8px 16px;
+    justify-content: start;
 }
 
 @media (max-width: 600px) {
@@ -320,8 +317,14 @@ textarea {
 	}
 
 	.ui-dialog .ui-dialog-buttonpane button {
-.		margin: 5px;
+		margin: 5px;
 		width: 120px;
 		padding: 10px;
 	}
+}
+
+@media (max-width: 320px) {
+    #days1 {
+        grid-template-columns: auto;
+    }
 }
