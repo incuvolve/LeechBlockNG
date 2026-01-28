@@ -15,38 +15,6 @@
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
 	<link id="themeLink" rel="stylesheet">
-	<style>
-		@media (max-width: 600px) {
-			.ui-dialog {
-				width: 90vw !important;
-				max-width: 320px !important;
-			}
-
-			.ui-dialog .ui-dialog-content p {
-				font-size: 1em;
-				word-wrap: break-word;
-			}
-
-			#promptPasswordInput,
-			#promptAccessCodeInput {
-				width: 95%;
-			}
-
-			.ui-dialog .ui-dialog-buttonpane {
-				text-align: center;
-			}
-
-			.ui-dialog .ui-dialog-buttonset {
-				float: none !important;
-			}
-
-			.ui-dialog .ui-dialog-buttonpane button {
-				margin: 5px;
-				width: 120px;
-				padding: 10px;
-			}
-		}
-	</style>
 </head>
 
 <body>
@@ -165,19 +133,13 @@
 								<label>Select the days on which to block these sites:</label>
 							</p>
 							<p id="days1">
-								<input id="day01" type="checkbox"><label for="day01">Sun</label>
-								&nbsp;
-								<input id="day11" type="checkbox"><label for="day11">Mon</label>
-								&nbsp;
-								<input id="day21" type="checkbox"><label for="day21">Tue</label>
-								&nbsp;
-								<input id="day31" type="checkbox"><label for="day31">Wed</label>
-								&nbsp;
-								<input id="day41" type="checkbox"><label for="day41">Thu</label>
-								&nbsp;
-								<input id="day51" type="checkbox"><label for="day51">Fri</label>
-								&nbsp;
-								<input id="day61" type="checkbox"><label for="day61">Sat</label>
+								<span class="nowrap-item"><input id="day01" type="checkbox"><label for="day01">Sun</label></span>
+								<span class="nowrap-item"><input id="day11" type="checkbox"><label for="day11">Mon</label></span>
+								<span class="nowrap-item"><input id="day21" type="checkbox"><label for="day21">Tue</label></span>
+								<span class="nowrap-item"><input id="day31" type="checkbox"><label for="day31">Wed</label></span>
+								<span class="nowrap-item"><input id="day41" type="checkbox"><label for="day41">Thu</label></span>
+								<span class="nowrap-item"><input id="day51" type="checkbox"><label for="day51">Fri</label></span>
+								<span class="nowrap-item"><input id="day61" type="checkbox"><label for="day61">Sat</label></span>
 							</p>
 						</fieldset>
 						<fieldset>
