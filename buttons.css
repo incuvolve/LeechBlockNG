@@ -19,7 +19,7 @@
 
     /* Sizing */
     padding: 0.8em 1.2em; /* Reverted vertical padding for height alignment with options.html save buttons */
-    min-width: 150px; /* Increased minimum width for more consistency */
+    min-width: 80px; /* Further adjusted minimum width for better fitting on a single line on desktop */
     max-width: 200px; /* Maximum width to prevent excessive growth */
     width: 100%; /* Allow it to take full width if content is small, but constrained by max-width */
 

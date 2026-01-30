@@ -285,6 +285,40 @@ textarea {
     gap: 6px;
 }
 
+.button-row-wrap {
+    display: flex; /* Ensure flexbox behavior */
+    flex-wrap: wrap;
+    gap: 10px; /* Add some space between wrapped items */
+    justify-content: center; /* Center buttons when they wrap */
+    margin-top: 0; /* Reduce whitespace above */
+}
+
+
+
+@media (max-width: 600px) {
+    .button-row-wrap button {
+        width: 100%; /* Make buttons full width on mobile to stack */
+    }
+}
+
+@media (min-width: 601px) {
+    .button-row-wrap button {
+        max-width: 170px; /* Allow buttons to shrink on desktop */
+        flex-grow: 1; /* Distribute available space equally */
+    }
+
+    .nowrap-item input[type="checkbox"],
+    .nowrap-item label,
+    input[type="checkbox"],
+    input[type="checkbox"] + label {
+        vertical-align: middle; /* Vertically align checkboxes and labels */
+    }
+}
+
+.button-row-wrap button {
+    margin: 5px 0; /* Add vertical margin when wrapped */
+}
+
 #days1 {
     display: grid;
     grid-template-columns: repeat(2, auto);
