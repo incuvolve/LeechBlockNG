@@ -12,16 +12,8 @@ var gOptions;
 function initForm() {
 	//log("initForm");
 
-	// Set up JQuery UI widgets
-	$("#testURL").button();
+	// Set up event listener
 	$("#testURL").click(testURL);
-	$("#url").keydown(
-		function (event) {
-			if (event.which == 13) {
-				testURL();
-			}
-		}
-	);
 
 	// Clear text fields
 	$("#url").val("");
@@ -52,13 +44,11 @@ function initializePage() {
 		initForm();
 
 		setTheme(gOptions["theme"]);
-
-		$("#form").show();
 	}
 
 	function onError(error) {
 		warn("Cannot get options: " + error);
-		$("#alertRetrieveError").dialog("open");
+		alert("Error: Unable to retrieve options from browser storage.");
 	}
 }
 
@@ -71,7 +61,7 @@ function testURL() {
 
 	// Check URL format
 	if (!getParsedURL(url).page) {
-		$("#alertBadTestURL").dialog("open");
+		alert("Please enter the URL in the correct format (as a fully specified URL).");
 		return;
 	}
 
@@ -123,19 +113,8 @@ function testURL() {
 	}
 
 	$("#results").val(results);
-	$("#results").effect({ effect: "highlight" });
 }
 
 /*** STARTUP CODE BEGINS HERE ***/
-
-// Initialize alert dialogs
-$("div[id^='alert']").dialog({
-	autoOpen: false,
-	modal: true,
-	width: 500,
-	buttons: {
-		OK: function () { $(this).dialog("close"); }
-	}
-});
 
 document.addEventListener("DOMContentLoaded", initializePage);

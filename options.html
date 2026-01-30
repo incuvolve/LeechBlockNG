@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ivBlock Options</title>
+	<link href="/style.css" rel="stylesheet">
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/jquery-ui/jquery-ui-custom.css" rel="stylesheet">
 	<link href="/options.css" rel="stylesheet">
@@ -31,10 +32,10 @@
 					</ul>
 					<div id="blockSet1">
 						<p style="display: flex; justify-content: space-between;">
-							<button id="moveSetL1" type="button">&larr; Move Set</button>
-							<button id="simpOpts1" type="button">Show Simplified Options</button>
-							<button id="fullOpts1" type="button" style="display: none;">Show Full Options</button>
-							<button id="moveSetR1" type="button">Move Set &rarr;</button>
+							<button id="moveSetL1" type="button" class="ivblock-button">&larr; Move Set</button>
+							<button id="simpOpts1" type="button" class="ivblock-button">Show Simplified Options</button>
+							<button id="fullOpts1" type="button" style="display: none;" class="ivblock-button">Show Full Options</button>
+							<button id="moveSetR1" type="button" class="ivblock-button">Move Set &rarr;</button>
 						</p>
 						<fieldset>
 							<legend>What to Block</legend>
@@ -387,8 +388,8 @@
 							</p>
 							<p>
 								<input id="regexpKeyword1" type="text" size="60">
-								<button id="clearRegExpKeyword1" type="button">Clear</button>
-								<button id="genRegExpKeyword1" type="button">Generate From Site List</button>
+								<button id="clearRegExpKeyword1" type="button" class="ivblock-button default">Clear</button>
+								<button id="genRegExpKeyword1" type="button" class="ivblock-button default">Generate From Site List</button>
 							</p>
 							<p>
 								<input id="ignoreHash1" type="checkbox">

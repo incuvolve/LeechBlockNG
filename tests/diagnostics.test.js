@@ -47,6 +47,7 @@ const context = vm.createContext({
     clearInterval: global.clearInterval,
     Promise: global.Promise,
     $: jQueryMock,
+    alert: jest.fn(),
 });
 
 // Load common.js into the context to get cleanOptions and getParsedURL
@@ -79,6 +80,7 @@ describe('diagnostics.js', () => {
         mockJQuery.val.mockReturnValue('');
         // Reset gOptions in the context
         context.gOptions = null;
+        context.alert.mockClear();
     });
 
     describe('testURL', () => {
@@ -109,7 +111,7 @@ describe('diagnostics.js', () => {
 
             expect(mockJQuery.val).toHaveBeenCalledWith(); // Called to get URL
             expect(getParsedURLSpy).toHaveBeenCalledWith('bad-url'); // Use the spy
-            expect(mockJQuery.dialog).toHaveBeenCalledWith('open'); // For alertBadTestURL
+            expect(context.alert).toHaveBeenCalledWith("Please enter the URL in the correct format (as a fully specified URL).");
         });
 
         it('should generate results for valid URL', () => {
@@ -131,7 +133,6 @@ describe('diagnostics.js', () => {
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('BLOCK: example.com'));
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('ALLOW: -'));
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('REFER: -'));
-            expect(mockJQuery.effect).toHaveBeenCalledWith({ effect: "highlight" });
         });
 
         it('should generate results for valid URL with no matches', () => {
@@ -157,9 +158,7 @@ describe('diagnostics.js', () => {
     describe('Complex diagnostics.js functions (placeholders)', () => {
         it('initForm should initialize jQuery UI widgets and clear fields', () => {
             expect(() => global.initForm()).not.toThrow();
-            expect(mockJQuery.button).toHaveBeenCalled();
             expect(mockJQuery.click).toHaveBeenCalled();
-            expect(mockJQuery.keydown).toHaveBeenCalled();
             expect(mockJQuery.val).toHaveBeenCalledWith(""); // For #url and #results
         });
 
