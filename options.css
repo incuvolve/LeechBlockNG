@@ -350,13 +350,20 @@ textarea {
 		float: none !important;
 	}
 
-	.ui-dialog .ui-dialog-buttonpane button {
-		margin: 5px;
-		width: 120px;
-		padding: 10px;
+	    .ui-dialog .ui-dialog-buttonpane button {
+			margin: 5px;
+			width: 120px;
+			padding: 10px;
+		}
+	
+	    /* Vertical alignment for checkboxes on mobile */
+	    .nowrap-item input[type="checkbox"],
+	    .nowrap-item label,
+	    input[type="checkbox"],
+	    input[type="checkbox"] + label {
+	        vertical-align: middle;
+	    }
 	}
-}
-
 @media (max-width: 320px) {
     #days1 {
         grid-template-columns: auto;
