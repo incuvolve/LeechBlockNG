@@ -278,6 +278,28 @@ textarea {
 	margin-top: 16px;
 }
 
+.inline-control-row select.limited-width {
+    flex: 0 1 auto;
+    width: auto;
+}
+
+.inline-control-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: nowrap;
+}
+
+.inline-control-row input[type="text"] {
+    width: 5em;
+    flex-shrink: 0;
+}
+
+.inline-control-row select {
+    flex: 1;
+    min-width: 0;
+}
+
 .nowrap-item {
     display: inline-grid;
     grid-template-columns: min-content auto;
@@ -368,4 +390,11 @@ textarea {
     #days1 {
         grid-template-columns: auto;
     }
+}
+
+.regexp-buttons .ivblock-button {
+	display: block;
+	width: 220px;
+	max-width: 220px;
+	margin: 5px auto;
 }

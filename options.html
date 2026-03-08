@@ -84,9 +84,9 @@
 							<p>
 								<label>Enter a time limit after which to block these sites (optional):</label>
 							</p>
-							<p>
+							<p class="inline-control-row">
 								<input id="limitMins1" type="text" size="4" title="Leave blank for no time limit">
-								minutes in every
+								<span>minutes in every</span>
 								<select id="limitPeriod1">
 									<option value="">&nbsp;</option>
 									<option value="300">5 minutes</option>
@@ -112,7 +112,8 @@
 									<option value="5184000">2 months (60 days)</option>
 									<option value="7776000">3 months (90 days)</option>
 								</select>
-								&nbsp;&nbsp;&nbsp;&nbsp;
+							</p>
+							<p>
 								<input id="rollover1" type="checkbox">
 								<label for="rollover1">Roll over unused time</label>
 							</p>
@@ -264,9 +265,12 @@
 							<p class="simplifiable">
 								Allow access to sites for only <input id="delayAllowMins1" type="text" size="2" title="Leave blank to allow indefinitely"> minutes after delaying/password page is used
 							</p>
-							<p>
-								Delay access to sites by <input id="delaySecs1" type="text" size="2"> seconds when delaying page is used
+							<p class="inline-control-row">
+								<span>Delay access to sites by</span>
+								<input id="delaySecs1" type="text" size="2" style="width:4em">
+								<span>seconds</span>
 							</p>
+							<p>when delaying page is used</p>
 							<p class="simplifiable">
 								<input id="delayAutoLoad1" type="checkbox">
 								<label for="delayAutoLoad1">Automatically load blocked page when delay countdown reaches zero</label>
@@ -319,9 +323,12 @@
 								<input id="allowKeywords1" type="checkbox">
 								<label for="allowKeywords1">Treat keywords as allow-conditions rather than block-conditions</label>
 							</p>
-							<p>
-								Wait <input id="waitSecs1" type="text" size="2"> second(s) after page has loaded before checking blocking conditions
+							<p class="inline-control-row">
+								<span>Wait</span>
+								<input id="waitSecs1" type="text" size="2" style="width:4em">
+								<span>second(s) after page has loaded</span>
 							</p>
+							<p>before checking blocking conditions</p>
 							<hr>
 							<p>
 								<input id="prevOpts1" type="checkbox">
@@ -352,10 +359,12 @@
 								<label for="prevOverride1">Allow override to apply to <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong>, and <strong>about:debugging</strong></label>
 							</p>
 							<hr>
-							<p>
-								Offset time limit period by <input id="limitOffset1" type="text" size="2" title="Leave blank for no offset"> hours
-								&nbsp;&nbsp;<a href="https://www.proginosko.com/leechblock/faq/time-limit-offset/" target="_blank">What does this do?</a>
+							<p class="inline-control-row">
+								<span>Offset time limit period by</span>
+								<input id="limitOffset1" type="text" size="2" title="Leave blank for no offset" style="width:4em">
+								<span>hours</span>
 							</p>
+							<p><a href="https://www.proginosko.com/leechblock/faq/time-limit-offset/" target="_blank">What does this do?</a></p>
 							<hr>
 							<p>
 								<label>Load list of sites from URL:</label>
@@ -370,6 +379,8 @@
 							</p>
 							<p>
 								<input id="regexpBlock1" type="text" size="60" class="limited-width">
+							</p>
+							<p class="regexp-buttons">
 								<button id="clearRegExpBlock1" type="button" class="ivblock-button default">Clear</button>
 								<button id="genRegExpBlock1" type="button" class="ivblock-button default">Generate From Site List</button>
 							</p>
@@ -379,6 +390,8 @@
 							</p>
 							<p>
 								<input id="regexpAllow1" type="text" size="60" class="limited-width">
+							</p>
+							<p class="regexp-buttons">
 								<button id="clearRegExpAllow1" type="button" class="ivblock-button default">Clear</button>
 								<button id="genRegExpAllow1" type="button" class="ivblock-button default">Generate From Site List</button>
 							</p>
@@ -388,6 +401,8 @@
 							</p>
 							<p>
 								<input id="regexpKeyword1" type="text" size="60">
+							</p>
+							<p class="regexp-buttons">
 								<button id="clearRegExpKeyword1" type="button" class="ivblock-button default">Clear</button>
 								<button id="genRegExpKeyword1" type="button" class="ivblock-button default">Generate From Site List</button>
 							</p>
@@ -408,9 +423,9 @@
 						</p>
 						<fieldset>
 							<legend>Block Sets</legend>
-							<p>
-								Number of block sets (1&ndash;<span id="maxSets">?</span>):
-								<input id="numSets" type="text" size="2" title="Default: 6" class="limited-width">
+							<p class="inline-control-row">
+								<span>Number of block sets (1&ndash;<span id="maxSets">?</span>):</span>
+								<input id="numSets" type="text" size="2" title="Default: 6" class="limited-width" style="width:4em">
 							</p>
 						</fieldset>
 						<fieldset>
@@ -450,7 +465,8 @@
 							<p>
 								<input id="timerVisible" type="checkbox">
 								<label for="timerVisible">Show timer over page</label>
-								&nbsp;&nbsp;&nbsp;&nbsp;
+							</p>
+							<p class="inline-control-row">
 								<label>Size:</label>
 								<select id="timerSize" class="limited-width">
 									<option value="0">small</option>
@@ -458,7 +474,8 @@
 									<option value="2">large</option>
 									<option value="3">extra large</option>
 								</select>
-								&nbsp;&nbsp;&nbsp;&nbsp;
+							</p>
+							<p class="inline-control-row">
 								<label>Location:</label>
 								<select id="timerLocation" class="limited-width">
 									<option value="0">top left</option>
@@ -467,8 +484,10 @@
 									<option value="3">bottom left</option>
 								</select>
 							</p>
-							<p>
-								Show timer only when time left is less than <input id="timerMaxHours" type="text" size="2" title="Leave blank for no limit"> hour(s)
+							<p>Show timer only when time left is less than</p>
+							<p class="inline-control-row">
+								<input id="timerMaxHours" type="text" size="2" title="Leave blank for no limit" style="width:4em">
+								<span>hour(s)</span>
 							</p>
 							<p>
 								<input id="timerBadge" type="checkbox">
@@ -534,7 +553,7 @@
 						</fieldset>
 						<fieldset>
 							<legend>Appearance</legend>
-							<p>
+							<p class="inline-control-row">
 								<label>Theme:</label>
 								<select id="theme" class="limited-width">
 									<option value="">Default</option>
@@ -564,22 +583,25 @@
 								<input id="disableLink" type="checkbox">
 								<label for="disableLink">Disable hyperlink to blocked page on blocking/delaying/password page</label>
 							</p>
-							<p class="simplifiable">
-								Display clock times in
+							<p class="simplifiable inline-control-row">
+								<span>Display clock times in</span>
 								<select id="clockTimeFormat" class="limited-width">
 									<option value="0">default</option>
 									<option value="1">12-hour</option>
 									<option value="2">24-hour</option>
 								</select>
-								format
+								<span>format</span>
 							</p>
-							<p class="simplifiable">
-								Offset clock by <input id="clockOffset" type="text" size="4" title="Leave blank for no offset" class="limited-width"> minutes
-								&nbsp;&nbsp;&nbsp;&nbsp;
+							<p class="simplifiable inline-control-row">
+								<span>Offset clock by</span>
+								<input id="clockOffset" type="text" size="4" title="Leave blank for no offset" class="limited-width" style="width:4em">
+								<span>minutes</span>
 								<span id="clockOffsetTime" style="display: none;"></span>
 							</p>
-							<p class="simplifiable">
-								Ignore jumps in time spent greater than <input id="ignoreJumpSecs" type="text" size="4" class="limited-width"> seconds
+							<p class="simplifiable">Ignore jumps in time spent greater than</p>
+							<p class="simplifiable inline-control-row">
+								<input id="ignoreJumpSecs" type="text" size="4" class="limited-width" style="width:4em">
+								<span>seconds</span>
 							</p>
 							<p class="simplifiable">
 								<input id="allFocused" type="checkbox">
@@ -608,11 +630,15 @@
 						</fieldset>
 						<fieldset class="simplifiable">
 							<legend>Performance</legend>
-							<p>
-								Save time data every <input id="saveSecs" type="text" size="2" title="Default: 10" class="limited-width"> second(s)
+							<p class="inline-control-row">
+								<span>Save time data every</span>
+								<input id="saveSecs" type="text" size="2" title="Default: 10" class="limited-width" style="width:4em">
+								<span>second(s)</span>
 							</p>
-							<p>
-								Process tabs every <input id="processTabsSecs" type="text" size="2" title="Default: 1" class="limited-width"> second(s)
+							<p class="inline-control-row">
+								<span>Process tabs every</span>
+								<input id="processTabsSecs" type="text" size="2" title="Default: 1" class="limited-width" style="width:4em">
+								<span>second(s)</span>
 							</p>
 							<p>
 								<input id="processActiveTabs" type="checkbox">
