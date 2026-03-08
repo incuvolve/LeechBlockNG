@@ -74,6 +74,10 @@ body {
 	border: 1px solid #888;
 }
 
+.ui-dialog .ui-dialog-titlebar-close .ui-icon {
+	filter: brightness(4);
+}
+
 .ui-widget-content {
 	background: #222;
 	color: #bbb;
