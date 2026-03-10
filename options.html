@@ -242,8 +242,10 @@
 								<input id="activeBlock1" type="checkbox">
 								<label for="activeBlock1">Immediately block pages on these sites once blocking conditions are met</label>
 							</p>
-							<p class="simplifiable">
-								Always block sites for at least <input id="minBlock1" type="text" size="2" title="Leave blank for no minimum block time"> minutes
+							<p class="simplifiable inline-control-row">
+								<span>Always block sites for at least</span>
+								<input id="minBlock1" type="text" size="2" title="Leave blank for no minimum block time">
+								<span>minutes</span>
 							</p>
 							<p class="simplifiable">
 								<input id="showKeyword1" type="checkbox">
@@ -253,17 +255,19 @@
 								<input id="titleOnly1" type="checkbox">
 								<label for="titleOnly1">Check for keywords only in page title</label>
 							</p>
-							<p class="simplifiable">
+							<p class="simplifiable inline-control-row">
 								<input id="delayFirst1" type="checkbox">
-								<label for="delayFirst1">Block only first accessed page of
-								<select id="delayFirstMode1">
+								<label for="delayFirst1">Block only first accessed page of</label>
+								<select id="delayFirstMode1" class="limited-width">
 									<option value="0">site</option>
 									<option value="1">block set</option>
-								</select>	
-								when delaying/password page is used</label>
+								</select>
+								<span>when delaying/password page is used</span>
 							</p>
-							<p class="simplifiable">
-								Allow access to sites for only <input id="delayAllowMins1" type="text" size="2" title="Leave blank to allow indefinitely"> minutes after delaying/password page is used
+							<p class="simplifiable inline-control-row">
+								<span>Allow access to sites for only</span>
+								<input id="delayAllowMins1" type="text" size="2" title="Leave blank to allow indefinitely">
+								<span>minutes after delaying/password page is used</span>
 							</p>
 							<p class="inline-control-row">
 								<span>Delay access to sites by</span>
@@ -279,8 +283,10 @@
 								<input id="delayCancel1" type="checkbox">
 								<label for="delayCancel1">Cancel delay countdown if delaying page loses focus</label>
 							</p>
-							<p class="simplifiable">
-								Attempt to reload blocked page every <input id="reloadSecs1" type="text" size="2"> seconds (only applies to default page)
+							<p class="simplifiable inline-control-row">
+								<span>Attempt to reload blocked page every</span>
+								<input id="reloadSecs1" type="text" size="2">
+								<span>seconds (only applies to default page)</span>
 							</p>
 							<p class="simplifiable">
 								<input id="addHistory1" type="checkbox">
@@ -434,7 +440,7 @@
 								<label>Select the requirement for access to options:</label>
 							</p>
 							<p>
-								<select id="optionsAccess" class="limited-width">
+								<select id="optionsAccess" style="width:100%">
 									<option value="0">Don't require the user to enter any password or access code</option>
 									<option value="1">Require the user to enter a password</option>
 									<option value="2">Require the user to enter a random 32-character access code</option>
@@ -442,10 +448,11 @@
 									<option value="4">Require the user to enter a random 128-character access code</option>
 								</select>
 							</p>
-							<p>
+							<p class="inline-control-row">
 								<label>Password:</label>
 								<input id="accessPassword" type="password" size="40" class="limited-width">
-								&nbsp;&nbsp;&nbsp;&nbsp;
+							</p>
+							<p>
 								<input id="accessPasswordShow" type="checkbox">
 								<label for="accessPasswordShow">Show password</label>
 							</p>
@@ -512,9 +519,13 @@
 							<p>
 								Allow blocking to be suspended for <input id="overrideMins" type="text" size="2" title="Leave blank to specify a duration when the override is activated" class="limited-width"> minute(s)
 							</p>
-							<p>
-								Allow no more than <input id="overrideLimitNum" type="text" size="2" title="Leave blank for no limit"> override(s) every
-								<select id="overrideLimitPeriod">
+							<p class="inline-control-row">
+								<span>Allow no more than</span>
+								<input id="overrideLimitNum" type="text" size="2" title="Leave blank for no limit" style="width:3em">
+							</p>
+							<p class="inline-control-row">
+								<span>override(s) every</span>
+								<select id="overrideLimitPeriod" class="limited-width">
 									<option value="">&nbsp;</option>
 									<option value="3600">hour</option>
 									<option value="86400">day</option>
