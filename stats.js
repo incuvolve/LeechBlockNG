@@ -28,7 +28,7 @@ function initForm(numSets) {
 			.replace(/class="time-left"/, `id="timeLeft${set}"`)
 			.replace(/class="rollover-time"/, `id="rolloverTime${set}"`)
 			.replace(/class="ld-end-time"/, `id="ldEndTime${set}"`)
-			.replace(/class="restart-button"/, `id="restart${set}"`);
+			.replace(/class="restart-button ivblock-button"/, `class="restart-button ivblock-button" id="restart${set}"`);
 		$("#stats-container").append(`<div id="statsCard${set}" class="stats-card ui-widget-content">${nextCardHTML}</div>`);
 	}
 	$("#stats-card-template").hide();
