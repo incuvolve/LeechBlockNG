@@ -9,7 +9,9 @@
 	<title>ivBlock Override</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/jquery-ui/jquery-ui-custom.css" rel="stylesheet">
-
+	<link href="/style.css" rel="stylesheet">
+	<link href="/options.css" rel="stylesheet">
+	<link href="/controls.css" rel="stylesheet">
 	<link href="/buttons.css" rel="stylesheet">
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
 	<link href="/icons/ivblock32.ico" rel="shortcut icon" type="image/x-icon">
@@ -19,14 +21,14 @@
 
 <body>
 
-	<div id="form-container">
+	<div id="form-container-options">
 
-		<form id="form" style="display: none;" action="javascript: void(0);">
+		<form id="form" class="ui-widget" style="display: none;" action="javascript: void(0);">
 
-			<fieldset class="ui-widget ui-widget-content">
+			<fieldset>
 				<legend>ivBlock Override</legend>
 				<p>
-					Allow blocking to be suspended for<br> <input id="mins" type="text" size="2"> minute(s)
+					Allow blocking to be suspended for<br> <input id="mins" type="text" size="2" style="width:3em"> minute(s)
 				</p>
 			</fieldset>
 

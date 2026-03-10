@@ -219,16 +219,50 @@ textarea {
 
     .ui-dialog .ui-dialog-buttonpane button {
         margin: 5px;
-        width: auto; /* Let ivblock-button min-width handle it, or set a max-width */
-        max-width: 120px; /* Example: constrain width on small screens */
-        padding: 0.8em 1.2em; /* Consistent padding */
-        border-radius: 8px; /* Slightly less rounded for dialogs on small screens */
+        width: auto;
+        max-width: 120px;
+        padding: 0.8em 1.2em;
+        border-radius: 8px;
     }
 }
 
 .ui-dialog {
-    width: 90vw !important;
-    max-width: 600px !important;
+    max-width: 500px;
+}
+
+/* Global dialog button styling - centered, fixed width */
+.ui-dialog .ui-dialog-buttonpane {
+    text-align: center;
+}
+
+.ui-dialog .ui-dialog-buttonset {
+    float: none !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin: 5px;
+    width: 120px;
+    padding: 10px;
+}
+
+/* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
+.ui-dialog div {
+    margin-top: 0;
+}
+
+/* Fix close button - .ui-widget button rules break jQuery UI icon */
+.ui-dialog .ui-dialog-titlebar-close {
+    padding: 1px !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover {
+    border-color: #ccc !important;
 }
 
 #saveOptions, #saveOptionsClose {
@@ -364,21 +398,7 @@ textarea {
 		width: 95%;
 	}
 
-	.ui-dialog .ui-dialog-buttonpane {
-		text-align: center;
-	}
-
-	.ui-dialog .ui-dialog-buttonset {
-		float: none !important;
-	}
-
-	    .ui-dialog .ui-dialog-buttonpane button {
-			margin: 5px;
-			width: 120px;
-			padding: 10px;
-		}
-	
-	    /* Vertical alignment for checkboxes on mobile */
+	/* Vertical alignment for checkboxes on mobile */
 	    .nowrap-item input[type="checkbox"],
 	    .nowrap-item label,
 	    input[type="checkbox"],

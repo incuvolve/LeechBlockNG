@@ -8,7 +8,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>ivBlock Statistics</title>
 		<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-
+		<link href="/jquery-ui/jquery-ui-custom.css" rel="stylesheet">
+		<link href="/style.css" rel="stylesheet">
+		<link href="/options.css" rel="stylesheet">
 		<link href="/buttons.css" rel="stylesheet">
 		<link href="/stats.css" rel="stylesheet">
 		<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
@@ -18,14 +20,14 @@
 
 	<body>
 
-		<div id="form-container">
+		<div id="form-container-options">
 
-			<form id="form" style="display: none;">
+			<form id="form" class="ui-widget" style="display: none;">
 
-				<fieldset class="ui-widget ui-widget-content">
+				<fieldset>
 					<legend>ivBlock Statistics</legend>
 					<div id="stats-container">
-						<div id="stats-card-template" class="stats-card ui-widget-content">
+						<div id="stats-card-template" class="stats-card">
 							<h3 class="block-set-name"></h3>
 							<ul class="stats-list">
 								<li><strong>Start Date/Time:</strong> <span class="start-time"></span></li>
