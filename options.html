@@ -262,13 +262,14 @@
 									<option value="0">site</option>
 									<option value="1">block set</option>
 								</select>
-								<span>when delaying/password page is used</span>
 							</p>
+							<p class="simplifiable">when delaying/password page is used</p>
 							<p class="simplifiable inline-control-row">
 								<span>Allow access to sites for only</span>
 								<input id="delayAllowMins1" type="text" size="2" title="Leave blank to allow indefinitely">
-								<span>minutes after delaying/password page is used</span>
+								<span>minutes</span>
 							</p>
+							<p class="simplifiable">after delaying/password page is used</p>
 							<p class="inline-control-row">
 								<span>Delay access to sites by</span>
 								<input id="delaySecs1" type="text" size="2" style="width:4em">
@@ -286,8 +287,9 @@
 							<p class="simplifiable inline-control-row">
 								<span>Attempt to reload blocked page every</span>
 								<input id="reloadSecs1" type="text" size="2">
-								<span>seconds (only applies to default page)</span>
+								<span>seconds</span>
 							</p>
+							<p class="simplifiable">(only applies to default page)</p>
 							<p class="simplifiable">
 								<input id="addHistory1" type="checkbox">
 								<label for="addHistory1">Add blocked page to browser history</label>
@@ -506,8 +508,10 @@
 						</fieldset>
 						<fieldset class="simplifiable">
 							<legend>Warning Message</legend>
-							<p>
-								Display warning message <input id="warnSecs" type="text" size="2" title="Leave blank for no warning" class="limited-width"> seconds before site is blocked
+							<p class="inline-control-row">
+								<span>Display warning message</span>
+								<input id="warnSecs" type="text" size="2" title="Leave blank for no warning" style="width:3em">
+								<span>seconds before site is blocked</span>
 							</p>
 							<p>
 								<input id="warnImmediate" type="checkbox">
@@ -516,14 +520,14 @@
 						</fieldset>
 						<fieldset class="simplifiable">
 							<legend>Temporary Override</legend>
-							<p>
-								Allow blocking to be suspended for <input id="overrideMins" type="text" size="2" title="Leave blank to specify a duration when the override is activated" class="limited-width"> minute(s)
+							<p class="inline-control-row">
+								<span>Allow blocking to be suspended for</span>
+								<input id="overrideMins" type="text" size="2" title="Leave blank to specify a duration when the override is activated" style="width:3em">
+								<span>minute(s)</span>
 							</p>
 							<p class="inline-control-row">
 								<span>Allow no more than</span>
 								<input id="overrideLimitNum" type="text" size="2" title="Leave blank for no limit" style="width:3em">
-							</p>
-							<p class="inline-control-row">
 								<span>override(s) every</span>
 								<select id="overrideLimitPeriod" class="limited-width">
 									<option value="">&nbsp;</option>
@@ -536,7 +540,7 @@
 								<label>Select the requirement for activating the override:</label>
 							</p>
 							<p>
-								<select id="overrideAccess" class="limited-width">
+								<select id="overrideAccess" style="width:100%">
 									<option value="0">Don't require the user to enter any password or access code</option>
 									<option value="1">Require the user to enter the access control password (see above)</option>
 									<option value="2">Require the user to enter a random 32-character access code</option>
@@ -609,9 +613,9 @@
 								<span>minutes</span>
 								<span id="clockOffsetTime" style="display: none;"></span>
 							</p>
-							<p class="simplifiable">Ignore jumps in time spent greater than</p>
 							<p class="simplifiable inline-control-row">
-								<input id="ignoreJumpSecs" type="text" size="4" class="limited-width" style="width:4em">
+								<span>Ignore jumps in time spent greater than</span>
+								<input id="ignoreJumpSecs" type="text" size="4" style="width:4em">
 								<span>seconds</span>
 							</p>
 							<p class="simplifiable">
