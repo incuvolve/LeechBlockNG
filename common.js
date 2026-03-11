@@ -582,6 +582,31 @@ function setTheme(theme) {
 	}
 }
 
+// Localize the current page using data-i18n attributes.
+// Elements with data-i18n="key" get their textContent replaced.
+// Elements with data-i18n-html="key" get their innerHTML replaced (for strings with embedded links).
+// Elements with data-i18n-placeholder="key" get their placeholder attribute replaced.
+// Elements with data-i18n-title="key" get their title attribute replaced.
+//
+function localize() {
+	document.querySelectorAll("[data-i18n]").forEach(el => {
+		const msg = browser.i18n.getMessage(el.dataset.i18n);
+		if (msg) el.textContent = msg;
+	});
+	document.querySelectorAll("[data-i18n-html]").forEach(el => {
+		const msg = browser.i18n.getMessage(el.dataset.i18nHtml);
+		if (msg) el.innerHTML = msg;
+	});
+	document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+		const msg = browser.i18n.getMessage(el.dataset.i18nPlaceholder);
+		if (msg) el.placeholder = msg;
+	});
+	document.querySelectorAll("[data-i18n-title]").forEach(el => {
+		const msg = browser.i18n.getMessage(el.dataset.i18nTitle);
+		if (msg) el.title = msg;
+	});
+}
+
 // Get localized version of extension page
 //
 function getLocalizedURL(url) {

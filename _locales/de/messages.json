@@ -19,16 +19,58 @@
 
 	"lockdownMenuItem": { "message": "Lockdown" },
 
-	"overrideMenuItem": { "message": "Überschreiben" },
+	"overrideMenuItem": { "message": "\u00dcberschreiben" },
 
 	"statisticsMenuItem": { "message": "Statistiken" },
 
-	"addSiteMenuItem": { "message": "Website hinzufügen" },
+	"addSiteMenuItem": { "message": "Website hinzuf\u00fcgen" },
 
-	"addSiteToBlockSetMenuItem": { "message": "Website zum Blocksatz hinzufügen" },
+	"addSiteToBlockSetMenuItem": { "message": "Website zum Blocksatz hinzuf\u00fcgen" },
 
-	"addPageMenuItem": { "message": "Seite hinzufügen" },
+	"addPageMenuItem": { "message": "Seite hinzuf\u00fcgen" },
 
-	"addPageToBlockSetMenuItem": { "message": "Seite zum Blocksatz hinzufügen" }
+	"addPageToBlockSetMenuItem": { "message": "Seite zum Blocksatz hinzuf\u00fcgen" },
+
+	"popupOptions": { "message": "Optionen" },
+
+	"popupLockdown": { "message": "Lockdown" },
+
+	"popupOverride": { "message": "\u00dcberschreiben" },
+
+	"popupStatistics": { "message": "Statistiken" },
+
+	"popupAddSites": { "message": "Websites hinzuf\u00fcgen" },
+
+	"popupCancelOverride": { "message": "\u00dcberschreiben abbrechen" },
+
+	"popupResetRollover": { "message": "Rollover-Zeit zur\u00fccksetzen" },
+
+	"popupDiscardTime": { "message": "Verbleibende Zeit verwerfen" },
+
+	"popupOnlineSupport": { "message": "Online-Hilfe" },
+
+	"blockedPageTitle": { "message": "Seite blockiert" },
+
+	"blockedWarning": { "message": "Die Seite, die du aufrufen willst, wurde von <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a> gesperrt." },
+
+	"delayedWarning": { "message": "Die Seite, die du aufrufen willst, wurde vor\u00fcbergehend von <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a> gesperrt." },
+
+	"blockedSetLabel": { "message": "Blocksatz" },
+
+	"blockedKeywordMatched": { "message": "Schl\u00fcsselwort gefunden:" },
+
+	"blockedUnblockAt": { "message": "Die Seite wird entsperrt ab:" },
+
+	"blockedEndOfTime": { "message": "das Ende der Zeit" },
+
+	"delayedCountdownPrefix": { "message": "Die Seite wird in" },
+
+	"delayedCountdownSuffix": { "message": "Sekunde(n) freigeschaltet." },
+
+	"blockedCustomMsgLabel": { "message": "Eine Nachricht von dir selbst:" },
+
+	"blockedSupportHtml": { "message": "Die Nutzung von ivBlock wird immer kostenlos sein, aber wenn es dein Leben verbessert hat, solltest du in Erw\u00e4gung ziehen, die Weiterentwicklung zu unterst\u00fctzen indem du einen <a href=\"https://ko-fi.com/michaelhuelsen\">Spendenbeitrag leistest</a> oder eine <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">Bewertung im AppStore abgibst</a>." },
+
+	"passwordPrompt": { "message": "Geben Sie das Passwort ein, um auf die gesperrte Seite zuzugreifen:" }
 
 }

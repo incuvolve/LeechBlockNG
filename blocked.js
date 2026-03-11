@@ -182,6 +182,7 @@ function reloadBlockedPage() {
 }
 
 // Request block info from extension
+localize();
 browser.runtime.sendMessage({ type: "blocked" }).then(processBlockInfo);
 
 // Expose functions for testing purposes

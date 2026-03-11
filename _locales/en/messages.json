@@ -29,6 +29,48 @@
 
 	"addPageMenuItem": { "message": "Add Page" },
 
-	"addPageToBlockSetMenuItem": { "message": "Add Page to Block Set" }
+	"addPageToBlockSetMenuItem": { "message": "Add Page to Block Set" },
+
+	"popupOptions": { "message": "Options" },
+
+	"popupLockdown": { "message": "Lockdown" },
+
+	"popupOverride": { "message": "Override" },
+
+	"popupStatistics": { "message": "Statistics" },
+
+	"popupAddSites": { "message": "Add Sites" },
+
+	"popupCancelOverride": { "message": "Cancel Override" },
+
+	"popupResetRollover": { "message": "Reset Rollover Time" },
+
+	"popupDiscardTime": { "message": "Discard Remaining Time" },
+
+	"popupOnlineSupport": { "message": "Online Support" },
+
+	"blockedPageTitle": { "message": "Site Blocked" },
+
+	"blockedWarning": { "message": "The page you\u2019re trying to access has been blocked by <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>." },
+
+	"delayedWarning": { "message": "The page you\u2019re trying to access has been temporarily blocked by <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>." },
+
+	"blockedSetLabel": { "message": "Block Set" },
+
+	"blockedKeywordMatched": { "message": "Keyword matched:" },
+
+	"blockedUnblockAt": { "message": "The page will be unblocked at:" },
+
+	"blockedEndOfTime": { "message": "the end of time" },
+
+	"delayedCountdownPrefix": { "message": "The page will be unblocked in" },
+
+	"delayedCountdownSuffix": { "message": "second(s)." },
+
+	"blockedCustomMsgLabel": { "message": "A message from yourself:" },
+
+	"blockedSupportHtml": { "message": "ivBlock will always be free to use, but if it has improved your life, please consider supporting its continued development by <a href=\"https://ko-fi.com/michaelhuelsen\">making a contribution</a> or <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">rating the app on the AppStore</a>." },
+
+	"passwordPrompt": { "message": "Enter the password to access the blocked page:" }
 
 }

@@ -7,6 +7,7 @@ const SUPPORT_URL = "https://www.incuvolve.de/ivblock/support/";
 // Initialize page
 //
 function initializePage() {
+	localize();
 	browser.storage.local.get("sync").then(onGotSync);
 
 	function onGotSync(options) {

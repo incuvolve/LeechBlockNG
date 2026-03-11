@@ -9,6 +9,9 @@ global.browser = {
   }
 };
 
+// Mock localize (defined in common.js, not loaded in test context)
+global.localize = jest.fn();
+
 // Mock console.log to prevent test output pollution
 const originalConsoleLog = console.log;
 console.log = jest.fn();
