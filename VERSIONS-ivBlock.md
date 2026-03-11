@@ -1,5 +1,14 @@
 # Version History
 
+## Version 1.0.3 (March 2026)
+
+* adding an app icon for iOS dark mode
+* review and optimization of user interface regarding widths of input
+  fields and dropdown controls
+* review and optimization of views for MacOS
+* fixing a minor bug in the statistics page
+
+
 ## Version 1.0.2 (Januar 2026)
 
 * Integration of LeechBlockNG 1.7.2
