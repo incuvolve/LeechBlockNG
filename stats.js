@@ -10,6 +10,7 @@ function getElement(id) { return document.getElementById(id); }
 var gNumSets;
 var gClockOffset;
 var gClockTimeOpts;
+var gRefreshGen = 0;
 
 // Initialize form (with specified number of block sets)
 //
@@ -33,7 +34,7 @@ function initForm(numSets) {
 	}
 	$("#stats-card-template").hide();
 
-	$(":button").click(handleClick);
+	$(":button").off("click").on("click", handleClick);
 }
 
 // Refresh page
@@ -41,12 +42,15 @@ function initForm(numSets) {
 function refreshPage() {
 	//log("refreshPage");
 
+	let gen = ++gRefreshGen;
+
 	$("#form").hide();
 	$("#stats-container").html('<div id="stats-card-template" class="stats-card ui-widget-content" style="display: none;">' + $("#stats-card-template").html() + '</div>');
 
 	browser.storage.local.get("sync").then(onGotSync, onError);
 
 	function onGotSync(options) {
+		if (gen != gRefreshGen) { return; }
 		if (options["sync"]) {
 			browser.storage.sync.get().then(onGot, onError);
 		} else {
@@ -55,6 +59,7 @@ function refreshPage() {
 	}
 
 	function onGot(options) {
+		if (gen != gRefreshGen) { return; }
 		cleanOptions(options);
 		cleanTimeData(options);
 
