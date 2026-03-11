@@ -27,6 +27,8 @@ function initForm() {
 function refreshPage() {
 	//log("refreshPage");
 
+	localize();
+
 	$("#form").hide();
 
 	browser.storage.local.get("sync").then(onGotSync, onError);

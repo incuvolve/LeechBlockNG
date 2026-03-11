@@ -32,6 +32,10 @@ function initForm(numSets) {
 		$("#blockSets").append(nextSetHTML);
 	}
 
+	for (let set = 1; set <= gNumSets; set++) {
+		getElement(`blockSetLabel${set}`).innerText = `${browser.i18n.getMessage('lockdownSitesInBlockSet')} ${set}`;
+	}
+
 	// Set up JQuery UI widgets
 	$("#activate").button();
 	$("#activate").click(onActivate);
@@ -43,6 +47,8 @@ function initForm(numSets) {
 //
 function refreshPage() {
 	//log("refreshPage");
+
+	localize();
 
 	$("#form").hide();
 

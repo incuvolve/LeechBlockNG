@@ -41,6 +41,8 @@ function initForm() {
 function initializePage() {
 	//log("initializePage");
 
+	localize();
+
 	browser.storage.local.get("sync").then(onGotSync, onError);
 
 	function onGotSync(options) {

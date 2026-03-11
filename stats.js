@@ -42,6 +42,8 @@ function initForm(numSets) {
 function refreshPage() {
 	//log("refreshPage");
 
+	localize();
+
 	let gen = ++gRefreshGen;
 
 	$("#form").hide();

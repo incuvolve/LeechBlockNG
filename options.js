@@ -170,6 +170,8 @@ function initForm(numSets) {
 		getElement("syncOpts2").style.display = "none";
 	}
 
+	localize();
+
 	// Set active tab
 	if (gTabIndex < 0) {
 		// -ve index = other tab (General, About)
@@ -230,7 +232,7 @@ function showSimplifiedOptions(simplify) {
 // Update block set name on tab
 //
 function updateBlockSetName(set, name) {
-	getElement(`blockSetName${set}`).innerText = name ? name : `Block Set ${set}`;
+	getElement(`blockSetName${set}`).innerText = name ? name : `${browser.i18n.getMessage('optBlockSetDefault')} ${set}`;
 }
 
 // Update show/hide password page options

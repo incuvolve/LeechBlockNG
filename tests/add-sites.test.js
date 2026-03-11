@@ -17,6 +17,9 @@ const browserMock = {
             set: jest.fn(() => Promise.resolve()),
         },
     },
+    i18n: {
+        getMessage: jest.fn((key) => key),
+    },
     runtime: {
         sendMessage: jest.fn(),
         getURL: jest.fn((url) => `chrome-extension://test/${url}`),

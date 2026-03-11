@@ -25,24 +25,24 @@
 			<form id="form" class="ui-widget" style="display: none;">
 
 				<fieldset>
-					<legend>ivBlock Statistics</legend>
+					<legend data-i18n="statsLegend">ivBlock Statistics</legend>
 					<div id="stats-container">
 						<div id="stats-card-template" class="stats-card">
 							<h3 class="block-set-name"></h3>
 							<ul class="stats-list">
-								<li><strong>Start Date/Time:</strong> <span class="start-time"></span></li>
-								<li><strong>Time Spent Since Start:</strong> <span class="total-time"></span></li>
-								<li><strong>Time Spent Per Week:</strong> <span class="per-week-time"></span></li>
-								<li><strong>Time Spent Per Day:</strong> <span class="per-day-time"></span></li>
-								<li><strong>Time Left in Limit Period:</strong> <span class="time-left"></span></li>
-								<li><strong>Rollover Time:</strong> <span class="rollover-time"></span></li>
-								<li><strong>Lockdown End Time:</strong> <span class="ld-end-time"></span></li>
+								<li><strong data-i18n="statsStartTime">Start Date/Time:</strong> <span class="start-time"></span></li>
+								<li><strong data-i18n="statsTotalTime">Time Spent Since Start:</strong> <span class="total-time"></span></li>
+								<li><strong data-i18n="statsPerWeekTime">Time Spent Per Week:</strong> <span class="per-week-time"></span></li>
+								<li><strong data-i18n="statsPerDayTime">Time Spent Per Day:</strong> <span class="per-day-time"></span></li>
+								<li><strong data-i18n="statsTimeLeft">Time Left in Limit Period:</strong> <span class="time-left"></span></li>
+								<li><strong data-i18n="statsRolloverTime">Rollover Time:</strong> <span class="rollover-time"></span></li>
+								<li><strong data-i18n="statsLockdownEndTime">Lockdown End Time:</strong> <span class="ld-end-time"></span></li>
 							</ul>
-							<button class="restart-button ivblock-button" type="button">Restart</button>
+							<button class="restart-button ivblock-button" type="button" data-i18n="statsRestart">Restart</button>
 						</div>
 					</div>
 					<p class="button-group">
-						<button id="restartAll" type="button" class="ivblock-button">Restart All</button>
+						<button id="restartAll" type="button" class="ivblock-button" data-i18n="statsRestartAll">Restart All</button>
 					</p>
 				</fieldset>
 

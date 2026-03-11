@@ -44,6 +44,9 @@ const browser = {
     permissions: {
         request: jest.fn(),
     },
+    i18n: {
+        getMessage: jest.fn((key) => key),
+    },
 };
 
 describe('options.js tests', () => {
