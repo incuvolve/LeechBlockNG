@@ -116,7 +116,7 @@
 		"message": "Sites toevoegen"
 	},
 	"lockdownLegend": {
-		"message": "ivBlock Lockdown"
+		"message": "ivBlock-Lockdown"
 	},
 	"lockdownDurationLabel": {
 		"message": "Voer de duur van de Lockdown in:"

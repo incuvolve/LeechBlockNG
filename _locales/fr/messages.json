@@ -209,7 +209,7 @@
 		"message": "Tout redémarrer"
 	},
 	"diagLegend": {
-		"message": "Diagnostics"
+		"message": "Diagnostic"
 	},
 	"diagUrlLabel": {
 		"message": "Entrez l'URL complète à tester avec vos listes de blocage actuelles :"
@@ -869,7 +869,7 @@
 		"message": "Mode diagnostic (sortie dans la console du navigateur)"
 	},
 	"optPerformanceLegend": {
-		"message": "Performance"
+		"message": "Performances"
 	},
 	"optSaveSecsPrefix": {
 		"message": "Enregistrer les données de temps toutes les"

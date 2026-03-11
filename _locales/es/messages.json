@@ -116,7 +116,7 @@
 		"message": "Añadir Sitios"
 	},
 	"lockdownLegend": {
-		"message": "ivBlock Lockdown"
+		"message": "Lockdown de ivBlock"
 	},
 	"lockdownDurationLabel": {
 		"message": "Introduce la duración del Lockdown:"
@@ -944,7 +944,7 @@
 		"message": "Ejemplos:"
 	},
 	"optAboutFAQ": {
-		"message": "FAQ:"
+		"message": "Preguntas frecuentes:"
 	},
 	"optAboutSupport": {
 		"message": "Soporte:"
