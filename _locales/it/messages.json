@@ -32,1011 +32,1011 @@
 		"message": "Aggiungi pagina a Lista blocco"
 	},
 	"popupOptions": {
-		"message": "Options"
+		"message": "Opzioni"
 	},
 	"popupLockdown": {
 		"message": "Lockdown"
 	},
 	"popupOverride": {
-		"message": "Override"
+		"message": "Permetti"
 	},
 	"popupStatistics": {
-		"message": "Statistics"
+		"message": "Statistiche"
 	},
 	"popupAddSites": {
-		"message": "Add Sites"
+		"message": "Aggiungi siti"
 	},
 	"popupCancelOverride": {
-		"message": "Cancel Override"
+		"message": "Annulla permesso"
 	},
 	"popupResetRollover": {
-		"message": "Reset Rollover Time"
+		"message": "Reimposta tempo Rollover"
 	},
 	"popupDiscardTime": {
-		"message": "Discard Remaining Time"
+		"message": "Scarta tempo rimanente"
 	},
 	"popupOnlineSupport": {
-		"message": "Online Support"
+		"message": "Supporto online"
 	},
 	"blockedPageTitle": {
-		"message": "Site Blocked"
+		"message": "Sito bloccato"
 	},
 	"blockedWarning": {
-		"message": "The page you’re trying to access has been blocked by <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+		"message": "La pagina che stai cercando di visitare è stata bloccata da <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
 	},
 	"delayedWarning": {
-		"message": "The page you’re trying to access has been temporarily blocked by <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+		"message": "La pagina che stai cercando di visitare è stata temporaneamente bloccata da <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
 	},
 	"blockedSetLabel": {
-		"message": "Block Set"
+		"message": "Set di blocco"
 	},
 	"blockedKeywordMatched": {
-		"message": "Keyword matched:"
+		"message": "Parola chiave trovata:"
 	},
 	"blockedUnblockAt": {
-		"message": "The page will be unblocked at:"
+		"message": "La pagina verrà sbloccata alle:"
 	},
 	"blockedEndOfTime": {
-		"message": "the end of time"
+		"message": "la fine dei tempi"
 	},
 	"delayedCountdownPrefix": {
-		"message": "The page will be unblocked in"
+		"message": "La pagina verrà sbloccata tra"
 	},
 	"delayedCountdownSuffix": {
-		"message": "second(s)."
+		"message": "secondo/i."
 	},
 	"blockedCustomMsgLabel": {
-		"message": "A message from yourself:"
+		"message": "Un messaggio da te:"
 	},
 	"blockedSupportHtml": {
-		"message": "ivBlock will always be free to use, but if it has improved your life, please consider supporting its continued development by <a href=\"https://ko-fi.com/michaelhuelsen\">making a contribution</a> or <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">rating the app on the AppStore</a>."
+		"message": "ivBlock sarà sempre gratuito, ma se ti ha migliorato la vita, considera di supportare il suo sviluppo continuo <a href=\"https://ko-fi.com/michaelhuelsen\">facendo una donazione</a> o <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">valutando l'app sull'AppStore</a>."
 	},
 	"passwordPrompt": {
-		"message": "Enter the password to access the blocked page:"
+		"message": "Inserisci la password per accedere alla pagina bloccata:"
 	},
 	"buttonCancel": {
-		"message": "Cancel"
+		"message": "Annulla"
 	},
 	"alertRetrieveErrorHtml": {
-		"message": "<strong>Error:</strong> Unable to retrieve options from browser storage."
+		"message": "<strong>Errore:</strong> Impossibile recuperare le opzioni dalla memoria del browser."
 	},
 	"addSitesLegend": {
-		"message": "ivBlock Add Sites"
+		"message": "ivBlock - Aggiungi siti"
 	},
 	"addSitesSitesLabel": {
-		"message": "Enter the domain names of the sites to block (one item per line):"
+		"message": "Inserisci i nomi di dominio dei siti da bloccare (uno per riga):"
 	},
 	"addSitesToLabel": {
-		"message": "Add these sites to:"
+		"message": "Aggiungi questi siti a:"
 	},
 	"addSitesNoteHtml": {
-		"message": "<strong>Note:</strong> Any <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">exceptions</a> in the list of sites will be ignored!"
+		"message": "<strong>Nota:</strong> Le <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">eccezioni</a> nella lista dei siti verranno ignorate!"
 	},
 	"addSitesButton": {
-		"message": "Add Sites"
+		"message": "Aggiungi siti"
 	},
 	"lockdownLegend": {
-		"message": "ivBlock Lockdown"
+		"message": "ivBlock — Lockdown"
 	},
 	"lockdownDurationLabel": {
-		"message": "Enter the duration of the lockdown:"
+		"message": "Inserisci la durata del Lockdown:"
 	},
 	"lockdownHoursLabel": {
-		"message": "hour(s)"
+		"message": "ora/e"
 	},
 	"lockdownMinsLabel": {
-		"message": "minute(s)"
+		"message": "minuto/i"
 	},
 	"lockdownSitesLabel": {
-		"message": "Select the sites to block during the lockdown:"
+		"message": "Seleziona i siti da bloccare durante il Lockdown:"
 	},
 	"lockdownSitesInBlockSet": {
-		"message": "Sites specified in Block Set"
+		"message": "Siti specificati nel set di blocco"
 	},
 	"lockdownActivateButton": {
-		"message": "Activate Lockdown"
+		"message": "Attiva Lockdown"
 	},
 	"lockdownAlertNoDuration": {
-		"message": "Please enter a non-zero duration for the lockdown."
+		"message": "Inserisci una durata non nulla per il Lockdown."
 	},
 	"lockdownAlertNoSets": {
-		"message": "Please select the sites to lockdown."
+		"message": "Seleziona i siti da bloccare."
 	},
 	"overrideLegend": {
-		"message": "ivBlock Override"
+		"message": "ivBlock - Permesso temporaneo"
 	},
 	"overrideSuspendPrefix": {
-		"message": "Allow blocking to be suspended for"
+		"message": "Consenti la sospensione del blocco per"
 	},
 	"overrideMinsLabel": {
-		"message": "minute(s)"
+		"message": "minuto/i"
 	},
 	"overrideActivateButton": {
-		"message": "Activate Override"
+		"message": "Attiva permesso"
 	},
 	"overrideAlertLimitReachedHtml": {
-		"message": "You have reached your limit of <strong><span id=\"alertLimitNum\"></span></strong> override(s) <span id=\"alertLimitReachedPeriod\"></span>."
+		"message": "Hai raggiunto il limite di <strong><span id=\"alertLimitNum\"></span></strong> permesso/i <span id=\"alertLimitReachedPeriod\"></span>."
 	},
 	"overrideAlertNoDuration": {
-		"message": "Please enter a non-zero duration for the override."
+		"message": "Inserisci una durata non nulla per il permesso temporaneo."
 	},
 	"overrideAlertActivatedHtml": {
-		"message": "Override activated. Blocking will be suspended until <strong><span id=\"alertOverrideEndTime\"></span></strong>."
+		"message": "Permesso attivato. Il blocco sarà sospeso fino alle <strong><span id=\"alertOverrideEndTime\"></span></strong>."
 	},
 	"overrideAlertNoSetsHtml": {
-		"message": "<strong>Note:</strong> Override will have no effect because you have not selected<br>\"Allow temporary override for these sites\" for any block sets."
+		"message": "<strong>Nota:</strong> Il permesso non avrà effetto perché non hai selezionato<br>\"Consenti permesso temporaneo per questi siti\" per nessun set di blocco."
 	},
 	"overrideAlertSetsHtml": {
-		"message": "Override will be applied to sites in: <span id=\"alertOverrideSetList\"></span>"
+		"message": "Il permesso verrà applicato ai siti in: <span id=\"alertOverrideSetList\"></span>"
 	},
 	"overrideAlertLimitHtml": {
-		"message": "You are allowed <strong><span id=\"alertLimitLeft\"></span></strong> more override(s) <span id=\"alertLimitPeriod\"></span>."
+		"message": "Hai ancora <strong><span id=\"alertLimitLeft\"></span></strong> permesso/i disponibile/i <span id=\"alertLimitPeriod\"></span>."
 	},
 	"overridePromptPassword": {
-		"message": "Enter the password to activate override:"
+		"message": "Inserisci la password per attivare il permesso temporaneo:"
 	},
 	"overridePromptAccessCode": {
-		"message": "Enter the following code to activate override:"
+		"message": "Inserisci il seguente codice per attivare il permesso temporaneo:"
 	},
 	"statsLegend": {
-		"message": "ivBlock Statistics"
+		"message": "ivBlock - Statistiche"
 	},
 	"statsStartTime": {
-		"message": "Start Date/Time:"
+		"message": "Data/Ora di inizio:"
 	},
 	"statsTotalTime": {
-		"message": "Time Spent Since Start:"
+		"message": "Tempo trascorso dall'inizio:"
 	},
 	"statsPerWeekTime": {
-		"message": "Time Spent Per Week:"
+		"message": "Tempo trascorso a settimana:"
 	},
 	"statsPerDayTime": {
-		"message": "Time Spent Per Day:"
+		"message": "Tempo trascorso al giorno:"
 	},
 	"statsTimeLeft": {
-		"message": "Time Left in Limit Period:"
+		"message": "Tempo rimanente nel periodo:"
 	},
 	"statsRolloverTime": {
-		"message": "Rollover Time:"
+		"message": "Tempo Rollover:"
 	},
 	"statsLockdownEndTime": {
-		"message": "Lockdown End Time:"
+		"message": "Fine del Lockdown:"
 	},
 	"statsRestart": {
-		"message": "Restart"
+		"message": "Riavvia"
 	},
 	"statsRestartAll": {
-		"message": "Restart All"
+		"message": "Riavvia tutto"
 	},
 	"diagLegend": {
-		"message": "Diagnostics"
+		"message": "Diagnostica"
 	},
 	"diagUrlLabel": {
-		"message": "Enter the fully specified URL to test against your current block sets:"
+		"message": "Inserisci l'URL completo da testare con i tuoi set di blocco:"
 	},
 	"diagUrlPlaceholder": {
-		"message": "e.g. https://somesite.com"
+		"message": "es. https://somesite.com"
 	},
 	"diagTestButton": {
-		"message": "Test"
+		"message": "Testa"
 	},
 	"diagTip": {
-		"message": "Tip: You can copy/paste from your browser's location bar."
+		"message": "Suggerimento: puoi copiare/incollare dalla barra degli indirizzi del browser."
 	},
 	"diagAlertBadUrl": {
-		"message": "Please enter the URL in the correct format (as a fully specified URL)."
+		"message": "Inserisci l'URL nel formato corretto (come URL completo)."
 	},
 	"optBlockSetDefault": {
-		"message": "Block Set"
+		"message": "Set di blocco"
 	},
 	"optTabGeneral": {
-		"message": "General"
+		"message": "Generale"
 	},
 	"optTabAbout": {
-		"message": "About"
+		"message": "Informazioni"
 	},
 	"optMoveSetLeft": {
-		"message": "← Move Set"
+		"message": "← Sposta set"
 	},
 	"optShowSimplified": {
-		"message": "Show Simplified Options"
+		"message": "Mostra opzioni semplificate"
 	},
 	"optShowFull": {
-		"message": "Show Full Options"
+		"message": "Mostra opzioni complete"
 	},
 	"optMoveSetRight": {
-		"message": "Move Set →"
+		"message": "Sposta set →"
 	},
 	"optWhatToBlock": {
-		"message": "What to Block"
+		"message": "Cosa bloccare"
 	},
 	"optWhatToBlockDesc": {
-		"message": "In this section, specify the sites you want to block."
+		"message": "In questa sezione, specifica i siti che vuoi bloccare."
 	},
 	"optSetNameLabel": {
-		"message": "Enter a custom name for this block set (optional):"
+		"message": "Inserisci un nome personalizzato per questo set di blocco (opzionale):"
 	},
 	"optSitesLabel": {
-		"message": "Enter the domain names of the sites to block (one item per line):"
+		"message": "Inserisci i nomi di dominio dei siti da bloccare (uno per riga):"
 	},
 	"optSitesNoteHtml": {
-		"message": "<strong>Note:</strong> Do <u>not</u> include URL protocol prefixes such as <code>http://</code> or <code>file://</code>."
+		"message": "<strong>Nota:</strong> Non includere prefissi di protocollo URL come <code>http://</code> o <code>file://</code>."
 	},
 	"optSitesTipHtml": {
-		"message": "<strong>Tip:</strong> Use <code>*</code> or <code>**</code> as <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">wildcard</a>, <code>+</code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">exceptions</a>, <code>></code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">referrers</a>, and <code>~</code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">keywords</a>."
+		"message": "<strong>Suggerimento:</strong> Usa <code>*</code> o <code>**</code> come <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">jolly</a>, <code>+</code> per le <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">eccezioni</a>, <code>></code> per i <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">referrer</a>, e <code>~</code> per le <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">parole chiave</a>."
 	},
 	"optWhenToBlock": {
-		"message": "When to Block"
+		"message": "Quando bloccare"
 	},
 	"optWhenToBlockDesc": {
-		"message": "In this section, specify when you want to block these sites."
+		"message": "In questa sezione, specifica quando vuoi bloccare questi siti."
 	},
 	"optTimesLabel": {
-		"message": "Enter the time periods within which to block these sites (optional):"
+		"message": "Inserisci i periodi di tempo in cui bloccare questi siti (opzionale):"
 	},
 	"optTimesTitle": {
-		"message": "Leave blank for no time periods"
+		"message": "Lascia vuoto per nessun periodo"
 	},
 	"optAllDay": {
-		"message": "All Day"
+		"message": "Tutto il giorno"
 	},
 	"optTimeLimitLabel": {
-		"message": "Enter a time limit after which to block these sites (optional):"
+		"message": "Inserisci un limite di tempo dopo il quale bloccare questi siti (opzionale):"
 	},
 	"optTimeLimitTitle": {
-		"message": "Leave blank for no time limit"
+		"message": "Lascia vuoto per nessun limite"
 	},
 	"optMinutesInEvery": {
-		"message": "minutes in every"
+		"message": "minuti ogni"
 	},
 	"optPeriod5min": {
-		"message": "5 minutes"
+		"message": "5 minuti"
 	},
 	"optPeriod10min": {
-		"message": "10 minutes"
+		"message": "10 minuti"
 	},
 	"optPeriod15min": {
-		"message": "15 minutes"
+		"message": "15 minuti"
 	},
 	"optPeriod20min": {
-		"message": "20 minutes"
+		"message": "20 minuti"
 	},
 	"optPeriodHalfHour": {
-		"message": "half-hour (30 minutes)"
+		"message": "mezz'ora (30 minuti)"
 	},
 	"optPeriodHour": {
-		"message": "hour (60 minutes)"
+		"message": "ora (60 minuti)"
 	},
 	"optPeriod1_5Hours": {
-		"message": "1.5 hours (90 minutes)"
+		"message": "1,5 ore (90 minuti)"
 	},
 	"optPeriod2Hours": {
-		"message": "2 hours"
+		"message": "2 ore"
 	},
 	"optPeriod3Hours": {
-		"message": "3 hours"
+		"message": "3 ore"
 	},
 	"optPeriod4Hours": {
-		"message": "4 hours"
+		"message": "4 ore"
 	},
 	"optPeriod6Hours": {
-		"message": "6 hours"
+		"message": "6 ore"
 	},
 	"optPeriod8Hours": {
-		"message": "8 hours"
+		"message": "8 ore"
 	},
 	"optPeriodHalfDay": {
-		"message": "half-day (12 hours)"
+		"message": "mezza giornata (12 ore)"
 	},
 	"optPeriodDay": {
-		"message": "day (24 hours)"
+		"message": "giorno (24 ore)"
 	},
 	"optPeriod2Days": {
-		"message": "2 days"
+		"message": "2 giorni"
 	},
 	"optPeriod3Days": {
-		"message": "3 days"
+		"message": "3 giorni"
 	},
 	"optPeriod4Days": {
-		"message": "4 days"
+		"message": "4 giorni"
 	},
 	"optPeriodWeek": {
-		"message": "week (7 days)"
+		"message": "settimana (7 giorni)"
 	},
 	"optPeriod2Weeks": {
-		"message": "2 weeks (14 days)"
+		"message": "2 settimane (14 giorni)"
 	},
 	"optPeriod1Month": {
-		"message": "1 month (30 days)"
+		"message": "1 mese (30 giorni)"
 	},
 	"optPeriod2Months": {
-		"message": "2 months (60 days)"
+		"message": "2 mesi (60 giorni)"
 	},
 	"optPeriod3Months": {
-		"message": "3 months (90 days)"
+		"message": "3 mesi (90 giorni)"
 	},
 	"optRollover": {
-		"message": "Roll over unused time"
+		"message": "Riporta il tempo inutilizzato"
 	},
 	"optCountFocus": {
-		"message": "Count time spent on these sites only when browser tab is active"
+		"message": "Conta il tempo su questi siti solo quando la scheda del browser è attiva"
 	},
 	"optCountAudio": {
-		"message": "Count time spent on these sites only when browser tab is playing audio"
+		"message": "Conta il tempo su questi siti solo quando la scheda del browser riproduce audio"
 	},
 	"optConjModeLabel": {
-		"message": "Select when to block these sites:"
+		"message": "Seleziona quando bloccare questi siti:"
 	},
 	"optConjModeOr": {
-		"message": "within time periods OR after time limit"
+		"message": "nei periodi di tempo O dopo il limite"
 	},
 	"optConjModeAnd": {
-		"message": "within time periods AND after time limit"
+		"message": "nei periodi di tempo E dopo il limite"
 	},
 	"optDaysLabel": {
-		"message": "Select the days on which to block these sites:"
+		"message": "Seleziona i giorni in cui bloccare questi siti:"
 	},
 	"optDaySun": {
-		"message": "Sunday"
+		"message": "Domenica"
 	},
 	"optDayMon": {
-		"message": "Monday"
+		"message": "Lunedì"
 	},
 	"optDayTue": {
-		"message": "Tuesday"
+		"message": "Martedì"
 	},
 	"optDayWed": {
-		"message": "Wednesday"
+		"message": "Mercoledì"
 	},
 	"optDayThu": {
-		"message": "Thursday"
+		"message": "Giovedì"
 	},
 	"optDayFri": {
-		"message": "Friday"
+		"message": "Venerdì"
 	},
 	"optDaySat": {
-		"message": "Saturday"
+		"message": "Sabato"
 	},
 	"optHowToBlock": {
-		"message": "How to Block"
+		"message": "Come bloccare"
 	},
 	"optHowToBlockDesc": {
-		"message": "In this section, specify how you want to block these sites."
+		"message": "In questa sezione, specifica come vuoi bloccare questi siti."
 	},
 	"optBlockURLLabel": {
-		"message": "Enter the fully specified URL of the page to show instead of these blocked sites:"
+		"message": "Inserisci l'URL completo della pagina da mostrare al posto dei siti bloccati:"
 	},
 	"optBlockURLTitle": {
-		"message": "Use $U to pass URL of blocked page"
+		"message": "Usa $U per passare l'URL della pagina bloccata"
 	},
 	"optPredefinedURLs": {
-		"message": "Predefined URLs:"
+		"message": "URL predefiniti:"
 	},
 	"optDefaultPage": {
-		"message": "Default Page"
+		"message": "Pagina predefinita"
 	},
 	"optDelayingPage": {
-		"message": "Delaying Page"
+		"message": "Pagina di ritardo"
 	},
 	"optPasswordPage": {
-		"message": "Password Page"
+		"message": "Pagina password"
 	},
 	"optBlankPage": {
-		"message": "Blank Page"
+		"message": "Pagina vuota"
 	},
 	"optPasswordRequireLabel": {
-		"message": "Select the requirement for the password page:"
+		"message": "Seleziona il requisito per la pagina password:"
 	},
 	"optPasswordRequire0": {
-		"message": "Require the user to enter a set-specific password (see below)"
+		"message": "Richiedi all'utente di inserire una password specifica del set (vedi sotto)"
 	},
 	"optPasswordRequire1": {
-		"message": "Require the user to enter the override password"
+		"message": "Richiedi all'utente di inserire la password di permesso"
 	},
 	"optPasswordRequire2": {
-		"message": "Require the user to enter the access control password"
+		"message": "Richiedi all'utente di inserire la password di controllo accessi"
 	},
 	"optSetSpecificPassword": {
-		"message": "Set-specific password:"
+		"message": "Password specifica del set:"
 	},
 	"optCustomMsgLabel": {
-		"message": "Enter a custom message for the blocking page (optional):"
+		"message": "Inserisci un messaggio personalizzato per la pagina di blocco (opzionale):"
 	},
 	"optCustomMsgPlaceholder": {
-		"message": "Example: Get back to work!"
+		"message": "Esempio: Torna al lavoro!"
 	},
 	"optBlockPagesIn": {
-		"message": "Block pages in"
+		"message": "Blocca pagine in"
 	},
 	"optIncogMode0": {
-		"message": "both non-private and private tabs"
+		"message": "schede sia normali che private"
 	},
 	"optIncogMode1": {
-		"message": "only non-private tabs"
+		"message": "solo schede normali"
 	},
 	"optIncogMode2": {
-		"message": "only private tabs"
+		"message": "solo schede private"
 	},
 	"optActiveTabMode0": {
-		"message": "both active and inactive tabs"
+		"message": "schede sia attive che inattive"
 	},
 	"optActiveTabMode1": {
-		"message": "only active tabs"
+		"message": "solo schede attive"
 	},
 	"optActiveTabMode2": {
-		"message": "only inactive tabs"
+		"message": "solo schede inattive"
 	},
 	"optApplyFilter": {
-		"message": "Apply filter instead of blocking page:"
+		"message": "Applica filtro invece di bloccare la pagina:"
 	},
 	"optFilterMute": {
-		"message": "Mute tab with filter"
+		"message": "Disattiva audio della scheda con il filtro"
 	},
 	"optCustomFilter": {
-		"message": "Custom filter property (CSS):"
+		"message": "Proprietà filtro personalizzata (CSS):"
 	},
 	"optCloseTab": {
-		"message": "Close tab instead of blocking page"
+		"message": "Chiudi la scheda invece di bloccare la pagina"
 	},
 	"optActiveBlock": {
-		"message": "Immediately block pages on these sites once blocking conditions are met"
+		"message": "Blocca immediatamente le pagine su questi siti non appena le condizioni di blocco sono soddisfatte"
 	},
 	"optMinBlockPrefix": {
-		"message": "Always block sites for at least"
+		"message": "Blocca sempre i siti per almeno"
 	},
 	"optMinBlockTitle": {
-		"message": "Leave blank for no minimum block time"
+		"message": "Lascia vuoto per nessun tempo minimo di blocco"
 	},
 	"optMinutes": {
-		"message": "minutes"
+		"message": "minuti"
 	},
 	"optShowKeyword": {
-		"message": "Show matched keyword on blocking page"
+		"message": "Mostra la parola chiave trovata nella pagina di blocco"
 	},
 	"optTitleOnly": {
-		"message": "Check for keywords only in page title"
+		"message": "Controlla le parole chiave solo nel titolo della pagina"
 	},
 	"optDelayFirst": {
-		"message": "Block only first accessed page of"
+		"message": "Blocca solo la prima pagina visitata di"
 	},
 	"optDelayFirstSite": {
-		"message": "site"
+		"message": "sito"
 	},
 	"optDelayFirstBlockSet": {
-		"message": "block set"
+		"message": "set di blocco"
 	},
 	"optWhenDelayingPageUsed": {
-		"message": "when delaying/password page is used"
+		"message": "quando si usa la pagina di ritardo/password"
 	},
 	"optDelayAllowPrefix": {
-		"message": "Allow access to sites for only"
+		"message": "Consenti l'accesso ai siti solo per"
 	},
 	"optDelayAllowTitle": {
-		"message": "Leave blank to allow indefinitely"
+		"message": "Lascia vuoto per consentire indefinitamente"
 	},
 	"optAfterDelayingPageUsed": {
-		"message": "after delaying/password page is used"
+		"message": "dopo l'uso della pagina di ritardo/password"
 	},
 	"optDelaySecsPrefix": {
-		"message": "Delay access to sites by"
+		"message": "Ritarda l'accesso ai siti di"
 	},
 	"optSeconds": {
-		"message": "seconds"
+		"message": "secondi"
 	},
 	"optWhenDelayingPageUsed2": {
-		"message": "when delaying page is used"
+		"message": "quando si usa la pagina di ritardo"
 	},
 	"optDelayAutoLoad": {
-		"message": "Automatically load blocked page when delay countdown reaches zero"
+		"message": "Carica automaticamente la pagina bloccata quando il conto alla rovescia raggiunge zero"
 	},
 	"optDelayCancel": {
-		"message": "Cancel delay countdown if delaying page loses focus"
+		"message": "Annulla il conto alla rovescia se la pagina di ritardo perde il focus"
 	},
 	"optReloadSecsPrefix": {
-		"message": "Attempt to reload blocked page every"
+		"message": "Prova a ricaricare la pagina bloccata ogni"
 	},
 	"optReloadNote": {
-		"message": "(only applies to default page)"
+		"message": "(si applica solo alla pagina predefinita)"
 	},
 	"optAddHistory": {
-		"message": "Add blocked page to browser history"
+		"message": "Aggiungi la pagina bloccata alla cronologia del browser"
 	},
 	"optAllowOverride": {
-		"message": "Allow temporary override for these sites"
+		"message": "Consenti permesso temporaneo per questi siti"
 	},
 	"optAllowOverLock": {
-		"message": "Allow temporary override during lockdown"
+		"message": "Consenti permesso temporaneo durante il Lockdown"
 	},
 	"optResetToDefaults": {
-		"message": "Reset Options to Defaults"
+		"message": "Reimposta opzioni ai valori predefiniti"
 	},
 	"optShowAdvanced": {
-		"message": "Show Advanced Options"
+		"message": "Mostra opzioni avanzate"
 	},
 	"optAdvancedLegend": {
-		"message": "Advanced Options"
+		"message": "Opzioni avanzate"
 	},
 	"optAdvancedWarning": {
-		"message": "Be sure you understand the consequences of these options before changing any of them!"
+		"message": "Assicurati di capire le conseguenze di queste opzioni prima di modificarle!"
 	},
 	"optDisableSet": {
-		"message": "Disable this block set (for debugging purposes)"
+		"message": "Disabilita questo set di blocco (per il debug)"
 	},
 	"optShowTimer": {
-		"message": "Show countdown timer for this block set"
+		"message": "Mostra il timer per questo set di blocco"
 	},
 	"optAllowRefers": {
-		"message": "Treat referrers as allow-conditions rather than block-conditions"
+		"message": "Tratta i referrer come condizioni di permesso invece che di blocco"
 	},
 	"optAllowKeywords": {
-		"message": "Treat keywords as allow-conditions rather than block-conditions"
+		"message": "Tratta le parole chiave come condizioni di permesso invece che di blocco"
 	},
 	"optWaitPrefix": {
-		"message": "Wait"
+		"message": "Attendi"
 	},
 	"optWaitSuffix": {
-		"message": "second(s) after page has loaded"
+		"message": "secondo/i dopo il caricamento della pagina"
 	},
 	"optBeforeChecking": {
-		"message": "before checking blocking conditions"
+		"message": "prima di verificare le condizioni di blocco"
 	},
 	"optPrevOpts": {
-		"message": "Prevent access to options for this block set at times when these sites are blocked"
+		"message": "Impedisci l'accesso alle opzioni di questo set di blocco quando questi siti sono bloccati"
 	},
 	"optPrevGenOpts": {
-		"message": "Prevent access to General options at times when these sites are blocked"
+		"message": "Impedisci l'accesso alle opzioni Generali quando questi siti sono bloccati"
 	},
 	"optPrevAddonsHtml": {
-		"message": "Prevent access to <strong>about:addons</strong> at times when these sites are blocked"
+		"message": "Impedisci l'accesso a <strong>about:addons</strong> quando questi siti sono bloccati"
 	},
 	"optPrevSupportHtml": {
-		"message": "Prevent access to <strong>about:support</strong> at times when these sites are blocked"
+		"message": "Impedisci l'accesso a <strong>about:support</strong> quando questi siti sono bloccati"
 	},
 	"optPrevProfilesHtml": {
-		"message": "Prevent access to <strong>about:profiles</strong> at times when these sites are blocked"
+		"message": "Impedisci l'accesso a <strong>about:profiles</strong> quando questi siti sono bloccati"
 	},
 	"optPrevDebuggingHtml": {
-		"message": "Prevent access to <strong>about:debugging</strong> at times when these sites are blocked"
+		"message": "Impedisci l'accesso a <strong>about:debugging</strong> quando questi siti sono bloccati"
 	},
 	"optPrevOverrideHtml": {
-		"message": "Allow override to apply to <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong>, and <strong>about:debugging</strong>"
+		"message": "Consenti al permesso di applicarsi a <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong> e <strong>about:debugging</strong>"
 	},
 	"optLimitOffsetPrefix": {
-		"message": "Offset time limit period by"
+		"message": "Sfasa il periodo limite di"
 	},
 	"optLimitOffsetTitle": {
-		"message": "Leave blank for no offset"
+		"message": "Lascia vuoto per nessuno sfasamento"
 	},
 	"optHours": {
-		"message": "hours"
+		"message": "ore"
 	},
 	"optSitesURLLabel": {
-		"message": "Load list of sites from URL:"
+		"message": "Carica lista siti da URL:"
 	},
 	"optSitesURLTitle": {
-		"message": "Use $S to pass block set number and $T to pass UTC timestamp in milliseconds"
+		"message": "Usa $S per il numero del set di blocco e $T per il timestamp UTC in millisecondi"
 	},
 	"optRegexpBlockHtml": {
-		"message": "Use <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">regular expression</a> to match URLs to <strong>block</strong> (overrides list of sites):"
+		"message": "Usa un'<a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">espressione regolare</a> per abbinare gli URL da <strong>bloccare</strong> (ha la precedenza sulla lista siti):"
 	},
 	"optClear": {
-		"message": "Clear"
+		"message": "Cancella"
 	},
 	"optGenerateFromSiteList": {
-		"message": "Generate From Site List"
+		"message": "Genera dalla lista siti"
 	},
 	"optRegexpAllowHtml": {
-		"message": "Use <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">regular expression</a> to match URLs to <strong>allow</strong> (overrides exceptions in list of sites):"
+		"message": "Usa un'<a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">espressione regolare</a> per abbinare gli URL da <strong>consentire</strong> (ha la precedenza sulle eccezioni nella lista siti):"
 	},
 	"optRegexpKeywordHtml": {
-		"message": "Use <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">regular expression</a> to match <strong>keywords</strong> (overrides keywords in list of sites):"
+		"message": "Usa un'<a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">espressione regolare</a> per abbinare le <strong>parole chiave</strong> (ha la precedenza sulle parole chiave nella lista siti):"
 	},
 	"optIgnoreHash": {
-		"message": "Ignore fragment (hash part) when checking URL"
+		"message": "Ignora il frammento (parte hash) quando si controlla l'URL"
 	},
 	"optCancelLockdown": {
-		"message": "Cancel Active Lockdown"
+		"message": "Annulla Lockdown attivo"
 	},
 	"optBlockSetsLegend": {
-		"message": "Block Sets"
+		"message": "Set di blocco"
 	},
 	"optNumSetsPrefix": {
-		"message": "Number of block sets (1&ndash;<span id=\"maxSets\">?</span>):"
+		"message": "Numero di set di blocco (1&ndash;<span id=\"maxSets\">?</span>):"
 	},
 	"optNumSetsTitle": {
-		"message": "Default: 6"
+		"message": "Predefinito: 6"
 	},
 	"optAccessControlLegend": {
-		"message": "Access Control"
+		"message": "Controllo accessi"
 	},
 	"optAccessRequireLabel": {
-		"message": "Select the requirement for access to options:"
+		"message": "Seleziona il requisito per l'accesso alle opzioni:"
 	},
 	"optAccess0": {
-		"message": "Don't require the user to enter any password or access code"
+		"message": "Non richiedere all'utente di inserire alcuna password o codice di accesso"
 	},
 	"optAccess1": {
-		"message": "Require the user to enter a password"
+		"message": "Richiedi all'utente di inserire una password"
 	},
 	"optAccess2": {
-		"message": "Require the user to enter a random 32-character access code"
+		"message": "Richiedi all'utente di inserire un codice di accesso casuale di 32 caratteri"
 	},
 	"optAccess3": {
-		"message": "Require the user to enter a random 64-character access code"
+		"message": "Richiedi all'utente di inserire un codice di accesso casuale di 64 caratteri"
 	},
 	"optAccess4": {
-		"message": "Require the user to enter a random 128-character access code"
+		"message": "Richiedi all'utente di inserire un codice di accesso casuale di 128 caratteri"
 	},
 	"optPasswordLabel": {
 		"message": "Password:"
 	},
 	"optShowPassword": {
-		"message": "Show password"
+		"message": "Mostra password"
 	},
 	"optHidePassword": {
-		"message": "Hide password characters when entered at prompt"
+		"message": "Nascondi i caratteri della password quando inseriti al prompt"
 	},
 	"optPreventAccessLabel": {
-		"message": "Prevent all access to options during these time periods:"
+		"message": "Impedisci tutto l'accesso alle opzioni durante questi periodi:"
 	},
 	"optTimesPlaceholder": {
-		"message": "Example: 0900-1230,1330-1700"
+		"message": "Esempio: 0900-1230,1330-1700"
 	},
 	"optTimerLegend": {
-		"message": "Countdown Timer"
+		"message": "Timer conto alla rovescia"
 	},
 	"optTimerVisible": {
-		"message": "Show timer over page"
+		"message": "Mostra timer sulla pagina"
 	},
 	"optTimerSizeLabel": {
-		"message": "Size:"
+		"message": "Dimensione:"
 	},
 	"optTimerSmall": {
-		"message": "small"
+		"message": "piccolo"
 	},
 	"optTimerMedium": {
-		"message": "medium"
+		"message": "medio"
 	},
 	"optTimerLarge": {
-		"message": "large"
+		"message": "grande"
 	},
 	"optTimerXLarge": {
-		"message": "extra large"
+		"message": "molto grande"
 	},
 	"optTimerLocationLabel": {
-		"message": "Location:"
+		"message": "Posizione:"
 	},
 	"optTimerTopLeft": {
-		"message": "top left"
+		"message": "in alto a sinistra"
 	},
 	"optTimerTopRight": {
-		"message": "top right"
+		"message": "in alto a destra"
 	},
 	"optTimerBottomRight": {
-		"message": "bottom right"
+		"message": "in basso a destra"
 	},
 	"optTimerBottomLeft": {
-		"message": "bottom left"
+		"message": "in basso a sinistra"
 	},
 	"optTimerMaxHoursPrefix": {
-		"message": "Show timer only when time left is less than"
+		"message": "Mostra il timer solo quando il tempo rimanente è inferiore a"
 	},
 	"optTimerMaxHoursTitle": {
-		"message": "Leave blank for no limit"
+		"message": "Lascia vuoto per nessun limite"
 	},
 	"optHoursLabel": {
-		"message": "hour(s)"
+		"message": "ora/e"
 	},
 	"optTimerBadge": {
-		"message": "Show timer as icon badge (if time left is less than 10 minutes)"
+		"message": "Mostra il timer come badge sull'icona (se il tempo rimanente è inferiore a 10 minuti)"
 	},
 	"optTimerTipHtml": {
-		"message": "<strong>Tip:</strong> Double-click on the over-page timer to hide it at any time (e.g., before printing page)."
+		"message": "<strong>Suggerimento:</strong> Fai doppio clic sul timer sulla pagina per nasconderlo in qualsiasi momento (ad es. prima di stampare la pagina)."
 	},
 	"optWarnLegend": {
-		"message": "Warning Message"
+		"message": "Messaggio di avviso"
 	},
 	"optWarnPrefix": {
-		"message": "Display warning message"
+		"message": "Mostra messaggio di avviso"
 	},
 	"optWarnTitle": {
-		"message": "Leave blank for no warning"
+		"message": "Lascia vuoto per nessun avviso"
 	},
 	"optWarnSuffix": {
-		"message": "seconds before site is blocked"
+		"message": "secondi prima che il sito venga bloccato"
 	},
 	"optWarnImmediate": {
-		"message": "Only display warning message on pages that will be immediately blocked"
+		"message": "Mostra il messaggio di avviso solo sulle pagine che verranno bloccate immediatamente"
 	},
 	"optOverrideLegend": {
-		"message": "Temporary Override"
+		"message": "Permesso temporaneo"
 	},
 	"optOverridePrefix": {
-		"message": "Allow blocking to be suspended for"
+		"message": "Consenti la sospensione del blocco per"
 	},
 	"optOverrideMinsTitle": {
-		"message": "Leave blank to specify a duration when the override is activated"
+		"message": "Lascia vuoto per specificare la durata quando si attiva il permesso"
 	},
 	"optMinutesLabel": {
-		"message": "minute(s)"
+		"message": "minuto/i"
 	},
 	"optOverrideLimitPrefix": {
-		"message": "Allow no more than"
+		"message": "Consenti non più di"
 	},
 	"optOverrideLimitTitle": {
-		"message": "Leave blank for no limit"
+		"message": "Lascia vuoto per nessun limite"
 	},
 	"optOverrideLimitSuffix": {
-		"message": "override(s) every"
+		"message": "permesso/i ogni"
 	},
 	"optOverridePeriodHour": {
-		"message": "hour"
+		"message": "ora"
 	},
 	"optOverridePeriodDay": {
-		"message": "day"
+		"message": "giorno"
 	},
 	"optOverridePeriodWeek": {
-		"message": "week"
+		"message": "settimana"
 	},
 	"optOverrideAccessLabel": {
-		"message": "Select the requirement for activating the override:"
+		"message": "Seleziona il requisito per attivare il permesso temporaneo:"
 	},
 	"optOverrideAccess1": {
-		"message": "Require the user to enter the access control password (see above)"
+		"message": "Richiedi all'utente di inserire la password di controllo accessi (vedi sopra)"
 	},
 	"optOverrideAccess8": {
-		"message": "Require the user to enter a predefined access code (see below)"
+		"message": "Richiedi all'utente di inserire un codice di accesso predefinito (vedi sotto)"
 	},
 	"optOverrideAccess9": {
-		"message": "Require the user to enter a separate override password (see below)"
+		"message": "Richiedi all'utente di inserire una password di permesso separata (vedi sotto)"
 	},
 	"optPredefinedCode": {
-		"message": "Predefined access code:"
+		"message": "Codice di accesso predefinito:"
 	},
 	"optOverridePassword": {
-		"message": "Override password:"
+		"message": "Password di permesso:"
 	},
 	"optOverrideConfirm": {
-		"message": "Show confirmation message when override is activated"
+		"message": "Mostra messaggio di conferma quando il permesso è attivato"
 	},
 	"optOverrideNoteHtml": {
-		"message": "<strong>Note:</strong> You must also select \"Allow temporary override for these sites\" for the relevant block sets."
+		"message": "<strong>Nota:</strong> Devi anche selezionare \"Consenti permesso temporaneo per questi siti\" per i set di blocco pertinenti."
 	},
 	"optAppearanceLegend": {
-		"message": "Appearance"
+		"message": "Aspetto"
 	},
 	"optThemeLabel": {
-		"message": "Theme:"
+		"message": "Tema:"
 	},
 	"optThemeDefault": {
-		"message": "Default"
+		"message": "Predefinito"
 	},
 	"optCustomStyleLabel": {
-		"message": "Custom style (CSS) for blocking/delaying/password page:"
+		"message": "Stile personalizzato (CSS) per la pagina di blocco/ritardo/password:"
 	},
 	"optMiscLegend": {
-		"message": "Miscellaneous"
+		"message": "Varie"
 	},
 	"optContextMenu": {
-		"message": "Show context menu"
+		"message": "Mostra menu contestuale"
 	},
 	"optMatchSubdomains": {
-		"message": "Block all subdomains (not just www)"
+		"message": "Blocca tutti i sottodomini (non solo www)"
 	},
 	"optDisableLink": {
-		"message": "Disable hyperlink to blocked page on blocking/delaying/password page"
+		"message": "Disabilita il collegamento ipertestuale alla pagina bloccata nella pagina di blocco/ritardo/password"
 	},
 	"optClockFormatPrefix": {
-		"message": "Display clock times in"
+		"message": "Mostra gli orari in formato"
 	},
 	"optClockDefault": {
-		"message": "default"
+		"message": "predefinito"
 	},
 	"optClock12h": {
-		"message": "12-hour"
+		"message": "12 ore"
 	},
 	"optClock24h": {
-		"message": "24-hour"
+		"message": "24 ore"
 	},
 	"optClockFormatSuffix": {
-		"message": "format"
+		"message": ""
 	},
 	"optClockOffsetPrefix": {
-		"message": "Offset clock by"
+		"message": "Sfasa l'orologio di"
 	},
 	"optClockOffsetTitle": {
-		"message": "Leave blank for no offset"
+		"message": "Lascia vuoto per nessuno sfasamento"
 	},
 	"optIgnoreJumpPrefix": {
-		"message": "Ignore jumps in time spent greater than"
+		"message": "Ignora salti nel tempo trascorso superiori a"
 	},
 	"optAllFocused": {
-		"message": "Treat browser windows as always focused"
+		"message": "Tratta le finestre del browser come sempre attive"
 	},
 	"optUseDocFocus": {
-		"message": "Use document focus for counting time on active tab (Android only)"
+		"message": "Usa il focus del documento per contare il tempo sulla scheda attiva (solo Android)"
 	},
 	"optAccessCodeImage": {
-		"message": "Display access code as image"
+		"message": "Mostra il codice di accesso come immagine"
 	},
 	"optSyncStorage": {
-		"message": "Use sync storage for options (experimental: use at your own risk!)"
+		"message": "Usa l'archiviazione sincronizzata per le opzioni (sperimentale: usare a proprio rischio!)"
 	},
 	"optAllowLBWebsite": {
-		"message": "Always allow access to ivBlock website"
+		"message": "Consenti sempre l'accesso al sito web di ivBlock"
 	},
 	"optDiagMode": {
-		"message": "Diagnostic mode (outputs to browser console)"
+		"message": "Modalità diagnostica (output nella console del browser)"
 	},
 	"optPerformanceLegend": {
-		"message": "Performance"
+		"message": "Prestazioni"
 	},
 	"optSaveSecsPrefix": {
-		"message": "Save time data every"
+		"message": "Salva i dati temporali ogni"
 	},
 	"optSaveSecsTitle": {
-		"message": "Default: 10"
+		"message": "Predefinito: 10"
 	},
 	"optProcessTabsPrefix": {
-		"message": "Process tabs every"
+		"message": "Elabora le schede ogni"
 	},
 	"optProcessTabsTitle": {
-		"message": "Default: 1"
+		"message": "Predefinito: 1"
 	},
 	"optProcessActiveTabs": {
-		"message": "Process only active tabs (improves performance when multiple tabs open)"
+		"message": "Elabora solo le schede attive (migliora le prestazioni con più schede aperte)"
 	},
 	"optExportImportLegend": {
-		"message": "Export / Import"
+		"message": "Esportazione / Importazione"
 	},
 	"optImportNoteHtml": {
-		"message": "<strong>Note:</strong> Import will be disabled if you have prevented access to the options for any block set."
+		"message": "<strong>Nota:</strong> L'importazione sarà disabilitata se hai impedito l'accesso alle opzioni per qualsiasi set di blocco."
 	},
 	"optDownloadToFile": {
-		"message": "Download options to file (otherwise, show in new tab)"
+		"message": "Scarica le opzioni in un file (altrimenti, mostra in una nuova scheda)"
 	},
 	"optExportTextHtml": {
-		"message": "Export Options<br>to Text File"
+		"message": "Esporta opzioni<br>in file di testo"
 	},
 	"optImportTextHtml": {
-		"message": "Import Options<br>from Text File"
+		"message": "Importa opzioni<br>da file di testo"
 	},
 	"optExportJsonHtml": {
-		"message": "Export Options<br>to JSON File"
+		"message": "Esporta opzioni<br>in file JSON"
 	},
 	"optExportPasswords": {
-		"message": "Include passwords in exported options"
+		"message": "Includi le password nelle opzioni esportate"
 	},
 	"optExportSyncHtml": {
-		"message": "Export Options<br>to Sync Storage"
+		"message": "Esporta opzioni<br>nell'archivio sincrono"
 	},
 	"optImportSyncHtml": {
-		"message": "Import Options<br>from Sync Storage"
+		"message": "Importa opzioni<br>dall'archivio sincrono"
 	},
 	"optAutoExportSync": {
-		"message": "Automatically export options to sync storage (as backup) whenever options are saved"
+		"message": "Esporta automaticamente le opzioni nell'archivio sincrono (come backup) ogni volta che le opzioni vengono salvate"
 	},
 	"optLogoTitle": {
 		"message": "ivBlock"
 	},
 	"optAboutDescHtml": {
-		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> is a simple productivity tool designed to block those time-wasting sites that can suck the life out of your working day. All you need to do is specify which sites to block and when to block them.<br><br>"
+		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> è un semplice strumento di produttività pensato per bloccare i siti che fanno perdere tempo e che possono svuotare le tue giornate lavorative. Tutto ciò che devi fare è specificare quali siti bloccare e quando bloccarli.<br><br>"
 	},
 	"optAboutVersion": {
-		"message": "Version:"
+		"message": "Versione:"
 	},
 	"optAboutLicense": {
-		"message": "License:"
+		"message": "Licenza:"
 	},
 	"optAboutAuthor": {
-		"message": "Author:"
+		"message": "Autore:"
 	},
 	"optAboutContributors": {
-		"message": "Contributors:"
+		"message": "Contributori:"
 	},
 	"optAboutForkedHtml": {
-		"message": "(ivBlock was forked from <a href=\"https://www.proginosko.com/leechblock/\" target=\"_blank\">LeechBlockNG</a>)"
+		"message": "(ivBlock è stato derivato da <a href=\"https://www.proginosko.com/leechblock/\" target=\"_blank\">LeechBlockNG</a>)"
 	},
 	"optAboutDocs": {
-		"message": "Documentation:"
+		"message": "Documentazione:"
 	},
 	"optAboutExamples": {
-		"message": "Examples:"
+		"message": "Esempi:"
 	},
 	"optAboutFAQ": {
 		"message": "FAQ:"
 	},
 	"optAboutSupport": {
-		"message": "Support:"
+		"message": "Supporto:"
 	},
 	"optAboutHistory": {
-		"message": "Version History:"
+		"message": "Cronologia versioni:"
 	},
 	"optAboutDonations": {
-		"message": "Donations:"
+		"message": "Donazioni:"
 	},
 	"optOpenDiagnostics": {
-		"message": "Open Diagnostics Page"
+		"message": "Apri pagina diagnostica"
 	},
 	"optSaveOptions": {
-		"message": "Save Options"
+		"message": "Salva opzioni"
 	},
 	"optSaveOptionsClose": {
-		"message": "Save Options & Close"
+		"message": "Salva opzioni e chiudi"
 	},
 	"optAlertAccessPreventHtml": {
-		"message": "You have prevented access to options during these time periods: <strong><span id=\"alertAccessPreventTimes\"></span></strong>"
+		"message": "Hai impedito l'accesso alle opzioni durante questi periodi: <strong><span id=\"alertAccessPreventTimes\"></span></strong>"
 	},
 	"optAlertBadAccessPreventTimes": {
-		"message": "Completely preventing access to options is a bad idea! Please enter different time periods."
+		"message": "Impedire completamente l'accesso alle opzioni è una cattiva idea! Inserisci periodi di tempo diversi."
 	},
 	"optAlertBadTimes": {
-		"message": "Please enter the time periods in the correct format. Use 24-hour clock format (HHMM) for times, a dash (-) between start time and end time, and commas or spaces to separate time periods."
+		"message": "Inserisci i periodi di tempo nel formato corretto. Usa il formato 24 ore (HHMM) per gli orari, un trattino (-) tra orario di inizio e di fine, e virgole o spazi per separare i periodi."
 	},
 	"optAlertBadTimeLimit": {
-		"message": "Please enter the time limit in the correct format (as a positive number)."
+		"message": "Inserisci il limite di tempo nel formato corretto (come numero positivo)."
 	},
 	"optAlertBadTimeLimitOffset": {
-		"message": "Please enter the time limit offset in the correct format (as a non-zero integer)."
+		"message": "Inserisci lo sfasamento del limite di tempo nel formato corretto (come numero intero non nullo)."
 	},
 	"optAlertBadClockOffset": {
-		"message": "Please enter the clock offset in the correct format (as a non-zero integer)."
+		"message": "Inserisci lo sfasamento dell'orologio nel formato corretto (come numero intero non nullo)."
 	},
 	"optAlertBadSeconds": {
-		"message": "Please enter the number of seconds in the correct format (as a positive whole number)."
+		"message": "Inserisci il numero di secondi nel formato corretto (come numero intero positivo)."
 	},
 	"optAlertBadMinutes": {
-		"message": "Please enter the number of minutes in the correct format (as a positive whole number)."
+		"message": "Inserisci il numero di minuti nel formato corretto (come numero intero positivo)."
 	},
 	"optAlertBadHours": {
-		"message": "Please enter the number of hours in the correct format (as a positive whole number)."
+		"message": "Inserisci il numero di ore nel formato corretto (come numero intero positivo)."
 	},
 	"optAlertBadOverrideLimitNum": {
-		"message": "Please enter the number of overrides in the correct format (as a positive whole number)."
+		"message": "Inserisci il numero di permessi nel formato corretto (come numero intero positivo)."
 	},
 	"optAlertBadBlockURL": {
-		"message": "Please enter the URL for the blocking page in the correct format (as a fully specified URL)."
+		"message": "Inserisci l'URL della pagina di blocco nel formato corretto (come URL completo)."
 	},
 	"optAlertBadNumSets": {
-		"message": "Please enter the number of block sets in the correct format (as a positive whole number)."
+		"message": "Inserisci il numero di set di blocco nel formato corretto (come numero intero positivo)."
 	},
 	"optAlertNoImportFile": {
-		"message": "Please select a file containing the options to import."
+		"message": "Seleziona un file contenente le opzioni da importare."
 	},
 	"optAlertImportErrorHtml": {
-		"message": "<strong>Error:</strong> Unable to import options from file."
+		"message": "<strong>Errore:</strong> Impossibile importare le opzioni dal file."
 	},
 	"optAlertImportSyncErrorHtml": {
-		"message": "<strong>Error:</strong> Unable to import options from sync storage."
+		"message": "<strong>Errore:</strong> Impossibile importare le opzioni dall'archivio sincrono."
 	},
 	"optAlertImportSuccess": {
-		"message": "The options have been imported successfully."
+		"message": "Le opzioni sono state importate con successo."
 	},
 	"optAlertImportSuccessNoteHtml": {
-		"message": "<strong>Note:</strong> The imported options will not be applied until you <strong>Save Options</strong>."
+		"message": "<strong>Nota:</strong> Le opzioni importate non verranno applicate finché non fai <strong>Salva opzioni</strong>."
 	},
 	"optAlertExportErrorHtml": {
-		"message": "<strong>Error:</strong> Unable to download exported options."
+		"message": "<strong>Errore:</strong> Impossibile scaricare le opzioni esportate."
 	},
 	"optAlertExportSyncErrorHtml": {
-		"message": "<strong>Error:</strong> Unable to export options to sync storage."
+		"message": "<strong>Errore:</strong> Impossibile esportare le opzioni nell'archivio sincrono."
 	},
 	"optAlertExportSuccess": {
-		"message": "The options have been exported successfully."
+		"message": "Le opzioni sono state esportate con successo."
 	},
 	"optAlertLockdownCancel": {
-		"message": "The active lockdown has been canceled."
+		"message": "Il Lockdown attivo è stato annullato."
 	},
 	"optAlertResetOptions": {
-		"message": "The options for this block set have been reset to the defaults."
+		"message": "Le opzioni per questo set di blocco sono state reimpostate ai valori predefiniti."
 	},
 	"optAlertResetOptionsNoteHtml": {
-		"message": "<strong>Note:</strong> The defaults will not be applied until you <strong>Save Options</strong>."
+		"message": "<strong>Nota:</strong> I valori predefiniti non verranno applicati finché non fai <strong>Salva opzioni</strong>."
 	},
 	"optPromptPassword": {
-		"message": "Enter the password for access to options:"
+		"message": "Inserisci la password per accedere alle opzioni:"
 	},
 	"optPromptAccessCode": {
-		"message": "Enter the following code for access to options:"
+		"message": "Inserisci il seguente codice per accedere alle opzioni:"
 	}
 }
