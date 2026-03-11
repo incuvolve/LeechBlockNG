@@ -735,8 +735,8 @@ function checkTab(id, isBeforeNav, isRepeat) {
 							browser.history.addUrl({ url: pageURLWithHash });
 						}
 
-						// Get final URL for block page
-						blockURL = getLocalizedURL(blockURL)
+						// Get final URL for block page (localization now handled by browser.i18n in the page itself)
+						blockURL = blockURL
 							.replace(/\$K/g, keyword ? keyword : "")
 							.replace(/\$S/g, set)
 							.replace(/\$U/g, pageURLWithHash);
@@ -1938,8 +1938,7 @@ browser.runtime.getPlatformInfo().then(
 	function (info) { gIsAndroid = (info.os == "android"); }
 );
 
-let localePath = browser.i18n.getMessage("localePath");
-browser.action.setPopup({ popup: localePath + "popup.html" });
+browser.action.setPopup({ popup: "popup.html" });
 
 if (browser.menus) {
 	browser.menus.onClicked.addListener(handleMenuClick);

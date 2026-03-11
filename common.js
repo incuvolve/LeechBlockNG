@@ -607,14 +607,6 @@ function localize() {
 	});
 }
 
-// Get localized version of extension page
-//
-function getLocalizedURL(url) {
-	return (ABSOLUTE_URL.test(url))
-		? url // no localization for absolute URL
-		: browser.i18n.getMessage("localePath") + url;
-}
-
 // Get clean version of URL (remove source/reader prefix)
 //
 function getCleanURL(url) {

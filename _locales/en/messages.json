@@ -10,11 +10,6 @@
 		"description": "Description of the extension."
 	},
 
-	"localePath": {
-		"message": "/",
-		"description": "Path to localized files."
-	},
-
 	"optionsMenuItem": { "message": "Options" },
 
 	"lockdownMenuItem": { "message": "Lockdown" },
