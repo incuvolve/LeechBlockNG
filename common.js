@@ -589,21 +589,26 @@ function setTheme(theme) {
 // Elements with data-i18n-title="key" get their title attribute replaced.
 //
 function localize() {
+	let count = 0;
 	document.querySelectorAll("[data-i18n]").forEach(el => {
-		const msg = browser.i18n.getMessage(el.dataset.i18n);
-		if (msg) el.textContent = msg;
+		const key = el.dataset.i18n;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.textContent = msg; count++; }
 	});
 	document.querySelectorAll("[data-i18n-html]").forEach(el => {
-		const msg = browser.i18n.getMessage(el.dataset.i18nHtml);
-		if (msg) el.innerHTML = msg;
+		const key = el.dataset.i18nHtml;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.innerHTML = msg; count++; }
 	});
 	document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-		const msg = browser.i18n.getMessage(el.dataset.i18nPlaceholder);
-		if (msg) el.placeholder = msg;
+		const key = el.dataset.i18nPlaceholder;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.placeholder = msg; count++; }
 	});
 	document.querySelectorAll("[data-i18n-title]").forEach(el => {
-		const msg = browser.i18n.getMessage(el.dataset.i18nTitle);
-		if (msg) el.title = msg;
+		const key = el.dataset.i18nTitle;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.title = msg; count++; }
 	});
 }
 
