@@ -1,13 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-const vm = require('vm');
-
-const commonJsPath = path.resolve(__dirname, '../common.js');
-const commonJsCode = fs.readFileSync(commonJsPath, 'utf8');
-
-const context = {};
-vm.createContext(context);
-vm.runInContext(commonJsCode, context);
+require('../common.js');
 
 const {
     cleanSites,
@@ -16,7 +7,7 @@ const {
     checkTimePeriodsFormat,
     allTrue,
     hashCode32
-} = context;
+} = window;
 
 describe('common.js tests', () => {
     describe('cleanSites', () => {

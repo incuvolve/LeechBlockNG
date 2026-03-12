@@ -364,3 +364,13 @@ initAccessControlPrompt("promptPassword");
 initAccessControlPrompt("promptAccessCode");
 
 document.addEventListener("DOMContentLoaded", initializePage);
+
+// Expose functions for testing purposes
+window.initForm = initForm;
+window.initializePage = initializePage;
+window.closePage = closePage;
+window.focusMins = focusMins;
+window.confirmAccess = confirmAccess;
+window.displayAccessCode = displayAccessCode;
+window.resizePromptInputHeight = resizePromptInputHeight;
+window.activateOverride = activateOverride;

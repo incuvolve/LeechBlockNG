@@ -120,3 +120,8 @@ function testURL() {
 /*** STARTUP CODE BEGINS HERE ***/
 
 document.addEventListener("DOMContentLoaded", initializePage);
+
+// Expose functions for testing purposes
+window.initForm = initForm;
+window.initializePage = initializePage;
+window.testURL = testURL;

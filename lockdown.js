@@ -189,3 +189,10 @@ $("div[id^='alert']").dialog({
 
 document.addEventListener("DOMContentLoaded", refreshPage);
 document.addEventListener("focus", refreshPage);
+
+// Expose functions for testing purposes
+window.initForm = initForm;
+window.initializePage = refreshPage;
+window.onActivate = onActivate;
+window.onCancel = onCancel;
+window.closePage = closePage;

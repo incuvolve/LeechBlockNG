@@ -133,3 +133,16 @@ document.querySelector("#discardTime").addEventListener("click", discardTime);
 document.querySelector("#onlineSupport").addEventListener("click", openOnlineSupport);
 
 document.addEventListener("DOMContentLoaded", initializePage);
+
+// Expose functions for testing purposes
+window.initializePage = initializePage;
+window.openOptions = openOptions;
+window.openLockdown = openLockdown;
+window.openOverride = openOverride;
+window.openStats = openStats;
+window.openExtensionPage = openExtensionPage;
+window.addSites = addSites;
+window.cancelOverride = cancelOverride;
+window.resetRollover = resetRollover;
+window.discardTime = discardTime;
+window.openOnlineSupport = openOnlineSupport;

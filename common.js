@@ -641,3 +641,32 @@ function hashCode32(str) {
 function getTimestampSuffix() {
 	return new Date().toISOString().substring(0, 19).replaceAll(":", "-");
 }
+
+// Expose functions for testing purposes
+window.listObjectProperties = listObjectProperties;
+window.cleanOptions = cleanOptions;
+window.cleanTimeData = cleanTimeData;
+window.getParsedURL = getParsedURL;
+window.cleanSites = cleanSites;
+window.getRegExpSites = getRegExpSites;
+window.patternToRegExp = patternToRegExp;
+window.keywordToRegExp = keywordToRegExp;
+window.checkTimePeriodsFormat = checkTimePeriodsFormat;
+window.checkPosIntFormat = checkPosIntFormat;
+window.checkPosNegIntFormat = checkPosNegIntFormat;
+window.checkPosNumberFormat = checkPosNumberFormat;
+window.checkBlockURLFormat = checkBlockURLFormat;
+window.getMinPeriods = getMinPeriods;
+window.cleanTimePeriods = cleanTimePeriods;
+window.getTimePeriodStart = getTimePeriodStart;
+window.updateRolloverTime = updateRolloverTime;
+window.formatTime = formatTime;
+window.allTrue = allTrue;
+window.encodeDays = encodeDays;
+window.decodeDays = decodeDays;
+window.createAccessCode = createAccessCode;
+window.setTheme = setTheme;
+window.localize = localize;
+window.getCleanURL = getCleanURL;
+window.hashCode32 = hashCode32;
+window.getTimestampSuffix = getTimestampSuffix;
