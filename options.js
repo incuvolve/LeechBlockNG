@@ -1429,3 +1429,36 @@ window.onload = () => {
  const myInput = document.getElementById('promptAccessCodeInput');
  myInput.onpaste = e => e.preventDefault();
 }
+
+// Expose functions for testing purposes
+window.isTrue = isTrue;
+window.initForm = initForm;
+window.swapSets = swapSets;
+window.showSimplifiedOptions = showSimplifiedOptions;
+window.updateBlockSetName = updateBlockSetName;
+window.updatePasswordPageOptions = updatePasswordPageOptions;
+window.saveOptions = saveOptions;
+window.closeOptions = closeOptions;
+window.retrieveOptions = retrieveOptions;
+window.confirmAccess = confirmAccess;
+window.displayAccessCode = displayAccessCode;
+window.accessPasswordShow = accessPasswordShow;
+window.showClockOffsetTime = showClockOffsetTime;
+window.compileExportOptions = compileExportOptions;
+window.applyImportOptions = applyImportOptions;
+window.exportOptions = exportOptions;
+window.importOptions = importOptions;
+window.exportOptionsJSON = exportOptionsJSON;
+window.exportOptionsSync = exportOptionsSync;
+window.importOptionsSync = importOptionsSync;
+window.openDiagnostics = openDiagnostics;
+window.swapSetOptions = swapSetOptions;
+window.resetSetOptions = resetSetOptions;
+window.disableSetOptions = disableSetOptions;
+window.disableGeneralOptions = disableGeneralOptions;
+window.disableImportOptions = disableImportOptions;
+window.updateSubOptions = updateSubOptions;
+window.disableNonAndroidOptions = disableNonAndroidOptions;
+window.updateMoveSetButtons = updateMoveSetButtons;
+window.initAccessControlPrompt = initAccessControlPrompt;
+Object.defineProperty(window, 'gNumSets', { get() { return gNumSets; }, set(v) { gNumSets = v; } });

@@ -121,7 +121,8 @@ function testURL() {
 
 document.addEventListener("DOMContentLoaded", initializePage);
 
-// Expose functions for testing purposes
+// Expose functions and state for testing purposes
 window.initForm = initForm;
 window.initializePage = initializePage;
 window.testURL = testURL;
+Object.defineProperty(window, 'gOptions', { get() { return gOptions; }, set(v) { gOptions = v; } });

@@ -1973,3 +1973,20 @@ for (let alarm = 1; alarm <= 6; alarm++) {
 	browser.alarms.create(`Alarm${alarm}`, alarmInfo);
 }
 browser.alarms.onAlarm.addListener(onAlarm);
+
+// Expose functions for testing purposes
+window.testURL = testURL;
+window.createRegExps = createRegExps;
+window.retrieveOptions = retrieveOptions;
+window.restartTimeData = restartTimeData;
+window.reorderTimeData = reorderTimeData;
+window.handleMessage = handleMessage;
+window.handleTabCreated = handleTabCreated;
+window.handleTabUpdated = handleTabUpdated;
+window.handleTabActivated = handleTabActivated;
+window.handleTabRemoved = handleTabRemoved;
+window.applyLockdown = applyLockdown;
+window.applyOverride = applyOverride;
+window.cancelLockdown = cancelLockdown;
+window.resetRolloverTime = resetRolloverTime;
+window.addSiteToSet = addSiteToSet;

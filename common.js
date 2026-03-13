@@ -670,3 +670,16 @@ window.localize = localize;
 window.getCleanURL = getCleanURL;
 window.hashCode32 = hashCode32;
 window.getTimestampSuffix = getTimestampSuffix;
+
+// Expose constants for testing purposes
+window.TIMEDATA_LEN = TIMEDATA_LEN;
+window.MAX_SETS = MAX_SETS;
+window.ALL_DAY_TIMES = ALL_DAY_TIMES;
+window.BLOCKED_PAGE = BLOCKED_PAGE;
+window.DELAYED_PAGE = DELAYED_PAGE;
+window.PASSWORD_PAGE = PASSWORD_PAGE;
+window.DEFAULT_BLOCK_URL = DEFAULT_BLOCK_URL;
+window.DELAYED_BLOCK_URL = DELAYED_BLOCK_URL;
+window.PASSWORD_BLOCK_URL = PASSWORD_BLOCK_URL;
+window.PER_SET_OPTIONS = PER_SET_OPTIONS;
+window.GENERAL_OPTIONS = GENERAL_OPTIONS;

@@ -1,20 +1,73 @@
-const fs = require('fs');
-const path = require('path');
-const vm = require('vm');
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const backgroundJsPath = path.resolve(__dirname, '../background.js');
-const backgroundJsCode = fs.readFileSync(backgroundJsPath, 'utf8');
+// Comprehensive browser mock — must be set before require('../background.js')
+// because background.js calls browser.runtime.getURL(...) and browser.storage.local
+// at module load time, and registers many listeners at startup.
+const mockListener = { addListener: jest.fn() };
 
-// Extract the testURL function
-const testURLRegex = /function testURL\([^)]*\) \{[\s\S]*?\}/;
-const testURLFunctionCode = backgroundJsCode.match(testURLRegex)[0];
+const browserMock = {
+    runtime: {
+        getURL: jest.fn((path) => `moz-extension://test-id/${path}`),
+        getPlatformInfo: jest.fn(() => Promise.resolve({ os: 'mac' })),
+        onMessage: mockListener,
+        sendMessage: jest.fn(),
+    },
+    storage: {
+        local: {
+            get: jest.fn(() => Promise.resolve({})),
+            set: jest.fn(() => Promise.resolve()),
+        },
+        sync: {
+            get: jest.fn(() => Promise.resolve({})),
+            set: jest.fn(() => Promise.resolve()),
+        },
+    },
+    tabs: {
+        query: jest.fn(() => Promise.resolve([])),
+        update: jest.fn(),
+        create: jest.fn(),
+        onCreated: mockListener,
+        onUpdated: mockListener,
+        onActivated: mockListener,
+        onRemoved: mockListener,
+    },
+    action: {
+        setPopup: jest.fn(),
+        setIcon: jest.fn(),
+        setBadgeText: jest.fn(),
+        setBadgeBackgroundColor: jest.fn(),
+    },
+    menus: {
+        create: jest.fn(),
+        removeAll: jest.fn(),
+        onClicked: mockListener,
+    },
+    commands: {
+        onCommand: mockListener,
+    },
+    webNavigation: {
+        onBeforeNavigate: mockListener,
+    },
+    windows: {
+        onFocusChanged: mockListener,
+    },
+    alarms: {
+        create: jest.fn(),
+        onAlarm: mockListener,
+    },
+    i18n: {
+        getMessage: jest.fn((key) => key),
+    },
+};
 
-const context = {};
-vm.createContext(context);
-vm.runInContext(testURLFunctionCode, context);
+global.browser = browserMock;
 
-const { testURL: originalTestURL } = context;
-const testURL = (...args) => !!originalTestURL(...args);
+jest.useFakeTimers();
+
+require('../common.js');
+require('../background.js');
 
 describe('background.js tests', () => {
     describe('testURL', () => {
@@ -23,36 +76,27 @@ describe('background.js tests', () => {
         const referRE = /referrer\.com/;
 
         it('should block a matching URL', () => {
-            const url = 'http://example.com';
-            expect(testURL(url, '', blockRE, null, null, false)).toBe(true);
+            expect(!!global.testURL('http://example.com', '', blockRE, null, null, false)).toBe(true);
         });
 
         it('should not block a non-matching URL', () => {
-            const url = 'http://another-site.com';
-            expect(testURL(url, '', blockRE, null, null, false)).toBe(false);
+            expect(!!global.testURL('http://another-site.com', '', blockRE, null, null, false)).toBe(false);
         });
 
-        it('should not block an allowed URL, even if it matches the block pattern', () => {
-            const url = 'http://allowed.example.com';
-            expect(testURL(url, '', blockRE, allowRE, null, false)).toBe(false);
+        it('should not block an allowed URL even if it matches the block pattern', () => {
+            expect(!!global.testURL('http://allowed.example.com', '', blockRE, allowRE, null, false)).toBe(false);
         });
 
         it('should block based on referrer when allowRefers is false', () => {
-            const url = 'http://any-site.com';
-            const referrer = 'http://referrer.com';
-            expect(testURL(url, referrer, null, null, referRE, false)).toBe(true);
+            expect(!!global.testURL('http://any-site.com', 'http://referrer.com', null, null, referRE, false)).toBe(true);
         });
 
         it('should not block based on referrer when allowRefers is true', () => {
-            const url = 'http://example.com';
-            const referrer = 'http://referrer.com';
-            expect(testURL(url, referrer, blockRE, null, referRE, true)).toBe(false);
+            expect(!!global.testURL('http://example.com', 'http://referrer.com', blockRE, null, referRE, true)).toBe(false);
         });
 
         it('should block if block pattern matches and referrer does not, when allowRefers is true', () => {
-            const url = 'http://example.com';
-            const referrer = 'http://google.com';
-            expect(testURL(url, referrer, blockRE, null, referRE, true)).toBe(true);
+            expect(!!global.testURL('http://example.com', 'http://google.com', blockRE, null, referRE, true)).toBe(true);
         });
     });
 });
