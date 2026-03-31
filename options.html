@@ -272,7 +272,7 @@
 							<p class="simplifiable"><span data-i18n="optAfterDelayingPageUsed">after delaying/password page is used</span></p>
 							<p class="inline-control-row">
 								<span data-i18n="optDelaySecsPrefix">Delay access to sites by</span>
-								<input id="delaySecs1" type="text" size="2" style="width:4em">
+								<input id="delaySecs1" type="text" size="2" class="input-short">
 								<span data-i18n="optSeconds">seconds</span>
 							</p>
 							<p><span data-i18n="optWhenDelayingPageUsed2">when delaying page is used</span></p>
@@ -333,7 +333,7 @@
 							</p>
 							<p class="inline-control-row">
 								<span data-i18n="optWaitPrefix">Wait</span>
-								<input id="waitSecs1" type="text" size="2" style="width:4em">
+								<input id="waitSecs1" type="text" size="2" class="input-short">
 								<span data-i18n="optWaitSuffix">second(s) after page has loaded</span>
 							</p>
 							<p><span data-i18n="optBeforeChecking">before checking blocking conditions</span></p>
@@ -369,7 +369,7 @@
 							<hr>
 							<p class="inline-control-row">
 								<span data-i18n="optLimitOffsetPrefix">Offset time limit period by</span>
-								<input id="limitOffset1" type="text" size="2" title="Leave blank for no offset" data-i18n-title="optLimitOffsetTitle" style="width:4em">
+								<input id="limitOffset1" type="text" size="2" title="Leave blank for no offset" data-i18n-title="optLimitOffsetTitle" class="input-short">
 								<span data-i18n="optHours">hours</span>
 							</p>
 							<p><a href="https://www.proginosko.com/leechblock/faq/time-limit-offset/" target="_blank">What does this do?</a></p>
@@ -433,7 +433,7 @@
 							<legend data-i18n="optBlockSetsLegend">Block Sets</legend>
 							<p class="inline-control-row">
 								<span data-i18n-html="optNumSetsPrefix">Number of block sets (1&ndash;<span id="maxSets">?</span>):</span>
-								<input id="numSets" type="text" size="2" title="Default: 6" data-i18n-title="optNumSetsTitle" class="limited-width" style="width:4em">
+								<input id="numSets" type="text" size="2" title="Default: 6" data-i18n-title="optNumSetsTitle" class="limited-width">
 							</p>
 						</fieldset>
 						<fieldset>
@@ -442,7 +442,7 @@
 								<label data-i18n="optAccessRequireLabel">Select the requirement for access to options:</label>
 							</p>
 							<p>
-								<select id="optionsAccess" style="width:100%">
+								<select id="optionsAccess">
 									<option value="0" data-i18n="optAccess0">Don't require the user to enter any password or access code</option>
 									<option value="1" data-i18n="optAccess1">Require the user to enter a password</option>
 									<option value="2" data-i18n="optAccess2">Require the user to enter a random 32-character access code</option>
@@ -495,7 +495,7 @@
 							</p>
 							<p><span data-i18n="optTimerMaxHoursPrefix">Show timer only when time left is less than</span></p>
 							<p class="inline-control-row">
-								<input id="timerMaxHours" type="text" size="2" title="Leave blank for no limit" data-i18n-title="optTimerMaxHoursTitle" style="width:4em">
+								<input id="timerMaxHours" type="text" size="2" title="Leave blank for no limit" data-i18n-title="optTimerMaxHoursTitle" class="input-short">
 								<span data-i18n="optHoursLabel">hour(s)</span>
 							</p>
 							<p>
@@ -510,7 +510,7 @@
 							<legend data-i18n="optWarnLegend">Warning Message</legend>
 							<p class="inline-control-row">
 								<span data-i18n="optWarnPrefix">Display warning message</span>
-								<input id="warnSecs" type="text" size="2" title="Leave blank for no warning" data-i18n-title="optWarnTitle" style="width:3em">
+								<input id="warnSecs" type="text" size="2" title="Leave blank for no warning" data-i18n-title="optWarnTitle" class="input-narrow">
 								<span data-i18n="optWarnSuffix">seconds before site is blocked</span>
 							</p>
 							<p>
@@ -522,12 +522,12 @@
 							<legend data-i18n="optOverrideLegend">Temporary Override</legend>
 							<p class="inline-control-row">
 								<span data-i18n="optOverridePrefix">Allow blocking to be suspended for</span>
-								<input id="overrideMins" type="text" size="2" title="Leave blank to specify a duration when the override is activated" data-i18n-title="optOverrideMinsTitle" style="width:3em">
+								<input id="overrideMins" type="text" size="2" title="Leave blank to specify a duration when the override is activated" data-i18n-title="optOverrideMinsTitle" class="input-narrow">
 								<span data-i18n="optMinutesLabel">minute(s)</span>
 							</p>
 							<p class="inline-control-row">
 								<span data-i18n="optOverrideLimitPrefix">Allow no more than</span>
-								<input id="overrideLimitNum" type="text" size="2" title="Leave blank for no limit" data-i18n-title="optOverrideLimitTitle" style="width:3em">
+								<input id="overrideLimitNum" type="text" size="2" title="Leave blank for no limit" data-i18n-title="optOverrideLimitTitle" class="input-narrow">
 								<span data-i18n="optOverrideLimitSuffix">override(s) every</span>
 								<select id="overrideLimitPeriod" class="limited-width">
 									<option value="">&nbsp;</option>
@@ -540,7 +540,7 @@
 								<label data-i18n="optOverrideAccessLabel">Select the requirement for activating the override:</label>
 							</p>
 							<p>
-								<select id="overrideAccess" style="width:100%">
+								<select id="overrideAccess">
 									<option value="0" data-i18n="optAccess0">Don't require the user to enter any password or access code</option>
 									<option value="1" data-i18n="optOverrideAccess1">Require the user to enter the access control password (see above)</option>
 									<option value="2" data-i18n="optAccess2">Require the user to enter a random 32-character access code</option>
@@ -609,13 +609,13 @@
 							</p>
 							<p class="simplifiable inline-control-row">
 								<span data-i18n="optClockOffsetPrefix">Offset clock by</span>
-								<input id="clockOffset" type="text" size="4" title="Leave blank for no offset" data-i18n-title="optClockOffsetTitle" class="limited-width" style="width:4em">
+								<input id="clockOffset" type="text" size="4" title="Leave blank for no offset" data-i18n-title="optClockOffsetTitle" class="limited-width">
 								<span data-i18n="optMinutes">minutes</span>
 								<span id="clockOffsetTime" style="display: none;"></span>
 							</p>
 							<p class="simplifiable inline-control-row">
 								<span data-i18n="optIgnoreJumpPrefix">Ignore jumps in time spent greater than</span>
-								<input id="ignoreJumpSecs" type="text" size="4" style="width:4em">
+								<input id="ignoreJumpSecs" type="text" size="4" class="input-short">
 								<span data-i18n="optSeconds">seconds</span>
 							</p>
 							<p class="simplifiable">
@@ -647,12 +647,12 @@
 							<legend data-i18n="optPerformanceLegend">Performance</legend>
 							<p class="inline-control-row">
 								<span data-i18n="optSaveSecsPrefix">Save time data every</span>
-								<input id="saveSecs" type="text" size="2" title="Default: 10" data-i18n-title="optSaveSecsTitle" class="limited-width" style="width:4em">
+								<input id="saveSecs" type="text" size="2" title="Default: 10" data-i18n-title="optSaveSecsTitle" class="limited-width">
 								<span data-i18n="optSeconds">second(s)</span>
 							</p>
 							<p class="inline-control-row">
 								<span data-i18n="optProcessTabsPrefix">Process tabs every</span>
-								<input id="processTabsSecs" type="text" size="2" title="Default: 1" data-i18n-title="optProcessTabsTitle" class="limited-width" style="width:4em">
+								<input id="processTabsSecs" type="text" size="2" title="Default: 1" data-i18n-title="optProcessTabsTitle" class="limited-width">
 								<span data-i18n="optSeconds">second(s)</span>
 							</p>
 							<p>

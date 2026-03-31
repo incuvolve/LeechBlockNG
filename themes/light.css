@@ -1,5 +1,64 @@
-/* LeechBlock Light theme style */
+/* ivBlock Light theme */
+
+:root {
+	--color-bg:                  #f5f5f7;
+	--color-surface:             #ffffff;
+	--color-text:                #1d1d1f;
+	--color-text-muted:          #6e6e73;
+	--color-border:              #d2d2d7;
+	--color-primary:             #0071e3;
+	--color-primary-hover:       #0077ed;
+	--color-primary-active:      #006edb;
+	--color-primary-text:        #ffffff;
+	--color-secondary-bg:        #e8e8ed;
+	--color-secondary-hover:     #d2d2d7;
+	--color-secondary-active:    #c7c7cc;
+	--color-secondary-text:      #1d1d1f;
+	--color-accent:              #2a9d8f;
+	--color-disabled-bg:         #aeaeb2;
+	--color-disabled-text:       #ffffff;
+	--color-error:               #ff3b30;
+	--color-input-bg:            #ffffff;
+	--color-input-disabled-bg:   #f2f2f7;
+	--color-input-disabled-text: #6e6e73;
+	--color-focus-ring:          rgba(0, 113, 227, 0.25);
+}
 
 body {
-	background: #fff;
+	background: var(--color-bg);
+	color: var(--color-text);
+}
+
+/* jQuery UI tab states */
+.ui-tabs .ui-state-default {
+	background: #e2e2e7;
+	border: 1px solid var(--color-border);
+}
+
+.ui-tabs .ui-state-default a {
+	color: var(--color-text);
+}
+
+.ui-tabs .ui-state-hover {
+	background: var(--color-secondary-hover);
+	border: 1px solid var(--color-border);
+}
+
+.ui-tabs .ui-state-active {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+}
+
+.ui-tabs .ui-state-active a {
+	color: var(--color-text);
+}
+
+.ui-widget-header {
+	background: var(--color-secondary-bg);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
+}
+
+#paneAbout {
+	color: var(--color-text);
 }

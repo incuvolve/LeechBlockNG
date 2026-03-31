@@ -1,88 +1,66 @@
 /* ivBlock options style */
 
-
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
 html {
 	overflow-y: scroll;
 }
 
-@media (prefers-color-scheme: light) {
-
-	body {
-		background: #fff;
-	}
-
-}
-
-@media (prefers-color-scheme: dark) {
-
-	body {
-		background: #222;
-	}
-
-}
-
 body {
-	color: #000;
-	font-size: 14px;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-size: var(--font-size-sm);
 	overflow-x: hidden;
 }
 
+/* ─── jQuery UI Overrides ────────────────────────────────────────────────── */
+
 .ui-button {
-	background: #eee;
-	color: #333;
-	border: 1px solid #888;
+	background: var(--color-secondary-bg);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 }
 
 .ui-button:focus {
-	background: #eee;
-	border: 1px solid #888;
+	background: var(--color-secondary-bg);
+	border: 1px solid var(--color-border);
 }
 
 .ui-button:hover {
-	background: #ddd;
-	border: 1px solid #888;
+	background: var(--color-secondary-hover);
+	border: 1px solid var(--color-border);
 }
 
 .ui-widget button {
-    padding: 0.8em 1.2em; /* Fallback padding */
-    background: transparent; /* Let ivblock-button define background */
-    color: inherit; /* Let ivblock-button define color */
-    border: none; /* Let ivblock-button define border */
-    border-radius: 3px; /* Will be overridden by ivblock-button */
-    cursor: pointer;
+	padding: var(--control-padding-v) var(--control-padding-h);
+	background: transparent;
+	color: inherit;
+	border: none;
+	cursor: pointer;
 }
 
 .ui-widget fieldset,
 .ui-widget input,
 .ui-widget select,
 .ui-widget textarea {
-	background: #fff;
-	color: #000;
-	border: 1px solid #888;
+	background: var(--color-input-bg);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 }
 
 .ui-widget input:disabled,
 .ui-widget select:disabled,
 .ui-widget textarea:disabled {
-	background: #eee;
-	color: #666;
-	border: 1px solid #ccc;
+	background: var(--color-input-disabled-bg);
+	color: var(--color-input-disabled-text);
+	border: 1px solid var(--color-border);
 }
 
 .ui-widget hr {
-	height: 0px;
-	margin: 0px;
+	height: 0;
+	margin: 0;
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 1px solid #888;
+	border-bottom: 1px solid var(--color-border);
 }
 
 .ui-widget legend {
@@ -90,7 +68,7 @@ body {
 }
 
 .ui-widget a {
-	color: #2ca089;
+	color: var(--color-accent);
 	text-decoration: none;
 }
 
@@ -105,17 +83,18 @@ body {
 }
 
 .ui-widget code {
-	font: normal 14px monospace;
+	font: normal var(--font-size-sm) var(--font-family-mono);
 }
 
 .ui-widget-content {
-	background: #fff;
-	color: #000;
-	border: 1px solid #888;
+	background: var(--color-surface);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 }
 
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
+
 .simplifiable {
-	/* Used for showing/hiding advanced options */
 	display: block;
 }
 
@@ -138,34 +117,40 @@ body {
 	text-align: left;
 }
 
+#form,
+#tabs {
+	width: 100%;
+}
+
 #paneAbout {
-	color: #2e3436;
+	color: var(--color-text);
 	text-align: center;
 	line-height: 1.5em;
 }
 
 #promptAccessCodeText {
-	font: normal 14px monospace;
+	font: normal var(--font-size-sm) var(--font-family-mono);
 	user-select: none;
 	-moz-user-select: none;
 }
 
 #promptAccessCodeCanvas {
-	background: #fff;
+	background: var(--color-surface);
 }
 
 #promptAccessCodeInput {
-	font: normal 14px monospace;
+	font: normal var(--font-size-sm) var(--font-family-mono);
 }
 
 #clockOffsetTime {
-	background: #def;
-	border: 1px solid #888;
-	padding: 2px 4px;
+	background: var(--color-input-bg);
+	border: 1px solid var(--color-border);
+	padding: 2px 6px;
+	border-radius: var(--border-radius-sm);
 }
 
 #results {
-	font: normal 12px monospace;
+	font: normal var(--font-size-xs) var(--font-family-mono);
 }
 
 #form-container-options {
@@ -175,22 +160,182 @@ body {
 	padding: 8px;
 }
 
-#form,
-#tabs {
-	width: 100%;
-}
+/* ─── Form Controls ──────────────────────────────────────────────────────── */
 
 input[type="text"],
 input[type="password"],
 select,
 textarea {
 	width: 100%;
-	font-size: 16px;
+	font-size: var(--font-size-base);
 }
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+	height: var(--control-height);
+	padding: var(--control-padding-v) var(--control-padding-h);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	width: 18px;
+	height: 18px;
+	min-height: 18px;
+	cursor: pointer;
+	accent-color: var(--color-primary);
+	vertical-align: middle;
+}
+
+/* ─── Inline Controls ────────────────────────────────────────────────────── */
+
+.inline-control-row {
+	display: flex;
+	align-items: center;
+	gap: var(--gap-sm);
+	flex-wrap: nowrap;
+}
+
+.inline-control-row select.limited-width {
+	flex: 0 1 auto;
+	width: auto;
+}
+
+.inline-control-row input[type="text"] {
+	width: 5em;
+	flex-shrink: 0;
+}
+
+.inline-control-row select {
+	flex: 1;
+	min-width: 0;
+}
+
+.nowrap-item {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--gap-sm);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.button-row-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap-md);
+	justify-content: center;
+	margin-top: 0;
+}
+
+.button-row-wrap button {
+	margin: 0;
+}
+
+.regexp-buttons .ivblock-button {
+	display: block;
+	width: 220px;
+	max-width: 220px;
+	margin: 5px auto;
+}
+
+/* ─── Days Checkbox Grid ─────────────────────────────────────────────────── */
+
+#days1 {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	gap: var(--gap-sm) var(--gap-lg);
+	justify-content: start;
+}
+
+/* ─── Stats ──────────────────────────────────────────────────────────────── */
+
+#stats-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--gap-lg);
+}
+
+.stats-card {
+	padding: 16px;
+	border-radius: var(--border-radius);
+}
+
+.stats-card h3 {
+	margin-top: 0;
+	font-size: 1.2em;
+}
+
+.stats-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--gap-lg) 0;
+}
+
+.stats-list li {
+	display: flex;
+	justify-content: space-between;
+	padding: var(--gap-sm) 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.stats-list li:last-child {
+	border-bottom: none;
+}
+
+.restart-button {
+	width: 100%;
+}
+
+#restartAll {
+	margin-top: var(--gap-lg);
+}
+
+/* ─── jQuery UI Dialogs ──────────────────────────────────────────────────── */
+
+.ui-dialog {
+	max-width: 500px;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: center;
+}
+
+.ui-dialog .ui-dialog-buttonset {
+	float: none !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: 5px;
+	width: 120px;
+	padding: var(--control-padding-v);
+}
+
+/* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
+.ui-dialog div {
+	margin-top: 0;
+}
+
+/* Fix close button sizing broken by .ui-widget button rules */
+.ui-dialog .ui-dialog-titlebar-close {
+	padding: 1px !important;
+	width: 20px !important;
+	height: 20px !important;
+	min-height: 0 !important;
+	min-width: 0 !important;
+	border: 1px solid transparent !important;
+	background: transparent !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover {
+	border-color: var(--color-border) !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
 	body {
-		font-size: 13px;
+		font-size: var(--font-size-xs);
 	}
 
 	#form-container-options {
@@ -198,7 +343,7 @@ textarea {
 	}
 
 	#tabs {
-		font-size: 13px;
+		font-size: var(--font-size-xs);
 	}
 
 	fieldset,
@@ -217,172 +362,10 @@ textarea {
 		margin: 0;
 	}
 
-    .ui-dialog .ui-dialog-buttonpane button {
-        margin: 5px;
-        width: auto;
-        max-width: 120px;
-        padding: 0.8em 1.2em;
-        border-radius: 8px;
-    }
-}
+	.button-row-wrap button {
+		width: 100%;
+	}
 
-.ui-dialog {
-    max-width: 500px;
-}
-
-/* Global dialog button styling - centered, fixed width */
-.ui-dialog .ui-dialog-buttonpane {
-    text-align: center;
-}
-
-.ui-dialog .ui-dialog-buttonset {
-    float: none !important;
-}
-
-.ui-dialog .ui-dialog-buttonpane button {
-    margin: 5px;
-    width: 120px;
-    padding: 10px;
-}
-
-/* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
-.ui-dialog div {
-    margin-top: 0;
-}
-
-/* Fix close button - .ui-widget button rules break jQuery UI icon */
-.ui-dialog .ui-dialog-titlebar-close {
-    padding: 1px !important;
-    width: 20px !important;
-    height: 20px !important;
-    min-height: 0 !important;
-    min-width: 0 !important;
-    border: 1px solid transparent !important;
-    background: transparent !important;
-}
-
-.ui-dialog .ui-dialog-titlebar-close:hover {
-    border-color: #ccc !important;
-}
-
-#saveOptions, #saveOptionsClose {
-	/* These will now be styled by .ivblock-button and .button-group */
-    /* Remove explicit padding here if .ivblock-button is sufficient */
-}
-
-/* Stats page */
-#stats-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 16px;
-}
-
-.stats-card {
-	padding: 16px;
-	border-radius: 8px;
-}
-
-.stats-card h3 {
-	margin-top: 0;
-	font-size: 1.2em;
-}
-
-.stats-list {
-	list-style: none;
-	padding: 0;
-	margin: 0 0 16px 0;
-}
-
-.stats-list li {
-	display: flex;
-	justify-content: space-between;
-	padding: 8px 0;
-	border-bottom: 1px solid #ccc;
-}
-
-.stats-list li:last-child {
-	border-bottom: none;
-}
-
-.restart-button {
-	width: 100%;
-}
-
-#restartAll {
-	margin-top: 16px;
-}
-
-.inline-control-row select.limited-width {
-    flex: 0 1 auto;
-    width: auto;
-}
-
-.inline-control-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    flex-wrap: nowrap;
-}
-
-.inline-control-row input[type="text"] {
-    width: 5em;
-    flex-shrink: 0;
-}
-
-.inline-control-row select {
-    flex: 1;
-    min-width: 0;
-}
-
-.nowrap-item {
-    display: inline-grid;
-    grid-template-columns: min-content auto;
-    align-items: center;
-    gap: 6px;
-}
-
-.button-row-wrap {
-    display: flex; /* Ensure flexbox behavior */
-    flex-wrap: wrap;
-    gap: 10px; /* Add some space between wrapped items */
-    justify-content: center; /* Center buttons when they wrap */
-    margin-top: 0; /* Reduce whitespace above */
-}
-
-
-
-@media (max-width: 600px) {
-    .button-row-wrap button {
-        width: 100%; /* Make buttons full width on mobile to stack */
-    }
-}
-
-@media (min-width: 601px) {
-    .button-row-wrap button {
-        max-width: 170px; /* Allow buttons to shrink on desktop */
-        flex-grow: 1; /* Distribute available space equally */
-    }
-
-    .nowrap-item input[type="checkbox"],
-    .nowrap-item label,
-    input[type="checkbox"],
-    input[type="checkbox"] + label {
-        vertical-align: middle; /* Vertically align checkboxes and labels */
-    }
-}
-
-.button-row-wrap button {
-    margin: 5px 0; /* Add vertical margin when wrapped */
-}
-
-#days1 {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 8px 16px;
-    justify-content: start;
-}
-
-@media (max-width: 600px) {
 	.ui-dialog {
 		width: 90vw !important;
 		max-width: 320px !important;
@@ -393,28 +376,39 @@ textarea {
 		word-wrap: break-word;
 	}
 
+	.ui-dialog .ui-dialog-buttonpane button {
+		margin: 5px;
+		width: auto;
+		max-width: 120px;
+		padding: var(--control-padding-v) var(--control-padding-h);
+		border-radius: var(--border-radius-sm);
+	}
+
 	#promptPasswordInput,
 	#promptAccessCodeInput {
 		width: 95%;
 	}
 
-	/* Vertical alignment for checkboxes on mobile */
-	    .nowrap-item input[type="checkbox"],
-	    .nowrap-item label,
-	    input[type="checkbox"],
-	    input[type="checkbox"] + label {
-	        vertical-align: middle;
-	    }
+	#days1 {
+		grid-template-columns: auto;
 	}
-@media (max-width: 320px) {
-    #days1 {
-        grid-template-columns: auto;
-    }
 }
 
-.regexp-buttons .ivblock-button {
-	display: block;
-	width: 220px;
-	max-width: 220px;
-	margin: 5px auto;
+@media (min-width: 601px) and (max-width: 768px) {
+	#form-container-options {
+		max-width: 100%;
+		padding: 12px;
+	}
+
+	.button-row-wrap button {
+		max-width: 160px;
+		flex-grow: 1;
+	}
+}
+
+@media (min-width: 769px) {
+	.button-row-wrap button {
+		max-width: 170px;
+		flex-grow: 1;
+	}
 }

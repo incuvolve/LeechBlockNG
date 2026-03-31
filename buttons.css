@@ -1,73 +1,66 @@
-/* Common button styles for ivBlock */
+/* ivBlock button styles */
 
 .button-group {
-    text-align: center; /* Center buttons within this group */
-    margin-top: 10px; /* Add some vertical spacing */
-    margin-bottom: 10px;
+	text-align: center;
+	margin-top: var(--gap-md);
+	margin-bottom: var(--gap-md);
 }
 
 .button-group button {
-    margin: 5px auto; /* Spacing between buttons and center them */
-    display: block; /* Allow buttons to sit under each other */
+	margin: 5px auto;
+	display: block;
 }
 
 .ivblock-button {
-    /* Font */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 1em; /* Base font size for buttons */
-    font-weight: 500; /* Medium weight often used in iOS */
-
-    /* Sizing */
-    padding: 0.8em 1.2em; /* Reverted vertical padding for height alignment with options.html save buttons */
-    min-width: 80px; /* Further adjusted minimum width for better fitting on a single line on desktop */
-    max-width: 200px; /* Maximum width to prevent excessive growth */
-    width: 100%; /* Allow it to take full width if content is small, but constrained by max-width */
-
-    /* Appearance */
-    background-color: #007AFF; /* iOS blue for primary action, or a light gray for default */
-    color: #FFFFFF; /* White text for primary blue button */
-    border: none; /* No border for a cleaner look */
-    border-radius: 6px; /* Less rounded corners */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; /* Smooth transitions */
-    -webkit-appearance: none; /* Remove default button styles for consistency */
-    -moz-appearance: none;
-    appearance: none;
+	font-family: var(--font-family);
+	font-size: var(--font-size-base);
+	font-weight: 500;
+	padding: var(--control-padding-v) var(--control-padding-h);
+	min-height: var(--control-height);
+	min-width: 80px;
+	max-width: 200px;
+	width: 100%;
+	background-color: var(--color-primary);
+	color: var(--color-primary-text);
+	border: none;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-sm);
+	cursor: pointer;
+	transition: background-color var(--transition), box-shadow var(--transition), opacity var(--transition);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
-/* Default button style (e.g., for secondary actions) */
 .ivblock-button.default {
-    background-color: #EFEFF4; /* Light gray background */
-    color: #000000; /* Dark text */
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	background-color: var(--color-secondary-bg);
+	color: var(--color-secondary-text);
+	box-shadow: none;
 }
 
-/* Hover/Active states */
 .ivblock-button:hover:enabled {
-    background-color: #005BBF; /* Darker blue on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+	background-color: var(--color-primary-hover);
+	box-shadow: var(--shadow-md);
 }
 
 .ivblock-button.default:hover:enabled {
-    background-color: #DFDFE4; /* Darker gray on hover */
+	background-color: var(--color-secondary-hover);
 }
 
 .ivblock-button:active:enabled {
-    background-color: #003D80; /* Even darker blue on active */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    transform: translateY(1px); /* Slight press effect */
+	background-color: var(--color-primary-active);
+	box-shadow: var(--shadow-sm);
+	transform: translateY(1px);
 }
 
 .ivblock-button.default:active:enabled {
-    background-color: #CFCFD4; /* Even darker gray on active */
+	background-color: var(--color-secondary-active);
 }
 
-/* Disabled state */
 .ivblock-button:disabled {
-    background-color: #A9A9A9; /* Lighter gray for disabled */
-    color: #FFFFFF;
-    opacity: 0.6;
-    cursor: not-allowed;
-    box-shadow: none;
+	background-color: var(--color-disabled-bg);
+	color: var(--color-disabled-text);
+	opacity: 0.6;
+	cursor: not-allowed;
+	box-shadow: none;
 }
