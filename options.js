@@ -325,6 +325,11 @@ function saveOptions(event) {
 		$("#alertBadNumSets").dialog("open");
 		return false;
 	}
+	if (+numSets > MAX_SETS) {
+		$("#numSets").val(MAX_SETS);
+		numSets = String(MAX_SETS);
+		$("#alertNumSetsMax").dialog("open");
+	}
 	let accessPreventTimes = $("#accessPreventTimes").val();
 	if (!checkTimePeriodsFormat(accessPreventTimes)) {
 		$("#tabs").tabs("option", "active", gNumSets);

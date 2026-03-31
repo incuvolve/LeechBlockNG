@@ -1000,6 +1000,9 @@
 	"optAlertBadNumSets": {
 		"message": "Inserisci il numero di set di blocco nel formato corretto (come numero intero positivo)."
 	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "Il numero massimo di set di blocco è <strong>30</strong>. Il valore è stato ridotto a 30."
+	},
 	"optAlertNoImportFile": {
 		"message": "Seleziona un file contenente le opzioni da importare."
 	},

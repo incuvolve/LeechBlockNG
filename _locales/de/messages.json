@@ -370,6 +370,7 @@
 "optAlertBadOverrideLimitNum": { "message": "Bitte die Anzahl der Ausnahmen im richtigen Format eingeben (als positive ganze Zahl)." },
 "optAlertBadBlockURL": { "message": "Bitte die URL für die Blockierungsseite im richtigen Format eingeben (als vollständig angegebene URL)." },
 "optAlertBadNumSets": { "message": "Bitte die Anzahl der Blocksets im richtigen Format eingeben (als positive ganze Zahl)." },
+"optAlertNumSetsMaxHtml": { "message": "Die maximale Anzahl der Blocksets ist <strong>30</strong>. Ihr Wert wurde auf 30 reduziert." },
 "optAlertNoImportFile": { "message": "Bitte eine Datei mit den zu importierenden Optionen auswählen." },
 "optAlertImportErrorHtml": { "message": "<strong>Fehler:</strong> Optionen konnten nicht aus der Datei importiert werden." },
 "optAlertImportSyncErrorHtml": { "message": "<strong>Fehler:</strong> Optionen konnten nicht aus dem Sync-Speicher importiert werden." },

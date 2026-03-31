@@ -1000,6 +1000,9 @@
 	"optAlertBadNumSets": {
 		"message": "Por favor, insira o número de conjuntos de bloqueio no formato correto (como um número inteiro positivo)."
 	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "O número máximo de conjuntos de bloqueio é <strong>30</strong>. O seu valor foi reduzido para 30."
+	},
 	"optAlertNoImportFile": {
 		"message": "Por favor, selecione um arquivo contendo as opções a importar."
 	},

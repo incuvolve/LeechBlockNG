@@ -11,6 +11,12 @@ body {
 	overflow-x: hidden;
 }
 
+/* Neutralise style.css's broad div { margin-top: 40px } rule — options page
+   uses fieldsets, flex gaps and explicit margins for all intentional spacing. */
+div {
+	margin-top: 0;
+}
+
 /* ─── jQuery UI Overrides ────────────────────────────────────────────────── */
 
 .ui-button {
@@ -174,15 +180,26 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 select {
-	height: var(--control-height);
+	min-height: var(--control-height);
 	padding: var(--control-padding-v) var(--control-padding-h);
+}
+
+select {
+	height: var(--control-height);
 }
 
 input[type="checkbox"],
 input[type="radio"] {
+	/* Reset properties inherited from style.css input rule */
+	padding: 0;
+	min-height: auto;
+	background: initial;
+	border: initial;
+	border-radius: initial;
+	transition: none;
+	/* Checkbox-specific */
 	width: 18px;
 	height: 18px;
-	min-height: 18px;
 	cursor: pointer;
 	accent-color: var(--color-primary);
 	vertical-align: middle;
@@ -344,6 +361,11 @@ input[type="radio"] {
 
 	#tabs {
 		font-size: var(--font-size-xs);
+	}
+
+	/* Larger tap targets for tab navigation */
+	.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+		padding: 16px 12px;
 	}
 
 	fieldset,

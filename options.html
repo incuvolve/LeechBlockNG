@@ -32,10 +32,10 @@
 					</ul>
 					<div id="blockSet1">
 						<p class="button-row-wrap">
-							<button id="moveSetL1" type="button" class="ivblock-button" data-i18n="optMoveSetLeft">← Move Set</button>
-							<button id="simpOpts1" type="button" class="ivblock-button" data-i18n="optShowSimplified">Show Simplified Options</button>
-							<button id="fullOpts1" type="button" style="display: none;" class="ivblock-button" data-i18n="optShowFull">Show Full Options</button>
-							<button id="moveSetR1" type="button" class="ivblock-button" data-i18n="optMoveSetRight">Move Set →</button>
+							<button id="moveSetL1" type="button" class="ivblock-button default" data-i18n="optMoveSetLeft">← Move Set</button>
+							<button id="simpOpts1" type="button" class="ivblock-button default" data-i18n="optShowSimplified">Show Simplified Options</button>
+							<button id="fullOpts1" type="button" style="display: none;" class="ivblock-button default" data-i18n="optShowFull">Show Full Options</button>
+							<button id="moveSetR1" type="button" class="ivblock-button default" data-i18n="optMoveSetRight">Move Set →</button>
 						</p>
 						<fieldset>
 							<legend data-i18n="optWhatToBlock">What to Block</legend>
@@ -483,8 +483,6 @@
 									<option value="2" data-i18n="optTimerLarge">large</option>
 									<option value="3" data-i18n="optTimerXLarge">extra large</option>
 								</select>
-							</p>
-							<p class="inline-control-row">
 								<label data-i18n="optTimerLocationLabel">Location:</label>
 								<select id="timerLocation" class="limited-width">
 									<option value="0" data-i18n="optTimerTopLeft">top left</option>
@@ -493,8 +491,8 @@
 									<option value="3" data-i18n="optTimerBottomLeft">bottom left</option>
 								</select>
 							</p>
-							<p><span data-i18n="optTimerMaxHoursPrefix">Show timer only when time left is less than</span></p>
 							<p class="inline-control-row">
+								<span data-i18n="optTimerMaxHoursPrefix">Show timer only when time left is less than</span>
 								<input id="timerMaxHours" type="text" size="2" title="Leave blank for no limit" data-i18n-title="optTimerMaxHoursTitle" class="input-short">
 								<span data-i18n="optHoursLabel">hour(s)</span>
 							</p>
@@ -669,7 +667,7 @@
 								<input id="downloadToFile" type="checkbox" checked>
 								<label for="downloadToFile" data-i18n="optDownloadToFile">Download options to file (otherwise, show in new tab)</label>
 							</p>
-							<p class="button-group">
+							<p class="button-row-wrap">
 								<button id="exportOptions" type="button" class="ivblock-button default" data-i18n-html="optExportTextHtml">Export Options<br>to Text File</button>
 								<button id="importOptions" type="button" class="ivblock-button default" data-i18n-html="optImportTextHtml">Import Options<br>from Text File</button>
 								<input type="file" id="importFile">
@@ -683,7 +681,7 @@
 							</p>
 							<span id="syncOpts2">
 							<hr>
-							<p class="button-group">
+							<p class="button-row-wrap">
 								<button id="exportOptionsSync" type="button" class="ivblock-button default" data-i18n-html="optExportSyncHtml">Export Options<br>to Sync Storage</button>
 								<button id="importOptionsSync" type="button" class="ivblock-button default" data-i18n-html="optImportSyncHtml">Import Options<br>from Sync Storage</button>
 							</p>
@@ -779,6 +777,9 @@
 		</div>
 		<div id="alertBadNumSets" title="ivBlock Options">
 			<p data-i18n="optAlertBadNumSets">Please enter the number of block sets in the correct format (as a positive whole number).</p>
+		</div>
+		<div id="alertNumSetsMax" title="ivBlock Options">
+			<p data-i18n-html="optAlertNumSetsMaxHtml">The maximum number of block sets is <strong>30</strong>. Your value has been reduced to 30.</p>
 		</div>
 		<div id="alertNoImportFile" title="ivBlock Options">
 			<p data-i18n="optAlertNoImportFile">Please select a file containing the options to import.</p>

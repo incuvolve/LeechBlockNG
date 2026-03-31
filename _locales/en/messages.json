@@ -370,6 +370,7 @@
 "optAlertBadOverrideLimitNum": { "message": "Please enter the number of overrides in the correct format (as a positive whole number)." },
 "optAlertBadBlockURL": { "message": "Please enter the URL for the blocking page in the correct format (as a fully specified URL)." },
 "optAlertBadNumSets": { "message": "Please enter the number of block sets in the correct format (as a positive whole number)." },
+"optAlertNumSetsMaxHtml": { "message": "The maximum number of block sets is <strong>30</strong>. Your value has been reduced to 30." },
 "optAlertNoImportFile": { "message": "Please select a file containing the options to import." },
 "optAlertImportErrorHtml": { "message": "<strong>Error:</strong> Unable to import options from file." },
 "optAlertImportSyncErrorHtml": { "message": "<strong>Error:</strong> Unable to import options from sync storage." },

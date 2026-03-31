@@ -1000,6 +1000,9 @@
 	"optAlertBadNumSets": {
 		"message": "Voer het aantal blokkeersets in het juiste formaat in (als een positief geheel getal)."
 	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "Het maximale aantal blokkeersets is <strong>30</strong>. Uw waarde is teruggebracht naar 30."
+	},
 	"optAlertNoImportFile": {
 		"message": "Selecteer een bestand met de te importeren opties."
 	},

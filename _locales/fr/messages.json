@@ -1000,6 +1000,9 @@
 	"optAlertBadNumSets": {
 		"message": "Veuillez entrer le nombre de listes de blocage au bon format (nombre entier positif)."
 	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "Le nombre maximum de listes de blocage est <strong>30</strong>. Votre valeur a été réduite à 30."
+	},
 	"optAlertNoImportFile": {
 		"message": "Veuillez sélectionner un fichier contenant les options à importer."
 	},
