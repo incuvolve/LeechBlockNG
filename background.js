@@ -19,6 +19,9 @@ var gOptions = {};
 var gDiagMode = false;
 var gNumSets;
 var gTabs = [];
+var gPendingAllows = [];
+var gDelayedTabIds = {};
+var gDelayAllowances = []; // host+set allowances independent of tab IDs (Safari compatibility)
 var gSetCounted = [];
 var gSavedTimeData = [];
 var gRegExps = [];
@@ -210,8 +213,6 @@ function retrieveOptions(update) {
 				gOptions[option] = options[option];
 			}
 		}
-		gGotOptions = true;
-
 		cleanOptions(gOptions);
 		cleanTimeData(gOptions);
 
@@ -233,6 +234,17 @@ function retrieveOptions(update) {
 		// Keep track of saved time data to avoid unnecessary writes
 		for (let set = 1; set <= gNumSets; set++) {
 			gSavedTimeData[set] = gOptions[`timedata${set}`].toString();
+		}
+
+		gGotOptions = true;
+
+		// Process any delayed allows that arrived while options were loading
+		if (gPendingAllows.length > 0) {
+			let pending = gPendingAllows;
+			gPendingAllows = [];
+			for (let p of pending) {
+				allowBlockedPage(p.id, p.url, p.set, gOptions[`delayAutoLoad${p.set}`]);
+			}
 		}
 	}
 
@@ -454,7 +466,9 @@ function checkTab(id, isBeforeNav, isRepeat) {
 	function isSameHost(host1, host2) {
 		return (host1 == host2)
 			|| (host1 == "www." + host2)
-			|| (host2 == "www." + host1);
+			|| (host2 == "www." + host1)
+			|| host2.endsWith("." + host1)
+			|| host1.endsWith("." + host2);
 	}
 
 	let url = gTabs[id].url;
@@ -487,8 +501,14 @@ function checkTab(id, isBeforeNav, isRepeat) {
 	let allowPath = !gTabs[id].allowedPath || (gTabs[id].allowedPath == parsedURL.path);
 	let allowedSet = gTabs[id].allowedSet;
 	let allowedEndTime = gTabs[id].allowedEndTime;
+	if (gDiagMode) log(`checkTab: id=${id} url=${url} allowedSet=${allowedSet} allowHost=${allowHost} allowPath=${allowPath}`);
 	if (!allowHost || !allowPath || (allowedEndTime && now > allowedEndTime)) {
 		// Allowing delayed site/page no longer applies
+		if (gDiagMode) {
+			log(`### ALLOW STATE CLEARED ### id: ${id} url: ${url}`);
+			log(`allowHost: ${allowHost} (storedHost: ${gTabs[id].allowedHost}, pageHost: ${parsedURL.host})`);
+			log(`allowPath: ${allowPath} allowedEndTime: ${allowedEndTime} now: ${now}`);
+		}
 		gTabs[id].allowedHost = null;
 		gTabs[id].allowedPath = null;
 		gTabs[id].allowedSet = 0;
@@ -513,13 +533,32 @@ function checkTab(id, isBeforeNav, isRepeat) {
 		if (gOptions[`disable${set}`]) continue;
 
 		if (allowHost && allowPath && allowedSet == set) {
-			// Allow delayed site/page
+			// Allow delayed site/page (tab-keyed)
 			let secsLeft = allowedEndTime - now;
 			if (secsLeft > 0) {
 				gTabs[id].secsLeft = secsLeft;
 				gTabs[id].secsLeftSet = set;
 				gTabs[id].showTimer = gOptions[`showTimer${set}`];
 			}
+			continue;
+		}
+
+		// Check global delay allowances — host+set based, not tab-ID based.
+		// Safari assigns new tab IDs on every extension-page navigation, making the
+		// tab-keyed allowedSet check above unreliable. This list is the fallback.
+		let gdaIdx = gDelayAllowances.findIndex(a =>
+			a.set == set &&
+			(!a.host || isSameHost(a.host, parsedURL.host)) &&
+			a.expiresAt > now
+		);
+		if (gdaIdx >= 0) {
+			let gda = gDelayAllowances.splice(gdaIdx, 1)[0];
+			// Transfer into tab-keyed state so subsequent navigations in this tab are covered
+			gTabs[id].allowedHost = gda.host || parsedURL.host;
+			gTabs[id].allowedPath = null;
+			gTabs[id].allowedSet = String(gda.set);
+			gTabs[id].allowedEndTime = gda.expiresAt;
+			if (gDiagMode) log(`gDelayAllowances consumed for set=${set} host=${parsedURL.host} tab=${id}`);
 			continue;
 		}
 
@@ -740,6 +779,13 @@ function checkTab(id, isBeforeNav, isRepeat) {
 							.replace(/\$K/g, keyword ? keyword : "")
 							.replace(/\$S/g, set)
 							.replace(/\$U/g, pageURLWithHash);
+
+						// If redirecting to the delayed page, store the correct tab ID keyed by
+						// set+url so the "delayed" message handler can look it up. This is needed
+						// because Safari returns the wrong tab ID from sender.tab and getCurrent().
+						if (blockURL.startsWith(DELAYED_PAGE_URL)) {
+							gDelayedTabIds[set + "|" + pageURLWithHash] = id;
+						}
 
 						// Redirect page
 						browser.tabs.update(id, { url: blockURL });
@@ -1175,6 +1221,7 @@ function createBlockInfo(id, url) {
 	return {
 		theme: theme,
 		customStyle: customStyle,
+		tabId: id,
 		blockedSet: blockedSet,
 		blockedSetName: blockedSetName,
 		blockedURL: blockedURL,
@@ -1498,9 +1545,17 @@ function openExtensionPage(url) {
 // Allow page blocked by delaying/password page
 //
 function allowBlockedPage(id, url, set, autoLoad) {
-	//log("allowBlockedPage: " + id + " " + url + " " + set);
+	if (gDiagMode) log(`allowBlockedPage: id=${id} url=${url} set=${set} autoLoad=${autoLoad}`);
 
-	if (!gGotOptions || set < 1 || set > gNumSets) {
+	initTab(id);
+
+	if (!gGotOptions) {
+		// Options not yet loaded (service worker restart): queue the allow for later
+		gPendingAllows.push({ id, url, set });
+		return;
+	}
+
+	if (set < 1 || set > gNumSets) {
 		return;
 	}
 
@@ -1514,14 +1569,28 @@ function allowBlockedPage(id, url, set, autoLoad) {
 	gTabs[id].allowedHost = (delayFirst && delayFirstMode == 1) ? null : parsedURL.host;
 	gTabs[id].allowedPath = delayFirst ? null : parsedURL.path;
 	gTabs[id].allowedSet = set;
+	let allowedEndTime;
 	if (delayAllowMins) {
 		// Calculate end time for allowing access
 		let now = Math.floor(Date.now() / 1000) + (gClockOffset * 60);
-		gTabs[id].allowedEndTime = now + (delayAllowMins * 60);
+		allowedEndTime = now + (delayAllowMins * 60);
+		gTabs[id].allowedEndTime = allowedEndTime;
 	} else {
-		// No end time for allowing access
-		gTabs[id].allowedEndTime = 0;
+		// Default: allow for 5 minutes (gives time to navigate; not tied to a specific tab ID)
+		let now = Math.floor(Date.now() / 1000) + (gClockOffset * 60);
+		allowedEndTime = now + 300;
+		gTabs[id].allowedEndTime = 0; // existing tab-keyed state has no end time
 	}
+
+	// Add a host+set allowance that checkTab can match regardless of tab ID.
+	// This is the primary mechanism on Safari where every browser.tabs.update to/from
+	// an extension page gets a fresh tab ID, making gTabs[id].allowedSet unreliable.
+	gDelayAllowances.push({
+		host: gTabs[id].allowedHost, // null when delayFirstMode == 1 (any host in set)
+		set: set,
+		expiresAt: allowedEndTime
+	});
+	if (gDiagMode) log(`gDelayAllowances added: host=${gTabs[id].allowedHost} set=${set} expiresAt=${allowedEndTime}`);
 
 	if (autoLoad) {
 		// Redirect page
@@ -1721,13 +1790,20 @@ function handleMessage(message, sender, sendResponse) {
 			browser.tabs.remove(sender.tab.id);
 			break;
 
-		case "delayed":
-			// Delaying page countdown completed
-			allowBlockedPage(sender.tab.id,
+		case "delayed": {
+			// Delaying page countdown completed — look up the correct tab ID from
+			// gDelayedTabIds (stored in applyBlock). Safari's sender.tab.id and
+			// browser.tabs.getCurrent() both return the wrong tab ID for extension pages.
+			let delayedKey = message.blockedSet + "|" + message.blockedURL;
+			let delayedTabId = gDelayedTabIds[delayedKey] || message.tabId || sender.tab?.id;
+			if (gDiagMode) log(`delayed: key=${delayedKey} resolvedTabId=${delayedTabId} (stored=${gDelayedTabIds[delayedKey]} msg=${message.tabId} sender=${sender.tab?.id})`);
+			delete gDelayedTabIds[delayedKey];
+			allowBlockedPage(delayedTabId,
 				message.blockedURL,
 				message.blockedSet,
 				gOptions[`delayAutoLoad${message.blockedSet}`]);
 			break;
+		}
 
 		case "discard-time":
 			// Discard remaining time
@@ -1768,8 +1844,8 @@ function handleMessage(message, sender, sendResponse) {
 			break;
 
 		case "password":
-			// Password successfully entered
-			allowBlockedPage(sender.tab.id,
+			// Password successfully entered — use tabId from message (same reasoning as "delayed")
+			allowBlockedPage(message.tabId || sender.tab?.id,
 				message.blockedURL,
 				message.blockedSet,
 				true);
@@ -1901,6 +1977,24 @@ function handleBeforeNavigate(navDetails) {
 		gTabs[tabId].loaded = false
 		gTabs[tabId].url = getCleanURL(navDetails.url);
 
+		// If navigating to the delayed page, store the correct tab ID as a fallback
+		// if the worker restarted after applyBlock() ran and gDelayedTabIds was cleared.
+		// Do NOT overwrite an existing entry — applyBlock() stores the true origin tab ID,
+		// which Safari would replace here with a new spurious ID for the extension page.
+		if (navDetails.url.startsWith(DELAYED_PAGE_URL)) {
+			let qIdx = navDetails.url.indexOf('?');
+			if (qIdx >= 0) {
+				let query = navDetails.url.substring(qIdx + 1);
+				let sepIdx = query.search(/[&;]/);
+				if (sepIdx > 0) {
+					let blockedSet = query.substring(0, sepIdx);
+					let blockedURL = query.substring(sepIdx + 1);
+					let key = blockedSet + "|" + blockedURL;
+					if (!(key in gDelayedTabIds)) gDelayedTabIds[key] = tabId;
+				}
+			}
+		}
+
 		// Check tab to see if page should be blocked
 		let blocked = checkTab(tabId, true, false);
 	}
@@ -1924,6 +2018,12 @@ function onInterval() {
 		if (++gSaveSecsCount >= gOptions["saveSecs"]) {
 			saveTimeData();
 			gSaveSecsCount = 0;
+		}
+
+		// Clean up expired delay allowances
+		if (gDelayAllowances.length > 0) {
+			let nowSecs = Math.floor(Date.now() / 1000) + (gClockOffset * 60);
+			gDelayAllowances = gDelayAllowances.filter(a => a.expiresAt > nowSecs);
 		}
 	}
 }
@@ -1990,3 +2090,16 @@ window.applyOverride = applyOverride;
 window.cancelLockdown = cancelLockdown;
 window.resetRolloverTime = resetRolloverTime;
 window.addSiteToSet = addSiteToSet;
+window.allowBlockedPage = allowBlockedPage;
+
+// State helpers for testing purposes
+window.getBackgroundState = () => ({ gGotOptions, gTabs, gPendingAllows, gDelayedTabIds, gDelayAllowances, gOptions, gNumSets });
+window.setBackgroundState = (state) => {
+	if ('gGotOptions' in state) gGotOptions = state.gGotOptions;
+	if ('gTabs' in state) gTabs = state.gTabs;
+	if ('gPendingAllows' in state) gPendingAllows = state.gPendingAllows;
+	if ('gDelayedTabIds' in state) gDelayedTabIds = state.gDelayedTabIds;
+	if ('gDelayAllowances' in state) gDelayAllowances = state.gDelayAllowances;
+	if ('gOptions' in state) gOptions = state.gOptions;
+	if ('gNumSets' in state) gNumSets = state.gNumSets;
+};

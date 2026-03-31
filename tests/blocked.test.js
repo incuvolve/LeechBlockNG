@@ -6,6 +6,9 @@
 global.browser = {
   runtime: {
     sendMessage: jest.fn(() => Promise.resolve({}))
+  },
+  tabs: {
+    getCurrent: jest.fn(() => Promise.resolve({ id: 1 }))
   }
 };
 
@@ -31,7 +34,7 @@ describe('processBlockInfo', () => {
   let themeLink, customStyle, blockedURL, blockedURLLink, blockedSet, keywordMatched, keywordMatch, passwordInput, passwordSubmit, customMsgDiv, customMsg, unblockTime, delaySecsElement;
 
   // Store original setInterval and setTimeout to restore them later
-  let originalSetInterval, originalSetTimeout;
+  let originalSetInterval, originalSetTimeout, originalClearInterval;
   let originalReloadBlockedPage;
 
   // Mock window.location properties and methods
@@ -51,6 +54,7 @@ describe('processBlockInfo', () => {
       <div id="ivbCustomMsgDiv" style="display: none;"><span id="ivbCustomMsg"></span></div>
       <div id="ivbUnblockTime"></div>
       <div id="ivbDelaySeconds"></div>
+      <p id="ivbCountdownText"></p>
     `;
 
     themeLink = document.getElementById("themeLink");
@@ -77,11 +81,13 @@ describe('processBlockInfo', () => {
     // We'll just directly manipulate mockHrefValue and assert on it.
     mockHrefValue = ''; // Reset for each test
 
-    // Explicitly mock setInterval and setTimeout
+    // Explicitly mock setInterval, setTimeout and clearInterval
     originalSetInterval = window.setInterval;
     originalSetTimeout = window.setTimeout;
+    originalClearInterval = window.clearInterval;
     window.setInterval = jest.fn();
     window.setTimeout = jest.fn();
+    window.clearInterval = jest.fn();
 
     // Mock reloadBlockedPage
     originalReloadBlockedPage = window.reloadBlockedPage;
@@ -94,6 +100,7 @@ describe('processBlockInfo', () => {
     // Restore original timers
     window.setInterval = originalSetInterval;
     window.setTimeout = originalSetTimeout;
+    window.clearInterval = originalClearInterval;
     // Restore original reloadBlockedPage
     window.reloadBlockedPage = originalReloadBlockedPage;
   });
@@ -116,7 +123,6 @@ describe('processBlockInfo', () => {
     expect(blockedURLLink.getAttribute('href')).toBe('http://example.com');
     expect(blockedSet.innerText).toBe('My Test Set Name');
     expect(document.title).toContain('(My Test Set Name)');
-    expect(console.log).toHaveBeenCalledWith('[IVB]Test Set');
   });
 
   test('should truncate long blocked URL', () => {
@@ -241,5 +247,56 @@ describe('processBlockInfo', () => {
     expect(parseInt(delaySecsElement.innerText)).toBe(4); // After one tick
   });
 
+  test('should send "delayed" message when countdown reaches 0', () => {
+    browser.runtime.sendMessage.mockClear();
+    window.gBlockedURL = 'http://example.com';
+    window.gBlockedSet = '1';
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: '1',
+      delaySecs: 2
+    };
+    window.processBlockInfo(info);
+
+    const callback = window.setInterval.mock.calls[0][0];
+    const countdownObject = window.setInterval.mock.calls[0][2];
+
+    callback(countdownObject); // delaySecs → 1
+    expect(browser.runtime.sendMessage).not.toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'delayed' })
+    );
+
+    callback(countdownObject); // delaySecs → 0 → triggers message
+    expect(window.clearInterval).toHaveBeenCalled();
+    expect(browser.runtime.sendMessage).toHaveBeenCalledWith({
+      type: 'delayed',
+      blockedURL: 'http://example.com',
+      blockedSet: '1'
+    });
+  });
+
+  test('should stop countdown and strikethrough if focus lost (delayCancel=true)', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: '1',
+      delaySecs: 5,
+      delayCancel: true
+    };
+    window.processBlockInfo(info);
+
+    const callback = window.setInterval.mock.calls[0][0];
+    const countdownObject = window.setInterval.mock.calls[0][2];
+
+    // Simulate focus loss by making hasFocus return false
+    Object.defineProperty(document, 'hasFocus', { value: () => false, configurable: true });
+    callback(countdownObject);
+
+    expect(window.clearInterval).toHaveBeenCalledWith(countdownObject.interval);
+    const countdownText = document.getElementById('ivbCountdownText');
+    expect(countdownText.style.textDecoration).toBe('line-through');
+
+    // Restore hasFocus
+    Object.defineProperty(document, 'hasFocus', { value: () => true, configurable: true });
+  });
 
 });

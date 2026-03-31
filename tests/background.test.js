@@ -99,4 +99,53 @@ describe('background.js tests', () => {
             expect(!!global.testURL('http://example.com', 'http://google.com', blockRE, null, referRE, true)).toBe(true);
         });
     });
+
+    describe('allowBlockedPage', () => {
+        const defaultOptions = {
+            delayFirst1: true, delayFirstMode1: '0', delayAllowMins1: '',
+            delayAutoLoad1: true
+        };
+
+        beforeEach(() => {
+            global.setBackgroundState({
+                gGotOptions: false,
+                gNumSets: 1,
+                gTabs: [],
+                gPendingAllows: [],
+                gOptions: { ...defaultOptions }
+            });
+            browserMock.tabs.update.mockClear();
+        });
+
+        it('queues allow when gGotOptions is false (service worker restart)', () => {
+            global.allowBlockedPage(42, 'https://example.com', '1', true);
+            const state = global.getBackgroundState();
+            expect(state.gPendingAllows).toEqual([{ id: 42, url: 'https://example.com', set: '1' }]);
+            expect(browserMock.tabs.update).not.toHaveBeenCalled();
+        });
+
+        it('processes pending allows immediately when options are already loaded', () => {
+            global.setBackgroundState({ gGotOptions: true });
+            global.allowBlockedPage(42, 'https://example.com', '1', true);
+            const state = global.getBackgroundState();
+            expect(state.gPendingAllows).toHaveLength(0);
+            expect(browserMock.tabs.update).toHaveBeenCalledWith(42, { url: 'https://example.com' });
+        });
+
+        it('creates gTabs entry if tab not yet tracked (no TypeError)', () => {
+            global.setBackgroundState({ gGotOptions: true });
+            expect(() => {
+                global.allowBlockedPage(99, 'https://example.com', '1', false);
+            }).not.toThrow();
+            const state = global.getBackgroundState();
+            expect(state.gTabs[99]).toBeDefined();
+            expect(state.gTabs[99].allowedSet).toBe('1');
+        });
+
+        it('does not navigate if autoLoad is false', () => {
+            global.setBackgroundState({ gGotOptions: true });
+            global.allowBlockedPage(42, 'https://example.com', '1', false);
+            expect(browserMock.tabs.update).not.toHaveBeenCalled();
+        });
+    });
 });
