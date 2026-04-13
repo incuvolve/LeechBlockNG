@@ -71,6 +71,16 @@ require('../common.js');
 require('../lockdown.js');
 
 describe('lockdown.js', () => {
+    let consoleWarnSpy;
+
+    beforeAll(() => {
+        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
+
+    afterAll(() => {
+        consoleWarnSpy.mockRestore();
+    });
+
     beforeEach(() => {
         jest.clearAllMocks();
         // Restore default mock implementations after clearAllMocks depletes once-queues.

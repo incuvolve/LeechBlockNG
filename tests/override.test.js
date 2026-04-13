@@ -83,6 +83,7 @@ const flushPromises = () => new Promise(resolve => setTimeout(resolve, 0));
 describe('override.js', () => {
     beforeEach(() => {
         jest.clearAllMocks();
+        jest.spyOn(console, 'warn').mockImplementation(() => {});
         jest.spyOn(global.Date, 'now').mockReturnValue(1678886400000);
         // Reset DOM so DOM-dependent tests each start with a clean state
         document.body.innerHTML = DOM_HTML;
@@ -276,6 +277,59 @@ describe('override.js', () => {
             expect(el).not.toBeNull();
             expect(el.tagName).toBe('TEXTAREA');
             expect(el.rows).toBe(3);
+        });
+    });
+
+    describe('initializePage – additional branches', () => {
+        it('sets 12-hour clock format when clockTimeFormat is 1', async () => {
+            browserMock.storage.local.get
+                .mockResolvedValueOnce({ sync: false })
+                .mockResolvedValueOnce({ clockTimeFormat: 1, numSets: 0 });
+            global.initializePage();
+            await flushPromises();
+            // covers lines 68-69: gClockTimeOpts.hour12 = true
+        });
+
+        it('resets override limit count when the period has rolled over', async () => {
+            browserMock.storage.local.get
+                .mockResolvedValueOnce({ sync: false })
+                .mockResolvedValueOnce({
+                    orln: '3', orlp: '86400', orlps: 0, orlc: 1, numSets: 0
+                });
+            global.initializePage();
+            await flushPromises();
+            // covers lines 92-94: orlps (0) != periodStart → gOverrideLimitLeft = orln
+        });
+
+        it('triggers confirmation dialog when orc+orm+allowOverride set with named set', async () => {
+            browserMock.storage.local.get
+                .mockResolvedValueOnce({ sync: false })
+                .mockResolvedValueOnce({
+                    orc: true, orm: '1', clockTimeFormat: 2,
+                    numSets: 1, allowOverride1: true, setName1: 'Work'
+                });
+            global.initializePage();
+            await flushPromises();
+            // covers: 68-69 (clockTimeFormat=2), 101-107 (setNames loop),
+            // 178-179 (activateOverride via confirmAccess), 277-290 (dialog)
+            expect(jQueryMock).toHaveBeenCalledWith('#alertOverrideActivated');
+            expect(mockJQuery.dialog).toHaveBeenCalledWith('open');
+        });
+    });
+
+    describe('displayAccessCode – image mode', () => {
+        it('renders code as a canvas image when asImage is true', () => {
+            const mockCtx = {
+                font: '', fillStyle: '',
+                measureText: jest.fn(() => ({ width: 100 })),
+                scale: jest.fn(),
+                fillText: jest.fn()
+            };
+            HTMLCanvasElement.prototype.getContext = jest.fn(() => mockCtx);
+            const lines = global.displayAccessCode('ABC DEF GHI', true);
+            expect(lines).toBeGreaterThan(0);
+            expect(document.getElementById('promptAccessCodeText').style.display).toBe('none');
+            expect(document.getElementById('promptAccessCodeImage').style.display).toBe('');
         });
     });
 });

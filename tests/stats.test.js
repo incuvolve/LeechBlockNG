@@ -82,6 +82,16 @@ const baseOptions1 = {
 
 
 describe('stats.js', () => {
+    let consoleWarnSpy;
+
+    beforeAll(() => {
+        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
+
+    afterAll(() => {
+        consoleWarnSpy.mockRestore();
+    });
+
     beforeEach(() => {
         jest.clearAllMocks();
 
