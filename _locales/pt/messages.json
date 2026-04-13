@@ -4,7 +4,7 @@
 		"description": "Name of the extension."
 	},
 	"extensionDescription": {
-		"message": "LeechBlock é uma ferramenta de produtividade simples para bloquear sites que desperdiçam tempo.",
+		"message": "ivBlock é uma ferramenta de produtividade simples para bloquear sites que desperdiçam tempo.",
 		"description": "Description of the extension."
 	},
 	"optionsMenuItem": {
@@ -23,13 +23,13 @@
 		"message": "Adicionar Site"
 	},
 	"addSiteToBlockSetMenuItem": {
-		"message": "Adicionar Site para Lista de Bloqueio"
+		"message": "Adicionar Site ao Conjunto de Bloqueio"
 	},
 	"addPageMenuItem": {
 		"message": "Adicionar Página"
 	},
 	"addPageToBlockSetMenuItem": {
-		"message": "Adicionar Página para Lista de Bloqueio"
+		"message": "Adicionar Página ao Conjunto de Bloqueio"
 	},
 	"popupOptions": {
 		"message": "Opções"
@@ -116,7 +116,7 @@
 		"message": "Adicionar Sites"
 	},
 	"lockdownLegend": {
-		"message": "Lockdown do ivBlock"
+		"message": "ivBlock Lockdown"
 	},
 	"lockdownDurationLabel": {
 		"message": "Digite a duração do Lockdown:"
@@ -308,7 +308,7 @@
 		"message": "hora (60 minutos)"
 	},
 	"optPeriod1_5Hours": {
-		"message": "1,5 hora (90 minutos)"
+		"message": "1,5 horas (90 minutos)"
 	},
 	"optPeriod2Hours": {
 		"message": "2 horas"

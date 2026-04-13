@@ -4,7 +4,7 @@
 		"description": "Name of the extension."
 	},
 	"extensionDescription": {
-		"message": "LeechBlock è un semplice strumento di produttività per bloccare i siti che fanno perdere tempo.",
+		"message": "ivBlock è un semplice strumento di produttività per bloccare i siti che fanno perdere tempo.",
 		"description": "Description of the extension."
 	},
 	"optionsMenuItem": {
@@ -14,7 +14,7 @@
 		"message": "Lockdown"
 	},
 	"overrideMenuItem": {
-		"message": "Permetti"
+		"message": "Permesso"
 	},
 	"statisticsMenuItem": {
 		"message": "Statistiche"
@@ -23,13 +23,13 @@
 		"message": "Aggiungi sito"
 	},
 	"addSiteToBlockSetMenuItem": {
-		"message": "Aggiungi sito a Lista blocco"
+		"message": "Aggiungi sito a Set di blocco"
 	},
 	"addPageMenuItem": {
 		"message": "Aggiungi pagina"
 	},
 	"addPageToBlockSetMenuItem": {
-		"message": "Aggiungi pagina a Lista blocco"
+		"message": "Aggiungi pagina a Set di blocco"
 	},
 	"popupOptions": {
 		"message": "Opzioni"
@@ -38,7 +38,7 @@
 		"message": "Lockdown"
 	},
 	"popupOverride": {
-		"message": "Permetti"
+		"message": "Permesso"
 	},
 	"popupStatistics": {
 		"message": "Statistiche"
@@ -116,7 +116,7 @@
 		"message": "Aggiungi siti"
 	},
 	"lockdownLegend": {
-		"message": "ivBlock — Lockdown"
+		"message": "ivBlock - Lockdown"
 	},
 	"lockdownDurationLabel": {
 		"message": "Inserisci la durata del Lockdown:"
@@ -221,7 +221,7 @@
 		"message": "Testa"
 	},
 	"diagTip": {
-		"message": "Suggerimento: puoi copiare/incollare dalla barra degli indirizzi del browser."
+		"message": "Suggerimento: Puoi copiare/incollare dalla barra degli indirizzi del browser."
 	},
 	"diagAlertBadUrl": {
 		"message": "Inserisci l'URL nel formato corretto (come URL completo)."

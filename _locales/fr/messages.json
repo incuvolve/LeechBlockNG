@@ -11,7 +11,7 @@
 		"message": "Options"
 	},
 	"lockdownMenuItem": {
-		"message": "Verrouillage"
+		"message": "Lockdown"
 	},
 	"overrideMenuItem": {
 		"message": "Remplacer"
@@ -35,7 +35,7 @@
 		"message": "Options"
 	},
 	"popupLockdown": {
-		"message": "Verrouillage"
+		"message": "Lockdown"
 	},
 	"popupOverride": {
 		"message": "Remplacer"
@@ -62,10 +62,10 @@
 		"message": "Site bloqué"
 	},
 	"blockedWarning": {
-		"message": "La page que vous essayez d'accéder a été bloquée par <a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a>."
+		"message": "La page à laquelle vous essayez d'accéder a été bloquée par <a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a>."
 	},
 	"delayedWarning": {
-		"message": "La page que vous essayez d'accéder a été temporairement bloquée par <a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a>."
+		"message": "La page à laquelle vous essayez d'accéder a été temporairement bloquée par <a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a>."
 	},
 	"blockedSetLabel": {
 		"message": "Liste de blocage"
@@ -110,7 +110,7 @@
 		"message": "Ajouter ces sites à :"
 	},
 	"addSitesNoteHtml": {
-		"message": "<strong>Remarque :</strong> Tout <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">caractère générique</a> est autorisé."
+		"message": "<strong>Remarque :</strong> Toute <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">exception</a> dans la liste de sites sera ignorée !"
 	},
 	"addSitesButton": {
 		"message": "Ajouter des sites"
@@ -155,22 +155,22 @@
 		"message": "Activer le remplacement"
 	},
 	"overrideAlertLimitReachedHtml": {
-		"message": "Vous avez atteint votre limite de <strong><span id=\"alertLimitNum\"></span></strong> remplacement(s) pour cette période."
+		"message": "Vous avez atteint votre limite de <strong><span id=\"alertLimitNum\"></span></strong> remplacement(s) <span id=\"alertLimitReachedPeriod\"></span>."
 	},
 	"overrideAlertNoDuration": {
 		"message": "Veuillez entrer une durée non nulle pour le remplacement."
 	},
 	"overrideAlertActivatedHtml": {
-		"message": "Remplacement activé. Le blocage sera suspendu jusqu'à <strong><span id=\"alertOverrideEnd\"></span></strong>."
+		"message": "Remplacement activé. Le blocage sera suspendu jusqu'à <strong><span id=\"alertOverrideEndTime\"></span></strong>."
 	},
 	"overrideAlertNoSetsHtml": {
-		"message": "<strong>Remarque :</strong> Le remplacement n'aura aucun effet car vous n'avez sélectionné aucun site."
+		"message": "<strong>Remarque :</strong> Le remplacement n'aura aucun effet car vous n'avez pas activé<br>« Autoriser le remplacement temporaire pour ces sites » pour aucune liste de blocage."
 	},
 	"overrideAlertSetsHtml": {
 		"message": "Le remplacement sera appliqué aux sites dans : <span id=\"alertOverrideSetList\"></span>"
 	},
 	"overrideAlertLimitHtml": {
-		"message": "Il vous reste <strong><span id=\"alertLimitLeft\"></span></strong> remplacement(s) autorisé(s) pour cette période."
+		"message": "Il vous reste <strong><span id=\"alertLimitLeft\"></span></strong> remplacement(s) autorisé(s) <span id=\"alertLimitPeriod\"></span>."
 	},
 	"overridePromptPassword": {
 		"message": "Entrez le mot de passe pour activer le remplacement :"
@@ -215,7 +215,7 @@
 		"message": "Entrez l'URL complète à tester avec vos listes de blocage actuelles :"
 	},
 	"diagUrlPlaceholder": {
-		"message": "ex. https://somesite.com"
+		"message": "p. ex. https://somesite.com"
 	},
 	"diagTestButton": {
 		"message": "Tester"
@@ -260,10 +260,10 @@
 		"message": "Entrez les noms de domaine des sites à bloquer (un élément par ligne) :"
 	},
 	"optSitesNoteHtml": {
-		"message": "<strong>Remarque :</strong> N'incluez <u>pas</u> les préfixes de protocole URL tels que <code>http://</code>."
+		"message": "<strong>Remarque :</strong> N'incluez <u>pas</u> les préfixes de protocole URL tels que <code>http://</code> ou <code>file://</code>."
 	},
 	"optSitesTipHtml": {
-		"message": "<strong>Astuce :</strong> Utilisez <code>*</code> ou <code>**</code> comme <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">caractères génériques</a>."
+		"message": "<strong>Astuce :</strong> Utilisez <code>*</code> ou <code>**</code> comme <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">caractères génériques</a>, <code>+</code> pour préfixer les <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">exceptions</a>, <code>&gt;</code> pour préfixer les <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">référents</a>, et <code>~</code> pour préfixer les <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">mots-clés</a>."
 	},
 	"optWhenToBlock": {
 		"message": "Quand bloquer"
@@ -557,7 +557,7 @@
 		"message": "Options avancées"
 	},
 	"optAdvancedWarning": {
-		"message": "Assurez-vous de bien comprendre les conséquences de ces options avant de les modifier."
+		"message": "Assurez-vous de bien comprendre les conséquences de ces options avant de les modifier !"
 	},
 	"optDisableSet": {
 		"message": "Désactiver cette liste de blocage (à des fins de débogage)"
@@ -599,7 +599,7 @@
 		"message": "Empêcher l'accès à <strong>about:debugging</strong> lorsque ces sites sont bloqués"
 	},
 	"optPrevOverrideHtml": {
-		"message": "Autoriser le remplacement à s'appliquer à <strong>about:addons</strong>, <strong>about:support</strong> et autres pages système"
+		"message": "Autoriser le remplacement à s'appliquer à <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong> et <strong>about:debugging</strong>"
 	},
 	"optLimitOffsetPrefix": {
 		"message": "Décaler la période limite de temps de"
@@ -617,7 +617,7 @@
 		"message": "Utilisez $S pour passer le numéro de liste et $T pour l'horodatage UTC en millisecondes"
 	},
 	"optRegexpBlockHtml": {
-		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour bloquer :"
+		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour bloquer (remplace la liste de sites) :"
 	},
 	"optClear": {
 		"message": "Effacer"
@@ -626,10 +626,10 @@
 		"message": "Générer depuis la liste de sites"
 	},
 	"optRegexpAllowHtml": {
-		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour autoriser :"
+		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour autoriser (remplace les exceptions dans la liste de sites) :"
 	},
 	"optRegexpKeywordHtml": {
-		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour les mots-clés :"
+		"message": "Utiliser une <a href=\"https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Regular_expressions\" target=\"_blank\">expression régulière</a> pour les mots-clés (remplace les mots-clés dans la liste de sites) :"
 	},
 	"optIgnoreHash": {
 		"message": "Ignorer le fragment (partie après #) lors de la vérification de l'URL"
@@ -839,7 +839,7 @@
 		"message": "24 heures"
 	},
 	"optClockFormatSuffix": {
-		"message": ""
+		"message": "format"
 	},
 	"optClockOffsetPrefix": {
 		"message": "Décaler l'horloge de"
@@ -890,7 +890,7 @@
 		"message": "Exporter / Importer"
 	},
 	"optImportNoteHtml": {
-		"message": "<strong>Remarque :</strong> L'importation sera désactivée si vous avez empêché l'accès aux options."
+		"message": "<strong>Remarque :</strong> L'importation sera désactivée si vous avez empêché l'accès aux options pour l'une des listes de blocage."
 	},
 	"optDownloadToFile": {
 		"message": "Télécharger les options dans un fichier (sinon, afficher dans un nouvel onglet)"
@@ -920,7 +920,7 @@
 		"message": "ivBlock"
 	},
 	"optAboutDescHtml": {
-		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> est un simple outil de productivité pour bloquer les sites qui font perdre du temps."
+		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> est un simple outil de productivité pour bloquer les sites qui font perdre du temps. Il vous suffit d'indiquer quels sites bloquer et quand les bloquer.<br><br>"
 	},
 	"optAboutVersion": {
 		"message": "Version :"
@@ -965,13 +965,13 @@
 		"message": "Enregistrer et fermer"
 	},
 	"optAlertAccessPreventHtml": {
-		"message": "Vous avez empêché l'accès aux options pendant ces périodes : <strong><span id=\"alertAccessPreventTimes\"></span></strong>."
+		"message": "Vous avez empêché l'accès aux options pendant ces périodes : <strong><span id=\"alertAccessPreventTimes\"></span></strong>"
 	},
 	"optAlertBadAccessPreventTimes": {
 		"message": "Empêcher complètement l'accès aux options est une mauvaise idée ! Veuillez entrer des périodes différentes."
 	},
 	"optAlertBadTimes": {
-		"message": "Veuillez entrer les périodes au bon format. Utilisez le format 24 heures (HH:MM ou HHMM)."
+		"message": "Veuillez entrer les périodes au bon format. Utilisez le format 24 heures (HHMM) pour les heures, un tiret (-) entre l'heure de début et l'heure de fin, et des virgules ou des espaces pour séparer les périodes."
 	},
 	"optAlertBadTimeLimit": {
 		"message": "Veuillez entrer la limite de temps au bon format (nombre positif)."

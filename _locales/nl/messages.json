@@ -11,7 +11,7 @@
 		"message": "Opties"
 	},
 	"lockdownMenuItem": {
-		"message": "Vergrendeling"
+		"message": "Lockdown"
 	},
 	"overrideMenuItem": {
 		"message": "Overschrijven"
@@ -23,19 +23,19 @@
 		"message": "Site toevoegen"
 	},
 	"addSiteToBlockSetMenuItem": {
-		"message": "Site toevoegen aan blokkeringsset"
+		"message": "Site toevoegen aan blokkeerset"
 	},
 	"addPageMenuItem": {
 		"message": "Pagina toevoegen"
 	},
 	"addPageToBlockSetMenuItem": {
-		"message": "Pagina toevoegen aan blokkeringsset"
+		"message": "Pagina toevoegen aan blokkeerset"
 	},
 	"popupOptions": {
 		"message": "Opties"
 	},
 	"popupLockdown": {
-		"message": "Vergrendeling"
+		"message": "Lockdown"
 	},
 	"popupOverride": {
 		"message": "Overschrijven"
@@ -206,7 +206,7 @@
 		"message": "Herstart"
 	},
 	"statsRestartAll": {
-		"message": "Alles herstart"
+		"message": "Alles herstarten"
 	},
 	"diagLegend": {
 		"message": "Diagnostiek"
@@ -377,25 +377,25 @@
 		"message": "Selecteer de dagen waarop deze sites geblokkeerd worden:"
 	},
 	"optDaySun": {
-		"message": "Zondag"
+		"message": "zondag"
 	},
 	"optDayMon": {
-		"message": "Maandag"
+		"message": "maandag"
 	},
 	"optDayTue": {
-		"message": "Dinsdag"
+		"message": "dinsdag"
 	},
 	"optDayWed": {
-		"message": "Woensdag"
+		"message": "woensdag"
 	},
 	"optDayThu": {
-		"message": "Donderdag"
+		"message": "donderdag"
 	},
 	"optDayFri": {
-		"message": "Vrijdag"
+		"message": "vrijdag"
 	},
 	"optDaySat": {
-		"message": "Zaterdag"
+		"message": "zaterdag"
 	},
 	"optHowToBlock": {
 		"message": "Hoe blokkeren"
@@ -614,7 +614,7 @@
 		"message": "Lijst van sites laden van URL:"
 	},
 	"optSitesURLTitle": {
-		"message": "Gebruik $S voor het blokkeerseetnummer en $T voor UTC-tijdstempel in milliseconden"
+		"message": "Gebruik $S voor het blokkeersetnummer en $T voor UTC-tijdstempel in milliseconden"
 	},
 	"optRegexpBlockHtml": {
 		"message": "Gebruik een <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">reguliere expressie</a> om URL's te <strong>blokkeren</strong> (overschrijft de lijst van sites):"
@@ -695,7 +695,7 @@
 		"message": "klein"
 	},
 	"optTimerMedium": {
-		"message": "middel"
+		"message": "medium"
 	},
 	"optTimerLarge": {
 		"message": "groot"
@@ -1001,7 +1001,7 @@
 		"message": "Voer het aantal blokkeersets in het juiste formaat in (als een positief geheel getal)."
 	},
 	"optAlertNumSetsMaxHtml": {
-		"message": "Het maximale aantal blokkeersets is <strong>30</strong>. Uw waarde is teruggebracht naar 30."
+		"message": "Het maximale aantal blokkeersets is <strong>30</strong>. Je waarde is teruggebracht naar 30."
 	},
 	"optAlertNoImportFile": {
 		"message": "Selecteer een bestand met de te importeren opties."

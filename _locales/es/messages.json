@@ -4,14 +4,14 @@
 		"description": "Name of the extension."
 	},
 	"extensionDescription": {
-		"message": "LeechBlock es una herramienta de productividad sencilla para bloquear sitios que hacen perder el tiempo.",
+		"message": "ivBlock es una herramienta de productividad sencilla para bloquear sitios que hacen perder el tiempo.",
 		"description": "Description of the extension."
 	},
 	"optionsMenuItem": {
 		"message": "Opciones"
 	},
 	"lockdownMenuItem": {
-		"message": "Restringir"
+		"message": "Lockdown"
 	},
 	"overrideMenuItem": {
 		"message": "Anular"
@@ -23,13 +23,13 @@
 		"message": "Añadir Sitio"
 	},
 	"addSiteToBlockSetMenuItem": {
-		"message": "Añadir Sitio a Set de Bloqueo"
+		"message": "Añadir Sitio a Conjunto de Bloqueo"
 	},
 	"addPageMenuItem": {
 		"message": "Añadir Página"
 	},
 	"addPageToBlockSetMenuItem": {
-		"message": "Añadir Página a Set de Bloqueo"
+		"message": "Añadir Página a Conjunto de Bloqueo"
 	},
 	"popupOptions": {
 		"message": "Opciones"
@@ -143,7 +143,7 @@
 		"message": "Por favor, selecciona los sitios para el Lockdown."
 	},
 	"overrideLegend": {
-		"message": "ivBlock Anular"
+		"message": "ivBlock Anulación"
 	},
 	"overrideSuspendPrefix": {
 		"message": "Permitir suspender el bloqueo durante"
@@ -518,7 +518,7 @@
 		"message": "después de usar la página de espera/contraseña"
 	},
 	"optDelaySecsPrefix": {
-		"message": "Retrasar el acceso a los sitios"
+		"message": "Retrasar el acceso a los sitios durante"
 	},
 	"optSeconds": {
 		"message": "segundos"
@@ -617,7 +617,7 @@
 		"message": "Usa $S para el número del conjunto de bloqueo y $T para el sello de tiempo UTC en milisegundos"
 	},
 	"optRegexpBlockHtml": {
-		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para coincidir URLs a <strong>bloquear</strong> (anula la lista de sitios):"
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las URLs a <strong>bloquear</strong> (anula la lista de sitios):"
 	},
 	"optClear": {
 		"message": "Limpiar"
@@ -626,10 +626,10 @@
 		"message": "Generar desde Lista de Sitios"
 	},
 	"optRegexpAllowHtml": {
-		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para coincidir URLs a <strong>permitir</strong> (anula las excepciones de la lista de sitios):"
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las URLs a <strong>permitir</strong> (anula las excepciones de la lista de sitios):"
 	},
 	"optRegexpKeywordHtml": {
-		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para coincidir <strong>palabras clave</strong> (anula las palabras clave de la lista de sitios):"
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las <strong>palabras clave</strong> (anula las palabras clave de la lista de sitios):"
 	},
 	"optIgnoreHash": {
 		"message": "Ignorar fragmento (parte hash) al comprobar la URL"
@@ -1001,7 +1001,7 @@
 		"message": "Por favor, introduce el número de conjuntos de bloqueo en el formato correcto (como número entero positivo)."
 	},
 	"optAlertNumSetsMaxHtml": {
-		"message": "El número máximo de conjuntos de bloqueo es <strong>30</strong>. Su valor ha sido reducido a 30."
+		"message": "El número máximo de conjuntos de bloqueo es <strong>30</strong>. Tu valor ha sido reducido a 30."
 	},
 	"optAlertNoImportFile": {
 		"message": "Por favor, selecciona un archivo con las opciones a importar."
