@@ -27,6 +27,7 @@ const browser = {
         getManifest: () => ({ version: '1.2.3' }),
         sendMessage: jest.fn(),
         getPlatformInfo: jest.fn(() => Promise.resolve({ os: 'mac' })),
+        getURL: jest.fn((path) => 'moz-extension://id/' + path),
     },
     tabs: {
         create: jest.fn(),
@@ -83,6 +84,11 @@ global.browser = browser;
 global.$ = jQueryMock;
 global.jQuery = jQueryMock;
 
+// common.js calls warn/log at runtime but doesn't define them as globals.
+// Provide no-op mocks so calls from getParsedURL etc. don't throw.
+global.warn = jest.fn();
+global.log = jest.fn();
+
 require('../common.js');
 require('../options.js');
 
@@ -133,6 +139,291 @@ describe('options.js tests', () => {
         it('should call storage.local.get', () => {
             global.retrieveOptions();
             expect(browser.storage.local.get).toHaveBeenCalled();
+        });
+    });
+
+    // ── closeOptions ────────────────────────────────────────────────────────
+    describe('closeOptions', () => {
+        it('sends a close message via browser.runtime', () => {
+            global.closeOptions();
+            expect(browser.runtime.sendMessage).toHaveBeenCalledWith({ type: 'close' });
+        });
+    });
+
+    // ── updateBlockSetName ───────────────────────────────────────────────────
+    describe('updateBlockSetName', () => {
+        it('sets custom text on the block set tab name', () => {
+            global.updateBlockSetName(1, 'My Set');
+            expect(document.getElementById('blockSetName1').innerText).toBe('My Set');
+        });
+
+        it('falls back to i18n default when name is empty', () => {
+            global.updateBlockSetName(1, '');
+            expect(browser.i18n.getMessage).toHaveBeenCalledWith('optBlockSetDefault');
+        });
+    });
+
+    // ── showSimplifiedOptions ────────────────────────────────────────────────
+    describe('showSimplifiedOptions', () => {
+        it('hides simplifiable elements and shows fullOpts buttons when simplify=true', () => {
+            global.showSimplifiedOptions(true);
+            expect(jQueryMock).toHaveBeenCalledWith('.simplifiable');
+            expect(jQueryMock).toHaveBeenCalledWith("button[id^='fullOpts']");
+        });
+
+        it('shows simplifiable elements and hides fullOpts buttons when simplify=false', () => {
+            global.showSimplifiedOptions(false);
+            expect(jQueryMock).toHaveBeenCalledWith('.simplifiable');
+            expect(jQueryMock).toHaveBeenCalledWith("button[id^='fullOpts']");
+        });
+    });
+
+    // ── updatePasswordPageOptions ────────────────────────────────────────────
+    describe('updatePasswordPageOptions', () => {
+        it('does not throw for a non-password blockURL', () => {
+            document.getElementById('blockURL1').value = 'blocked.html?$S&$U';
+            expect(() => global.updatePasswordPageOptions(1)).not.toThrow();
+            document.getElementById('blockURL1').value = '';
+        });
+
+        it('does not throw when blockURL matches the password URL', () => {
+            document.getElementById('blockURL1').value = 'password.html?$S&$U';
+            expect(() => global.updatePasswordPageOptions(1)).not.toThrow();
+            document.getElementById('blockURL1').value = '';
+        });
+    });
+
+    // ── showClockOffsetTime ──────────────────────────────────────────────────
+    describe('showClockOffsetTime', () => {
+        afterEach(() => {
+            document.getElementById('clockOffset').value = '';
+        });
+
+        it('hides the clock offset time span when clockOffset is empty', () => {
+            document.getElementById('clockOffset').value = '';
+            global.showClockOffsetTime();
+            expect(jQueryMock).toHaveBeenCalledWith('#clockOffsetTime');
+        });
+
+        it('shows the clock offset time span when clockOffset is a valid number', () => {
+            document.getElementById('clockOffset').value = '60';
+            global.showClockOffsetTime();
+            expect(jQueryMock).toHaveBeenCalledWith('#clockOffsetTime');
+        });
+    });
+
+    // ── openDiagnostics ──────────────────────────────────────────────────────
+    describe('openDiagnostics', () => {
+        it('opens a new tab pointing at diagnostics.html', () => {
+            global.openDiagnostics();
+            expect(browser.runtime.getURL).toHaveBeenCalledWith('diagnostics.html');
+            expect(browser.tabs.create).toHaveBeenCalledWith(
+                expect.objectContaining({ url: expect.stringContaining('diagnostics.html') })
+            );
+        });
+    });
+
+    // ── disableGeneralOptions ────────────────────────────────────────────────
+    describe('disableGeneralOptions', () => {
+        it('disables all general option elements without throwing', () => {
+            expect(() => global.disableGeneralOptions()).not.toThrow();
+            expect(document.getElementById('saveSecs').disabled).toBe(true);
+        });
+    });
+
+    // ── disableImportOptions ─────────────────────────────────────────────────
+    describe('disableImportOptions', () => {
+        it('disables import elements without throwing', () => {
+            expect(() => global.disableImportOptions()).not.toThrow();
+            expect(document.getElementById('importOptions').disabled).toBe(true);
+        });
+    });
+
+    // ── updateSubOptions ─────────────────────────────────────────────────────
+    describe('updateSubOptions', () => {
+        it('updates sub-option disabled states for set 1 without throwing', () => {
+            expect(() => global.updateSubOptions(1)).not.toThrow();
+        });
+    });
+
+    // ── disableNonAndroidOptions ─────────────────────────────────────────────
+    describe('disableNonAndroidOptions', () => {
+        afterEach(() => {
+            document.getElementById('addHistory1').disabled = false;
+            document.getElementById('addHistory1').checked = false;
+        });
+
+        it('disables the addHistory checkbox for the given set', () => {
+            global.disableNonAndroidOptions(1);
+            expect(document.getElementById('addHistory1').disabled).toBe(true);
+            expect(document.getElementById('addHistory1').checked).toBe(false);
+        });
+    });
+
+    // ── updateMoveSetButtons ─────────────────────────────────────────────────
+    describe('updateMoveSetButtons', () => {
+        beforeEach(() => {
+            global.gSetDisabled = [];
+            global.gSetDisabled[1] = false;
+        });
+
+        it('disables both move buttons when there is only one set', () => {
+            global.gNumSets = 1;
+            global.updateMoveSetButtons();
+            expect(document.getElementById('moveSetL1').disabled).toBe(true);
+            expect(document.getElementById('moveSetR1').disabled).toBe(true);
+        });
+    });
+
+    // ── initAccessControlPrompt ──────────────────────────────────────────────
+    describe('initAccessControlPrompt', () => {
+        it('initialises the dialog via jQuery without throwing', () => {
+            expect(() => global.initAccessControlPrompt('accessPrompt')).not.toThrow();
+            expect(jQueryMock).toHaveBeenCalledWith('#accessPrompt');
+        });
+    });
+
+    // ── compileExportOptions ─────────────────────────────────────────────────
+    describe('compileExportOptions', () => {
+        beforeEach(() => {
+            document.getElementById('blockURL1').value = 'blocked.html?$S&$U';
+            document.getElementById('delaySecs1').value = '5';
+        });
+
+        afterEach(() => {
+            document.getElementById('blockURL1').value = '';
+            document.getElementById('delaySecs1').value = '';
+        });
+
+        it('returns an options object with per-set keys without throwing', () => {
+            let opts;
+            expect(() => { opts = global.compileExportOptions(false); }).not.toThrow();
+            expect(typeof opts).toBe('object');
+            expect(opts).toHaveProperty('sites1');
+            expect(opts).toHaveProperty('times1');
+        });
+
+        it('includes all fields when passwords=true', () => {
+            let opts;
+            expect(() => { opts = global.compileExportOptions(true); }).not.toThrow();
+            expect(typeof opts).toBe('object');
+        });
+    });
+
+    // ── saveOptions – additional validation paths ────────────────────────────
+    describe('saveOptions – additional validation paths', () => {
+        // Sets all per-set and general fields to values that pass validation,
+        // so each individual test only needs to corrupt one field.
+        const setValidFields = () => {
+            document.getElementById('times1').value = '';
+            document.getElementById('limitMins1').value = '';
+            document.getElementById('limitOffset1').value = '';
+            document.getElementById('delaySecs1').value = '5';
+            document.getElementById('delayAllowMins1').value = '';
+            document.getElementById('minBlock1').value = '';
+            document.getElementById('reloadSecs1').value = '';
+            document.getElementById('waitSecs1').value = '';
+            document.getElementById('blockURL1').value = 'blocked.html?$S&$U';
+            document.getElementById('numSets').value = '1';
+            document.getElementById('accessPreventTimes').value = '';
+            document.getElementById('overrideMins').value = '';
+            document.getElementById('overrideLimitNum').value = '';
+            document.getElementById('timerMaxHours').value = '';
+            document.getElementById('warnSecs').value = '';
+            document.getElementById('saveSecs').value = '10';
+            document.getElementById('processTabsSecs').value = '1';
+            document.getElementById('clockOffset').value = '';
+            document.getElementById('ignoreJumpSecs').value = '';
+        };
+
+        beforeEach(() => {
+            setValidFields();
+        });
+
+        it('returns false for invalid limitMins (non-numeric)', () => {
+            document.getElementById('limitMins1').value = 'abc';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid limitOffset (non-numeric)', () => {
+            document.getElementById('limitOffset1').value = 'xyz';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid minBlock (non-numeric)', () => {
+            document.getElementById('minBlock1').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid reloadSecs (non-numeric)', () => {
+            document.getElementById('reloadSecs1').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid waitSecs (non-numeric)', () => {
+            document.getElementById('waitSecs1').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for an invalid blockURL', () => {
+            document.getElementById('blockURL1').value = 'not-a-url!!';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid numSets (non-numeric)', () => {
+            document.getElementById('numSets').value = 'abc';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid overrideMins', () => {
+            document.getElementById('overrideMins').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid overrideLimitNum', () => {
+            document.getElementById('overrideLimitNum').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid timerMaxHours', () => {
+            document.getElementById('timerMaxHours').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid warnSecs', () => {
+            document.getElementById('warnSecs').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false when saveSecs is empty (required field)', () => {
+            document.getElementById('saveSecs').value = '';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false when processTabsSecs is empty (required field)', () => {
+            document.getElementById('processTabsSecs').value = '';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid clockOffset', () => {
+            document.getElementById('clockOffset').value = 'xyz';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false for invalid ignoreJumpSecs', () => {
+            document.getElementById('ignoreJumpSecs').value = 'bad';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns false when accessPreventTimes covers the full day (0000-2400)', () => {
+            document.getElementById('accessPreventTimes').value = '0000-2400';
+            expect(global.saveOptions({ data: { closeOptions: false } })).toBe(false);
+        });
+
+        it('returns true and calls storage.local.set when all fields are valid', () => {
+            const result = global.saveOptions({ data: { closeOptions: false } });
+            expect(result).toBe(true);
+            expect(browser.storage.local.set).toHaveBeenCalled();
         });
     });
 });
