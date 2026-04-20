@@ -4,6 +4,7 @@
 
 var gBlockedURL;
 var gBlockedSet;
+var gTabId;
 var gHashCode;
 
 // Create 32-bit integer hash code from string
@@ -23,7 +24,7 @@ function processBlockInfo(info) {
 
 	gBlockedURL = info.blockedURL;
 	gBlockedSet = info.blockedSet;
-	console.log('[IVB]' + info.blockedSet);
+	gTabId = info.tabId;
 	gHashCode = info.password ? hashCode32(info.password) : 0;
 
 	// Set theme
@@ -146,6 +147,7 @@ function onCountdownTimer(countdown) {
 		// Notify extension that delay countdown has completed
 		let message = {
 			type: "delayed",
+			tabId: gTabId,
 			blockedURL: gBlockedURL,
 			blockedSet: gBlockedSet
 		};
@@ -161,6 +163,7 @@ function onSubmitPassword() {
 		// Notify extension that password was successfully entered
 		let message = {
 			type: "password",
+			tabId: gTabId,
 			blockedURL: gBlockedURL,
 			blockedSet: gBlockedSet
 		};
@@ -182,7 +185,14 @@ function reloadBlockedPage() {
 }
 
 // Request block info from extension
+localize();
 browser.runtime.sendMessage({ type: "blocked" }).then(processBlockInfo);
+
+// Get our own tab ID directly — more reliable than relying on sender.tab.id
+// in the background, which Safari can report incorrectly for extension pages.
+browser.tabs.getCurrent().then(function(tab) {
+	if (tab) gTabId = tab.id;
+});
 
 // Expose functions for testing purposes
 window.hashCode32 = hashCode32;

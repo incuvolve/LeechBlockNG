@@ -25,23 +25,23 @@
 		<form id="form" class="ui-widget" style="display: none;" action="javascript: void(0);">
 
 			<fieldset>
-				<legend>ivBlock Add Sites</legend>
+				<legend data-i18n="addSitesLegend">ivBlock Add Sites</legend>
 				<p>
-					<label>Enter the domain names of the sites to block (one item per line):</label><br>
+					<label data-i18n="addSitesSitesLabel">Enter the domain names of the sites to block (one item per line):</label><br>
 				<div><textarea id="sites" cols="50" rows="10" spellcheck="false" placeholder="somesite.com" class="limited-width"></textarea>
 				</div>
 				</p>
 				<p>
-					<label>Add these sites to:</label>
+					<label data-i18n="addSitesToLabel">Add these sites to:</label>
 					<select id="blockSet" class="limited-width"></select>
 				</p>
-				<p><strong>Note:</strong> Any <a href="https://www.incuvolve.de/ivblock/faq/"
+				<p data-i18n-html="addSitesNoteHtml"><strong>Note:</strong> Any <a href="https://www.incuvolve.de/ivblock/faq/"
 						target="_blank">exceptions</a> in the list of sites will be ignored!</p>
 			</fieldset>
 
 			<p class="button-group">
-				<button id="addSites" type="submit" class="ivblock-button">Add Sites</button>
-				<button id="cancel" type="button" class="ivblock-button">Cancel</button>
+				<button id="addSites" type="submit" class="ivblock-button" data-i18n="addSitesButton">Add Sites</button>
+				<button id="cancel" type="button" class="ivblock-button" data-i18n="buttonCancel">Cancel</button>
 			</p>
 
 		</form>
@@ -50,7 +50,7 @@
 
 	<div id="alerts" style="display: none;">
 		<div id="alertRetrieveError" title="ivBlock Lockdown">
-			<p><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
+			<p data-i18n-html="alertRetrieveErrorHtml"><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
 		</div>
 	</div>
 

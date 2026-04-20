@@ -25,17 +25,15 @@
 		<form id="form" action="javascript: void(0);">
 
 			<fieldset>
-				<legend class="options_legend">Diagnostics</legend>
+				<legend class="options_legend" data-i18n="diagLegend">Diagnostics</legend>
 				<p>
-					<label for="url">Enter the fully specified URL to test against your current block sets:</label>
+					<label for="url" data-i18n="diagUrlLabel">Enter the fully specified URL to test against your current block sets:</label>
 				<div class="button-group">
-					<input id="url" type="text" size="60" placeholder="e.g. https://somesite.com" autocomplete="off">
-					<button id="testURL" type="button" class="ivblock-button">Test</button>
+					<input id="url" type="text" size="60" placeholder="e.g. https://somesite.com" autocomplete="off" data-i18n-placeholder="diagUrlPlaceholder">
+					<button id="testURL" type="button" class="ivblock-button" data-i18n="diagTestButton">Test</button>
 				</div>
 				</p>
-				<p>
-					Tip: You can copy/paste from your browser's location bar.
-				</p>
+				<p data-i18n="diagTip">Tip: You can copy/paste from your browser's location bar.</p>
 				<hr>
 				<p>
 					<textarea id="results" cols="80" rows="20" spellcheck="false" readonly="true"></textarea>
@@ -48,10 +46,10 @@
 
 	<div id="alerts" style="display: none;">
 		<div id="alertRetrieveError" title="ivBlock Diagnostics">
-			<p><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
+			<p data-i18n-html="alertRetrieveErrorHtml"><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
 		</div>
 		<div id="alertBadTestURL" title="ivBlock Diagnostics">
-			<p>Please enter the URL in the correct format (as a fully specified URL).</p>
+			<p data-i18n="diagAlertBadUrl">Please enter the URL in the correct format (as a fully specified URL).</p>
 		</div>
 	</div>
 

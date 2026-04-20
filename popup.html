@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ivBlock</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+	<link href="/style.css" rel="stylesheet">
 	<link href="/popup.css" rel="stylesheet">
 	<link href="/buttons.css" rel="stylesheet">
 	<link href="/icons/ivblock32.ico" rel="icon" type="image/x-icon">
@@ -22,16 +23,17 @@
 		</picture>
 	<p>
 	<div id="button-container" class="ui-widget button-group">
-		<button id="options" type="button" class="ivblock-button">Options</button>
-		<button id="lockdown" type="button" class="ivblock-button">Lockdown</button>
-		<button id="override" type="button" class="ivblock-button">Override</button>
-		<button id="stats" type="button" class="ivblock-button">Statistics</button>
-		<button id="addSites" type="button" class="ivblock-button">Add Sites</button>
-		<button id="cancelOverride" type="button" class="ivblock-button">Cancel Override</button>
-		<button id="resetRollover" type="button" class="ivblock-button">Reset Rollover Time</button>
-		<button id="discardTime" type="button" class="ivblock-button">Discard Remaining Time</button>
-		<button id="onlineSupport" type="button" class="ivblock-button">Online Support</button>
+		<button id="options" type="button" class="ivblock-button" data-i18n="popupOptions"></button>
+		<button id="lockdown" type="button" class="ivblock-button" data-i18n="popupLockdown"></button>
+		<button id="override" type="button" class="ivblock-button" data-i18n="popupOverride"></button>
+		<button id="stats" type="button" class="ivblock-button" data-i18n="popupStatistics"></button>
+		<button id="addSites" type="button" class="ivblock-button" data-i18n="popupAddSites"></button>
+		<button id="cancelOverride" type="button" class="ivblock-button" data-i18n="popupCancelOverride"></button>
+		<button id="resetRollover" type="button" class="ivblock-button" data-i18n="popupResetRollover"></button>
+		<button id="discardTime" type="button" class="ivblock-button" data-i18n="popupDiscardTime"></button>
+		<button id="onlineSupport" type="button" class="ivblock-button" data-i18n="popupOnlineSupport"></button>
 	</div>
+	<script src="/common.js"></script>
 	<script src="/popup.js"></script>
 </body>
 

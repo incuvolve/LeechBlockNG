@@ -27,6 +27,8 @@ function initForm() {
 function refreshPage() {
 	//log("refreshPage");
 
+	localize();
+
 	$("#form").hide();
 
 	browser.storage.local.get("sync").then(onGotSync, onError);
@@ -118,3 +120,10 @@ $("div[id^='alert']").dialog({
 
 document.addEventListener("DOMContentLoaded", refreshPage);
 document.addEventListener("focus", refreshPage);
+
+// Expose functions for testing purposes
+window.initForm = initForm;
+window.refreshPage = refreshPage;
+window.onAddSites = onAddSites;
+window.onCancel = onCancel;
+window.closePage = closePage;

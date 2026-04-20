@@ -1,37 +1,4 @@
-/* Global dialog button styling - centered, fixed width */
-.ui-dialog .ui-dialog-buttonpane {
-	text-align: center;
-}
-
-.ui-dialog .ui-dialog-buttonset {
-	float: none !important;
-}
-
-.ui-dialog .ui-dialog-buttonpane button {
-	margin: 5px;
-	width: 120px;
-	padding: 10px;
-}
-
-/* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
-.ui-dialog div {
-	margin-top: 0;
-}
-
-/* Fix close button - options.css .ui-widget button rules break jQuery UI icon */
-.ui-dialog .ui-dialog-titlebar-close {
-	padding: 1px !important;
-	width: 20px !important;
-	height: 20px !important;
-	min-height: 0 !important;
-	min-width: 0 !important;
-	border: 1px solid transparent !important;
-	background: transparent !important;
-}
-
-.ui-dialog .ui-dialog-titlebar-close:hover {
-	border-color: #ccc !important;
-}
+/* ivBlock override page */
 
 .button-container {
 	display: flex;
@@ -57,25 +24,8 @@
 
 @media (max-width: 600px) {
 	#form fieldset {
-		width: 80%;
+		width: 90%;
 		margin: 0 auto;
-	}
-	#mins {
-		width: 50px;
-	}
-	.ui-dialog {
-		width: 90vw !important;
-		max-width: 320px !important;
-	}
-
-	.ui-dialog .ui-dialog-content p {
-		font-size: 1em;
-		word-wrap: break-word;
-	}
-
-	#promptPasswordInput,
-	#promptAccessCodeInput {
-		width: 95%;
 	}
 }
 

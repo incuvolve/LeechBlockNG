@@ -1,5 +1,21 @@
-/* New styles for controls */
+/* ivBlock form control utilities */
+
+/* Constrained full-width control */
 .limited-width {
-    width: 100%;
-    max-width: 300px;
+	width: 100%;
+	max-width: 300px;
+}
+
+/* Short numeric inputs (e.g. minutes, seconds) */
+.input-narrow {
+	width: 3em;
+	min-width: 3em;
+	flex-shrink: 0;
+}
+
+/* Slightly wider numeric inputs (e.g. hours, 4-digit values) */
+.input-short {
+	width: 4em;
+	min-width: 4em;
+	flex-shrink: 0;
 }

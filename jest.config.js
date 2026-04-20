@@ -7,7 +7,9 @@ module.exports = {
     '!**/node_modules/**',
     '!**/tests/**',
     '!**/jest.config.js',
+    '!**/jest.setup.js',
     '!**/GEMINI*.js',
     '!**/jquery-ui/**',
+    '!**/coverage/**',
   ],
 };

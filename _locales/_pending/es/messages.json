@@ -1,0 +1,1045 @@
+{
+	"extensionName": {
+		"message": "ivBlock",
+		"description": "Name of the extension."
+	},
+	"extensionDescription": {
+		"message": "ivBlock es una herramienta de productividad sencilla para bloquear sitios que hacen perder el tiempo.",
+		"description": "Description of the extension."
+	},
+	"optionsMenuItem": {
+		"message": "Opciones"
+	},
+	"lockdownMenuItem": {
+		"message": "Lockdown"
+	},
+	"overrideMenuItem": {
+		"message": "Anular"
+	},
+	"statisticsMenuItem": {
+		"message": "Estadísticas"
+	},
+	"addSiteMenuItem": {
+		"message": "Añadir Sitio"
+	},
+	"addSiteToBlockSetMenuItem": {
+		"message": "Añadir Sitio a Conjunto de Bloqueo"
+	},
+	"addPageMenuItem": {
+		"message": "Añadir Página"
+	},
+	"addPageToBlockSetMenuItem": {
+		"message": "Añadir Página a Conjunto de Bloqueo"
+	},
+	"popupOptions": {
+		"message": "Opciones"
+	},
+	"popupLockdown": {
+		"message": "Lockdown"
+	},
+	"popupOverride": {
+		"message": "Anular"
+	},
+	"popupStatistics": {
+		"message": "Estadísticas"
+	},
+	"popupAddSites": {
+		"message": "Añadir Sitios"
+	},
+	"popupCancelOverride": {
+		"message": "Cancelar Anulación"
+	},
+	"popupResetRollover": {
+		"message": "Restablecer Tiempo de Rollover"
+	},
+	"popupDiscardTime": {
+		"message": "Descartar Tiempo Restante"
+	},
+	"popupOnlineSupport": {
+		"message": "Soporte en línea"
+	},
+	"blockedPageTitle": {
+		"message": "Sitio Bloqueado"
+	},
+	"blockedWarning": {
+		"message": "La página a la que intentas acceder ha sido bloqueada por <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+	},
+	"delayedWarning": {
+		"message": "La página a la que intentas acceder ha sido temporalmente bloqueada por <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+	},
+	"blockedSetLabel": {
+		"message": "Conjunto de Bloqueo"
+	},
+	"blockedKeywordMatched": {
+		"message": "Palabra clave coincidente:"
+	},
+	"blockedUnblockAt": {
+		"message": "La página será desbloqueada a las:"
+	},
+	"blockedEndOfTime": {
+		"message": "el fin de los tiempos"
+	},
+	"delayedCountdownPrefix": {
+		"message": "La página será desbloqueada en"
+	},
+	"delayedCountdownSuffix": {
+		"message": "segundo(s)."
+	},
+	"blockedCustomMsgLabel": {
+		"message": "Un mensaje de ti mismo:"
+	},
+	"blockedSupportHtml": {
+		"message": "ivBlock siempre será gratuito, pero si ha mejorado tu vida, considera apoyar su desarrollo continuo <a href=\"https://ko-fi.com/michaelhuelsen\">haciendo una contribución</a> o <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">valorando la app en el AppStore</a>."
+	},
+	"passwordPrompt": {
+		"message": "Introduce la contraseña para acceder a la página bloqueada:"
+	},
+	"buttonCancel": {
+		"message": "Cancelar"
+	},
+	"alertRetrieveErrorHtml": {
+		"message": "<strong>Error:</strong> No se pueden recuperar las opciones del almacenamiento del navegador."
+	},
+	"addSitesLegend": {
+		"message": "ivBlock Añadir Sitios"
+	},
+	"addSitesSitesLabel": {
+		"message": "Introduce los nombres de dominio de los sitios a bloquear (uno por línea):"
+	},
+	"addSitesToLabel": {
+		"message": "Añadir estos sitios a:"
+	},
+	"addSitesNoteHtml": {
+		"message": "<strong>Nota:</strong> ¡Las <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">excepciones</a> en la lista de sitios serán ignoradas!"
+	},
+	"addSitesButton": {
+		"message": "Añadir Sitios"
+	},
+	"lockdownLegend": {
+		"message": "Lockdown de ivBlock"
+	},
+	"lockdownDurationLabel": {
+		"message": "Introduce la duración del Lockdown:"
+	},
+	"lockdownHoursLabel": {
+		"message": "hora(s)"
+	},
+	"lockdownMinsLabel": {
+		"message": "minuto(s)"
+	},
+	"lockdownSitesLabel": {
+		"message": "Selecciona los sitios a bloquear durante el Lockdown:"
+	},
+	"lockdownSitesInBlockSet": {
+		"message": "Sitios especificados en el conjunto de bloqueo"
+	},
+	"lockdownActivateButton": {
+		"message": "Activar Lockdown"
+	},
+	"lockdownAlertNoDuration": {
+		"message": "Por favor, introduce una duración no nula para el Lockdown."
+	},
+	"lockdownAlertNoSets": {
+		"message": "Por favor, selecciona los sitios para el Lockdown."
+	},
+	"overrideLegend": {
+		"message": "ivBlock Anulación"
+	},
+	"overrideSuspendPrefix": {
+		"message": "Permitir suspender el bloqueo durante"
+	},
+	"overrideMinsLabel": {
+		"message": "minuto(s)"
+	},
+	"overrideActivateButton": {
+		"message": "Activar Anulación"
+	},
+	"overrideAlertLimitReachedHtml": {
+		"message": "Has alcanzado tu límite de <strong><span id=\"alertLimitNum\"></span></strong> anulación(es) <span id=\"alertLimitReachedPeriod\"></span>."
+	},
+	"overrideAlertNoDuration": {
+		"message": "Por favor, introduce una duración no nula para la anulación."
+	},
+	"overrideAlertActivatedHtml": {
+		"message": "Anulación activada. El bloqueo será suspendido hasta <strong><span id=\"alertOverrideEndTime\"></span></strong>."
+	},
+	"overrideAlertNoSetsHtml": {
+		"message": "<strong>Nota:</strong> La anulación no tendrá efecto porque no has seleccionado<br>\"Permitir anulación temporal para estos sitios\" en ningún conjunto de bloqueo."
+	},
+	"overrideAlertSetsHtml": {
+		"message": "La anulación se aplicará a los sitios en: <span id=\"alertOverrideSetList\"></span>"
+	},
+	"overrideAlertLimitHtml": {
+		"message": "Te quedan <strong><span id=\"alertLimitLeft\"></span></strong> anulación(es) más <span id=\"alertLimitPeriod\"></span>."
+	},
+	"overridePromptPassword": {
+		"message": "Introduce la contraseña para activar la anulación:"
+	},
+	"overridePromptAccessCode": {
+		"message": "Introduce el siguiente código para activar la anulación:"
+	},
+	"statsLegend": {
+		"message": "ivBlock Estadísticas"
+	},
+	"statsStartTime": {
+		"message": "Fecha/Hora de inicio:"
+	},
+	"statsTotalTime": {
+		"message": "Tiempo desde el inicio:"
+	},
+	"statsPerWeekTime": {
+		"message": "Tiempo por semana:"
+	},
+	"statsPerDayTime": {
+		"message": "Tiempo por día:"
+	},
+	"statsTimeLeft": {
+		"message": "Tiempo restante en el período:"
+	},
+	"statsRolloverTime": {
+		"message": "Tiempo de Rollover:"
+	},
+	"statsLockdownEndTime": {
+		"message": "Hora de fin del Lockdown:"
+	},
+	"statsRestart": {
+		"message": "Reiniciar"
+	},
+	"statsRestartAll": {
+		"message": "Reiniciar Todo"
+	},
+	"diagLegend": {
+		"message": "Diagnósticos"
+	},
+	"diagUrlLabel": {
+		"message": "Introduce la URL completa para probar con tus conjuntos de bloqueo actuales:"
+	},
+	"diagUrlPlaceholder": {
+		"message": "ej. https://algunsitio.com"
+	},
+	"diagTestButton": {
+		"message": "Probar"
+	},
+	"diagTip": {
+		"message": "Consejo: Puedes copiar/pegar desde la barra de dirección del navegador."
+	},
+	"diagAlertBadUrl": {
+		"message": "Por favor, introduce la URL en el formato correcto (como URL completa)."
+	},
+	"optBlockSetDefault": {
+		"message": "Conjunto de Bloqueo"
+	},
+	"optTabGeneral": {
+		"message": "General"
+	},
+	"optTabAbout": {
+		"message": "Acerca de"
+	},
+	"optMoveSetLeft": {
+		"message": "← Mover Conjunto"
+	},
+	"optShowSimplified": {
+		"message": "Mostrar Opciones Simplificadas"
+	},
+	"optShowFull": {
+		"message": "Mostrar Opciones Completas"
+	},
+	"optMoveSetRight": {
+		"message": "Mover Conjunto →"
+	},
+	"optWhatToBlock": {
+		"message": "Qué Bloquear"
+	},
+	"optWhatToBlockDesc": {
+		"message": "En esta sección, especifica los sitios que deseas bloquear."
+	},
+	"optSetNameLabel": {
+		"message": "Introduce un nombre personalizado para este conjunto de bloqueo (opcional):"
+	},
+	"optSitesLabel": {
+		"message": "Introduce los nombres de dominio de los sitios a bloquear (uno por línea):"
+	},
+	"optSitesNoteHtml": {
+		"message": "<strong>Nota:</strong> <u>No</u> incluyas prefijos de protocolo URL como <code>http://</code> o <code>file://</code>."
+	},
+	"optSitesTipHtml": {
+		"message": "<strong>Consejo:</strong> Usa <code>*</code> o <code>**</code> como <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">comodín</a>, <code>+</code> para <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">excepciones</a>, <code>&gt;</code> para <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">referentes</a> y <code>~</code> para <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">palabras clave</a>."
+	},
+	"optWhenToBlock": {
+		"message": "Cuándo Bloquear"
+	},
+	"optWhenToBlockDesc": {
+		"message": "En esta sección, especifica cuándo deseas bloquear estos sitios."
+	},
+	"optTimesLabel": {
+		"message": "Introduce los períodos de tiempo en los que bloquear estos sitios (opcional):"
+	},
+	"optTimesTitle": {
+		"message": "Dejar en blanco para sin períodos de tiempo"
+	},
+	"optAllDay": {
+		"message": "Todo el Día"
+	},
+	"optTimeLimitLabel": {
+		"message": "Introduce un límite de tiempo tras el que bloquear estos sitios (opcional):"
+	},
+	"optTimeLimitTitle": {
+		"message": "Dejar en blanco para sin límite de tiempo"
+	},
+	"optMinutesInEvery": {
+		"message": "minutos en cada"
+	},
+	"optPeriod5min": {
+		"message": "5 minutos"
+	},
+	"optPeriod10min": {
+		"message": "10 minutos"
+	},
+	"optPeriod15min": {
+		"message": "15 minutos"
+	},
+	"optPeriod20min": {
+		"message": "20 minutos"
+	},
+	"optPeriodHalfHour": {
+		"message": "media hora (30 minutos)"
+	},
+	"optPeriodHour": {
+		"message": "hora (60 minutos)"
+	},
+	"optPeriod1_5Hours": {
+		"message": "1,5 horas (90 minutos)"
+	},
+	"optPeriod2Hours": {
+		"message": "2 horas"
+	},
+	"optPeriod3Hours": {
+		"message": "3 horas"
+	},
+	"optPeriod4Hours": {
+		"message": "4 horas"
+	},
+	"optPeriod6Hours": {
+		"message": "6 horas"
+	},
+	"optPeriod8Hours": {
+		"message": "8 horas"
+	},
+	"optPeriodHalfDay": {
+		"message": "medio día (12 horas)"
+	},
+	"optPeriodDay": {
+		"message": "día (24 horas)"
+	},
+	"optPeriod2Days": {
+		"message": "2 días"
+	},
+	"optPeriod3Days": {
+		"message": "3 días"
+	},
+	"optPeriod4Days": {
+		"message": "4 días"
+	},
+	"optPeriodWeek": {
+		"message": "semana (7 días)"
+	},
+	"optPeriod2Weeks": {
+		"message": "2 semanas (14 días)"
+	},
+	"optPeriod1Month": {
+		"message": "1 mes (30 días)"
+	},
+	"optPeriod2Months": {
+		"message": "2 meses (60 días)"
+	},
+	"optPeriod3Months": {
+		"message": "3 meses (90 días)"
+	},
+	"optRollover": {
+		"message": "Transferir tiempo no utilizado (Rollover)"
+	},
+	"optCountFocus": {
+		"message": "Contar tiempo en estos sitios solo cuando la pestaña está activa"
+	},
+	"optCountAudio": {
+		"message": "Contar tiempo en estos sitios solo cuando la pestaña reproduce audio"
+	},
+	"optConjModeLabel": {
+		"message": "Selecciona cuándo bloquear estos sitios:"
+	},
+	"optConjModeOr": {
+		"message": "dentro de los períodos de tiempo O tras el límite de tiempo"
+	},
+	"optConjModeAnd": {
+		"message": "dentro de los períodos de tiempo Y tras el límite de tiempo"
+	},
+	"optDaysLabel": {
+		"message": "Selecciona los días en los que bloquear estos sitios:"
+	},
+	"optDaySun": {
+		"message": "Domingo"
+	},
+	"optDayMon": {
+		"message": "Lunes"
+	},
+	"optDayTue": {
+		"message": "Martes"
+	},
+	"optDayWed": {
+		"message": "Miércoles"
+	},
+	"optDayThu": {
+		"message": "Jueves"
+	},
+	"optDayFri": {
+		"message": "Viernes"
+	},
+	"optDaySat": {
+		"message": "Sábado"
+	},
+	"optHowToBlock": {
+		"message": "Cómo Bloquear"
+	},
+	"optHowToBlockDesc": {
+		"message": "En esta sección, especifica cómo deseas bloquear estos sitios."
+	},
+	"optBlockURLLabel": {
+		"message": "Introduce la URL completa de la página a mostrar en lugar de estos sitios bloqueados:"
+	},
+	"optBlockURLTitle": {
+		"message": "Usa $U para pasar la URL de la página bloqueada"
+	},
+	"optPredefinedURLs": {
+		"message": "URLs predefinidas:"
+	},
+	"optDefaultPage": {
+		"message": "Página Predeterminada"
+	},
+	"optDelayingPage": {
+		"message": "Página de Espera"
+	},
+	"optPasswordPage": {
+		"message": "Página de Contraseña"
+	},
+	"optBlankPage": {
+		"message": "Página en Blanco"
+	},
+	"optPasswordRequireLabel": {
+		"message": "Selecciona el requisito para la página de contraseña:"
+	},
+	"optPasswordRequire0": {
+		"message": "Requerir que el usuario introduzca una contraseña específica del conjunto (ver abajo)"
+	},
+	"optPasswordRequire1": {
+		"message": "Requerir que el usuario introduzca la contraseña de anulación"
+	},
+	"optPasswordRequire2": {
+		"message": "Requerir que el usuario introduzca la contraseña de control de acceso"
+	},
+	"optSetSpecificPassword": {
+		"message": "Contraseña específica del conjunto:"
+	},
+	"optCustomMsgLabel": {
+		"message": "Introduce un mensaje personalizado para la página de bloqueo (opcional):"
+	},
+	"optCustomMsgPlaceholder": {
+		"message": "Ejemplo: ¡Vuelve al trabajo!"
+	},
+	"optBlockPagesIn": {
+		"message": "Bloquear páginas en"
+	},
+	"optIncogMode0": {
+		"message": "pestañas no privadas y privadas"
+	},
+	"optIncogMode1": {
+		"message": "solo pestañas no privadas"
+	},
+	"optIncogMode2": {
+		"message": "solo pestañas privadas"
+	},
+	"optActiveTabMode0": {
+		"message": "pestañas activas e inactivas"
+	},
+	"optActiveTabMode1": {
+		"message": "solo pestañas activas"
+	},
+	"optActiveTabMode2": {
+		"message": "solo pestañas inactivas"
+	},
+	"optApplyFilter": {
+		"message": "Aplicar filtro en lugar de página de bloqueo:"
+	},
+	"optFilterMute": {
+		"message": "Silenciar pestaña con filtro"
+	},
+	"optCustomFilter": {
+		"message": "Propiedad de filtro personalizado (CSS):"
+	},
+	"optCloseTab": {
+		"message": "Cerrar pestaña en lugar de página de bloqueo"
+	},
+	"optActiveBlock": {
+		"message": "Bloquear inmediatamente páginas en estos sitios cuando se cumplan las condiciones de bloqueo"
+	},
+	"optMinBlockPrefix": {
+		"message": "Bloquear siempre los sitios durante al menos"
+	},
+	"optMinBlockTitle": {
+		"message": "Dejar en blanco para sin tiempo mínimo de bloqueo"
+	},
+	"optMinutes": {
+		"message": "minutos"
+	},
+	"optShowKeyword": {
+		"message": "Mostrar palabra clave coincidente en la página de bloqueo"
+	},
+	"optTitleOnly": {
+		"message": "Comprobar palabras clave solo en el título de la página"
+	},
+	"optDelayFirst": {
+		"message": "Bloquear solo la primera página accedida de"
+	},
+	"optDelayFirstSite": {
+		"message": "sitio"
+	},
+	"optDelayFirstBlockSet": {
+		"message": "conjunto de bloqueo"
+	},
+	"optWhenDelayingPageUsed": {
+		"message": "cuando se use la página de espera/contraseña"
+	},
+	"optDelayAllowPrefix": {
+		"message": "Permitir acceso a los sitios durante solo"
+	},
+	"optDelayAllowTitle": {
+		"message": "Dejar en blanco para permitir indefinidamente"
+	},
+	"optAfterDelayingPageUsed": {
+		"message": "después de usar la página de espera/contraseña"
+	},
+	"optDelaySecsPrefix": {
+		"message": "Retrasar el acceso a los sitios durante"
+	},
+	"optSeconds": {
+		"message": "segundos"
+	},
+	"optWhenDelayingPageUsed2": {
+		"message": "cuando se use la página de espera"
+	},
+	"optDelayAutoLoad": {
+		"message": "Cargar automáticamente la página bloqueada cuando la cuenta atrás llegue a cero"
+	},
+	"optDelayCancel": {
+		"message": "Cancelar la cuenta atrás si la página de espera pierde el foco"
+	},
+	"optReloadSecsPrefix": {
+		"message": "Intentar recargar la página bloqueada cada"
+	},
+	"optReloadNote": {
+		"message": "(solo aplica a la página predeterminada)"
+	},
+	"optAddHistory": {
+		"message": "Añadir página bloqueada al historial del navegador"
+	},
+	"optAllowOverride": {
+		"message": "Permitir anulación temporal para estos sitios"
+	},
+	"optAllowOverLock": {
+		"message": "Permitir anulación temporal durante el Lockdown"
+	},
+	"optResetToDefaults": {
+		"message": "Restablecer Opciones a los Valores Predeterminados"
+	},
+	"optShowAdvanced": {
+		"message": "Mostrar Opciones Avanzadas"
+	},
+	"optAdvancedLegend": {
+		"message": "Opciones Avanzadas"
+	},
+	"optAdvancedWarning": {
+		"message": "¡Asegúrate de entender las consecuencias de estas opciones antes de cambiar cualquiera de ellas!"
+	},
+	"optDisableSet": {
+		"message": "Deshabilitar este conjunto de bloqueo (para depuración)"
+	},
+	"optShowTimer": {
+		"message": "Mostrar temporizador de cuenta atrás para este conjunto de bloqueo"
+	},
+	"optAllowRefers": {
+		"message": "Tratar referentes como condiciones de permiso en lugar de condiciones de bloqueo"
+	},
+	"optAllowKeywords": {
+		"message": "Tratar palabras clave como condiciones de permiso en lugar de condiciones de bloqueo"
+	},
+	"optWaitPrefix": {
+		"message": "Esperar"
+	},
+	"optWaitSuffix": {
+		"message": "segundo(s) después de que la página se haya cargado"
+	},
+	"optBeforeChecking": {
+		"message": "antes de comprobar las condiciones de bloqueo"
+	},
+	"optPrevOpts": {
+		"message": "Impedir el acceso a las opciones de este conjunto de bloqueo cuando estos sitios estén bloqueados"
+	},
+	"optPrevGenOpts": {
+		"message": "Impedir el acceso a las opciones generales cuando estos sitios estén bloqueados"
+	},
+	"optPrevAddonsHtml": {
+		"message": "Impedir el acceso a <strong>about:addons</strong> cuando estos sitios estén bloqueados"
+	},
+	"optPrevSupportHtml": {
+		"message": "Impedir el acceso a <strong>about:support</strong> cuando estos sitios estén bloqueados"
+	},
+	"optPrevProfilesHtml": {
+		"message": "Impedir el acceso a <strong>about:profiles</strong> cuando estos sitios estén bloqueados"
+	},
+	"optPrevDebuggingHtml": {
+		"message": "Impedir el acceso a <strong>about:debugging</strong> cuando estos sitios estén bloqueados"
+	},
+	"optPrevOverrideHtml": {
+		"message": "Permitir que la anulación se aplique a <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong> y <strong>about:debugging</strong>"
+	},
+	"optLimitOffsetPrefix": {
+		"message": "Desfasar el período del límite de tiempo en"
+	},
+	"optLimitOffsetTitle": {
+		"message": "Dejar en blanco para sin desfase"
+	},
+	"optHours": {
+		"message": "horas"
+	},
+	"optSitesURLLabel": {
+		"message": "Cargar lista de sitios desde URL:"
+	},
+	"optSitesURLTitle": {
+		"message": "Usa $S para el número del conjunto de bloqueo y $T para el sello de tiempo UTC en milisegundos"
+	},
+	"optRegexpBlockHtml": {
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las URLs a <strong>bloquear</strong> (anula la lista de sitios):"
+	},
+	"optClear": {
+		"message": "Limpiar"
+	},
+	"optGenerateFromSiteList": {
+		"message": "Generar desde Lista de Sitios"
+	},
+	"optRegexpAllowHtml": {
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las URLs a <strong>permitir</strong> (anula las excepciones de la lista de sitios):"
+	},
+	"optRegexpKeywordHtml": {
+		"message": "Usar <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">expresión regular</a> para hacer coincidir las <strong>palabras clave</strong> (anula las palabras clave de la lista de sitios):"
+	},
+	"optIgnoreHash": {
+		"message": "Ignorar fragmento (parte hash) al comprobar la URL"
+	},
+	"optCancelLockdown": {
+		"message": "Cancelar Lockdown Activo"
+	},
+	"optBlockSetsLegend": {
+		"message": "Conjuntos de Bloqueo"
+	},
+	"optNumSetsPrefix": {
+		"message": "Número de conjuntos de bloqueo (1&ndash;<span id=\"maxSets\">?</span>):"
+	},
+	"optNumSetsTitle": {
+		"message": "Predeterminado: 6"
+	},
+	"optAccessControlLegend": {
+		"message": "Control de Acceso"
+	},
+	"optAccessRequireLabel": {
+		"message": "Selecciona el requisito para acceder a las opciones:"
+	},
+	"optAccess0": {
+		"message": "No requerir que el usuario introduzca ninguna contraseña ni código de acceso"
+	},
+	"optAccess1": {
+		"message": "Requerir que el usuario introduzca una contraseña"
+	},
+	"optAccess2": {
+		"message": "Requerir que el usuario introduzca un código de acceso aleatorio de 32 caracteres"
+	},
+	"optAccess3": {
+		"message": "Requerir que el usuario introduzca un código de acceso aleatorio de 64 caracteres"
+	},
+	"optAccess4": {
+		"message": "Requerir que el usuario introduzca un código de acceso aleatorio de 128 caracteres"
+	},
+	"optPasswordLabel": {
+		"message": "Contraseña:"
+	},
+	"optShowPassword": {
+		"message": "Mostrar contraseña"
+	},
+	"optHidePassword": {
+		"message": "Ocultar caracteres de contraseña al introducirla"
+	},
+	"optPreventAccessLabel": {
+		"message": "Impedir todo acceso a las opciones durante estos períodos de tiempo:"
+	},
+	"optTimesPlaceholder": {
+		"message": "Ejemplo: 0900-1230,1330-1700"
+	},
+	"optTimerLegend": {
+		"message": "Temporizador de Cuenta Atrás"
+	},
+	"optTimerVisible": {
+		"message": "Mostrar temporizador sobre la página"
+	},
+	"optTimerSizeLabel": {
+		"message": "Tamaño:"
+	},
+	"optTimerSmall": {
+		"message": "pequeño"
+	},
+	"optTimerMedium": {
+		"message": "mediano"
+	},
+	"optTimerLarge": {
+		"message": "grande"
+	},
+	"optTimerXLarge": {
+		"message": "extra grande"
+	},
+	"optTimerLocationLabel": {
+		"message": "Posición:"
+	},
+	"optTimerTopLeft": {
+		"message": "arriba a la izquierda"
+	},
+	"optTimerTopRight": {
+		"message": "arriba a la derecha"
+	},
+	"optTimerBottomRight": {
+		"message": "abajo a la derecha"
+	},
+	"optTimerBottomLeft": {
+		"message": "abajo a la izquierda"
+	},
+	"optTimerMaxHoursPrefix": {
+		"message": "Mostrar temporizador solo cuando quede menos de"
+	},
+	"optTimerMaxHoursTitle": {
+		"message": "Dejar en blanco para sin límite"
+	},
+	"optHoursLabel": {
+		"message": "hora(s)"
+	},
+	"optTimerBadge": {
+		"message": "Mostrar temporizador como insignia de icono (si queda menos de 10 minutos)"
+	},
+	"optTimerTipHtml": {
+		"message": "<strong>Consejo:</strong> Haz doble clic en el temporizador sobre la página para ocultarlo en cualquier momento (p. ej., antes de imprimir)."
+	},
+	"optWarnLegend": {
+		"message": "Mensaje de Advertencia"
+	},
+	"optWarnPrefix": {
+		"message": "Mostrar mensaje de advertencia"
+	},
+	"optWarnTitle": {
+		"message": "Dejar en blanco para sin advertencia"
+	},
+	"optWarnSuffix": {
+		"message": "segundos antes de que el sitio sea bloqueado"
+	},
+	"optWarnImmediate": {
+		"message": "Mostrar mensaje de advertencia solo en páginas que serán bloqueadas inmediatamente"
+	},
+	"optOverrideLegend": {
+		"message": "Anulación Temporal"
+	},
+	"optOverridePrefix": {
+		"message": "Permitir suspender el bloqueo durante"
+	},
+	"optOverrideMinsTitle": {
+		"message": "Dejar en blanco para especificar la duración al activar la anulación"
+	},
+	"optMinutesLabel": {
+		"message": "minuto(s)"
+	},
+	"optOverrideLimitPrefix": {
+		"message": "Permitir no más de"
+	},
+	"optOverrideLimitTitle": {
+		"message": "Dejar en blanco para sin límite"
+	},
+	"optOverrideLimitSuffix": {
+		"message": "anulación(es) cada"
+	},
+	"optOverridePeriodHour": {
+		"message": "hora"
+	},
+	"optOverridePeriodDay": {
+		"message": "día"
+	},
+	"optOverridePeriodWeek": {
+		"message": "semana"
+	},
+	"optOverrideAccessLabel": {
+		"message": "Selecciona el requisito para activar la anulación:"
+	},
+	"optOverrideAccess1": {
+		"message": "Requerir que el usuario introduzca la contraseña de control de acceso (ver arriba)"
+	},
+	"optOverrideAccess8": {
+		"message": "Requerir que el usuario introduzca un código de acceso predefinido (ver abajo)"
+	},
+	"optOverrideAccess9": {
+		"message": "Requerir que el usuario introduzca una contraseña de anulación separada (ver abajo)"
+	},
+	"optPredefinedCode": {
+		"message": "Código de acceso predefinido:"
+	},
+	"optOverridePassword": {
+		"message": "Contraseña de anulación:"
+	},
+	"optOverrideConfirm": {
+		"message": "Mostrar mensaje de confirmación cuando se activa la anulación"
+	},
+	"optOverrideNoteHtml": {
+		"message": "<strong>Nota:</strong> También debes seleccionar \"Permitir anulación temporal para estos sitios\" en los conjuntos de bloqueo correspondientes."
+	},
+	"optAppearanceLegend": {
+		"message": "Apariencia"
+	},
+	"optThemeLabel": {
+		"message": "Tema:"
+	},
+	"optThemeDefault": {
+		"message": "Predeterminado"
+	},
+	"optCustomStyleLabel": {
+		"message": "Estilo personalizado (CSS) para la página de bloqueo/espera/contraseña:"
+	},
+	"optMiscLegend": {
+		"message": "Varios"
+	},
+	"optContextMenu": {
+		"message": "Mostrar menú contextual"
+	},
+	"optMatchSubdomains": {
+		"message": "Bloquear todos los subdominios (no solo www)"
+	},
+	"optDisableLink": {
+		"message": "Deshabilitar hipervínculo a la página bloqueada en la página de bloqueo/espera/contraseña"
+	},
+	"optClockFormatPrefix": {
+		"message": "Mostrar hora del reloj en formato"
+	},
+	"optClockDefault": {
+		"message": "predeterminado"
+	},
+	"optClock12h": {
+		"message": "12 horas"
+	},
+	"optClock24h": {
+		"message": "24 horas"
+	},
+	"optClockFormatSuffix": {
+		"message": ""
+	},
+	"optClockOffsetPrefix": {
+		"message": "Desplazar el reloj en"
+	},
+	"optClockOffsetTitle": {
+		"message": "Dejar en blanco para sin desplazamiento"
+	},
+	"optIgnoreJumpPrefix": {
+		"message": "Ignorar saltos de tiempo empleado mayores de"
+	},
+	"optAllFocused": {
+		"message": "Tratar las ventanas del navegador como siempre enfocadas"
+	},
+	"optUseDocFocus": {
+		"message": "Usar el foco del documento para contar tiempo en la pestaña activa (solo Android)"
+	},
+	"optAccessCodeImage": {
+		"message": "Mostrar código de acceso como imagen"
+	},
+	"optSyncStorage": {
+		"message": "Usar almacenamiento sincronizado para las opciones (experimental: ¡bajo tu propio riesgo!)"
+	},
+	"optAllowLBWebsite": {
+		"message": "Permitir siempre el acceso al sitio web de ivBlock"
+	},
+	"optDiagMode": {
+		"message": "Modo de diagnóstico (salida en la consola del navegador)"
+	},
+	"optPerformanceLegend": {
+		"message": "Rendimiento"
+	},
+	"optSaveSecsPrefix": {
+		"message": "Guardar datos de tiempo cada"
+	},
+	"optSaveSecsTitle": {
+		"message": "Predeterminado: 10"
+	},
+	"optProcessTabsPrefix": {
+		"message": "Procesar pestañas cada"
+	},
+	"optProcessTabsTitle": {
+		"message": "Predeterminado: 1"
+	},
+	"optProcessActiveTabs": {
+		"message": "Procesar solo pestañas activas (mejora el rendimiento cuando hay varias pestañas abiertas)"
+	},
+	"optExportImportLegend": {
+		"message": "Exportar / Importar"
+	},
+	"optImportNoteHtml": {
+		"message": "<strong>Nota:</strong> La importación estará deshabilitada si has impedido el acceso a las opciones de algún conjunto de bloqueo."
+	},
+	"optDownloadToFile": {
+		"message": "Descargar opciones en archivo (de lo contrario, mostrar en nueva pestaña)"
+	},
+	"optExportTextHtml": {
+		"message": "Exportar opciones<br>a archivo de texto"
+	},
+	"optImportTextHtml": {
+		"message": "Importar opciones<br>desde archivo de texto"
+	},
+	"optExportJsonHtml": {
+		"message": "Exportar opciones<br>a archivo JSON"
+	},
+	"optExportPasswords": {
+		"message": "Incluir contraseñas en las opciones exportadas"
+	},
+	"optExportSyncHtml": {
+		"message": "Exportar opciones<br>al almacenamiento sincronizado"
+	},
+	"optImportSyncHtml": {
+		"message": "Importar opciones<br>desde el almacenamiento sincronizado"
+	},
+	"optAutoExportSync": {
+		"message": "Exportar automáticamente las opciones al almacenamiento sincronizado (como copia de seguridad) cada vez que se guarden"
+	},
+	"optLogoTitle": {
+		"message": "ivBlock"
+	},
+	"optAboutDescHtml": {
+		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> es una herramienta de productividad sencilla diseñada para bloquear los sitios que hacen perder el tiempo y que pueden arruinar tu jornada laboral. Solo tienes que especificar qué sitios bloquear y cuándo hacerlo.<br><br>"
+	},
+	"optAboutVersion": {
+		"message": "Versión:"
+	},
+	"optAboutLicense": {
+		"message": "Licencia:"
+	},
+	"optAboutAuthor": {
+		"message": "Autor:"
+	},
+	"optAboutContributors": {
+		"message": "Colaboradores:"
+	},
+	"optAboutForkedHtml": {
+		"message": "(ivBlock fue derivado de <a href=\"https://www.proginosko.com/leechblock/\" target=\"_blank\">LeechBlockNG</a>)"
+	},
+	"optAboutDocs": {
+		"message": "Documentación:"
+	},
+	"optAboutExamples": {
+		"message": "Ejemplos:"
+	},
+	"optAboutFAQ": {
+		"message": "Preguntas frecuentes:"
+	},
+	"optAboutSupport": {
+		"message": "Soporte:"
+	},
+	"optAboutHistory": {
+		"message": "Historial de versiones:"
+	},
+	"optAboutDonations": {
+		"message": "Donaciones:"
+	},
+	"optOpenDiagnostics": {
+		"message": "Abrir página de diagnósticos"
+	},
+	"optSaveOptions": {
+		"message": "Guardar opciones"
+	},
+	"optSaveOptionsClose": {
+		"message": "Guardar opciones y cerrar"
+	},
+	"optAlertAccessPreventHtml": {
+		"message": "Has impedido el acceso a las opciones durante estos períodos de tiempo: <strong><span id=\"alertAccessPreventTimes\"></span></strong>"
+	},
+	"optAlertBadAccessPreventTimes": {
+		"message": "¡Impedir completamente el acceso a las opciones es mala idea! Por favor, introduce períodos de tiempo diferentes."
+	},
+	"optAlertBadTimes": {
+		"message": "Por favor, introduce los períodos de tiempo en el formato correcto. Usa el formato de 24 horas (HHMM) para los tiempos, un guión (-) entre la hora de inicio y la hora de fin, y comas o espacios para separar los períodos."
+	},
+	"optAlertBadTimeLimit": {
+		"message": "Por favor, introduce el límite de tiempo en el formato correcto (como número positivo)."
+	},
+	"optAlertBadTimeLimitOffset": {
+		"message": "Por favor, introduce el desfase del límite de tiempo en el formato correcto (como número entero no nulo)."
+	},
+	"optAlertBadClockOffset": {
+		"message": "Por favor, introduce el desfase del reloj en el formato correcto (como número entero no nulo)."
+	},
+	"optAlertBadSeconds": {
+		"message": "Por favor, introduce el número de segundos en el formato correcto (como número entero positivo)."
+	},
+	"optAlertBadMinutes": {
+		"message": "Por favor, introduce el número de minutos en el formato correcto (como número entero positivo)."
+	},
+	"optAlertBadHours": {
+		"message": "Por favor, introduce el número de horas en el formato correcto (como número entero positivo)."
+	},
+	"optAlertBadOverrideLimitNum": {
+		"message": "Por favor, introduce el número de anulaciones en el formato correcto (como número entero positivo)."
+	},
+	"optAlertBadBlockURL": {
+		"message": "Por favor, introduce la URL de la página de bloqueo en el formato correcto (como URL completa)."
+	},
+	"optAlertBadNumSets": {
+		"message": "Por favor, introduce el número de conjuntos de bloqueo en el formato correcto (como número entero positivo)."
+	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "El número máximo de conjuntos de bloqueo es <strong>30</strong>. Tu valor ha sido reducido a 30."
+	},
+	"optAlertNoImportFile": {
+		"message": "Por favor, selecciona un archivo con las opciones a importar."
+	},
+	"optAlertImportErrorHtml": {
+		"message": "<strong>Error:</strong> No se pueden importar las opciones desde el archivo."
+	},
+	"optAlertImportSyncErrorHtml": {
+		"message": "<strong>Error:</strong> No se pueden importar las opciones desde el almacenamiento sincronizado."
+	},
+	"optAlertImportSuccess": {
+		"message": "Las opciones han sido importadas correctamente."
+	},
+	"optAlertImportSuccessNoteHtml": {
+		"message": "<strong>Nota:</strong> Las opciones importadas no se aplicarán hasta que hagas clic en <strong>Guardar opciones</strong>."
+	},
+	"optAlertExportErrorHtml": {
+		"message": "<strong>Error:</strong> No se pueden descargar las opciones exportadas."
+	},
+	"optAlertExportSyncErrorHtml": {
+		"message": "<strong>Error:</strong> No se pueden exportar las opciones al almacenamiento sincronizado."
+	},
+	"optAlertExportSuccess": {
+		"message": "Las opciones han sido exportadas correctamente."
+	},
+	"optAlertLockdownCancel": {
+		"message": "El Lockdown activo ha sido cancelado."
+	},
+	"optAlertResetOptions": {
+		"message": "Las opciones de este conjunto de bloqueo han sido restablecidas a los valores predeterminados."
+	},
+	"optAlertResetOptionsNoteHtml": {
+		"message": "<strong>Nota:</strong> Los valores predeterminados no se aplicarán hasta que hagas clic en <strong>Guardar opciones</strong>."
+	},
+	"optPromptPassword": {
+		"message": "Introduce la contraseña para acceder a las opciones:"
+	},
+	"optPromptAccessCode": {
+		"message": "Introduce el siguiente código para acceder a las opciones:"
+	}
+}

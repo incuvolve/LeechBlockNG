@@ -26,12 +26,12 @@
 			<form id="form" class="ui-widget" style="display: none;" action="javascript: void(0);">
 
 				<fieldset>
-					<legend>ivBlock Lockdown</legend>
+					<legend data-i18n="lockdownLegend">ivBlock Lockdown</legend>
 					<p>
-						<label>Enter the duration of the lockdown:</label>
+						<label data-i18n="lockdownDurationLabel">Enter the duration of the lockdown:</label>
 					</p>
 					<p class="inline-control-row">
-						<input id="hours" type="text" size="3" list="hours-list" style="width:4em">
+						<input id="hours" type="text" size="3" list="hours-list" class="input-short">
 						<datalist id="hours-list">
 							<option value="1">
 							<option value="2">
@@ -43,8 +43,8 @@
 							<option value="18">
 							<option value="24">
 						</datalist>
-						<label for="hours">hour(s)</label>
-						<input id="mins" type="text" size="3" list="mins-list" style="width:4em">
+						<label for="hours" data-i18n="lockdownHoursLabel">hour(s)</label>
+						<input id="mins" type="text" size="3" list="mins-list" class="input-short">
 						<datalist id="mins-list">
 							<option value="5">
 							<option value="10">
@@ -58,11 +58,11 @@
 							<option value="50">
 							<option value="55">
 						</datalist>
-						<label for="mins">minute(s)</label>
+						<label for="mins" data-i18n="lockdownMinsLabel">minute(s)</label>
 					</p>
 					<hr>
 					<p>
-						<label>Select the sites to block during the lockdown:</label><br>
+						<label data-i18n="lockdownSitesLabel">Select the sites to block during the lockdown:</label><br>
 						<div id="blockSets">
 							<p>
 								<input id="blockSet1" type="checkbox">
@@ -73,8 +73,8 @@
 				</fieldset>
 
 				<p class="button-group">
-					<button id="activate" type="submit" class="ivblock-button">Activate Lockdown</button>
-					<button id="cancel" type="button" class="ivblock-button">Cancel</button>
+					<button id="activate" type="submit" class="ivblock-button" data-i18n="lockdownActivateButton">Activate Lockdown</button>
+					<button id="cancel" type="button" class="ivblock-button" data-i18n="buttonCancel">Cancel</button>
 				</p>
 
 			</form>
@@ -83,13 +83,13 @@
 
 		<div id="alerts" style="display: none;">
 			<div id="alertRetrieveError" title="ivBlock Lockdown">
-				<p><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
+				<p data-i18n-html="alertRetrieveErrorHtml"><strong>Error:</strong> Unable to retrieve options from browser storage.</p>
 			</div>
 			<div id="alertNoDuration" title="ivBlock Lockdown">
-				<p>Please enter a non-zero duration for the lockdown.</p>
+				<p data-i18n="lockdownAlertNoDuration">Please enter a non-zero duration for the lockdown.</p>
 			</div>
 			<div id="alertNoSets" title="ivBlock Lockdown">
-				<p>Please select the sites to lockdown.</p>
+				<p data-i18n="lockdownAlertNoSets">Please select the sites to lockdown.</p>
 			</div>
 		</div>
 

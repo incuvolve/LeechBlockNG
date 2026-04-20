@@ -170,6 +170,8 @@ function initForm(numSets) {
 		getElement("syncOpts2").style.display = "none";
 	}
 
+	localize();
+
 	// Set active tab
 	if (gTabIndex < 0) {
 		// -ve index = other tab (General, About)
@@ -230,7 +232,7 @@ function showSimplifiedOptions(simplify) {
 // Update block set name on tab
 //
 function updateBlockSetName(set, name) {
-	getElement(`blockSetName${set}`).innerText = name ? name : `Block Set ${set}`;
+	getElement(`blockSetName${set}`).innerText = name ? name : `${browser.i18n.getMessage('optBlockSetDefault')} ${set}`;
 }
 
 // Update show/hide password page options
@@ -322,6 +324,11 @@ function saveOptions(event) {
 		$("#numSets").focus();
 		$("#alertBadNumSets").dialog("open");
 		return false;
+	}
+	if (+numSets > MAX_SETS) {
+		$("#numSets").val(MAX_SETS);
+		numSets = String(MAX_SETS);
+		$("#alertNumSetsMax").dialog("open");
 	}
 	let accessPreventTimes = $("#accessPreventTimes").val();
 	if (!checkTimePeriodsFormat(accessPreventTimes)) {
@@ -1427,3 +1434,36 @@ window.onload = () => {
  const myInput = document.getElementById('promptAccessCodeInput');
  myInput.onpaste = e => e.preventDefault();
 }
+
+// Expose functions for testing purposes
+window.isTrue = isTrue;
+window.initForm = initForm;
+window.swapSets = swapSets;
+window.showSimplifiedOptions = showSimplifiedOptions;
+window.updateBlockSetName = updateBlockSetName;
+window.updatePasswordPageOptions = updatePasswordPageOptions;
+window.saveOptions = saveOptions;
+window.closeOptions = closeOptions;
+window.retrieveOptions = retrieveOptions;
+window.confirmAccess = confirmAccess;
+window.displayAccessCode = displayAccessCode;
+window.accessPasswordShow = accessPasswordShow;
+window.showClockOffsetTime = showClockOffsetTime;
+window.compileExportOptions = compileExportOptions;
+window.applyImportOptions = applyImportOptions;
+window.exportOptions = exportOptions;
+window.importOptions = importOptions;
+window.exportOptionsJSON = exportOptionsJSON;
+window.exportOptionsSync = exportOptionsSync;
+window.importOptionsSync = importOptionsSync;
+window.openDiagnostics = openDiagnostics;
+window.swapSetOptions = swapSetOptions;
+window.resetSetOptions = resetSetOptions;
+window.disableSetOptions = disableSetOptions;
+window.disableGeneralOptions = disableGeneralOptions;
+window.disableImportOptions = disableImportOptions;
+window.updateSubOptions = updateSubOptions;
+window.disableNonAndroidOptions = disableNonAndroidOptions;
+window.updateMoveSetButtons = updateMoveSetButtons;
+window.initAccessControlPrompt = initAccessControlPrompt;
+Object.defineProperty(window, 'gNumSets', { get() { return gNumSets; }, set(v) { gNumSets = v; } });

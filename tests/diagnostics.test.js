@@ -2,10 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const fs = require('fs');
-const path = require('path');
-const vm = require('vm');
-
 // Mock browser API
 const browserMock = {
     storage: {
@@ -23,7 +19,7 @@ const browserMock = {
 
 // Mock jQuery
 const mockJQuery = {
-    val: jest.fn(),
+    val: jest.fn().mockReturnThis(),
     button: jest.fn().mockReturnThis(),
     click: jest.fn().mockReturnThis(),
     keydown: jest.fn().mockReturnThis(),
@@ -31,104 +27,59 @@ const mockJQuery = {
     show: jest.fn().mockReturnThis(),
     effect: jest.fn().mockReturnThis(),
 };
-
-// Mock the global jQuery function
 const jQueryMock = jest.fn(() => mockJQuery);
 
-// Create a context for vm.runInContext
-const context = vm.createContext({
-    document: global.document,
-    window: global.window,
-    browser: browserMock,
-    console: global.console,
-    setTimeout: global.setTimeout,
-    setInterval: global.setInterval,
-    clearTimeout: global.clearTimeout,
-    clearInterval: global.clearInterval,
-    Promise: global.Promise,
-    $: jQueryMock,
-    alert: jest.fn(),
-});
-
-// Load common.js into the context to get cleanOptions and getParsedURL
-const commonJsPath = path.resolve(__dirname, '../common.js');
-const commonJsCode = fs.readFileSync(commonJsPath, 'utf8');
-vm.runInContext(commonJsCode, context);
-
-// Load diagnostics.js into the context
-const diagnosticsJsPath = path.resolve(__dirname, '../diagnostics.js');
-const diagnosticsJsCode = fs.readFileSync(diagnosticsJsPath, 'utf8');
-vm.runInContext(diagnosticsJsCode, context);
-
-// Expose functions from the context to global scope
-global.initForm = context.initForm;
-global.initializePage = context.initializePage;
-global.testURL = context.testURL;
-
-// Expose mocks for assertions
 global.browser = browserMock;
 global.$ = jQueryMock;
-global.mockJQuery = mockJQuery;
-global.getParsedURL = context.getParsedURL; // Expose getParsedURL from common.js
-global.cleanOptions = context.cleanOptions; // Expose cleanOptions from common.js
-global.setTheme = context.setTheme; // Expose setTheme from common.js
+global.alert = jest.fn();
+
+require('../common.js');
+require('../diagnostics.js');
 
 describe('diagnostics.js', () => {
     beforeEach(() => {
         jest.clearAllMocks();
-        // Reset mock jQuery values
         mockJQuery.val.mockReturnValue('');
-        // Reset gOptions in the context
-        context.gOptions = null;
-        context.alert.mockClear();
+        global.gOptions = null;
+        global.alert.mockClear();
     });
 
     describe('testURL', () => {
-        let getParsedURLSpy;
-
-        beforeEach(() => {
-            // Spy on context.getParsedURL
-            getParsedURLSpy = jest.spyOn(context, 'getParsedURL');
-        });
-
-        afterEach(() => {
-            getParsedURLSpy.mockRestore();
-        });
-
         it('should return if gOptions is null', () => {
-            context.gOptions = null;
+            global.gOptions = null;
             expect(() => global.testURL()).not.toThrow();
             expect(mockJQuery.val).not.toHaveBeenCalled();
         });
 
         it('should show alert for bad URL format', () => {
-            context.gOptions = { numSets: "1" };
-            mockJQuery.val.mockReturnValue('bad-url');
-            // Mock getParsedURL to return a page that is null
-            getParsedURLSpy.mockReturnValue({ page: null }); // Use the spy
-
-            global.testURL();
-
-            expect(mockJQuery.val).toHaveBeenCalledWith(); // Called to get URL
-            expect(getParsedURLSpy).toHaveBeenCalledWith('bad-url'); // Use the spy
-            expect(context.alert).toHaveBeenCalledWith("Please enter the URL in the correct format (as a fully specified URL).");
-        });
-
-        it('should generate results for valid URL', () => {
-            context.gOptions = {
-                numSets: "1",
-                setName1: "Test Set",
-                regexpBlock1: "example\.com",
-                regexpAllow1: "google\.com",
-                referRE1: "referrer\.com",
-            };
-            mockJQuery.val.mockReturnValue('http://www.example.com');
-            getParsedURLSpy.mockReturnValue({ page: 'http://www.example.com' }); // Use the spy
+            global.gOptions = { numSets: "1" };
+            mockJQuery.val.mockReturnValueOnce('bad-url');
+            jest.spyOn(global, 'getParsedURL').mockReturnValue({ page: null });
 
             global.testURL();
 
             expect(mockJQuery.val).toHaveBeenCalledWith();
-            expect(getParsedURLSpy).toHaveBeenCalledWith('http://www.example.com'); // Use the spy
+            expect(global.getParsedURL).toHaveBeenCalledWith('bad-url');
+            expect(global.alert).toHaveBeenCalledWith(
+                "Please enter the URL in the correct format (as a fully specified URL)."
+            );
+        });
+
+        it('should generate results for valid URL', () => {
+            global.gOptions = {
+                numSets: "1",
+                setName1: "Test Set",
+                regexpBlock1: "example\\.com",
+                regexpAllow1: "google\\.com",
+                referRE1: "referrer\\.com",
+            };
+            mockJQuery.val.mockReturnValueOnce('http://www.example.com');
+            jest.spyOn(global, 'getParsedURL').mockReturnValue({ page: 'http://www.example.com' });
+
+            global.testURL();
+
+            expect(mockJQuery.val).toHaveBeenCalledWith();
+            expect(global.getParsedURL).toHaveBeenCalledWith('http://www.example.com');
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('====== Block Set 1 (Test Set)'));
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('BLOCK: example.com'));
             expect(mockJQuery.val).toHaveBeenCalledWith(expect.stringContaining('ALLOW: -'));
@@ -136,15 +87,15 @@ describe('diagnostics.js', () => {
         });
 
         it('should generate results for valid URL with no matches', () => {
-            context.gOptions = {
+            global.gOptions = {
                 numSets: "1",
                 setName1: "Test Set",
-                regexpBlock1: "nomatch\.com",
-                regexpAllow1: "nomatch\.com",
-                referRE1: "nomatch\.com",
+                regexpBlock1: "nomatch\\.com",
+                regexpAllow1: "nomatch\\.com",
+                referRE1: "nomatch\\.com",
             };
-            mockJQuery.val.mockReturnValue('http://www.example.com');
-            getParsedURLSpy.mockReturnValue({ page: 'http://www.example.com' }); // Use the spy
+            mockJQuery.val.mockReturnValueOnce('http://www.example.com');
+            jest.spyOn(global, 'getParsedURL').mockReturnValue({ page: 'http://www.example.com' });
 
             global.testURL();
 
@@ -154,19 +105,18 @@ describe('diagnostics.js', () => {
         });
     });
 
-    // Placeholder tests for functions that require more complex DOM/jQuery UI mocking
-    describe('Complex diagnostics.js functions (placeholders)', () => {
-        it('initForm should initialize jQuery UI widgets and clear fields', () => {
+    describe('initForm', () => {
+        it('should initialize jQuery UI widgets and clear fields', () => {
             expect(() => global.initForm()).not.toThrow();
             expect(mockJQuery.click).toHaveBeenCalled();
-            expect(mockJQuery.val).toHaveBeenCalledWith(""); // For #url and #results
+            expect(mockJQuery.val).toHaveBeenCalledWith('');
         });
+    });
 
-        it('initializePage should fetch options and initialize form', async () => {
+    describe('initializePage', () => {
+        it('should fetch options and initialize form', async () => {
             expect(() => global.initializePage()).not.toThrow();
             expect(browserMock.storage.local.get).toHaveBeenCalled();
-            // This test would require mocking browser.storage.local.get().then() to return options
-            // and then asserting on initForm and setTheme calls.
         });
     });
 });

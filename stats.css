@@ -3,13 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .stats-card {
-	padding: 10px 16px;
-	margin: 8px 0;
+	padding: var(--gap-md) var(--gap-lg);
+	margin: var(--gap-sm) 0;
 }
 
 .stats-card .restart-button {
 	display: block;
 	width: fit-content;
 	min-width: 100px;
-	margin: 10px auto 4px auto;
+	margin: var(--gap-md) auto var(--gap-xs) auto;
 }

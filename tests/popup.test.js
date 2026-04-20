@@ -2,10 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const fs = require('fs');
-const path = require('path');
-const vm = require('vm');
-
 // Mock browser API
 const browserMock = {
     storage: {
@@ -22,65 +18,33 @@ const browserMock = {
         sendMessage: jest.fn()
     },
     tabs: {
-        query: jest.fn(() => Promise.resolve([])), // Default to no existing tabs
+        query: jest.fn(() => Promise.resolve([])),
         update: jest.fn(),
         create: jest.fn()
     }
 };
 
+global.browser = browserMock;
+global.localize = jest.fn();
+
+// Create the DOM elements that popup.js queries at top level
+['options', 'lockdown', 'override', 'stats', 'addSites',
+ 'cancelOverride', 'resetRollover', 'discardTime', 'onlineSupport',
+ 'themeLink'].forEach((id) => {
+    const el = document.createElement('div');
+    el.id = id;
+    document.body.appendChild(el);
+});
+
 // Mock window.close
 const windowCloseSpy = jest.spyOn(global.window, 'close').mockImplementation(() => {});
 
-// Create a context for vm.runInContext
-const context = vm.createContext({
-    document: {
-        ...global.document, // Spread existing document properties
-        querySelector: jest.fn((selector) => {
-            // Return a mock element with addEventListener
-            return {
-                addEventListener: jest.fn(),
-                // Add other properties if needed by popup.js
-            };
-        }),
-        addEventListener: jest.fn(), // ADD THIS LINE
-        // Add other document properties if needed
-    },
-    window: global.window,
-    browser: browserMock,
-    console: global.console,
-    setTimeout: global.setTimeout,
-    setInterval: global.setInterval,
-    clearTimeout: global.clearTimeout,
-    clearInterval: global.clearInterval,
-    Promise: global.Promise,
-});
-
-// Load popup.js into the context
-const popupJsPath = path.resolve(__dirname, '../popup.js');
-const popupJsCode = fs.readFileSync(popupJsPath, 'utf8');
-vm.runInContext(popupJsCode, context);
-
-// Expose functions from the context to global scope
-global.initializePage = context.initializePage;
-global.openOptions = context.openOptions;
-global.openLockdown = context.openLockdown;
-global.openOverride = context.openOverride;
-global.openStats = context.openStats;
-global.openExtensionPage = context.openExtensionPage;
-global.addSites = context.addSites;
-global.cancelOverride = context.cancelOverride;
-global.resetRollover = context.resetRollover;
-global.discardTime = context.discardTime;
-global.openOnlineSupport = context.openOnlineSupport;
-
-// Expose mocks for assertions
-global.browser = browserMock;
-global.windowCloseSpy = windowCloseSpy;
+require('../popup.js');
 
 describe('popup.js', () => {
     beforeEach(() => {
         jest.clearAllMocks();
-        windowCloseSpy.mockImplementation(() => {}); // Reset mock implementation
+        windowCloseSpy.mockImplementation(() => {});
     });
 
     describe('cancelOverride', () => {
@@ -110,75 +74,74 @@ describe('popup.js', () => {
         });
     });
 
-    // Placeholder tests for functions that require more complex mocking
-    describe('Complex popup.js functions (placeholders)', () => {
-        // These tests are commented out due to persistent issues with mocking jQuery and
-        // spying on functions within the vm.runInContext context. Comprehensive testing
-        // would require significant refactoring of popup.js or a more advanced testing setup.
-
-        /*
-        it('initializePage should fetch theme and apply it', async () => {
-            // Requires mocking browser.storage.local.get().then() and document.getElementById
-            expect(() => global.initializePage()).not.toThrow();
-            expect(browserMock.storage.local.get).toHaveBeenCalled();
-        });
-
-        it('openOptions should open options page and close window', () => {
-            expect(() => global.openOptions()).not.toThrow();
+    describe('openOptions', () => {
+        it('should open options page and close window', () => {
+            global.openOptions();
             expect(browserMock.runtime.openOptionsPage).toHaveBeenCalledTimes(1);
             expect(windowCloseSpy).toHaveBeenCalledTimes(1);
         });
+    });
 
-        it('openExtensionPage should open page in new tab or activate existing', async () => {
-            // Test with no existing tabs
+    describe('openExtensionPage', () => {
+        it('should create new tab when no existing tab found', async () => {
             browserMock.tabs.query.mockResolvedValueOnce([]);
-            global.openExtensionPage('test.html');
+            await global.openExtensionPage('test.html');
             expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/test.html' });
             expect(windowCloseSpy).toHaveBeenCalledTimes(1);
+        });
 
-            jest.clearAllMocks();
-            windowCloseSpy.mockImplementation(() => {});
-
-            // Test with existing tab
+        it('should activate existing tab when found', async () => {
             browserMock.tabs.query.mockResolvedValueOnce([{ id: 123 }]);
-            global.openExtensionPage('test.html');
+            await global.openExtensionPage('test.html');
             expect(browserMock.tabs.update).toHaveBeenCalledWith(123, { active: true });
             expect(windowCloseSpy).toHaveBeenCalledTimes(1);
         });
+    });
 
-        it('openLockdown should call openExtensionPage with lockdown.html', () => {
-            const openExtensionPageSpy = jest.spyOn(global, 'openExtensionPage');
-            global.openLockdown();
-            expect(openExtensionPageSpy).toHaveBeenCalledWith('lockdown.html');
-            openExtensionPageSpy.mockRestore();
+    describe('openLockdown', () => {
+        it('should open lockdown.html', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
+            await global.openLockdown();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/lockdown.html' });
         });
+    });
 
-        it('openOverride should call openExtensionPage with override.html', () => {
-            const openExtensionPageSpy = jest.spyOn(global, 'openExtensionPage');
-            global.openOverride();
-            expect(openExtensionPageSpy).toHaveBeenCalledWith('override.html');
-            openExtensionPageSpy.mockRestore();
+    describe('openOverride', () => {
+        it('should open override.html', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
+            await global.openOverride();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/override.html' });
         });
+    });
 
-        it('openStats should call openExtensionPage with stats.html', () => {
-            const openExtensionPageSpy = jest.spyOn(global, 'openExtensionPage');
-            global.openStats();
-            expect(openExtensionPageSpy).toHaveBeenCalledWith('stats.html');
-            openExtensionPageSpy.mockRestore();
+    describe('openStats', () => {
+        it('should open stats.html', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
+            await global.openStats();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/stats.html' });
         });
+    });
 
-        it('addSites should call openExtensionPage with add-sites.html', () => {
-            const openExtensionPageSpy = jest.spyOn(global, 'openExtensionPage');
-            global.addSites();
-            expect(openExtensionPageSpy).toHaveBeenCalledWith('add-sites.html');
-            openExtensionPageSpy.mockRestore();
+    describe('addSites', () => {
+        it('should open add-sites.html', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
+            await global.addSites();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/add-sites.html' });
         });
+    });
 
-        it('openOnlineSupport should open support URL and close window', () => {
-            expect(() => global.openOnlineSupport()).not.toThrow();
-            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'https://www.incuvolve.de./ivblock/support/' });
+    describe('openOnlineSupport', () => {
+        it('should open the support URL and close window', () => {
+            global.openOnlineSupport();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'https://www.incuvolve.de/ivblock/support/' });
             expect(windowCloseSpy).toHaveBeenCalledTimes(1);
         });
-        */
+    });
+
+    describe('initializePage', () => {
+        it('should fetch theme from local storage and apply it', async () => {
+            await global.initializePage();
+            expect(browserMock.storage.local.get).toHaveBeenCalledWith('sync');
+        });
     });
 });

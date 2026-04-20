@@ -25,6 +25,8 @@ function initForm() {
 function initializePage() {
 	//log("initializePage");
 
+	localize();
+
 	browser.storage.local.get("sync").then(onGotSync, onError);
 
 	function onGotSync(options) {
@@ -118,3 +120,9 @@ function testURL() {
 /*** STARTUP CODE BEGINS HERE ***/
 
 document.addEventListener("DOMContentLoaded", initializePage);
+
+// Expose functions and state for testing purposes
+window.initForm = initForm;
+window.initializePage = initializePage;
+window.testURL = testURL;
+Object.defineProperty(window, 'gOptions', { get() { return gOptions; }, set(v) { gOptions = v; } });

@@ -1,0 +1,1045 @@
+{
+	"extensionName": {
+		"message": "ivBlock",
+		"description": "Name of the extension."
+	},
+	"extensionDescription": {
+		"message": "ivBlock is een eenvoudig productiviteitshulpmiddel voor het blokkeren van tijdverspillende websites.",
+		"description": "Description of the extension."
+	},
+	"optionsMenuItem": {
+		"message": "Opties"
+	},
+	"lockdownMenuItem": {
+		"message": "Lockdown"
+	},
+	"overrideMenuItem": {
+		"message": "Overschrijven"
+	},
+	"statisticsMenuItem": {
+		"message": "Statistieken"
+	},
+	"addSiteMenuItem": {
+		"message": "Site toevoegen"
+	},
+	"addSiteToBlockSetMenuItem": {
+		"message": "Site toevoegen aan blokkeerset"
+	},
+	"addPageMenuItem": {
+		"message": "Pagina toevoegen"
+	},
+	"addPageToBlockSetMenuItem": {
+		"message": "Pagina toevoegen aan blokkeerset"
+	},
+	"popupOptions": {
+		"message": "Opties"
+	},
+	"popupLockdown": {
+		"message": "Lockdown"
+	},
+	"popupOverride": {
+		"message": "Overschrijven"
+	},
+	"popupStatistics": {
+		"message": "Statistieken"
+	},
+	"popupAddSites": {
+		"message": "Sites toevoegen"
+	},
+	"popupCancelOverride": {
+		"message": "Overschrijving annuleren"
+	},
+	"popupResetRollover": {
+		"message": "Rollover-tijd resetten"
+	},
+	"popupDiscardTime": {
+		"message": "Resterende tijd verwijderen"
+	},
+	"popupOnlineSupport": {
+		"message": "Online ondersteuning"
+	},
+	"blockedPageTitle": {
+		"message": "Site geblokkeerd"
+	},
+	"blockedWarning": {
+		"message": "De pagina die je probeert te openen is geblokkeerd door <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+	},
+	"delayedWarning": {
+		"message": "De pagina die je probeert te openen is tijdelijk geblokkeerd door <a href=\"https://www.incuvolve.de/ivblock/\">ivBlock</a>."
+	},
+	"blockedSetLabel": {
+		"message": "Blokkeerset"
+	},
+	"blockedKeywordMatched": {
+		"message": "Trefwoord gevonden:"
+	},
+	"blockedUnblockAt": {
+		"message": "De pagina wordt gedeblokkeerd om:"
+	},
+	"blockedEndOfTime": {
+		"message": "het einde der tijden"
+	},
+	"delayedCountdownPrefix": {
+		"message": "De pagina wordt over"
+	},
+	"delayedCountdownSuffix": {
+		"message": "seconde(n) gedeblokkeerd."
+	},
+	"blockedCustomMsgLabel": {
+		"message": "Een bericht van jezelf:"
+	},
+	"blockedSupportHtml": {
+		"message": "ivBlock is altijd gratis te gebruiken, maar als het je leven heeft verbeterd, overweeg dan de voortdurende ontwikkeling te steunen door <a href=\"https://ko-fi.com/michaelhuelsen\">een bijdrage te leveren</a> of <a href=\"https://apps.apple.com/app/ivblock-website-blocker/id6749312487\">de app te beoordelen in de AppStore</a>."
+	},
+	"passwordPrompt": {
+		"message": "Voer het wachtwoord in om de geblokkeerde pagina te openen:"
+	},
+	"buttonCancel": {
+		"message": "Annuleren"
+	},
+	"alertRetrieveErrorHtml": {
+		"message": "<strong>Fout:</strong> Kan opties niet ophalen uit de browseropslag."
+	},
+	"addSitesLegend": {
+		"message": "ivBlock Sites toevoegen"
+	},
+	"addSitesSitesLabel": {
+		"message": "Voer de domeinnamen in van de te blokkeren sites (één per regel):"
+	},
+	"addSitesToLabel": {
+		"message": "Voeg deze sites toe aan:"
+	},
+	"addSitesNoteHtml": {
+		"message": "<strong>Opmerking:</strong> Eventuele <a href=\"https://www.incuvolve.de/ivblock/faq/\" target=\"_blank\">uitzonderingen</a> in de lijst van sites worden genegeerd!"
+	},
+	"addSitesButton": {
+		"message": "Sites toevoegen"
+	},
+	"lockdownLegend": {
+		"message": "ivBlock-Lockdown"
+	},
+	"lockdownDurationLabel": {
+		"message": "Voer de duur van de Lockdown in:"
+	},
+	"lockdownHoursLabel": {
+		"message": "uur"
+	},
+	"lockdownMinsLabel": {
+		"message": "minuut/minuten"
+	},
+	"lockdownSitesLabel": {
+		"message": "Selecteer de sites die tijdens de Lockdown geblokkeerd worden:"
+	},
+	"lockdownSitesInBlockSet": {
+		"message": "Sites opgegeven in blokkeerset"
+	},
+	"lockdownActivateButton": {
+		"message": "Lockdown activeren"
+	},
+	"lockdownAlertNoDuration": {
+		"message": "Voer een duur groter dan nul in voor de Lockdown."
+	},
+	"lockdownAlertNoSets": {
+		"message": "Selecteer de sites voor de Lockdown."
+	},
+	"overrideLegend": {
+		"message": "ivBlock Overschrijven"
+	},
+	"overrideSuspendPrefix": {
+		"message": "Blokkering opschorten voor"
+	},
+	"overrideMinsLabel": {
+		"message": "minuut/minuten"
+	},
+	"overrideActivateButton": {
+		"message": "Overschrijven activeren"
+	},
+	"overrideAlertLimitReachedHtml": {
+		"message": "Je hebt je limiet van <strong><span id=\"alertLimitNum\"></span></strong> overschrijving(en) <span id=\"alertLimitReachedPeriod\"></span> bereikt."
+	},
+	"overrideAlertNoDuration": {
+		"message": "Voer een duur groter dan nul in voor het overschrijven."
+	},
+	"overrideAlertActivatedHtml": {
+		"message": "Overschrijven geactiveerd. Blokkering wordt opgeschort tot <strong><span id=\"alertOverrideEndTime\"></span></strong>."
+	},
+	"overrideAlertNoSetsHtml": {
+		"message": "<strong>Opmerking:</strong> Overschrijven heeft geen effect omdat je<br>\"Tijdelijk overschrijven toestaan voor deze sites\" voor geen enkele blokkeerset hebt geselecteerd."
+	},
+	"overrideAlertSetsHtml": {
+		"message": "Overschrijven wordt toegepast op sites in: <span id=\"alertOverrideSetList\"></span>"
+	},
+	"overrideAlertLimitHtml": {
+		"message": "Je hebt nog <strong><span id=\"alertLimitLeft\"></span></strong> overschrijving(en) <span id=\"alertLimitPeriod\"></span> tegoed."
+	},
+	"overridePromptPassword": {
+		"message": "Voer het wachtwoord in om overschrijven te activeren:"
+	},
+	"overridePromptAccessCode": {
+		"message": "Voer de volgende code in om overschrijven te activeren:"
+	},
+	"statsLegend": {
+		"message": "ivBlock Statistieken"
+	},
+	"statsStartTime": {
+		"message": "Startdatum/-tijd:"
+	},
+	"statsTotalTime": {
+		"message": "Bestede tijd sinds start:"
+	},
+	"statsPerWeekTime": {
+		"message": "Bestede tijd per week:"
+	},
+	"statsPerDayTime": {
+		"message": "Bestede tijd per dag:"
+	},
+	"statsTimeLeft": {
+		"message": "Resterende tijd in limietperiode:"
+	},
+	"statsRolloverTime": {
+		"message": "Rollover-tijd:"
+	},
+	"statsLockdownEndTime": {
+		"message": "Eindtijd Lockdown:"
+	},
+	"statsRestart": {
+		"message": "Herstart"
+	},
+	"statsRestartAll": {
+		"message": "Alles herstarten"
+	},
+	"diagLegend": {
+		"message": "Diagnostiek"
+	},
+	"diagUrlLabel": {
+		"message": "Voer de volledige URL in om te testen met je huidige blokkeersets:"
+	},
+	"diagUrlPlaceholder": {
+		"message": "bijv. https://somesite.com"
+	},
+	"diagTestButton": {
+		"message": "Testen"
+	},
+	"diagTip": {
+		"message": "Tip: Je kunt kopiëren/plakken vanuit de adresbalk van je browser."
+	},
+	"diagAlertBadUrl": {
+		"message": "Voer de URL in het juiste formaat in (als een volledig opgegeven URL)."
+	},
+	"optBlockSetDefault": {
+		"message": "Blokkeerset"
+	},
+	"optTabGeneral": {
+		"message": "Algemeen"
+	},
+	"optTabAbout": {
+		"message": "Over"
+	},
+	"optMoveSetLeft": {
+		"message": "← Set verplaatsen"
+	},
+	"optShowSimplified": {
+		"message": "Vereenvoudigde opties tonen"
+	},
+	"optShowFull": {
+		"message": "Alle opties tonen"
+	},
+	"optMoveSetRight": {
+		"message": "Set verplaatsen →"
+	},
+	"optWhatToBlock": {
+		"message": "Wat blokkeren"
+	},
+	"optWhatToBlockDesc": {
+		"message": "Geef in dit gedeelte de sites op die je wilt blokkeren."
+	},
+	"optSetNameLabel": {
+		"message": "Voer een aangepaste naam in voor deze blokkeerset (optioneel):"
+	},
+	"optSitesLabel": {
+		"message": "Voer de domeinnamen in van de te blokkeren sites (één per regel):"
+	},
+	"optSitesNoteHtml": {
+		"message": "<strong>Opmerking:</strong> Voeg <u>geen</u> URL-protocolvoorvoegsels toe zoals <code>http://</code> of <code>file://</code>."
+	},
+	"optSitesTipHtml": {
+		"message": "<strong>Tip:</strong> Gebruik <code>*</code> of <code>**</code> als <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">jokerteken</a>, <code>+</code> als voorvoegsel voor <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">uitzonderingen</a>, <code>></code> als voorvoegsel voor <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">verwijzers</a>, en <code>~</code> als voorvoegsel voor <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">trefwoorden</a>."
+	},
+	"optWhenToBlock": {
+		"message": "Wanneer blokkeren"
+	},
+	"optWhenToBlockDesc": {
+		"message": "Geef in dit gedeelte aan wanneer je deze sites wilt blokkeren."
+	},
+	"optTimesLabel": {
+		"message": "Voer de tijdsperioden in waarbinnen deze sites geblokkeerd worden (optioneel):"
+	},
+	"optTimesTitle": {
+		"message": "Leeg laten voor geen tijdsperioden"
+	},
+	"optAllDay": {
+		"message": "Hele dag"
+	},
+	"optTimeLimitLabel": {
+		"message": "Voer een tijdslimiet in waarna deze sites geblokkeerd worden (optioneel):"
+	},
+	"optTimeLimitTitle": {
+		"message": "Leeg laten voor geen tijdslimiet"
+	},
+	"optMinutesInEvery": {
+		"message": "minuten per"
+	},
+	"optPeriod5min": {
+		"message": "5 minuten"
+	},
+	"optPeriod10min": {
+		"message": "10 minuten"
+	},
+	"optPeriod15min": {
+		"message": "15 minuten"
+	},
+	"optPeriod20min": {
+		"message": "20 minuten"
+	},
+	"optPeriodHalfHour": {
+		"message": "halfuur (30 minuten)"
+	},
+	"optPeriodHour": {
+		"message": "uur (60 minuten)"
+	},
+	"optPeriod1_5Hours": {
+		"message": "1,5 uur (90 minuten)"
+	},
+	"optPeriod2Hours": {
+		"message": "2 uur"
+	},
+	"optPeriod3Hours": {
+		"message": "3 uur"
+	},
+	"optPeriod4Hours": {
+		"message": "4 uur"
+	},
+	"optPeriod6Hours": {
+		"message": "6 uur"
+	},
+	"optPeriod8Hours": {
+		"message": "8 uur"
+	},
+	"optPeriodHalfDay": {
+		"message": "halve dag (12 uur)"
+	},
+	"optPeriodDay": {
+		"message": "dag (24 uur)"
+	},
+	"optPeriod2Days": {
+		"message": "2 dagen"
+	},
+	"optPeriod3Days": {
+		"message": "3 dagen"
+	},
+	"optPeriod4Days": {
+		"message": "4 dagen"
+	},
+	"optPeriodWeek": {
+		"message": "week (7 dagen)"
+	},
+	"optPeriod2Weeks": {
+		"message": "2 weken (14 dagen)"
+	},
+	"optPeriod1Month": {
+		"message": "1 maand (30 dagen)"
+	},
+	"optPeriod2Months": {
+		"message": "2 maanden (60 dagen)"
+	},
+	"optPeriod3Months": {
+		"message": "3 maanden (90 dagen)"
+	},
+	"optRollover": {
+		"message": "Ongebruikte tijd doorschuiven (Rollover)"
+	},
+	"optCountFocus": {
+		"message": "Bestede tijd op deze sites alleen tellen wanneer het browsertabblad actief is"
+	},
+	"optCountAudio": {
+		"message": "Bestede tijd op deze sites alleen tellen wanneer het browsertabblad audio afspeelt"
+	},
+	"optConjModeLabel": {
+		"message": "Selecteer wanneer deze sites geblokkeerd worden:"
+	},
+	"optConjModeOr": {
+		"message": "binnen tijdsperioden OF na tijdslimiet"
+	},
+	"optConjModeAnd": {
+		"message": "binnen tijdsperioden EN na tijdslimiet"
+	},
+	"optDaysLabel": {
+		"message": "Selecteer de dagen waarop deze sites geblokkeerd worden:"
+	},
+	"optDaySun": {
+		"message": "zondag"
+	},
+	"optDayMon": {
+		"message": "maandag"
+	},
+	"optDayTue": {
+		"message": "dinsdag"
+	},
+	"optDayWed": {
+		"message": "woensdag"
+	},
+	"optDayThu": {
+		"message": "donderdag"
+	},
+	"optDayFri": {
+		"message": "vrijdag"
+	},
+	"optDaySat": {
+		"message": "zaterdag"
+	},
+	"optHowToBlock": {
+		"message": "Hoe blokkeren"
+	},
+	"optHowToBlockDesc": {
+		"message": "Geef in dit gedeelte aan hoe je deze sites wilt blokkeren."
+	},
+	"optBlockURLLabel": {
+		"message": "Voer de volledige URL in van de pagina die wordt getoond in plaats van de geblokkeerde sites:"
+	},
+	"optBlockURLTitle": {
+		"message": "Gebruik $U om de URL van de geblokkeerde pagina door te geven"
+	},
+	"optPredefinedURLs": {
+		"message": "Voorgedefinieerde URL's:"
+	},
+	"optDefaultPage": {
+		"message": "Standaardpagina"
+	},
+	"optDelayingPage": {
+		"message": "Vertragingspagina"
+	},
+	"optPasswordPage": {
+		"message": "Wachtwoordpagina"
+	},
+	"optBlankPage": {
+		"message": "Lege pagina"
+	},
+	"optPasswordRequireLabel": {
+		"message": "Selecteer de vereiste voor de wachtwoordpagina:"
+	},
+	"optPasswordRequire0": {
+		"message": "Vereist dat de gebruiker een set-specifiek wachtwoord invoert (zie hieronder)"
+	},
+	"optPasswordRequire1": {
+		"message": "Vereist dat de gebruiker het overschrijvingswachtwoord invoert"
+	},
+	"optPasswordRequire2": {
+		"message": "Vereist dat de gebruiker het toegangsbeheerwachtwoord invoert"
+	},
+	"optSetSpecificPassword": {
+		"message": "Set-specifiek wachtwoord:"
+	},
+	"optCustomMsgLabel": {
+		"message": "Voer een aangepast bericht in voor de blokkeringspagina (optioneel):"
+	},
+	"optCustomMsgPlaceholder": {
+		"message": "Voorbeeld: Ga terug aan het werk!"
+	},
+	"optBlockPagesIn": {
+		"message": "Pagina's blokkeren in"
+	},
+	"optIncogMode0": {
+		"message": "zowel niet-privé als privétabbladen"
+	},
+	"optIncogMode1": {
+		"message": "alleen niet-privétabbladen"
+	},
+	"optIncogMode2": {
+		"message": "alleen privétabbladen"
+	},
+	"optActiveTabMode0": {
+		"message": "zowel actieve als inactieve tabbladen"
+	},
+	"optActiveTabMode1": {
+		"message": "alleen actieve tabbladen"
+	},
+	"optActiveTabMode2": {
+		"message": "alleen inactieve tabbladen"
+	},
+	"optApplyFilter": {
+		"message": "Filter toepassen in plaats van pagina te blokkeren:"
+	},
+	"optFilterMute": {
+		"message": "Tabblad dempen met filter"
+	},
+	"optCustomFilter": {
+		"message": "Aangepaste filtereigenschap (CSS):"
+	},
+	"optCloseTab": {
+		"message": "Tabblad sluiten in plaats van pagina te blokkeren"
+	},
+	"optActiveBlock": {
+		"message": "Pagina's op deze sites onmiddellijk blokkeren zodra de blokkeervoorwaarden zijn voldaan"
+	},
+	"optMinBlockPrefix": {
+		"message": "Sites altijd minimaal blokkeren voor"
+	},
+	"optMinBlockTitle": {
+		"message": "Leeg laten voor geen minimale bloktijd"
+	},
+	"optMinutes": {
+		"message": "minuten"
+	},
+	"optShowKeyword": {
+		"message": "Overeenkomend trefwoord tonen op de blokkeringspagina"
+	},
+	"optTitleOnly": {
+		"message": "Trefwoorden alleen controleren in de paginatitel"
+	},
+	"optDelayFirst": {
+		"message": "Alleen de eerste bezochte pagina blokkeren van"
+	},
+	"optDelayFirstSite": {
+		"message": "website"
+	},
+	"optDelayFirstBlockSet": {
+		"message": "blokkeerset"
+	},
+	"optWhenDelayingPageUsed": {
+		"message": "wanneer de vertraging-/wachtwoordpagina wordt gebruikt"
+	},
+	"optDelayAllowPrefix": {
+		"message": "Toegang tot sites alleen toestaan voor"
+	},
+	"optDelayAllowTitle": {
+		"message": "Leeg laten om voor onbepaalde tijd toe te staan"
+	},
+	"optAfterDelayingPageUsed": {
+		"message": "nadat de vertraging-/wachtwoordpagina is gebruikt"
+	},
+	"optDelaySecsPrefix": {
+		"message": "Toegang tot sites vertragen met"
+	},
+	"optSeconds": {
+		"message": "seconden"
+	},
+	"optWhenDelayingPageUsed2": {
+		"message": "wanneer de vertragingspagina wordt gebruikt"
+	},
+	"optDelayAutoLoad": {
+		"message": "Geblokkeerde pagina automatisch laden wanneer de aftelling nul bereikt"
+	},
+	"optDelayCancel": {
+		"message": "Aftelling annuleren als de vertragingspagina de focus verliest"
+	},
+	"optReloadSecsPrefix": {
+		"message": "Probeer de geblokkeerde pagina elke"
+	},
+	"optReloadNote": {
+		"message": "(alleen van toepassing op de standaardpagina)"
+	},
+	"optAddHistory": {
+		"message": "Geblokkeerde pagina toevoegen aan de browsergeschiedenis"
+	},
+	"optAllowOverride": {
+		"message": "Tijdelijk overschrijven toestaan voor deze sites"
+	},
+	"optAllowOverLock": {
+		"message": "Tijdelijk overschrijven toestaan tijdens Lockdown"
+	},
+	"optResetToDefaults": {
+		"message": "Opties terugzetten naar standaard"
+	},
+	"optShowAdvanced": {
+		"message": "Geavanceerde opties tonen"
+	},
+	"optAdvancedLegend": {
+		"message": "Geavanceerde opties"
+	},
+	"optAdvancedWarning": {
+		"message": "Zorg ervoor dat je de gevolgen van deze opties begrijpt voordat je ze wijzigt!"
+	},
+	"optDisableSet": {
+		"message": "Deze blokkeerset uitschakelen (voor debugdoeleinden)"
+	},
+	"optShowTimer": {
+		"message": "Afteltimer tonen voor deze blokkeerset"
+	},
+	"optAllowRefers": {
+		"message": "Verwijzers behandelen als toestaan-voorwaarden in plaats van blokkeer-voorwaarden"
+	},
+	"optAllowKeywords": {
+		"message": "Trefwoorden behandelen als toestaan-voorwaarden in plaats van blokkeer-voorwaarden"
+	},
+	"optWaitPrefix": {
+		"message": "Wacht"
+	},
+	"optWaitSuffix": {
+		"message": "seconde(n) nadat de pagina is geladen"
+	},
+	"optBeforeChecking": {
+		"message": "voordat de blokkeervoorwaarden worden gecontroleerd"
+	},
+	"optPrevOpts": {
+		"message": "Toegang tot opties voor deze blokkeerset blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevGenOpts": {
+		"message": "Toegang tot algemene opties blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevAddonsHtml": {
+		"message": "Toegang tot <strong>about:addons</strong> blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevSupportHtml": {
+		"message": "Toegang tot <strong>about:support</strong> blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevProfilesHtml": {
+		"message": "Toegang tot <strong>about:profiles</strong> blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevDebuggingHtml": {
+		"message": "Toegang tot <strong>about:debugging</strong> blokkeren wanneer deze sites geblokkeerd zijn"
+	},
+	"optPrevOverrideHtml": {
+		"message": "Overschrijven toestaan voor <strong>about:addons</strong>, <strong>about:support</strong>, <strong>about:profiles</strong> en <strong>about:debugging</strong>"
+	},
+	"optLimitOffsetPrefix": {
+		"message": "Tijdslimietperiode verschuiven met"
+	},
+	"optLimitOffsetTitle": {
+		"message": "Leeg laten voor geen verschuiving"
+	},
+	"optHours": {
+		"message": "uren"
+	},
+	"optSitesURLLabel": {
+		"message": "Lijst van sites laden van URL:"
+	},
+	"optSitesURLTitle": {
+		"message": "Gebruik $S voor het blokkeersetnummer en $T voor UTC-tijdstempel in milliseconden"
+	},
+	"optRegexpBlockHtml": {
+		"message": "Gebruik een <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">reguliere expressie</a> om URL's te <strong>blokkeren</strong> (overschrijft de lijst van sites):"
+	},
+	"optClear": {
+		"message": "Wissen"
+	},
+	"optGenerateFromSiteList": {
+		"message": "Genereren vanuit sitelijst"
+	},
+	"optRegexpAllowHtml": {
+		"message": "Gebruik een <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">reguliere expressie</a> om URL's te <strong>toestaan</strong> (overschrijft uitzonderingen in de lijst van sites):"
+	},
+	"optRegexpKeywordHtml": {
+		"message": "Gebruik een <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" target=\"_blank\">reguliere expressie</a> om <strong>trefwoorden</strong> te matchen (overschrijft trefwoorden in de lijst van sites):"
+	},
+	"optIgnoreHash": {
+		"message": "Fragment (hash-deel) negeren bij het controleren van de URL"
+	},
+	"optCancelLockdown": {
+		"message": "Actieve Lockdown annuleren"
+	},
+	"optBlockSetsLegend": {
+		"message": "Blokkeersets"
+	},
+	"optNumSetsPrefix": {
+		"message": "Aantal blokkeersets (1&ndash;<span id=\"maxSets\">?</span>):"
+	},
+	"optNumSetsTitle": {
+		"message": "Standaard: 6"
+	},
+	"optAccessControlLegend": {
+		"message": "Toegangsbeheer"
+	},
+	"optAccessRequireLabel": {
+		"message": "Selecteer de vereiste voor toegang tot opties:"
+	},
+	"optAccess0": {
+		"message": "Geen wachtwoord of toegangscode vereisen"
+	},
+	"optAccess1": {
+		"message": "Vereist dat de gebruiker een wachtwoord invoert"
+	},
+	"optAccess2": {
+		"message": "Vereist dat de gebruiker een willekeurige toegangscode van 32 tekens invoert"
+	},
+	"optAccess3": {
+		"message": "Vereist dat de gebruiker een willekeurige toegangscode van 64 tekens invoert"
+	},
+	"optAccess4": {
+		"message": "Vereist dat de gebruiker een willekeurige toegangscode van 128 tekens invoert"
+	},
+	"optPasswordLabel": {
+		"message": "Wachtwoord:"
+	},
+	"optShowPassword": {
+		"message": "Wachtwoord tonen"
+	},
+	"optHidePassword": {
+		"message": "Wachtwoordtekens verbergen bij invoer"
+	},
+	"optPreventAccessLabel": {
+		"message": "Alle toegang tot opties blokkeren tijdens deze tijdsperioden:"
+	},
+	"optTimesPlaceholder": {
+		"message": "Voorbeeld: 0900-1230,1330-1700"
+	},
+	"optTimerLegend": {
+		"message": "Afteltimer"
+	},
+	"optTimerVisible": {
+		"message": "Timer boven de pagina tonen"
+	},
+	"optTimerSizeLabel": {
+		"message": "Grootte:"
+	},
+	"optTimerSmall": {
+		"message": "klein"
+	},
+	"optTimerMedium": {
+		"message": "medium"
+	},
+	"optTimerLarge": {
+		"message": "groot"
+	},
+	"optTimerXLarge": {
+		"message": "extra groot"
+	},
+	"optTimerLocationLabel": {
+		"message": "Locatie:"
+	},
+	"optTimerTopLeft": {
+		"message": "linksboven"
+	},
+	"optTimerTopRight": {
+		"message": "rechtsboven"
+	},
+	"optTimerBottomRight": {
+		"message": "rechtsonder"
+	},
+	"optTimerBottomLeft": {
+		"message": "linksonder"
+	},
+	"optTimerMaxHoursPrefix": {
+		"message": "Timer alleen tonen wanneer de resterende tijd minder is dan"
+	},
+	"optTimerMaxHoursTitle": {
+		"message": "Leeg laten voor geen limiet"
+	},
+	"optHoursLabel": {
+		"message": "uur"
+	},
+	"optTimerBadge": {
+		"message": "Timer als badge op het pictogram tonen (als de resterende tijd minder is dan 10 minuten)"
+	},
+	"optTimerTipHtml": {
+		"message": "<strong>Tip:</strong> Dubbelklik op de pagina-timer om hem op elk moment te verbergen (bijv. vóór het afdrukken)."
+	},
+	"optWarnLegend": {
+		"message": "Waarschuwingsbericht"
+	},
+	"optWarnPrefix": {
+		"message": "Waarschuwingsbericht tonen"
+	},
+	"optWarnTitle": {
+		"message": "Leeg laten voor geen waarschuwing"
+	},
+	"optWarnSuffix": {
+		"message": "seconden voordat de site geblokkeerd wordt"
+	},
+	"optWarnImmediate": {
+		"message": "Waarschuwingsbericht alleen tonen op pagina's die onmiddellijk geblokkeerd worden"
+	},
+	"optOverrideLegend": {
+		"message": "Tijdelijk overschrijven"
+	},
+	"optOverridePrefix": {
+		"message": "Blokkering opschorten voor"
+	},
+	"optOverrideMinsTitle": {
+		"message": "Leeg laten om een duur op te geven bij activering van het overschrijven"
+	},
+	"optMinutesLabel": {
+		"message": "minuut/minuten"
+	},
+	"optOverrideLimitPrefix": {
+		"message": "Maximaal toestaan"
+	},
+	"optOverrideLimitTitle": {
+		"message": "Leeg laten voor geen limiet"
+	},
+	"optOverrideLimitSuffix": {
+		"message": "overschrijving(en) per"
+	},
+	"optOverridePeriodHour": {
+		"message": "uur"
+	},
+	"optOverridePeriodDay": {
+		"message": "dag"
+	},
+	"optOverridePeriodWeek": {
+		"message": "week"
+	},
+	"optOverrideAccessLabel": {
+		"message": "Selecteer de vereiste voor het activeren van het overschrijven:"
+	},
+	"optOverrideAccess1": {
+		"message": "Vereist dat de gebruiker het toegangsbeheerwachtwoord invoert (zie hierboven)"
+	},
+	"optOverrideAccess8": {
+		"message": "Vereist dat de gebruiker een vooraf gedefinieerde toegangscode invoert (zie hieronder)"
+	},
+	"optOverrideAccess9": {
+		"message": "Vereist dat de gebruiker een apart overschrijvingswachtwoord invoert (zie hieronder)"
+	},
+	"optPredefinedCode": {
+		"message": "Vooraf gedefinieerde toegangscode:"
+	},
+	"optOverridePassword": {
+		"message": "Overschrijvingswachtwoord:"
+	},
+	"optOverrideConfirm": {
+		"message": "Bevestigingsbericht tonen wanneer het overschrijven wordt geactiveerd"
+	},
+	"optOverrideNoteHtml": {
+		"message": "<strong>Opmerking:</strong> Je moet ook \"Tijdelijk overschrijven toestaan voor deze sites\" selecteren voor de relevante blokkeersets."
+	},
+	"optAppearanceLegend": {
+		"message": "Uiterlijk"
+	},
+	"optThemeLabel": {
+		"message": "Thema:"
+	},
+	"optThemeDefault": {
+		"message": "Standaard"
+	},
+	"optCustomStyleLabel": {
+		"message": "Aangepaste stijl (CSS) voor de blokkeer-/vertraging-/wachtwoordpagina:"
+	},
+	"optMiscLegend": {
+		"message": "Overige"
+	},
+	"optContextMenu": {
+		"message": "Contextmenu tonen"
+	},
+	"optMatchSubdomains": {
+		"message": "Alle subdomeinen blokkeren (niet alleen www)"
+	},
+	"optDisableLink": {
+		"message": "Hyperlink naar geblokkeerde pagina uitschakelen op de blokkeer-/vertraging-/wachtwoordpagina"
+	},
+	"optClockFormatPrefix": {
+		"message": "Kloktijden weergeven in"
+	},
+	"optClockDefault": {
+		"message": "standaard"
+	},
+	"optClock12h": {
+		"message": "12-uurs"
+	},
+	"optClock24h": {
+		"message": "24-uurs"
+	},
+	"optClockFormatSuffix": {
+		"message": "formaat"
+	},
+	"optClockOffsetPrefix": {
+		"message": "Klok verschuiven met"
+	},
+	"optClockOffsetTitle": {
+		"message": "Leeg laten voor geen verschuiving"
+	},
+	"optIgnoreJumpPrefix": {
+		"message": "Sprongen in bestede tijd groter dan negeren"
+	},
+	"optAllFocused": {
+		"message": "Browservensters altijd als gefocust beschouwen"
+	},
+	"optUseDocFocus": {
+		"message": "Documentfocus gebruiken voor tijdmeting op actief tabblad (alleen Android)"
+	},
+	"optAccessCodeImage": {
+		"message": "Toegangscode weergeven als afbeelding"
+	},
+	"optSyncStorage": {
+		"message": "Synchronisatieopslag gebruiken voor opties (experimenteel: op eigen risico!)"
+	},
+	"optAllowLBWebsite": {
+		"message": "Altijd toegang toestaan tot de ivBlock-website"
+	},
+	"optDiagMode": {
+		"message": "Diagnostische modus (uitvoer naar browserconsole)"
+	},
+	"optPerformanceLegend": {
+		"message": "Prestaties"
+	},
+	"optSaveSecsPrefix": {
+		"message": "Tijdgegevens opslaan elke"
+	},
+	"optSaveSecsTitle": {
+		"message": "Standaard: 10"
+	},
+	"optProcessTabsPrefix": {
+		"message": "Tabbladen verwerken elke"
+	},
+	"optProcessTabsTitle": {
+		"message": "Standaard: 1"
+	},
+	"optProcessActiveTabs": {
+		"message": "Alleen actieve tabbladen verwerken (verbetert prestaties bij meerdere open tabbladen)"
+	},
+	"optExportImportLegend": {
+		"message": "Exporteren / Importeren"
+	},
+	"optImportNoteHtml": {
+		"message": "<strong>Opmerking:</strong> Importeren wordt uitgeschakeld als je de toegang tot de opties voor een blokkeerset hebt geblokkeerd."
+	},
+	"optDownloadToFile": {
+		"message": "Opties downloaden naar bestand (anders weergeven in nieuw tabblad)"
+	},
+	"optExportTextHtml": {
+		"message": "Opties exporteren<br>naar tekstbestand"
+	},
+	"optImportTextHtml": {
+		"message": "Opties importeren<br>uit tekstbestand"
+	},
+	"optExportJsonHtml": {
+		"message": "Opties exporteren<br>naar JSON-bestand"
+	},
+	"optExportPasswords": {
+		"message": "Wachtwoorden opnemen in geëxporteerde opties"
+	},
+	"optExportSyncHtml": {
+		"message": "Opties exporteren<br>naar synchronisatieopslag"
+	},
+	"optImportSyncHtml": {
+		"message": "Opties importeren<br>uit synchronisatieopslag"
+	},
+	"optAutoExportSync": {
+		"message": "Opties automatisch exporteren naar synchronisatieopslag (als back-up) wanneer opties worden opgeslagen"
+	},
+	"optLogoTitle": {
+		"message": "ivBlock"
+	},
+	"optAboutDescHtml": {
+		"message": "<a href=\"https://www.incuvolve.de/ivblock/\" target=\"_blank\">ivBlock</a> is een eenvoudig productiviteitshulpmiddel voor het blokkeren van tijdverspillende sites die je werkdag kunnen verstoren. Geef eenvoudigweg op welke sites je wilt blokkeren en wanneer.<br><br>"
+	},
+	"optAboutVersion": {
+		"message": "Versie:"
+	},
+	"optAboutLicense": {
+		"message": "Licentie:"
+	},
+	"optAboutAuthor": {
+		"message": "Auteur:"
+	},
+	"optAboutContributors": {
+		"message": "Bijdragers:"
+	},
+	"optAboutForkedHtml": {
+		"message": "(ivBlock is gevorkt van <a href=\"https://www.proginosko.com/leechblock/\" target=\"_blank\">LeechBlockNG</a>)"
+	},
+	"optAboutDocs": {
+		"message": "Documentatie:"
+	},
+	"optAboutExamples": {
+		"message": "Voorbeelden:"
+	},
+	"optAboutFAQ": {
+		"message": "Veelgestelde vragen:"
+	},
+	"optAboutSupport": {
+		"message": "Ondersteuning:"
+	},
+	"optAboutHistory": {
+		"message": "Versiegeschiedenis:"
+	},
+	"optAboutDonations": {
+		"message": "Donaties:"
+	},
+	"optOpenDiagnostics": {
+		"message": "Diagnostiekpagina openen"
+	},
+	"optSaveOptions": {
+		"message": "Opties opslaan"
+	},
+	"optSaveOptionsClose": {
+		"message": "Opties opslaan & sluiten"
+	},
+	"optAlertAccessPreventHtml": {
+		"message": "Je hebt de toegang tot de opties geblokkeerd tijdens deze tijdsperioden: <strong><span id=\"alertAccessPreventTimes\"></span></strong>"
+	},
+	"optAlertBadAccessPreventTimes": {
+		"message": "Toegang tot opties volledig blokkeren is geen goed idee! Voer andere tijdsperioden in."
+	},
+	"optAlertBadTimes": {
+		"message": "Voer de tijdsperioden in het juiste formaat in. Gebruik 24-uurs tijdnotatie (UUMM), een koppelteken (-) tussen begin- en eindtijd, en komma's of spaties om tijdsperioden te scheiden."
+	},
+	"optAlertBadTimeLimit": {
+		"message": "Voer de tijdslimiet in het juiste formaat in (als een positief getal)."
+	},
+	"optAlertBadTimeLimitOffset": {
+		"message": "Voer de tijdslimietverschuiving in het juiste formaat in (als een geheel getal ongelijk aan nul)."
+	},
+	"optAlertBadClockOffset": {
+		"message": "Voer de klokverschuiving in het juiste formaat in (als een geheel getal ongelijk aan nul)."
+	},
+	"optAlertBadSeconds": {
+		"message": "Voer het aantal seconden in het juiste formaat in (als een positief geheel getal)."
+	},
+	"optAlertBadMinutes": {
+		"message": "Voer het aantal minuten in het juiste formaat in (als een positief geheel getal)."
+	},
+	"optAlertBadHours": {
+		"message": "Voer het aantal uren in het juiste formaat in (als een positief geheel getal)."
+	},
+	"optAlertBadOverrideLimitNum": {
+		"message": "Voer het aantal overschrijvingen in het juiste formaat in (als een positief geheel getal)."
+	},
+	"optAlertBadBlockURL": {
+		"message": "Voer de URL voor de blokkeringspagina in het juiste formaat in (als een volledig opgegeven URL)."
+	},
+	"optAlertBadNumSets": {
+		"message": "Voer het aantal blokkeersets in het juiste formaat in (als een positief geheel getal)."
+	},
+	"optAlertNumSetsMaxHtml": {
+		"message": "Het maximale aantal blokkeersets is <strong>30</strong>. Je waarde is teruggebracht naar 30."
+	},
+	"optAlertNoImportFile": {
+		"message": "Selecteer een bestand met de te importeren opties."
+	},
+	"optAlertImportErrorHtml": {
+		"message": "<strong>Fout:</strong> Kan opties niet importeren uit bestand."
+	},
+	"optAlertImportSyncErrorHtml": {
+		"message": "<strong>Fout:</strong> Kan opties niet importeren uit synchronisatieopslag."
+	},
+	"optAlertImportSuccess": {
+		"message": "De opties zijn succesvol geïmporteerd."
+	},
+	"optAlertImportSuccessNoteHtml": {
+		"message": "<strong>Opmerking:</strong> De geïmporteerde opties worden pas toegepast nadat je op <strong>Opties opslaan</strong> klikt."
+	},
+	"optAlertExportErrorHtml": {
+		"message": "<strong>Fout:</strong> Kan geëxporteerde opties niet downloaden."
+	},
+	"optAlertExportSyncErrorHtml": {
+		"message": "<strong>Fout:</strong> Kan opties niet exporteren naar synchronisatieopslag."
+	},
+	"optAlertExportSuccess": {
+		"message": "De opties zijn succesvol geëxporteerd."
+	},
+	"optAlertLockdownCancel": {
+		"message": "De actieve Lockdown is geannuleerd."
+	},
+	"optAlertResetOptions": {
+		"message": "De opties voor deze blokkeerset zijn teruggezet naar de standaard."
+	},
+	"optAlertResetOptionsNoteHtml": {
+		"message": "<strong>Opmerking:</strong> De standaardwaarden worden pas toegepast nadat je op <strong>Opties opslaan</strong> klikt."
+	},
+	"optPromptPassword": {
+		"message": "Voer het wachtwoord in voor toegang tot de opties:"
+	},
+	"optPromptAccessCode": {
+		"message": "Voer de volgende code in voor toegang tot de opties:"
+	}
+}

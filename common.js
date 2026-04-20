@@ -582,12 +582,34 @@ function setTheme(theme) {
 	}
 }
 
-// Get localized version of extension page
+// Localize the current page using data-i18n attributes.
+// Elements with data-i18n="key" get their textContent replaced.
+// Elements with data-i18n-html="key" get their innerHTML replaced (for strings with embedded links).
+// Elements with data-i18n-placeholder="key" get their placeholder attribute replaced.
+// Elements with data-i18n-title="key" get their title attribute replaced.
 //
-function getLocalizedURL(url) {
-	return (ABSOLUTE_URL.test(url))
-		? url // no localization for absolute URL
-		: browser.i18n.getMessage("localePath") + url;
+function localize() {
+	let count = 0;
+	document.querySelectorAll("[data-i18n]").forEach(el => {
+		const key = el.dataset.i18n;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.textContent = msg; count++; }
+	});
+	document.querySelectorAll("[data-i18n-html]").forEach(el => {
+		const key = el.dataset.i18nHtml;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.innerHTML = msg; count++; }
+	});
+	document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+		const key = el.dataset.i18nPlaceholder;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.placeholder = msg; count++; }
+	});
+	document.querySelectorAll("[data-i18n-title]").forEach(el => {
+		const key = el.dataset.i18nTitle;
+		const msg = browser.i18n.getMessage(key);
+		if (msg) { el.title = msg; count++; }
+	});
 }
 
 // Get clean version of URL (remove source/reader prefix)
@@ -619,3 +641,45 @@ function hashCode32(str) {
 function getTimestampSuffix() {
 	return new Date().toISOString().substring(0, 19).replaceAll(":", "-");
 }
+
+// Expose functions for testing purposes
+window.listObjectProperties = listObjectProperties;
+window.cleanOptions = cleanOptions;
+window.cleanTimeData = cleanTimeData;
+window.getParsedURL = getParsedURL;
+window.cleanSites = cleanSites;
+window.getRegExpSites = getRegExpSites;
+window.patternToRegExp = patternToRegExp;
+window.keywordToRegExp = keywordToRegExp;
+window.checkTimePeriodsFormat = checkTimePeriodsFormat;
+window.checkPosIntFormat = checkPosIntFormat;
+window.checkPosNegIntFormat = checkPosNegIntFormat;
+window.checkPosNumberFormat = checkPosNumberFormat;
+window.checkBlockURLFormat = checkBlockURLFormat;
+window.getMinPeriods = getMinPeriods;
+window.cleanTimePeriods = cleanTimePeriods;
+window.getTimePeriodStart = getTimePeriodStart;
+window.updateRolloverTime = updateRolloverTime;
+window.formatTime = formatTime;
+window.allTrue = allTrue;
+window.encodeDays = encodeDays;
+window.decodeDays = decodeDays;
+window.createAccessCode = createAccessCode;
+window.setTheme = setTheme;
+window.localize = localize;
+window.getCleanURL = getCleanURL;
+window.hashCode32 = hashCode32;
+window.getTimestampSuffix = getTimestampSuffix;
+
+// Expose constants for testing purposes
+window.TIMEDATA_LEN = TIMEDATA_LEN;
+window.MAX_SETS = MAX_SETS;
+window.ALL_DAY_TIMES = ALL_DAY_TIMES;
+window.BLOCKED_PAGE = BLOCKED_PAGE;
+window.DELAYED_PAGE = DELAYED_PAGE;
+window.PASSWORD_PAGE = PASSWORD_PAGE;
+window.DEFAULT_BLOCK_URL = DEFAULT_BLOCK_URL;
+window.DELAYED_BLOCK_URL = DELAYED_BLOCK_URL;
+window.PASSWORD_BLOCK_URL = PASSWORD_BLOCK_URL;
+window.PER_SET_OPTIONS = PER_SET_OPTIONS;
+window.GENERAL_OPTIONS = GENERAL_OPTIONS;

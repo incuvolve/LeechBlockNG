@@ -1,28 +1,97 @@
-/* ivBlock blocking/delaying page style */
+/* ivBlock base styles */
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+
+:root {
+	/* Colors — Light Mode */
+	--color-bg:                  #f5f5f7;
+	--color-surface:             #ffffff;
+	--color-text:                #1d1d1f;
+	--color-text-muted:          #6e6e73;
+	--color-border:              #d2d2d7;
+	--color-primary:             #0071e3;
+	--color-primary-hover:       #0077ed;
+	--color-primary-active:      #006edb;
+	--color-primary-text:        #ffffff;
+	--color-secondary-bg:        #e8e8ed;
+	--color-secondary-hover:     #d2d2d7;
+	--color-secondary-active:    #c7c7cc;
+	--color-secondary-text:      #1d1d1f;
+	--color-accent:              #2a9d8f;
+	--color-disabled-bg:         #aeaeb2;
+	--color-disabled-text:       #ffffff;
+	--color-error:               #ff3b30;
+	--color-input-bg:            #ffffff;
+	--color-input-disabled-bg:   #f2f2f7;
+	--color-input-disabled-text: #6e6e73;
+	--color-focus-ring:          rgba(0, 113, 227, 0.25);
+
+	/* Typography */
+	--font-family:      "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	--font-family-mono: "Lucida Console", Monaco, monospace;
+	--font-size-base:   16px;
+	--font-size-sm:     14px;
+	--font-size-xs:     12px;
+
+	/* Spacing */
+	--gap-xs: 4px;
+	--gap-sm: 8px;
+	--gap-md: 12px;
+	--gap-lg: 20px;
+
+	/* Controls */
+	--control-height:    44px;
+	--control-padding-v: 10px;
+	--control-padding-h: 14px;
+	--border-radius-sm:  8px;
+	--border-radius:     10px;
+	--border-radius-lg:  14px;
+
+	/* Elevation */
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
+	--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+	/* Transitions */
+	--transition: 0.15s ease;
+}
+
+/* Dark mode defaults — overridden by theme files when a specific theme is selected */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg:                  #1c1c1e;
+		--color-surface:             #2c2c2e;
+		--color-text:                #f5f5f7;
+		--color-text-muted:          #98989d;
+		--color-border:              #48484a;
+		--color-primary:             #0a84ff;
+		--color-primary-hover:       #1a8fff;
+		--color-primary-active:      #0070d8;
+		--color-primary-text:        #ffffff;
+		--color-secondary-bg:        #3a3a3c;
+		--color-secondary-hover:     #48484a;
+		--color-secondary-active:    #545456;
+		--color-secondary-text:      #f5f5f7;
+		--color-accent:              #38c9b6;
+		--color-disabled-bg:         #636366;
+		--color-disabled-text:       #aeaeb2;
+		--color-error:               #ff453a;
+		--color-input-bg:            #2c2c2e;
+		--color-input-disabled-bg:   #3a3a3c;
+		--color-input-disabled-text: #98989d;
+		--color-focus-ring:          rgba(10, 132, 255, 0.40);
+	}
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 
 * {
 	box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
-
-	body {
-		background: #fff;
-	}
-
-}
-
-@media (prefers-color-scheme: dark) {
-
-	body {
-		background: #222;
-	}
-
-}
-
 body {
-	color: #2e3436;
-	font: normal 16px "Open Sans", Arial, sans-serif;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font: normal var(--font-size-base) var(--font-family);
 	text-align: center;
 	overflow-x: hidden;
 }
@@ -37,7 +106,7 @@ h1 {
 }
 
 a {
-	color: #2ca089;
+	color: var(--color-accent);
 	text-decoration: none;
 }
 
@@ -49,17 +118,27 @@ blockquote {
 	font-weight: bold;
 }
 
+/* ─── Form Controls ──────────────────────────────────────────────────────── */
+
 input,
 button {
-	color: #333;
-	font: normal 16px "Open Sans", Arial, sans-serif;
-	padding: 10px 15px;
-	border: 1px solid #888;
-	border-radius: 6px;
-	min-height: 36px;
+	color: var(--color-text);
+	font: normal var(--font-size-base) var(--font-family);
+	padding: var(--control-padding-v) var(--control-padding-h);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-sm);
+	min-height: var(--control-height);
+	background: var(--color-input-bg);
+	transition: border-color var(--transition), box-shadow var(--transition);
 }
 
+input:focus {
+	outline: none;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
 
+/* ─── Utility ────────────────────────────────────────────────────────────── */
 
 .logo {
 	max-width: 100%;
@@ -79,17 +158,17 @@ button {
 }
 
 .error {
-	background: #f00;
+	background: var(--color-error);
 }
 
 .support {
-	color: #777;
-	font-size: 14px;
+	color: var(--color-text-muted);
+	font-size: var(--font-size-sm);
 	font-style: italic;
 }
 
 .support a {
-	color: #777;
+	color: var(--color-text-muted);
 	text-decoration: underline;
 }
 
@@ -97,88 +176,15 @@ button {
 	text-decoration: none;
 }
 
-
-/* New styles for button alignment and sizing */
-.button-group {
-    text-align: center; /* Center buttons within this group */
-    margin-top: 10px; /* Add some vertical spacing */
-    margin-bottom: 10px;
-}
-
-.button-group button {
-    margin: 5px; /* Spacing between buttons */
-    display: inline-block; /* Allow buttons to sit next to each other and be centered */
-}
-
-/* General button styling for smoother sizing */
-.ivblock-button {
-    /* Font */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 1em; /* Base font size for buttons */
-    font-weight: 500; /* Medium weight often used in iOS */
-
-    /* Sizing */
-    padding: 0.8em 1.2em; /* Use em for smoother sizing relative to font-size */
-    min-width: 120px; /* Minimum width for consistency */
-    max-width: 200px; /* Maximum width to prevent excessive growth */
-    width: 100%; /* Allow it to take full width if content is small, but constrained by max-width */
-
-    /* Appearance */
-    background-color: #007AFF; /* iOS blue for primary action, or a light gray for default */
-    color: #FFFFFF; /* White text for primary blue button */
-    border: none; /* No border for a cleaner look */
-    border-radius: 10px; /* More rounded corners for iOS feel */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; /* Smooth transitions */
-    -webkit-appearance: none; /* Remove default button styles for consistency */
-    -moz-appearance: none;
-    appearance: none;
-}
-
-/* Default button style (e.g., for secondary actions) */
-.ivblock-button.default {
-    background-color: #EFEFF4; /* Light gray background */
-    color: #000000; /* Dark text */
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-
-/* Hover/Active states */
-.ivblock-button:hover:enabled {
-    background-color: #005BBF; /* Darker blue on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.ivblock-button.default:hover:enabled {
-    background-color: #DFDFE4; /* Darker gray on hover */
-}
-
-.ivblock-button:active:enabled {
-    background-color: #003D80; /* Even darker blue on active */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    transform: translateY(1px); /* Slight press effect */
-}
-
-.ivblock-button.default:active:enabled {
-    background-color: #CFCFD4; /* Even darker gray on active */
-}
-
-/* Disabled state */
-.ivblock-button:disabled {
-    background-color: #A9A9A9; /* Lighter gray for disabled */
-    color: #FFFFFF;
-    opacity: 0.6;
-    cursor: not-allowed;
-    box-shadow: none;
-}
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
 	body {
-		font-size: 14px;
+		font-size: var(--font-size-sm);
 	}
 
 	input {
-		font-size: 16px;
+		font-size: var(--font-size-base); /* Prevent iOS auto-zoom */
 	}
 
 	h1 {
@@ -186,8 +192,8 @@ button {
 	}
 
 	#ivbPasswordInput {
-		width: 80%;
-		margin-bottom: 10px;
+		width: 100%;
+		margin-bottom: var(--gap-sm);
 	}
 
 	#ivbPasswordForm p {

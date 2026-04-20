@@ -1,122 +1,72 @@
-/* LeechBlock Default theme style */
+/* ivBlock Default theme (follows system colour preference) */
 
 @media (prefers-color-scheme: dark) {
 
-/* The following should replicate the Dark theme style */
+:root {
+	--color-bg:                  #1c1c1e;
+	--color-surface:             #2c2c2e;
+	--color-text:                #f5f5f7;
+	--color-text-muted:          #98989d;
+	--color-border:              #48484a;
+	--color-primary:             #0a84ff;
+	--color-primary-hover:       #1a8fff;
+	--color-primary-active:      #0070d8;
+	--color-primary-text:        #ffffff;
+	--color-secondary-bg:        #3a3a3c;
+	--color-secondary-hover:     #48484a;
+	--color-secondary-active:    #545456;
+	--color-secondary-text:      #f5f5f7;
+	--color-accent:              #38c9b6;
+	--color-disabled-bg:         #636366;
+	--color-disabled-text:       #aeaeb2;
+	--color-error:               #ff453a;
+	--color-input-bg:            #2c2c2e;
+	--color-input-disabled-bg:   #3a3a3c;
+	--color-input-disabled-text: #98989d;
+	--color-focus-ring:          rgba(10, 132, 255, 0.40);
+}
 
 body {
-	background: #222;
-	color: #bbb;
+	background: var(--color-bg);
+	color: var(--color-text);
 }
 
-.ui-button {
-	background: #444;
-	color: #bbb;
-	border: 1px solid #666;
+/* jQuery UI tab states */
+.ui-tabs .ui-state-default {
+	background: #5a5a5e;
+	border: 1px solid var(--color-border);
 }
 
-.ui-button:focus {
-	background: #444;
-	color: #bbb;
-	border: 1px solid #666;
+.ui-tabs .ui-state-default a {
+	color: var(--color-text);
 }
 
-.ui-button:hover {
-	background: #333;
-	color: #bbb;
-	border: 1px solid #666;
+.ui-tabs .ui-state-hover {
+	background: #4a4a4e;
+	border: 1px solid var(--color-border);
 }
 
-.ui-widget button {
-	background: #444;
-	color: #bbb;
-	border: 1px solid #666;
+.ui-tabs .ui-state-active {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 }
 
-.ui-widget button:hover:enabled {
-	background: #333;
-}
-
-.ui-widget button:active:enabled {
-	background: #222;
-}
-
-.ui-widget button:disabled {
-	background: #333;
-	color: #666;
-	border: 1px solid #444;
-}
-
-.ui-widget fieldset, .ui-widget input, .ui-widget select, .ui-widget textarea {
-	background: #222;
-	color: #bbb;
-	border: 1px solid #666;
-}
-
-.ui-widget input:disabled, .ui-widget select:disabled, .ui-widget textarea:disabled {
-	background: #333;
-	color: #666;
-	border: 1px solid #444;
-}
-
-.ui-widget hr {
-	height: 0px;
-	margin: 0px;
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: 1px solid #666;
-}
-
-.ui-widget th, td {
-	border: 1px solid #666;
-}
-
-.ui-widget-header {
-	background: #444;
-	color: #bbb;
-	border: 1px solid #888;
+.ui-tabs .ui-state-active a {
+	color: var(--color-text);
 }
 
 .ui-dialog .ui-dialog-titlebar-close .ui-icon {
 	filter: brightness(0) invert(1);
 }
 
-.ui-widget-content {
-	background: #222;
-	color: #bbb;
-	border: 1px solid #888;
-}
-
-.ui-widget.ui-widget-content {
-	border: 1px solid #888;
-}
-
-.ui-tabs .ui-state-default {
-	background: #aaa;
-	border: 1px solid #666;
-}
-
-.ui-tabs .ui-state-default a {
-	color: #000;
-}
-
-.ui-tabs .ui-state-hover {
-	background: #999;
-	border: 1px solid #666;
-}
-
-.ui-tabs .ui-state-active {
-	background: #222;
-	border: 1px solid #666;
-}
-
-.ui-tabs .ui-state-active a {
-	color: #bbb;
+.ui-widget-header {
+	background: var(--color-secondary-bg);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 }
 
 #paneAbout {
-	color: #bbb;
+	color: var(--color-text);
 }
 
 }

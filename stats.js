@@ -42,6 +42,8 @@ function initForm(numSets) {
 function refreshPage() {
 	//log("refreshPage");
 
+	localize();
+
 	let gen = ++gRefreshGen;
 
 	$("#form").hide();
@@ -172,3 +174,10 @@ function handleClick(e) {
 
 document.addEventListener("DOMContentLoaded", refreshPage);
 document.addEventListener("focus", refreshPage);
+
+// Expose functions for testing purposes
+window.initForm = initForm;
+window.refreshPage = refreshPage;
+window.getFormattedStats = getFormattedStats;
+window.getFormattedClockTime = getFormattedClockTime;
+window.handleClick = handleClick;
