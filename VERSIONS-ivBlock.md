@@ -1,5 +1,12 @@
 # Version History
 
+## Version 1.1.0 (April 2026)
+
+* localization refactoring to be able to integrate more languages easily
+* bugfix mixed languages
+* review of UI (text fields, dropdown controls)
+* bugfix to enable opening blocked page after delay page countdown is zero
+
 ## Version 1.0.3 (March 2026)
 
 * adding an app icon for iOS dark mode
