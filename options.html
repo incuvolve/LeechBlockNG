@@ -53,7 +53,7 @@
 								<label data-i18n="optSitesLabel">Enter the domain names of the sites to block (one item per line):</label>
 							</p>
 							<p>
-								<textarea id="sites1" cols="60" rows="10" spellcheck="false" placeholder="somesite.com"></textarea>
+								<textarea id="sites1" cols="60" rows="10" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="somesite.com"></textarea>
 							</p>
 							<p data-i18n-html="optSitesNoteHtml">
 								<strong>Note:</strong> Do <u>not</u> include URL protocol prefixes such as <code>http://</code> or <code>file://</code>.
@@ -156,7 +156,7 @@
 								<label data-i18n="optBlockURLLabel">Enter the fully specified URL of the page to show instead of these blocked sites:</label>
 							</p>
 							<p>
-								<input id="blockURL1" type="text" size="60" placeholder="http://somesite.com/somepage.html" title="Use $U to pass URL of blocked page" data-i18n-title="optBlockURLTitle">
+								<input id="blockURL1" type="text" size="60" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="http://somesite.com/somepage.html" title="Use $U to pass URL of blocked page" data-i18n-title="optBlockURLTitle">
 							</p>
 							<p>
 								<label data-i18n="optPredefinedURLs">Predefined URLs:</label>
@@ -378,7 +378,7 @@
 								<label data-i18n="optSitesURLLabel">Load list of sites from URL:</label>
 							</p>
 							<p>
-								<input id="sitesURL1" type="text" size="60" title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds" data-i18n-title="optSitesURLTitle">
+								<input id="sitesURL1" type="text" size="60" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" title="Use $S to pass block set number and $T to pass UTC timestamp in milliseconds" data-i18n-title="optSitesURLTitle">
 								&nbsp;&nbsp;<a href="https://www.proginosko.com/leechblock/faq/load-from-url/" target="_blank">What does this do?</a>
 							</p>
 							<p>
