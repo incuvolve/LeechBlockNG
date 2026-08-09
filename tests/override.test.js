@@ -38,6 +38,7 @@ const mockJQuery = {
     focus: jest.fn().mockReturnThis(),
     attr: jest.fn().mockReturnThis(),
     hide: jest.fn().mockReturnThis(),
+    on: jest.fn().mockReturnThis(),
 };
 const jQueryMock = jest.fn(() => mockJQuery);
 

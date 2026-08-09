@@ -1,5 +1,10 @@
 # Version History
 
+## Version 1.2.0 (August 2026)
+* Integration of LeechBlockNG 1.7.3
+* bugfix to prevent spellchecks in input boxes for website
+* minor review of UI elements
+
 ## Version 1.1.0 (April 2026)
 
 * localization refactoring to be able to integrate more languages easily

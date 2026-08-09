@@ -13,6 +13,7 @@ const browserMock = {
         getPlatformInfo: jest.fn(() => Promise.resolve({ os: 'mac' })),
         onMessage: mockListener,
         sendMessage: jest.fn(),
+        openOptionsPage: jest.fn(),
     },
     storage: {
         local: {
@@ -54,6 +55,7 @@ const browserMock = {
     },
     windows: {
         onFocusChanged: mockListener,
+        update: jest.fn(),
     },
     alarms: {
         create: jest.fn(),
@@ -1425,9 +1427,11 @@ describe('background.js tests', () => {
             browserMock.tabs.create.mockClear();
         });
 
-        it('opens options page', () => {
+        it('opens options page', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
             handleMenuClick({ menuItemId: 'options' }, {});
-            expect(browserMock.runtime.openOptionsPage).toHaveBeenCalled();
+            await flushPromises();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'moz-extension://test-id/options.html' });
         });
 
         it('opens stats page', async () => {
@@ -1470,9 +1474,11 @@ describe('background.js tests', () => {
             browserMock.tabs.create.mockClear();
         });
 
-        it('ivb-options opens options page', () => {
+        it('ivb-options opens options page', async () => {
+            browserMock.tabs.query.mockResolvedValueOnce([]);
             handleCommand('ivb-options');
-            expect(browserMock.runtime.openOptionsPage).toHaveBeenCalled();
+            await flushPromises();
+            expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'moz-extension://test-id/options.html' });
         });
 
         it('ivb-statistics opens stats page', async () => {

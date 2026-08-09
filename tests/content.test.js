@@ -240,16 +240,6 @@ describe('content.js', () => {
             expect(global.browser.runtime.sendMessage).toHaveBeenCalledWith({ type: "focus", focus: false });
         });
 
-        it('onUnload should remove timer and alert elements', () => {
-            global.updateTimer('10:00', 0, 0); // Create gTimer
-            global.showAlert('Test'); // Create gAlert
-            jest.clearAllMocks(); // Clear mocks from setup calls
 
-            global.onUnload();
-
-            // Check if removeChild was called on the parentNode of gTimer and gAlert
-            // The parentNode is the document.body in this case
-            expect(removeChildSpy).toHaveBeenCalledTimes(2);
-        });
     });
 });

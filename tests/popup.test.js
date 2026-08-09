@@ -75,10 +75,11 @@ describe('popup.js', () => {
     });
 
     describe('openOptions', () => {
-        it('should open options page and close window', () => {
-            global.openOptions();
-            expect(browserMock.runtime.openOptionsPage).toHaveBeenCalledTimes(1);
-            expect(windowCloseSpy).toHaveBeenCalledTimes(1);
+      it('should open options page and close window', async () => {
+          browserMock.tabs.query.mockResolvedValueOnce([]);
+          await global.openOptions();
+          expect(browserMock.tabs.create).toHaveBeenCalledWith({ url: 'chrome-extension://test/options.html' });
+          expect(windowCloseSpy).toHaveBeenCalledTimes(1);
         });
     });
 

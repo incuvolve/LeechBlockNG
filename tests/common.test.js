@@ -34,10 +34,16 @@ const {
 
 describe('common.js tests', () => {
     describe('cleanSites', () => {
-        it('should remove extra whitespace and sort sites', () => {
+        it('should sort sites alphabetically when sortSites is true', () => {
             const sites = '  site2.com   site1.com  site3.com  ';
             const expected = 'site1.com site2.com site3.com';
-            expect(cleanSites(sites)).toBe(expected);
+            expect(cleanSites(sites, true)).toBe(expected);
+        });
+
+        it('should preserve input order when sortSites is false', () => {
+            const sites = '  site2.com   site1.com  site3.com  ';
+            const expected = 'site2.com site1.com site3.com';
+            expect(cleanSites(sites, false)).toBe(expected);
         });
 
         it('should handle an empty string', () => {

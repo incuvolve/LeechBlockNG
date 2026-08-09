@@ -225,7 +225,6 @@ notifyLoaded();
 
 window.addEventListener("focus", onFocus);
 window.addEventListener("blur", onBlur);
-window.addEventListener("unload", onUnload);
 window.addEventListener("pagehide", onPageHide);
 
 // Expose functions for testing purposes
@@ -238,4 +237,3 @@ window.applyFilter = applyFilter;
 window.handleMessage = handleMessage;
 window.onFocus = onFocus;
 window.onBlur = onBlur;
-window.onUnload = onUnload;
