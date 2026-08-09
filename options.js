@@ -433,7 +433,8 @@ function saveOptions(event) {
 
 			// Set option value
 			if (name == "sites") {
-				let sites = cleanSites(getElement(`${id}${set}`).value);
+				let sortSites = getElement(`sortSites${set}`).checked;
+				let sites = cleanSites(getElement(`${id}${set}`).value, sortSites);
 				options[`${name}${set}`] = sites;
 
 				// Get regular expressions to match sites
@@ -730,6 +731,8 @@ function confirmAccess(options) {
 	let password = options["password"];
 	let hpp = options["hpp"];
 
+	function onPaste(e) { e.preventDefault(); }
+
 	if (oa == 1 && password) {
 		gAccessHashCode = hashCode32(password);
 		if (hpp) {
@@ -751,6 +754,7 @@ function confirmAccess(options) {
 		gAccessHashCode = hashCode32(code);
 		displayAccessCode(code, options["accessCodeImage"]);
 		$("#promptAccessCodeInput").val("");
+		$("#promptAccessCodeInput").on("paste", onPaste);
 		$("#promptAccessCode").dialog("open");
 		$("#promptAccessCodeInput").focus();
 	} else {
@@ -830,12 +834,14 @@ function compileExportOptions(passwords) {
 	// Per-set options
 	for (let set = 1; set <= gNumSets; set++) {
 		for (let name in PER_SET_OPTIONS) {
+			if (!passwords && name.startsWith("passwordSetSpec")) continue;
 			let type = PER_SET_OPTIONS[name].type;
 			let id = PER_SET_OPTIONS[name].id;
 
 			// Set option value
 			if (name == "sites") {
-				let sites = cleanSites(getElement(`${id}${set}`).value);
+				let sortSites = getElement(`sortSites${set}`).checked;
+				let sites = cleanSites(getElement(`${id}${set}`).value, sortSites);
 				options[`${name}${set}`] = sites;
 			} else if (name == "times") {
 				let times = cleanTimePeriods(getElement(`${id}${set}`).value);
