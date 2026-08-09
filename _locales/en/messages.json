@@ -123,6 +123,7 @@
 "optWhatToBlockDesc": { "message": "In this section, specify the sites you want to block." },
 "optSetNameLabel": { "message": "Enter a custom name for this block set (optional):" },
 "optSitesLabel": { "message": "Enter the domain names of the sites to block (one item per line):" },
+"optSiteSortLabel": { "message": "Sort the list of sites" },
 "optSitesNoteHtml": { "message": "<strong>Note:</strong> Do <u>not</u> include URL protocol prefixes such as <code>http://</code> or <code>file://</code>." },
 "optSitesTipHtml": { "message": "<strong>Tip:</strong> Use <code>*</code> or <code>**</code> as <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">wildcard</a>, <code>+</code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">exceptions</a>, <code>></code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">referrers</a>, and <code>~</code> to prefix <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">keywords</a>." },
 "optWhenToBlock": { "message": "When to Block" },

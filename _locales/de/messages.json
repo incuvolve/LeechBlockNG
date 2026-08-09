@@ -123,6 +123,7 @@
 "optWhatToBlockDesc": { "message": "In diesem Abschnitt die zu blockierenden Seiten angeben." },
 "optSetNameLabel": { "message": "Optionalen Namen für dieses Blockset eingeben:" },
 "optSitesLabel": { "message": "Domainnamen der zu blockierenden Seiten eingeben (eine pro Zeile):" },
+"optSiteSortLabel": { "message": "Seitenliste sortieren" },
 "optSitesNoteHtml": { "message": "<strong>Hinweis:</strong> Keine URL-Protokoll-Präfixe wie <code>http://</code> oder <code>file://</code> eingeben." },
 "optSitesTipHtml": { "message": "<strong>Tipp:</strong> <code>*</code> oder <code>**</code> als <a href=\"https://www.proginosko.com/leechblock/faq/wildcards/\" target=\"_blank\">Platzhalter</a> verwenden, <code>+</code> für <a href=\"https://www.proginosko.com/leechblock/faq/exceptions/\" target=\"_blank\">Ausnahmen</a>, <code>></code> für <a href=\"https://www.proginosko.com/leechblock/faq/referrers/\" target=\"_blank\">Referrer</a>, und <code>~</code> für <a href=\"https://www.proginosko.com/leechblock/faq/keywords/\" target=\"_blank\">Schlüsselwörter</a>." },
 "optWhenToBlock": { "message": "Wann blockieren" },
