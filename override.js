@@ -138,6 +138,8 @@ function confirmAccess(options) {
 	let password = options["password"];
 	let hpp = options["hpp"];
 
+	function onPaste(e) { e.preventDefault(); }
+
 	if (ora == 1 && password) {
 		gAccessHashCode = hashCode32(password);
 		if (hpp) {
@@ -152,6 +154,8 @@ function confirmAccess(options) {
 		gAccessHashCode = hashCode32(code);
 		numLines = displayAccessCode(code, options["accessCodeImage"]);
 		resizePromptInputHeight(numLines);
+		$("#promptAccessCodeInput").val("");
+		$("#promptAccessCodeInput").on("paste", onPaste);
 		$("#promptAccessCode").dialog("open");
 		$("#promptAccessCodeInput").focus();
 	} else if (ora == 9 && orp) {
@@ -172,6 +176,7 @@ function confirmAccess(options) {
 		numLines = displayAccessCode(code, options["accessCodeImage"]);
 		resizePromptInputHeight(numLines);
 		$("#promptAccessCodeInput").val("");
+		$("#promptAccessCodeInput").on("paste", onPaste);
 		$("#promptAccessCode").dialog("open");
 		$("#promptAccessCodeInput").focus();
 	} else if (gOverrideMins) {
@@ -194,15 +199,16 @@ function displayAccessCode(code, asImage) {
 	let lines = [];
 	let idx = 0;
 	do {
-		let spaceIdx = (idx + 64 >= code.length) ? code.length : code.lastIndexOf(" ", idx + 64);
+		let chunk = code.substring(idx, idx + 64)
+		let spaceIdx = chunk.lastIndexOf(" ");
 		if (spaceIdx == -1) {
-			lines.push(code.substring(idx, idx + 64));
+			lines.push(chunk);
 			idx += 64;
 		} else {
-			lines.push(code.substring(idx, spaceIdx));
-			idx = spaceIdx + 1;
+			lines.push(chunk.substring(0, spaceIdx));
+			idx += spaceIdx + 1;
 		}
-	} while (idx < code.length - 1);
+	} while (idx < code.length);
 
 	if (asImage) {
 		// Display code as image

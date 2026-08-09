@@ -673,7 +673,7 @@ function checkTab(id, isBeforeNav, isRepeat) {
 							}
 						}
 					}
-					
+
 					if (secsLeftBeforePeriod != Infinity) continue;
 				}
 			}
@@ -1531,13 +1531,20 @@ function openExtensionPage(url) {
 
 	function onGot(tabs) {
 		if (tabs.length > 0) {
+			// Bring tab to front
 			browser.tabs.update(tabs[0].id, { active: true });
+			if (browser.windows) {
+				// Bring window to front
+				browser.windows.update(tabs[0].windowId, { focused: true });
+			}
 		} else {
+			// Create new tab
 			browser.tabs.create({ url: fullURL });
 		}
 	}
 
 	function onError(error) {
+		// Create new tab
 		browser.tabs.create({ url: fullURL });
 	}
 }
@@ -1705,12 +1712,37 @@ function addSitesToSet(siteList, set) {
 	);
 }
 
+// Check for options in managed storage
+//
+function checkManagedStorage() {
+	//log("checkManagedStorage");
+
+	if (browser.storage.managed) {
+		browser.storage.managed.get().then(onGot, onError);
+
+		function onGot(data) {
+			browser.storage.local.set(data).then(
+				() => {
+					log("Copied options from managed to local storage.");
+				},
+				(error) => {
+					warn("Cannot copy options from managed to local storage: " + error);
+				}
+			);
+		}
+
+		function onError(error) {
+			warn("No options available from managed storage: " + error);
+		}
+	}
+}
+
 /*** EVENT HANDLERS BEGIN HERE ***/
 
 function handleMenuClick(info, tab) {
 	let id = info.menuItemId;
 	if (id == "options") {
-		browser.runtime.openOptionsPage();
+		openExtensionPage("options.html");
 	} else if (id == "lockdown") {
 		openExtensionPage("lockdown.html");
 	} else if (id == "override") {
@@ -1730,7 +1762,7 @@ function handleCommand(command) {
 	switch (command) {
 
 		case "ivb-options":
-			browser.runtime.openOptionsPage();
+			openExtensionPage("options.html");
 			break;
 
 		case "ivb-statistics":
@@ -2033,6 +2065,8 @@ function onAlarm(alarmInfo) {
 }
 
 /*** STARTUP CODE BEGINS HERE ***/
+
+checkManagedStorage();
 
 browser.runtime.getPlatformInfo().then(
 	function (info) { gIsAndroid = (info.os == "android"); }

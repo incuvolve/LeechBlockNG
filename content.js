@@ -146,6 +146,7 @@ function checkKeyword(keywordRE, titleOnly) {
 //
 function applyFilter(filterName, filterCustom) {
 	let filters = {
+		"none": "none",
 		"blur (1px)": "blur(1px)",
 		"blur (2px)": "blur(2px)",
 		"blur (4px)": "blur(4px)",
@@ -206,7 +207,7 @@ function onBlur(event) {
 	browser.runtime.sendMessage({ type: "focus", focus: false });
 }
 
-function onUnload(event) {
+function onPageHide(event) {
 	if (gTimer && gTimer.parentNode) {
 		gTimer.parentNode.removeChild(gTimer);
 		gTimer = null;
@@ -225,6 +226,7 @@ notifyLoaded();
 window.addEventListener("focus", onFocus);
 window.addEventListener("blur", onBlur);
 window.addEventListener("unload", onUnload);
+window.addEventListener("pagehide", onPageHide);
 
 // Expose functions for testing purposes
 window.notifyLoaded = notifyLoaded;

@@ -58,12 +58,20 @@
 							<p data-i18n-html="optSitesNoteHtml">
 								<strong>Note:</strong> Do <u>not</u> include URL protocol prefixes such as <code>http://</code> or <code>file://</code>.
 							</p>
+							<p>
+								<input id="sortSites1" type="checkbox">
+								<label for="sortSites1">Sort the list of sites</label>
+							</p>
 							<p data-i18n-html="optSitesTipHtml">
 								<strong>Tip:</strong>
-								Use <code>*</code> or <code>**</code> as <a href="https://www.proginosko.com/leechblock/faq/wildcards/" target="_blank">wildcard</a>,
+								Use <code>*</code> or <code>**</code> as <a href="https://www.proginosko.com/leechblock/faq/wildcards/" target="_blank">wildcards</a>,
 								<code>+</code> to prefix <a href="https://www.proginosko.com/leechblock/faq/exceptions/" target="_blank">exceptions</a>,
 								<code>&gt;</code> to prefix <a href="https://www.proginosko.com/leechblock/faq/referrers/" target="_blank">referrers</a>,
 								and <code>~</code> to prefix <a href="https://www.proginosko.com/leechblock/faq/keywords/" target="_blank">keywords</a>.
+							</p>
+							<p>
+								<strong>Tip:</strong>
+								For blocking via <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">regular expressions</a>, see <strong>Advanced Options</strong> below.
 							</p>
 						</fieldset>
 						<fieldset>
@@ -210,6 +218,7 @@
 								<input id="applyFilter1" type="checkbox">
 								<label for="applyFilter1" data-i18n="optApplyFilter">Apply filter instead of blocking page:</label>
 								<select id="filterName1">
+									<option>none</option>
 									<option>blur (1px)</option>
 									<option>blur (2px)</option>
 									<option>blur (4px)</option>
@@ -304,7 +313,7 @@
 								<label for="allowOverLock1" data-i18n="optAllowOverLock">Allow temporary override during lockdown</label>
 							</p>
 						</fieldset>
-                        
+
                         <p class="button-group">
                             <button id="resetOpts1" type="button" class="ivblock-button default" data-i18n="optResetToDefaults">Reset Options to Defaults</button>
                             <button id="showAdvOpts1" type="button" class="ivblock-button default" data-i18n="optShowAdvanced">Show Advanced Options</button>
