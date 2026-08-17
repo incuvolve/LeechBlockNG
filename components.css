@@ -1,0 +1,228 @@
+/* ivBlock components: consolidated buttons, inputs, cards, dialogs, and typography
+   Purpose: central component library to modernize visuals and accessibility.
+*/
+
+/* Buttons - provide modern variants while keeping compatibility with .ivblock-button */
+.ivb-btn,
+.ivblock-button {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  padding: calc(var(--control-padding-v) - 2px) calc(var(--control-padding-h) + 4px);
+  min-height: var(--control-height);
+  min-width: 64px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Icon helper for buttons */
+.ivb-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+/* Card header */
+.ivb-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-sm);
+  font-weight: 600;
+}
+
+/* primary hover/active */
+.ivb-btn:hover:enabled,
+.ivblock-button:hover:enabled {
+  background: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.ivb-btn:active:enabled,
+.ivblock-button:active:enabled {
+  background: var(--color-primary-active);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(0);
+}
+
+/* secondary */
+.ivb-btn--secondary,
+.ivblock-button.default {
+  background: var(--color-secondary-bg);
+  color: var(--color-secondary-text);
+  box-shadow: none;
+}
+
+/* ghost (link-like) */
+.ivb-btn--ghost {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Disabled */
+.ivb-btn:disabled,
+.ivblock-button:disabled {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  opacity: 0.8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Inputs */
+.ivb-input,
+input.ivb-input,
+textarea.ivb-input,
+select.ivb-input {
+  font: normal var(--font-size-base) var(--font-family);
+  padding: var(--control-padding-v) var(--control-padding-h);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-input-bg);
+  color: var(--color-text);
+  min-height: calc(var(--control-height) - 6px);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.ivb-input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Cards */
+.ivb-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--gap-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Dialog content (for non-jQuery UI) */
+.ivb-dialog {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--border-radius);
+  padding: var(--gap-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 520px;
+}
+
+/* Typography */
+body {
+  font-size: var(--font-size-base);
+  line-height: 1.45;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 var(--gap-md) 0;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 var(--gap-sm) 0;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 var(--gap-sm) 0;
+}
+
+/* Utility spacing helpers */
+.u-row {
+  display: flex;
+  gap: var(--gap-md);
+  align-items: center;
+}
+
+/* Accessibility: visible focus for keyboard users */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+  border-color: var(--color-primary);
+}
+
+/* Reduce prominent shadows for a cleaner, flatter look by default */
+.ivb-card,
+.ivb-btn {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* Micro-interactions: subtle lift */
+.ivb-btn:hover:enabled,
+.ivblock-button:hover:enabled {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Larger hit targets variant */
+.ivb-btn--large {
+  min-height: 48px;
+  padding: 12px 18px;
+}
+
+/* Make sure jQuery UI button rules do not override component colours */
+.ui-widget .ivblock-button,
+.ui-widget button.ivblock-button,
+.ui-widget button.ivb-btn {
+  background: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+/* High-contrast accessibility support */
+@media (prefers-contrast: more) {
+  .ivb-btn,
+  .ivblock-button,
+  .ivb-input {
+    box-shadow: 0 0 0 4px var(--color-focus-ring) !important;
+    border-width: 2px !important;
+  }
+  .ivb-card {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* stronger borders in dark mode */
+  .ivb-btn,
+  .ivblock-button {
+    border-color: rgba(255,255,255,0.20);
+  }
+  .ivb-card {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.24);
+  }
+}
+
+/* Better focus-visible for keyboard users */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 5px var(--color-focus-ring);
+  border-color: var(--color-primary);
+}

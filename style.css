@@ -39,13 +39,29 @@
 	--gap-md: 12px;
 	--gap-lg: 20px;
 
+	/* Breakpoints */
+	--bp-xs: 360px;
+	--bp-sm: 600px;
+	--bp-md: 768px;
+	--bp-lg: 1024px;
+
+	/* Layout tokens */
+	--content-max-width: 1200px;
+
+	/* Z-index layers */
+	--z-content: 1;
+	--z-dropdown: 2000;
+	--z-toast: 5000;
+	--z-dialog: 10000;
+	--z-overlay: 2147483647;
+
 	/* Controls */
 	--control-height:    44px;
 	--control-padding-v: 10px;
 	--control-padding-h: 14px;
-	--border-radius-sm:  8px;
-	--border-radius:     10px;
-	--border-radius-lg:  14px;
+	--border-radius-sm:  6px;
+	--border-radius:     8px;
+	--border-radius-lg:  12px;
 
 	/* Elevation */
 	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
@@ -96,8 +112,21 @@ body {
 	overflow-x: hidden;
 }
 
-div {
-	margin-top: 40px;
+/* Replace broad global spacing rule with explicit utility classes. 
+   Avoid global div selectors which cause brittle layout and require many overrides. */
+
+.page-section {
+	margin-top: var(--gap-lg);
+}
+
+/* Small spacing utility */
+.spaced {
+	margin-top: var(--gap-md);
+}
+
+/* Hidden utility (prefer in future over inline display:none) */
+.hidden {
+	display: none !important;
 }
 
 h1 {
