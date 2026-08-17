@@ -51,6 +51,13 @@ function processBlockInfo(info) {
 	let blockedURLLink = document.getElementById("ivbBlockedURLLink");
 	if (info.blockedURL && blockedURLLink && !info.disableLink) {
 		blockedURLLink.setAttribute("href", info.blockedURL);
+		let capturedURL = info.blockedURL;
+		blockedURLLink.addEventListener("click", function(e) {
+			e.preventDefault();
+			console.log("[ivBlock] Blocked page link clicked, navigating to: " + capturedURL);
+			// Use window.location instead of tabs.update (Safari workaround)
+			window.location.href = capturedURL;
+		});
 	}
 
 	let blockedSet = document.getElementById("ivbBlockedSet");
