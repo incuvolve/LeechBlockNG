@@ -22,6 +22,19 @@
 	margin-left: 20px;
 }
 
+/* Constrain form width so page elements do not become extremely narrow */
+#form {
+	width: 100%;
+	max-width: 480px;
+	margin: 0 auto;
+}
+
+/* Minutes input: sized for up to 4 digits (use ch unit to match digit width) */
+#form input#mins.input-narrow {
+	width: 8ch; /* increased to fit larger numbers comfortably */
+	min-width: 6ch;
+}
+
 @media (max-width: 600px) {
 	#form fieldset {
 		width: 90%;

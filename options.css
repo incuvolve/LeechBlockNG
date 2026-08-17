@@ -314,6 +314,13 @@ input[type="radio"] {
 	max-width: 500px;
 }
 
+/* Dialog content should be left-aligned for readable paragraphs and lists */
+.ui-dialog .ui-dialog-content {
+	text-align: left;
+	color: var(--color-text) !important;
+	background: var(--color-surface) !important;
+}
+
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: center;
 }
@@ -322,10 +329,24 @@ input[type="radio"] {
 	float: none !important;
 }
 
+/* Ensure dialog buttons are visible and follow the theme (override jQuery UI generic button rules)
+   Use !important to beat less-specific jQuery UI selectors in .ui-widget contexts. */
 .ui-dialog .ui-dialog-buttonpane button {
 	margin: 5px;
 	width: 120px;
 	padding: var(--control-padding-v);
+	background: var(--color-primary) !important;
+	color: var(--color-primary-text) !important;
+	border: 1px solid var(--color-border) !important;
+	border-radius: var(--border-radius-sm) !important;
+	box-shadow: var(--shadow-sm) !important;
+}
+
+/* Provide a visible style for 'default' buttons (secondary actions) */
+.ui-dialog .ui-dialog-buttonpane button.default {
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-secondary-text) !important;
+	box-shadow: none !important;
 }
 
 /* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
@@ -346,6 +367,16 @@ input[type="radio"] {
 
 .ui-dialog .ui-dialog-titlebar-close:hover {
 	border-color: var(--color-border) !important;
+}
+
+/* Dark-mode adjustments for dialog button borders */
+@media (prefers-color-scheme: dark) {
+	.ui-dialog .ui-dialog-buttonpane button {
+		border-color: rgba(255,255,255,0.20) !important;
+	}
+	.ui-dialog .ui-dialog-buttonpane button.default {
+		border-color: rgba(255,255,255,0.12) !important;
+	}
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────── */

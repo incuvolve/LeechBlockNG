@@ -1984,8 +1984,17 @@ function handleTabRemoved(tabId, removeInfo) {
 	clockPageTime(tabId, false, false);
 
 	// If extension page closed, activate previously active tab
+	// UNLESS it's a blocked/delayed/password page being navigated away from
+	// (Safari assigns a new tab ID when navigating from extension to web page,
+	// so the old ID is removed — we don't want to switch focus in that case)
 	if (gTabs[tabId] && gTabs[tabId].url.startsWith(EXTENSION_URL)) {
-		browser.tabs.update(gPrevActiveTabId, { active: true });
+		let url = gTabs[tabId].url;
+		let isBlockPage = url.includes("blocked.html") || url.includes("delayed.html") || url.includes("password.html");
+		
+		// Only switch focus if it's NOT a block page (user is closing a non-blocked extension page)
+		if (!isBlockPage && gPrevActiveTabId) {
+			browser.tabs.update(gPrevActiveTabId, { active: true });
+		}
 	}
 
 	if (gTabs[tabId]) {
