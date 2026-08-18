@@ -9,6 +9,7 @@
 	<title>ivBlock</title>
 	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="/style.css" rel="stylesheet">
+	<link href="/fonts.css" rel="stylesheet">
 	<link href="/components.css" rel="stylesheet">
 	<link href="/popup.css" rel="stylesheet">
 	<link href="/buttons.css" rel="stylesheet">
@@ -25,12 +26,15 @@
 	<p>
 	<div id="svg-sprite" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
 		<!-- Inline SVG sprite for reliable <use> across extension pages -->
-		<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
 		  <symbol id="icon-settings" viewBox="0 0 24 24">
 		    <path d="M19.14 12.936a7.5 7.5 0 0 0 0-1.872l2.036-1.58a0.5 0.5 0 0 0 .12-0.637l-1.928-3.34a0.5 0.5 0 0 0-.607-0.22l-2.396.96a7.47 7.47 0 0 0-1.62-.94l-0.36-2.54A0.5 0.5 0 0 0 13.8 2h-3.6a0.5 0.5 0 0 0-.494.42l-0.36 2.54a7.47 7.47 0 0 0-1.62.94l-2.396-.96a0.5 0.5 0 0 0-.607.22L1.7 8.847a0.5 0.5 0 0 0 .12.637l2.036 1.58a7.5 7.5 0 0 0 0 1.872L1.82 14.51a0.5 0.5 0 0 0-.12.637l1.928 3.34c.14.24.44.34.69.24l2.396-.96c.5.38 1.04.69 1.62.94l0.36 2.54a0.5.5 0 0 0 .494.42h3.6a0.5.5 0 0 0 .494-.42l0.36-2.54c.58-.25 1.12-.56 1.62-.94l2.396.96c.25.1.55 0.01.69-.24l1.928-3.34a0.5 0.5 0 0 0-.12-.637l-2.036-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
 		  </symbol>
 		  <symbol id="icon-lock" viewBox="0 0 24 24">
 		    <path d="M17 8V7a5 5 0 0 0-10 0v1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2zM9 7a3 3 0 0 1 6 0v1H9V7zM12 13a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+		  </symbol>
+		  <symbol id="icon-unlock" viewBox="0 0 24 24">
+		    <path d="M17 8h-1V7a4 4 0 0 0-8 0h2a2 2 0 0 1 4 0v1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zM12 13a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
 		  </symbol>
 		  <symbol id="icon-play" viewBox="0 0 24 24">
 		    <path d="M8 5v14l11-7z"/>
@@ -45,11 +49,11 @@
 	</div>
 
 	<div id="button-container" class="ui-widget button-group page-section">
-		<button id="options" type="button" class="ivblock-button" data-i18n="popupOptions"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-settings"></use></svg> <span data-i18n="popupOptions"></span></button>
-		<button id="lockdown" type="button" class="ivblock-button" data-i18n="popupLockdown"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-lock"></use></svg> <span data-i18n="popupLockdown"></span></button>
-		<button id="override" type="button" class="ivblock-button" data-i18n="popupOverride"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-play"></use></svg> <span data-i18n="popupOverride"></span></button>
-		<button id="stats" type="button" class="ivblock-button" data-i18n="popupStatistics"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-stats"></use></svg> <span data-i18n="popupStatistics"></span></button>
-		<button id="addSites" type="button" class="ivblock-button" data-i18n="popupAddSites"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-plus"></use></svg> <span data-i18n="popupAddSites"></span></button>
+		<button id="options" type="button" class="ivblock-button" data-i18n="popupOptions"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-settings" xlink:href="#icon-settings"></use></svg> <span data-i18n="popupOptions"></span></button>
+		<button id="lockdown" type="button" class="ivblock-button" data-i18n="popupLockdown"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-lock" xlink:href="#icon-lock"></use></svg> <span data-i18n="popupLockdown"></span></button>
+		<button id="override" type="button" class="ivblock-button" data-i18n="popupOverride"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-unlock" xlink:href="#icon-unlock"></use></svg> <span data-i18n="popupOverride"></span></button>
+		<button id="stats" type="button" class="ivblock-button" data-i18n="popupStatistics"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-stats" xlink:href="#icon-stats"></use></svg> <span data-i18n="popupStatistics"></span></button>
+		<button id="addSites" type="button" class="ivblock-button" data-i18n="popupAddSites"><svg class="ivb-icon" aria-hidden="true"><use href="#icon-plus" xlink:href="#icon-plus"></use></svg> <span data-i18n="popupAddSites"></span></button>
 		<button id="cancelOverride" type="button" class="ivblock-button" data-i18n="popupCancelOverride"></button>
 		<button id="resetRollover" type="button" class="ivblock-button" data-i18n="popupResetRollover"></button>
 		<button id="discardTime" type="button" class="ivblock-button" data-i18n="popupDiscardTime"></button>

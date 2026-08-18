@@ -30,11 +30,24 @@
 }
 
 /* Icon helper for buttons */
-.ivb-icon {
+.ivb-icon,
+svg.ivb-icon {
   width: 1em;
   height: 1em;
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Ensure referenced symbols render correctly across browsers (Safari fallback) */
+svg.ivb-icon path,
+svg.ivb-icon use,
+svg.ivb-icon * {
+  fill: currentColor !important;
+  stroke: none !important;
+}
+
+.ivb-icon {
+  /* kept for legacy rules */
   fill: currentColor;
 }
 
@@ -46,6 +59,16 @@
   gap: var(--gap-md);
   margin-bottom: var(--gap-sm);
   font-weight: 600;
+}
+
+/* Legend & heading icon sizing */
+legend .ivb-icon,
+legend svg.ivb-icon {
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 0.5rem;
+  vertical-align: -0.12em;
+  display: inline-block;
 }
 
 /* primary hover/active */
@@ -210,10 +233,10 @@ h3 {
 }
 
 @media (prefers-color-scheme: dark) {
-  /* stronger borders in dark mode */
+  /* slightly subtler borders in dark mode for a cleaner look */
   .ivb-btn,
   .ivblock-button {
-    border-color: rgba(255,255,255,0.20);
+    border-color: rgba(255,255,255,0.12);
   }
   .ivb-card {
     box-shadow: 0 1px 2px rgba(0,0,0,0.24);

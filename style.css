@@ -119,6 +119,21 @@ body {
 	margin-top: var(--gap-lg);
 }
 
+/* Slightly larger top margin for block pages so logo is visually separated from top edge */
+html#ivbBlockingPage #ivbLogoDiv.page-section,
+html#ivbDelayingPage #ivbLogoDiv.page-section,
+html#ivbPasswordPage #ivbLogoDiv.page-section {
+	margin-top: calc(var(--gap-lg) * 1.8);
+}
+
+/* Push entire page content slightly lower on blocking-related pages so the logo
+   and message are comfortably away from the top of the viewport. */
+html#ivbBlockingPage body,
+html#ivbDelayingPage body,
+html#ivbPasswordPage body {
+	padding-top: calc(var(--gap-lg) * 1.2);
+}
+
 /* Small spacing utility */
 .spaced {
 	margin-top: var(--gap-md);

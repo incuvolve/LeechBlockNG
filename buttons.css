@@ -55,13 +55,13 @@ button.ivblock-button.default {
 	.ui-widget .ivblock-button,
 	button.ivblock-button,
 	.ivblock-button {
-		/* stronger lightened border for contrast */
-		border-color: rgba(255,255,255,0.20) !important;
+		/* slightly subtler lightened border for a cleaner look */
+		border-color: rgba(255,255,255,0.12) !important;
 	}
 	.ui-widget .ivblock-button.default,
 	button.ivblock-button.default,
 	.ivblock-button.default {
-		border-color: rgba(255,255,255,0.12) !important;
+		border-color: rgba(255,255,255,0.08) !important;
 	}
 }
 

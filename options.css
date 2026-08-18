@@ -19,6 +19,13 @@ div {
 
 /* ─── jQuery UI Overrides ────────────────────────────────────────────────── */
 
+/* Ensure jQuery UI controls inherit the project's font (override theme defaults) */
+.ui-widget, .ui-widget * {
+	font-family: var(--font-family) !important;
+	font-size: inherit !important;
+}
+
+
 .ui-button {
 	background: var(--color-secondary-bg);
 	color: var(--color-text);

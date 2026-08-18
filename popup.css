@@ -40,6 +40,12 @@ div {
 	}
 }
 
+/* Ensure jQuery UI in popup inherits project font */
+.ui-widget, .ui-widget * {
+	font-family: var(--font-family) !important;
+	font-size: inherit !important;
+}
+
 body::after {
 	content: '';
 	position: fixed;

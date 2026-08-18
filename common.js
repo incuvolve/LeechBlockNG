@@ -594,7 +594,15 @@ function localize() {
 	document.querySelectorAll("[data-i18n]").forEach(el => {
 		const key = el.dataset.i18n;
 		const msg = browser.i18n.getMessage(key);
-		if (msg) { el.textContent = msg; count++; }
+		if (msg) {
+			// Preserve inline SVG icons or other child elements (e.g. <svg>) when localizing.
+			const preserved = Array.from(el.querySelectorAll('svg')).map(n => n.cloneNode(true));
+			// Clear text nodes and set localized text
+			el.textContent = msg;
+			// Reinsert preserved SVGs before the text so icons remain visible
+			preserved.reverse().forEach(node => el.insertBefore(node, el.firstChild));
+			count++;
+		}
 	});
 	document.querySelectorAll("[data-i18n-html]").forEach(el => {
 		const key = el.dataset.i18nHtml;
@@ -611,6 +619,10 @@ function localize() {
 		const msg = browser.i18n.getMessage(key);
 		if (msg) { el.title = msg; count++; }
 	});
+	// After localization, ensure any reinserted SVG <use> elements are inlined for maximum compatibility
+	if (typeof ensureInlineSvgIcons === 'function') {
+		try { ensureInlineSvgIcons(); } catch(e) { console.warn('[ivBlock] inline svg after localize failed', e); }
+	}
 }
 
 // Get clean version of URL (remove source/reader prefix)
@@ -684,3 +696,43 @@ window.DELAYED_BLOCK_URL = DELAYED_BLOCK_URL;
 window.PASSWORD_BLOCK_URL = PASSWORD_BLOCK_URL;
 window.PER_SET_OPTIONS = PER_SET_OPTIONS;
 window.GENERAL_OPTIONS = GENERAL_OPTIONS;
+
+/* Ensure inline SVG icons render even when <use> references are not resolved
+   in some extension or browser contexts (Safari/CSP). This function replaces
+   <svg class="ivb-icon"><use href="#id"></use></svg> with an inline SVG
+   cloned from the matching <symbol> when available. */
+function ensureInlineSvgIcons() {
+	try {
+		document.querySelectorAll('svg.ivb-icon').forEach(svg => {
+			const use = svg.querySelector('use');
+			if (!use) return;
+			const href = use.getAttribute('href') || use.getAttribute('xlink:href');
+			if (!href) return;
+			const id = href.replace(/^.*#/, '');
+			const sym = document.getElementById(id);
+			if (!sym) return;
+			// Create a lightweight SVG element and copy symbol contents
+			const NS = 'http://www.w3.org/2000/svg';
+			const newSvg = document.createElementNS(NS, 'svg');
+			if (sym.getAttribute('viewBox')) newSvg.setAttribute('viewBox', sym.getAttribute('viewBox'));
+			// preserve class and size hints
+			if (svg.getAttribute('class')) newSvg.setAttribute('class', svg.getAttribute('class'));
+			['width','height','aria-hidden','role'].forEach(a => { if (svg.hasAttribute(a)) newSvg.setAttribute(a, svg.getAttribute(a)); });
+			// copy inline style if present
+			if (svg.getAttribute('style')) newSvg.setAttribute('style', svg.getAttribute('style'));
+			newSvg.innerHTML = sym.innerHTML;
+			svg.parentNode.replaceChild(newSvg, svg);
+		});
+	} catch (e) {
+		console.warn('[ivBlock] ensureInlineSvgIcons failed:', e);
+	}
+}
+
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', ensureInlineSvgIcons);
+} else {
+	ensureInlineSvgIcons();
+}
+
+// expose for testing
+window.ensureInlineSvgIcons = ensureInlineSvgIcons;
