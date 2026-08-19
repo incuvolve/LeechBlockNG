@@ -2,6 +2,10 @@
 
 This document captures the current front-end structure and recommended design guidelines for future redesign work. It is produced from an audit of the project's CSS and HTML files (style.css, options.css, popup.css, controls.css, buttons.css, themes/*, fonts.css, jquery-ui overrides, and the various HTML pages).
 
+**Last updated:** 2026-08-19  
+**Related documents:**  
+- [UI_OPTIMIZATION.md](.github/UI_OPTIMIZATION.md) - Step-by-step UI improvement roadmap
+
 ---
 
 ## Current setup — summary
@@ -18,11 +22,14 @@ This document captures the current front-end structure and recommended design gu
 
 ## Strengths
 
-- Centralized design tokens (CSS variables) make theming straightforward.
-- Clear, consistent component classes (buttons, input styles) across pages.
-- Themes are isolated to separate files; runtime switching via `themeLink` is straightforward.
-- Accessibility-aware elements: focus ring token and `input:focus` box-shadow.
-- Use of picture/source for logos allows dark-mode-specific images.
+- **Design system foundation**: Centralized design tokens (CSS variables) in `style.css` make theming and updates straightforward.
+- **Component architecture**: Clear, consistent component classes (`.ivblock-button`, `.ivb-card`, etc.) reused across pages.
+- **Theme system**: Isolated theme files (`themes/*.css`) with runtime switching via `#themeLink` element.
+- **Accessibility baseline**: Focus ring tokens, keyboard focus states, and semantic HTML structure.
+- **Responsive images**: `picture`/`source` elements provide dark-mode-specific logos.
+- **Modern layout**: CSS Grid and Flexbox used throughout for responsive layouts.
+- **Typography system**: Open Sans web font with proper weight variants (300, 400, 400i).
+- **Touch-friendly controls**: `--control-height: 44px` ensures adequate tap targets.
 
 ## Issues & pain points (observed)
 
@@ -81,20 +88,45 @@ This document captures the current front-end structure and recommended design gu
 
 ## Implementation priorities (first pass)
 
-1. Add breakpoint and z-index tokens to `style.css`.
-2. Replace global `div { margin-top: 40px }` with a `.page-section` or `.spaced` utility and update affected pages (`blocked`, overlay, etc.).
-3. Consolidate jQuery UI overrides into one central file and remove duplicates from theme files.
-4. Audit theme files to keep only variable overrides.
-5. Introduce `.hidden` utility and replace inline `display:none` usages.
+✅ **Completed:**
+1. ✅ Added breakpoint and z-index tokens to `style.css`
+2. ✅ Replaced global `div { margin-top: 40px }` with `.page-section` and `.spaced` utilities
+3. ✅ Introduced `.hidden` utility for visibility control
+
+**Pending:**
+4. ✅ **Typography improvements complete** - Font sizes increased, line-height improved (see Phase 1)
+5. ✅ **Color contrast fixes complete** - All themes now WCAG AA compliant (see Phase 2)
+6. ✅ **Focus indicators enhanced** - Better keyboard navigation visibility (see Phase 2)
+7. Consolidate jQuery UI overrides into one central file (`jquery-ui-overrides.css`)
+8. Audit theme files to keep only variable overrides (remove duplicate jQuery UI state rules)
+9. Standardize spacing scale with additional tokens
+
+## Current file structure
+
+| File | Purpose | Lines | Status |
+|------|---------|-------|--------|
+| `style.css` | Design tokens, base styles, utilities | 247 | ✅ Modernized |
+| `components.css` | Buttons, cards, dialogs, typography | 251 | ✅ Component library |
+| `buttons.css` | Button variants and states | 109 | ✅ Token-based |
+| `controls.css` | Form control utilities | 20 | ✅ Minimal |
+| `fonts.css` | Open Sans @font-face declarations | 47 | ✅ Complete |
+| `options.css` | Options page specific styles | 474 | ⚠️ Needs consolidation |
+| `popup.css` | Toolbar popup specific styles | 58 | ✅ Clean |
+| `stats.css` | Statistics page styles | 15 | ✅ Minimal |
+| `lockdown.css` | Lockdown page styles | 23 | ✅ Minimal |
+| `override.css` | Override page styles | 44 | ✅ Minimal |
+| `content.css` | Content script overlay styles | 81 | ✅ High z-index isolation |
+| `themes/*.css` | Theme color overrides | ~60 each | ⚠️ Contains duplicate rules |
 
 ## Where this lives and how to use
 
-- Tokens: `style.css`
-- Themes: `themes/*.css` (override variables only)
-- jQuery UI overrides: move to `jquery-ui-custom.css` or `jqui-overrides.css`
-- Component styles: `buttons.css`, `controls.css`, `popup.css`, `options.css`
-- Switch theme at runtime by changing `#themeLink` href (already implemented).
+- **Design tokens**: `style.css` (`:root` CSS custom properties)
+- **Themes**: `themes/*.css` (should contain *only* variable overrides)
+- **jQuery UI overrides**: Currently scattered; should consolidate to `jquery-ui-overrides.css`
+- **Component library**: `components.css` (modern components), `buttons.css`, `controls.css`
+- **Page-specific**: `options.css`, `popup.css`, `stats.css`, etc.
+- **Theme switching**: Runtime via `document.getElementById('themeLink').href = 'themes/dark.css'`
 
----
+## Next steps
 
-If this looks good, next step: implement the high-priority changes (add tokens, remove broad `div` rule, and consolidate jQuery UI overrides). Indicate which change to start with or allow proceeding in the recommended order.
+For detailed, step-by-step UI improvements ready for implementation by AI assistants, see **[UI_OPTIMIZATION.md](.github/UI_OPTIMIZATION.md)**.
