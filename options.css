@@ -7,6 +7,7 @@ html {
 body {
 	background: var(--color-bg);
 	color: var(--color-text);
+	font-family: var(--font-family);
 	font-size: var(--font-size-sm);
 	overflow-x: hidden;
 }
@@ -15,94 +16,6 @@ body {
    uses fieldsets, flex gaps and explicit margins for all intentional spacing. */
 div {
 	margin-top: 0;
-}
-
-/* ─── jQuery UI Overrides ────────────────────────────────────────────────── */
-
-/* Ensure jQuery UI controls inherit the project's font (override theme defaults) */
-.ui-widget, .ui-widget * {
-	font-family: var(--font-family) !important;
-	font-size: inherit !important;
-}
-
-
-.ui-button {
-	background: var(--color-secondary-bg);
-	color: var(--color-text);
-	border: 1px solid var(--color-border);
-}
-
-.ui-button:focus {
-	background: var(--color-secondary-bg);
-	border: 1px solid var(--color-border);
-}
-
-.ui-button:hover {
-	background: var(--color-secondary-hover);
-	border: 1px solid var(--color-border);
-}
-
-.ui-widget button {
-	padding: var(--control-padding-v) var(--control-padding-h);
-	background: transparent;
-	color: inherit;
-	border: none;
-	cursor: pointer;
-}
-
-.ui-widget fieldset,
-.ui-widget input,
-.ui-widget select,
-.ui-widget textarea {
-	background: var(--color-input-bg);
-	color: var(--color-text);
-	border: 1px solid var(--color-border);
-}
-
-.ui-widget input:disabled,
-.ui-widget select:disabled,
-.ui-widget textarea:disabled {
-	background: var(--color-input-disabled-bg);
-	color: var(--color-input-disabled-text);
-	border: 1px solid var(--color-border);
-}
-
-.ui-widget hr {
-	height: 0;
-	margin: 0;
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: 1px solid var(--color-border);
-}
-
-.ui-widget legend {
-	font-weight: bold;
-}
-
-.ui-widget a {
-	color: var(--color-accent);
-	text-decoration: none;
-}
-
-.ui-widget a:hover {
-	text-decoration: underline;
-}
-
-.ui-widget th,
-.ui-widget td {
-	text-align: center;
-	padding: 4px 12px;
-}
-
-.ui-widget code {
-	font: normal var(--font-size-sm) var(--font-family-mono);
-}
-
-.ui-widget-content {
-	background: var(--color-surface);
-	color: var(--color-text);
-	border: 1px solid var(--color-border);
 }
 
 /* ─── Layout ─────────────────────────────────────────────────────────────── */
@@ -313,77 +226,6 @@ input[type="radio"] {
 
 #restartAll {
 	margin-top: var(--gap-lg);
-}
-
-/* ─── jQuery UI Dialogs ──────────────────────────────────────────────────── */
-
-.ui-dialog {
-	max-width: 500px;
-}
-
-/* Dialog content should be left-aligned for readable paragraphs and lists */
-.ui-dialog .ui-dialog-content {
-	text-align: left;
-	color: var(--color-text) !important;
-	background: var(--color-surface) !important;
-}
-
-.ui-dialog .ui-dialog-buttonpane {
-	text-align: center;
-}
-
-.ui-dialog .ui-dialog-buttonset {
-	float: none !important;
-}
-
-/* Ensure dialog buttons are visible and follow the theme (override jQuery UI generic button rules)
-   Use !important to beat less-specific jQuery UI selectors in .ui-widget contexts. */
-.ui-dialog .ui-dialog-buttonpane button {
-	margin: 5px;
-	width: 120px;
-	padding: var(--control-padding-v);
-	background: var(--color-primary) !important;
-	color: var(--color-primary-text) !important;
-	border: 1px solid var(--color-border) !important;
-	border-radius: var(--border-radius-sm) !important;
-	box-shadow: var(--shadow-sm) !important;
-}
-
-/* Provide a visible style for 'default' buttons (secondary actions) */
-.ui-dialog .ui-dialog-buttonpane button.default {
-	background: var(--color-secondary-bg) !important;
-	color: var(--color-secondary-text) !important;
-	box-shadow: none !important;
-}
-
-/* Prevent style.css div { margin-top: 40px } from affecting dialog internals */
-.ui-dialog div {
-	margin-top: 0;
-}
-
-/* Fix close button sizing broken by .ui-widget button rules */
-.ui-dialog .ui-dialog-titlebar-close {
-	padding: 1px !important;
-	width: 20px !important;
-	height: 20px !important;
-	min-height: 0 !important;
-	min-width: 0 !important;
-	border: 1px solid transparent !important;
-	background: transparent !important;
-}
-
-.ui-dialog .ui-dialog-titlebar-close:hover {
-	border-color: var(--color-border) !important;
-}
-
-/* Dark-mode adjustments for dialog button borders */
-@media (prefers-color-scheme: dark) {
-	.ui-dialog .ui-dialog-buttonpane button {
-		border-color: rgba(255,255,255,0.20) !important;
-	}
-	.ui-dialog .ui-dialog-buttonpane button.default {
-		border-color: rgba(255,255,255,0.12) !important;
-	}
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────── */

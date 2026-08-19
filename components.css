@@ -7,7 +7,7 @@
 .ivblock-button {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  font-weight: 600;
+  font-weight: 400;
   padding: calc(var(--control-padding-v) - 2px) calc(var(--control-padding-h) + 4px);
   min-height: var(--control-height);
   min-width: 64px;

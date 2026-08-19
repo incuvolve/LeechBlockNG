@@ -581,6 +581,13 @@ function setTheme(theme) {
 	if (link) {
 		link.href = "/themes/" + (theme ? `${theme}.css` : "default.css");
 	}
+	
+	// Set corresponding jQuery UI theme override
+	let jquiLink = document.getElementById("jquiThemeLink");
+	if (jquiLink) {
+		const jquiTheme = !theme || theme === "default" ? "dark" : theme;
+		jquiLink.href = `/jquery-ui-theme-${jquiTheme}.css`;
+	}
 }
 
 // Localize the current page using data-i18n attributes.

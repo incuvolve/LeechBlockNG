@@ -3,7 +3,7 @@
 body {
 	background: var(--color-bg);
 	color: var(--color-text);
-	font-size: var(--font-size-base);
+	font-size: 18px;
 	text-align: center;
 	padding: 10px;
 	width: 350px;
@@ -38,12 +38,6 @@ div {
 		flex-wrap: wrap;
 		flex-direction: row;
 	}
-}
-
-/* Ensure jQuery UI in popup inherits project font */
-.ui-widget, .ui-widget * {
-	font-family: var(--font-family) !important;
-	font-size: inherit !important;
 }
 
 body::after {

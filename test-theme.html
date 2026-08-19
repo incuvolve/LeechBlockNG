@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ivBlock Theme Test</title>
+	<link href="/fonts.css" rel="stylesheet">
+	<link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+	<link href="/jquery-ui/jquery-ui-custom.css" rel="stylesheet">
+	<link href="/style.css" rel="stylesheet">
+	<link href="/components.css" rel="stylesheet">
+	<link href="/jquery-ui-overrides.css" rel="stylesheet">
+	<link id="themeLink" href="/themes/dark.css" rel="stylesheet">
+	<link id="jquiThemeLink" href="/jquery-ui-theme-dark.css" rel="stylesheet">
+	<style>
+		body { padding: 20px; }
+		.test-section { margin: 20px 0; padding: 15px; border: 1px solid var(--color-border); }
+	</style>
+</head>
+<body>
+	<h1>Dark Mode Test</h1>
+	
+	<div class="test-section">
+		<h2>Font Test</h2>
+		<p>This text should be in Open Sans, not Arial.</p>
+		<p style="font-family: Arial;">This text is explicitly Arial for comparison.</p>
+	</div>
+
+	<div class="test-section">
+		<h2>jQuery UI Tabs</h2>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tab1">Tab 1</a></li>
+				<li><a href="#tab2">Tab 2</a></li>
+			</ul>
+			<div id="tab1">
+				<p>Tab 1 content - should have dark background and Open Sans font.</p>
+				<input type="text" value="Test input" style="width: 200px;">
+			</div>
+			<div id="tab2">
+				<p>Tab 2 content</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="test-section">
+		<h2>Buttons</h2>
+		<button id="testBtn1" class="ivblock-button">ivBlock Button</button>
+		<button id="testBtn2">jQuery UI Button</button>
+	</div>
+
+	<script src="/jquery-ui/external/jquery/jquery.js"></script>
+	<script src="/jquery-ui/jquery-ui.min.js"></script>
+	<script>
+		$(function() {
+			$("#tabs").tabs();
+			$("#testBtn1, #testBtn2").button();
+		});
+	</script>
+</body>
+</html>

@@ -33,38 +33,6 @@
 	appearance: none;
 }
 
-/* Ensure .ivblock-button retains its intended styling even inside jQuery UI .ui-widget containers,
-   which use the less-specific `button` selector and may set background: transparent. */
-.ui-widget .ivblock-button,
-button.ivblock-button {
-	background-color: var(--color-primary) !important;
-	color: var(--color-primary-text) !important;
-	border: 1px solid var(--color-border) !important;
-}
-
-.ui-widget .ivblock-button.default,
-button.ivblock-button.default {
-	background-color: var(--color-secondary-bg) !important;
-	color: var(--color-secondary-text) !important;
-	box-shadow: none !important;
-	border: 1px solid var(--color-border) !important;
-}
-
-/* Dark-mode fallback for button borders to ensure visibility on browsers with weak default contrast (e.g. Safari Desktop dark mode) */
-@media (prefers-color-scheme: dark) {
-	.ui-widget .ivblock-button,
-	button.ivblock-button,
-	.ivblock-button {
-		/* slightly subtler lightened border for a cleaner look */
-		border-color: rgba(255,255,255,0.12) !important;
-	}
-	.ui-widget .ivblock-button.default,
-	button.ivblock-button.default,
-	.ivblock-button.default {
-		border-color: rgba(255,255,255,0.08) !important;
-	}
-}
-
 .ivblock-button.default {
 	background-color: var(--color-secondary-bg);
 	color: var(--color-secondary-text);

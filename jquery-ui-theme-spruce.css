@@ -1,0 +1,19 @@
+/**
+ * jQuery UI Theme-Specific Overrides - Spruce Theme
+ * These are the ONLY jQuery UI rules that need theme-specific colors
+ * Load this AFTER jquery-ui-overrides.css
+ */
+
+/* Tab states - background colors for spruce theme */
+.ui-tabs .ui-state-default {
+	background: #2a5035;
+}
+
+.ui-tabs .ui-state-hover {
+	background: var(--color-secondary-bg);
+}
+
+/* Dialog close button icon filter for spruce theme */
+.ui-dialog .ui-dialog-titlebar-close .ui-icon {
+	filter: brightness(0.7) sepia(1) hue-rotate(80deg) saturate(2);
+}

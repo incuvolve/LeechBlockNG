@@ -1,0 +1,21 @@
+/**
+ * jQuery UI Theme-Specific Overrides
+ * These are the ONLY jQuery UI rules that need theme-specific colors
+ * Load this AFTER jquery-ui-overrides.css
+ * 
+ * Default/Dark themes share the same values
+ */
+
+/* Tab states - background colors vary by theme */
+.ui-tabs .ui-state-default {
+	background: #5a5a5e;
+}
+
+.ui-tabs .ui-state-hover {
+	background: #4a4a4e;
+}
+
+/* Dialog close button icon filter for dark themes */
+.ui-dialog .ui-dialog-titlebar-close .ui-icon {
+	filter: brightness(0) invert(1);
+}

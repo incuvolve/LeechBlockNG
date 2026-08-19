@@ -40,7 +40,10 @@
 	--gap-xs: 4px;
 	--gap-sm: 8px;
 	--gap-md: 12px;
+	--gap-base: 16px;
 	--gap-lg: 20px;
+	--gap-xl: 24px;
+	--gap-2xl: 32px;
 
 	/* Breakpoints */
 	--bp-xs: 360px;

@@ -1,0 +1,14 @@
+/**
+ * jQuery UI Theme-Specific Overrides - Light Theme
+ * These are the ONLY jQuery UI rules that need theme-specific colors
+ * Load this AFTER jquery-ui-overrides.css
+ */
+
+/* Tab states - background colors for light theme */
+.ui-tabs .ui-state-default {
+	background: #e2e2e7;
+}
+
+.ui-tabs .ui-state-hover {
+	background: var(--color-secondary-hover);
+}

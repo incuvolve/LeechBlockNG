@@ -1,0 +1,339 @@
+/**
+ * jQuery UI Component Overrides
+ * Consolidated from options.css, buttons.css, popup.css, and theme files
+ * Last updated: 2026-08-19
+ * 
+ * This file contains all ivBlock-specific overrides for jQuery UI components.
+ * Load this AFTER jquery-ui.css in HTML files.
+ */
+
+/* ===== NUCLEAR OPTION: Force Open Sans everywhere ===== */
+/* This ensures Open Sans is used even if other selectors are more specific */
+html,
+body,
+* {
+	font-family: var(--font-family) !important;
+}
+
+/* ===== CRITICAL: Force Open Sans on ALL jQuery UI elements ===== */
+
+/* Target all jQuery UI classes and their descendants */
+.ui-widget,
+.ui-widget *,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button,
+.ui-dialog,
+.ui-dialog *,
+.ui-tabs,
+.ui-tabs *,
+.ui-tabs-panel,
+.ui-tabs-panel *,
+.ui-button,
+.ui-button *,
+.ui-slider,
+.ui-slider *,
+.ui-accordion,
+.ui-accordion *,
+.ui-widget-content,
+.ui-widget-content *,
+.ui-widget-header,
+.ui-widget-header *,
+button.ui-button,
+button.ui-button *,
+/* Force on common elements inside panels */
+#tabs fieldset,
+#tabs fieldset *,
+#tabs label,
+#tabs input,
+#tabs select,
+#tabs textarea,
+#tabs p,
+#tabs div,
+#tabs span,
+#tabs legend,
+#tabs td,
+#tabs th {
+	font-family: var(--font-family) !important;
+	font-weight: 400 !important;
+}
+
+/* Reset font-size to inherit (let parent control size) */
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-size: inherit !important;
+}
+
+/* ===== Global Widget Styles ===== */
+
+.ui-widget-content {
+	background: var(--color-surface) !important;
+	color: var(--color-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-widget-header {
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-widget {
+	background: var(--color-bg) !important;
+	color: var(--color-text) !important;
+}
+
+/* ===== Widget Elements ===== */
+
+.ui-widget button {
+	padding: var(--control-padding-v) var(--control-padding-h);
+	background: transparent !important;
+	color: inherit !important;
+	border: none;
+	cursor: pointer;
+}
+
+.ui-widget fieldset {
+	background: transparent !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea {
+	background: var(--color-input-bg) !important;
+	color: var(--color-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-widget input:disabled,
+.ui-widget select:disabled,
+.ui-widget textarea:disabled {
+	background: var(--color-input-disabled-bg);
+	color: var(--color-input-disabled-text);
+	border: 1px solid var(--color-border);
+}
+
+.ui-widget hr {
+	height: 0;
+	margin: 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.ui-widget legend {
+	font-weight: bold;
+}
+
+.ui-widget a {
+	color: var(--color-accent);
+	text-decoration: none;
+}
+
+.ui-widget a:hover {
+	text-decoration: underline;
+}
+
+.ui-widget th,
+.ui-widget td {
+	text-align: center;
+	padding: 4px 12px;
+}
+
+.ui-widget code {
+	font: normal var(--font-size-sm) var(--font-family-mono);
+}
+
+/* ===== Buttons ===== */
+
+.ui-button {
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-button:focus {
+	background: var(--color-secondary-bg) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-button:hover {
+	background: var(--color-secondary-hover) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+/* ivBlock button integration */
+.ui-widget .ivblock-button,
+button.ivblock-button {
+	background-color: var(--color-primary) !important;
+	color: var(--color-primary-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-widget .ivblock-button.default,
+button.ivblock-button.default {
+	background-color: var(--color-secondary-bg) !important;
+	color: var(--color-secondary-text) !important;
+	box-shadow: none !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+/* ===== Tabs ===== */
+
+.ui-tabs .ui-state-default {
+	border: 1px solid var(--color-border) !important;
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-text) !important;
+}
+
+.ui-tabs .ui-state-default a {
+	color: var(--color-text) !important;
+}
+
+.ui-tabs .ui-state-hover {
+	border: 1px solid var(--color-border) !important;
+	background: var(--color-secondary-hover) !important;
+}
+
+.ui-tabs .ui-state-active {
+	background: var(--color-surface) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-tabs .ui-state-active a {
+	color: var(--color-text) !important;
+}
+
+.ui-tabs-panel {
+	background: var(--color-surface) !important;
+	color: var(--color-text) !important;
+}
+
+.ui-tabs-panel,
+.ui-tabs-panel * {
+	font-family: var(--font-family) !important;
+}
+
+/* Override any white backgrounds inside tabs */
+#tabs,
+#tabs > div,
+#tabs fieldset,
+#tabs .ui-tabs-panel {
+	background: var(--color-surface) !important;
+}
+
+/* ===== Dialogs ===== */
+
+.ui-dialog {
+	max-width: 500px;
+	background: var(--color-surface) !important;
+	color: var(--color-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+.ui-dialog-titlebar {
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-text) !important;
+	border-bottom: 1px solid var(--color-border) !important;
+}
+
+/* Dialog content should be left-aligned for readable paragraphs and lists */
+.ui-dialog .ui-dialog-content {
+	text-align: left;
+	color: var(--color-text) !important;
+	background: var(--color-surface) !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: center;
+}
+
+.ui-dialog .ui-dialog-buttonset {
+	float: none !important;
+}
+
+/* Ensure dialog buttons are visible and follow the theme (override jQuery UI generic button rules)
+   Use !important to beat less-specific jQuery UI selectors in .ui-widget contexts. */
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: 5px;
+	width: 120px;
+	padding: var(--control-padding-v);
+	background: var(--color-primary) !important;
+	color: var(--color-primary-text) !important;
+	border: 1px solid var(--color-border) !important;
+	border-radius: var(--border-radius) !important;
+	min-height: var(--control-height) !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button.default {
+	background: var(--color-secondary-bg) !important;
+	color: var(--color-secondary-text) !important;
+	box-shadow: none !important;
+}
+
+.ui-dialog div {
+	margin-top: 0;
+}
+
+/* Fix close button sizing broken by .ui-widget button rules */
+.ui-dialog .ui-dialog-titlebar-close {
+	padding: 1px !important;
+	width: 20px !important;
+	height: 20px !important;
+	min-height: 0 !important;
+	min-width: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover {
+	border-color: var(--color-border) !important;
+}
+
+/* Dark-mode adjustments for dialog button borders */
+@media (prefers-color-scheme: dark) {
+	.ui-dialog .ui-dialog-buttonpane button {
+		border-color: var(--color-border) !important;
+	}
+}
+
+/* ===== COMPREHENSIVE BACKGROUND FIX ===== */
+/* Ensure no white backgrounds leak through in dark mode */
+
+#tabs,
+#tabs .ui-tabs-panel,
+#tabs fieldset,
+.ui-tabs,
+.ui-tabs-panel {
+	background: var(--color-surface) !important;
+}
+
+/* Ensure all tab content inherits proper background, except interactive elements */
+.ui-tabs-panel > p:not(.button-row-wrap),
+.ui-tabs-panel > div:not(#blockSet1):not(#blockSet2):not(#blockSet3):not(#blockSet4):not(#blockSet5):not(#blockSet6) {
+	background: transparent !important;
+}
+
+
+
+/* ===== ENSURE BUTTONS REMAIN CLICKABLE ===== */
+/* Fix for move set buttons and other controls */
+button,
+.ivblock-button,
+.ui-button,
+input,
+select,
+textarea {
+	pointer-events: auto !important;
+	position: relative !important;
+	z-index: 1 !important;
+}
+
+.button-row-wrap {
+	position: relative !important;
+	z-index: 2 !important;
+}
