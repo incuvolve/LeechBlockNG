@@ -29,9 +29,12 @@
 	/* Typography */
 	--font-family:      "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	--font-family-mono: "Lucida Console", Monaco, monospace;
-	--font-size-base:   16px;
-	--font-size-sm:     14px;
-	--font-size-xs:     12px;
+	--font-size-base:   17px;
+	--font-size-sm:     15px;
+	--font-size-xs:     13px;
+	--line-height-base: 1.6;
+	--line-height-tight: 1.4;
+	--line-height-relaxed: 1.8;
 
 	/* Spacing */
 	--gap-xs: 4px;
@@ -107,7 +110,7 @@
 body {
 	background: var(--color-bg);
 	color: var(--color-text);
-	font: normal var(--font-size-base) var(--font-family);
+	font: normal var(--font-size-base)/var(--line-height-base) var(--font-family);
 	text-align: center;
 	overflow-x: hidden;
 }
