@@ -264,8 +264,19 @@ input[type="radio"] {
 		margin: 0;
 	}
 
+	.button-row-wrap {
+		gap: 4px;
+	}
+
 	.button-row-wrap button {
-		width: 100%;
+		width: auto;
+		max-width: 140px;
+		flex-shrink: 0;
+		padding: var(--control-padding-v) 8px;
+		font-size: var(--font-size-sm);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.ui-dialog {

@@ -22,4 +22,6 @@
 	--color-input-disabled-bg:   #3a3a3c;
 	--color-input-disabled-text: #98989d;
 	--color-focus-ring:          rgba(10, 132, 255, 0.40);
+	--color-section-bg:          rgba(255, 255, 255, 0.05);
+	--color-fieldset-border:     #6e6e73;
 }

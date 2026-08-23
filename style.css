@@ -70,8 +70,18 @@
 	--border-radius-lg:  12px;
 
 	/* Elevation */
-	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
+	--shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
 	--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+	--shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+	/* Section/Card Background */
+	--color-section-bg: rgba(0, 0, 0, 0.02);
+	--color-fieldset-border: #a8a8ad;
+
+	/* Additional Typography */
+	--font-size-lg: 18px;
+	--font-weight-section-heading: 500;
 
 	/* Transitions */
 	--transition: 0.15s ease;
@@ -101,6 +111,8 @@
 		--color-input-disabled-bg:   #3a3a3c;
 		--color-input-disabled-text: #98989d;
 		--color-focus-ring:          rgba(10, 132, 255, 0.40);
+		--color-section-bg:          rgba(255, 255, 255, 0.05);
+		--color-fieldset-border:     #6e6e73;
 	}
 }
 

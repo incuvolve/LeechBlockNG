@@ -98,8 +98,8 @@ button.ui-button *,
 }
 
 .ui-widget fieldset {
-	background: transparent !important;
-	border: 1px solid var(--color-border) !important;
+	background: transparent;
+	border: none;
 }
 
 .ui-widget input,
@@ -155,17 +155,21 @@ button.ui-button *,
 .ui-button {
 	background: var(--color-secondary-bg) !important;
 	color: var(--color-text) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
 }
 
 .ui-button:focus {
 	background: var(--color-secondary-bg) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
+	outline: 3px solid var(--color-focus-ring) !important;
+	outline-offset: 2px;
 }
 
 .ui-button:hover {
 	background: var(--color-secondary-hover) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
 }
 
 /* ivBlock button integration */
@@ -186,33 +190,70 @@ button.ivblock-button.default {
 
 /* ===== Tabs ===== */
 
+.ui-tabs {
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+	background: transparent !important;
+	border: none !important;
+	border-bottom: 1px solid var(--color-border) !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
 .ui-tabs .ui-state-default {
-	border: 1px solid var(--color-border) !important;
-	background: var(--color-secondary-bg) !important;
+	border: none !important;
+	background: var(--color-section-bg) !important;
 	color: var(--color-text) !important;
+	margin: 0 !important;
+	border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+	padding: 0 !important;
+	transition: background-color var(--transition), color var(--transition);
+	flex-shrink: 0;
+	white-space: nowrap;
 }
 
 .ui-tabs .ui-state-default a {
-	color: var(--color-text) !important;
+	color: var(--color-text-muted) !important;
+	padding: 12px 16px !important;
+	display: block;
+	text-decoration: none;
+	font-size: var(--font-size-sm);
 }
 
 .ui-tabs .ui-state-hover {
-	border: 1px solid var(--color-border) !important;
 	background: var(--color-secondary-hover) !important;
+	border: none !important;
+}
+
+.ui-tabs .ui-state-hover a {
+	color: var(--color-text) !important;
+	font-weight: 500;
 }
 
 .ui-tabs .ui-state-active {
 	background: var(--color-surface) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
+	color: var(--color-primary) !important;
+	box-shadow: 0 -2px 0 0 var(--color-primary) inset !important;
 }
 
 .ui-tabs .ui-state-active a {
-	color: var(--color-text) !important;
+	color: var(--color-primary) !important;
+	font-weight: 500;
 }
 
 .ui-tabs-panel {
-	background: var(--color-surface) !important;
+	background: transparent !important;
 	color: var(--color-text) !important;
+	border: none !important;
+	padding: 24px 0 !important;
 }
 
 .ui-tabs-panel,
@@ -223,24 +264,36 @@ button.ivblock-button.default {
 /* Override any white backgrounds inside tabs */
 #tabs,
 #tabs > div,
-#tabs fieldset,
 #tabs .ui-tabs-panel {
-	background: var(--color-surface) !important;
+	background: transparent !important;
 }
 
 /* ===== Dialogs ===== */
+
+.ui-dialog,
+.ui-dialog * {
+	border: none !important;
+	box-sizing: border-box;
+}
 
 .ui-dialog {
 	max-width: 500px;
 	background: var(--color-surface) !important;
 	color: var(--color-text) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
+	border-radius: var(--border-radius) !important;
+	box-shadow: var(--shadow-md) !important;
+	outline: none !important;
 }
 
 .ui-dialog-titlebar {
-	background: var(--color-secondary-bg) !important;
+	background: transparent !important;
 	color: var(--color-text) !important;
+	border: none !important;
 	border-bottom: 1px solid var(--color-border) !important;
+	border-bottom-opacity: 0.2;
+	padding: 12px 20px !important;
+	outline: none !important;
 }
 
 /* Dialog content should be left-aligned for readable paragraphs and lists */
@@ -248,10 +301,14 @@ button.ivblock-button.default {
 	text-align: left;
 	color: var(--color-text) !important;
 	background: var(--color-surface) !important;
+	border: none !important;
 }
 
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: center;
+	border: none !important;
+	background: transparent !important;
+	padding: 16px 20px !important;
 }
 
 .ui-dialog .ui-dialog-buttonset {
@@ -263,41 +320,74 @@ button.ivblock-button.default {
 .ui-dialog .ui-dialog-buttonpane button {
 	margin: 5px;
 	width: 120px;
-	padding: var(--control-padding-v);
+	padding: var(--control-padding-v) var(--control-padding-h) !important;
 	background: var(--color-primary) !important;
 	color: var(--color-primary-text) !important;
-	border: 1px solid var(--color-border) !important;
+	border: none !important;
 	border-radius: var(--border-radius) !important;
 	min-height: var(--control-height) !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	cursor: pointer;
 }
 
 .ui-dialog .ui-dialog-buttonpane button.default {
 	background: var(--color-secondary-bg) !important;
 	color: var(--color-secondary-text) !important;
 	box-shadow: none !important;
+	border: none !important;
 }
 
 .ui-dialog div {
 	margin-top: 0;
+	border: none !important;
 }
 
-/* Fix close button sizing broken by .ui-widget button rules */
+/* Fix close button styling and visibility */
 .ui-dialog .ui-dialog-titlebar-close {
-	padding: 1px !important;
-	width: 20px !important;
-	height: 20px !important;
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	padding: 4px !important;
+	width: 24px !important;
+	height: 24px !important;
 	min-height: 0 !important;
 	min-width: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	border-radius: var(--border-radius-sm);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: none !important;
 }
 
 .ui-dialog .ui-dialog-titlebar-close:hover {
-	border-color: var(--color-border) !important;
+	background: var(--color-secondary-hover) !important;
+	border: none !important;
 }
 
-/* Dark-mode adjustments for dialog button borders */
+/* Make the close icon visible */
+.ui-dialog .ui-dialog-titlebar-close .ui-icon {
+	background-image: none !important;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-icon::before {
+	content: '✕';
+	color: var(--color-text);
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1;
+}
+
+/* Dark-mode adjustments */
 @media (prefers-color-scheme: dark) {
-	.ui-dialog .ui-dialog-buttonpane button {
-		border-color: var(--color-border) !important;
+	.ui-dialog .ui-dialog-titlebar-close .ui-icon::before {
+		color: var(--color-text);
 	}
 }
 
@@ -306,10 +396,9 @@ button.ivblock-button.default {
 
 #tabs,
 #tabs .ui-tabs-panel,
-#tabs fieldset,
 .ui-tabs,
 .ui-tabs-panel {
-	background: var(--color-surface) !important;
+	background: transparent !important;
 }
 
 /* Ensure all tab content inherits proper background, except interactive elements */
@@ -318,7 +407,13 @@ button.ivblock-button.default {
 	background: transparent !important;
 }
 
-
+/* Remove outer container boxes */
+#form,
+#form-container-options {
+	border: none !important;
+	box-shadow: none !important;
+	background: transparent !important;
+}
 
 /* ===== ENSURE BUTTONS REMAIN CLICKABLE ===== */
 /* Fix for move set buttons and other controls */
@@ -336,4 +431,109 @@ textarea {
 .button-row-wrap {
 	position: relative !important;
 	z-index: 2 !important;
+}
+
+/* ===== Responsive Tab Styling ===== */
+/* Mobile devices: reduce padding and allow wrapping */
+
+@media (max-width: 600px) {
+	.ui-tabs .ui-tabs-nav {
+		gap: 2px;
+		border-bottom: 1px solid var(--color-border) !important;
+	}
+
+	.ui-tabs .ui-state-default a {
+		padding: 10px 12px !important;
+		font-size: var(--font-size-xs);
+	}
+
+	.ui-tabs .ui-state-active a {
+		font-weight: 600;
+	}
+
+	/* Mobile button fixes - remove all borders and webkit styling */
+	button,
+	.ivblock-button,
+	.ivb-btn,
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"] {
+		border: none !important;
+		-webkit-appearance: none !important;
+		appearance: none !important;
+		-webkit-border-radius: var(--border-radius) !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.ui-tabs .ui-state-default a {
+		padding: 11px 14px !important;
+	}
+}
+
+/* ===== Safari & Webkit Compatibility ===== */
+/* Ensure Safari picks up our style overrides */
+
+@supports (-webkit-appearance: none) {
+	/* Safari-specific: Force border removal */
+	.ui-dialog {
+		-webkit-border-before: none !important;
+		-webkit-border-after: none !important;
+	}
+
+	.ui-button,
+	button.ui-button,
+	.ui-dialog .ui-dialog-buttonpane button {
+		-webkit-appearance: none !important;
+		-webkit-border-radius: var(--border-radius) !important;
+		border: none !important;
+	}
+
+	/* Safari input styling */
+	.ui-widget input,
+	.ui-widget select,
+	.ui-widget textarea {
+		-webkit-appearance: none !important;
+		border: 1px solid var(--color-border) !important;
+	}
+
+	/* Ensure all ui-widget elements respect our styling */
+	.ui-widget {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+/* Additional catch-all for any remaining borders */
+.ui-dialog,
+.ui-dialog *,
+.ui-button,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	border: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+}
+
+/* Explicit border removal for dialog components */
+.ui-dialog-titlebar,
+.ui-dialog-content,
+.ui-dialog-buttonpane {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Remove any default webkit borders on buttons */
+button::-webkit-outer-spin-button,
+button::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0;
 }

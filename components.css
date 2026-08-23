@@ -12,7 +12,7 @@
   min-height: var(--control-height);
   min-width: 64px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--color-border);
+  border: none;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
@@ -27,6 +27,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Icon helper for buttons */
@@ -71,18 +72,54 @@ legend svg.ivb-icon {
   display: inline-block;
 }
 
+/* ===== Fieldset & Card Styling ===== */
+
+fieldset {
+  border: 2px solid var(--color-fieldset-border) !important;
+  background: var(--color-section-bg) !important;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin: 0 0 24px 0;
+  opacity: 1;
+}
+
+fieldset legend {
+  padding: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-section-heading);
+  margin-left: 0;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+fieldset hr {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  opacity: 0.3;
+  margin: 16px 0;
+}
+
+/* ===== End Fieldset Styling ===== */
+
 /* primary hover/active */
 .ivb-btn:hover:enabled,
 .ivblock-button:hover:enabled {
   background: var(--color-primary-hover);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+  border: none !important;
 }
 .ivb-btn:active:enabled,
 .ivblock-button:active:enabled {
   background: var(--color-primary-active);
   box-shadow: var(--shadow-sm);
   transform: translateY(0);
+  border: none !important;
 }
 
 /* secondary */
@@ -91,13 +128,14 @@ legend svg.ivb-icon {
   background: var(--color-secondary-bg);
   color: var(--color-secondary-text);
   box-shadow: none;
+  border: none !important;
 }
 
 /* ghost (link-like) */
 .ivb-btn--ghost {
   background: transparent;
   color: var(--color-accent);
-  border-color: transparent;
+  border: none !important;
   box-shadow: none;
 }
 
@@ -109,6 +147,7 @@ legend svg.ivb-icon {
   opacity: 0.8;
   cursor: not-allowed;
   box-shadow: none;
+  border: none !important;
 }
 
 /* Inputs */
@@ -196,6 +235,17 @@ h3 {
   border-color: var(--color-primary);
 }
 
+/* Buttons: no border-color on focus, only box-shadow */
+.ivb-btn:focus,
+.ivb-btn:focus-visible,
+.ivblock-button:focus,
+.ivblock-button:focus-visible,
+button:focus,
+button:focus-visible {
+  border: none !important;
+  outline: none !important;
+}
+
 /* Reduce prominent shadows for a cleaner, flatter look by default */
 .ivb-card,
 .ivb-btn {
@@ -220,7 +270,7 @@ h3 {
 .ui-widget button.ivb-btn {
   background: var(--color-primary) !important;
   color: var(--color-primary-text) !important;
-  border: 1px solid var(--color-border) !important;
+  border: none !important;
 }
 
 /* High-contrast accessibility support */

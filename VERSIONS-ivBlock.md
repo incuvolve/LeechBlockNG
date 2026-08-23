@@ -1,5 +1,11 @@
 # Version History
 
+## Version 1.2.1 (August 2026)
+* Bugfix to prevent Safari from crashing when following links on the blocked page
+* Bugfix in move set functionality
+* User interface optimizations
+
+
 ## Version 1.2.0 (August 2026)
 * Integration of LeechBlockNG 1.7.3
 * bugfix to prevent spellchecks in input boxes for website
