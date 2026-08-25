@@ -81,7 +81,7 @@ fieldset {
   border-radius: var(--border-radius);
   padding: 24px;
   margin: 0 0 24px 0;
-  opacity: 1;
+  pointer-events: auto !important;
 }
 
 fieldset legend {

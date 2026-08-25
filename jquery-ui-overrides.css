@@ -490,7 +490,7 @@ textarea {
 	}
 
 	/* Safari input styling */
-	.ui-widget input,
+	.ui-widget input:not([type="checkbox"]):not([type="radio"]),
 	.ui-widget select,
 	.ui-widget textarea {
 		-webkit-appearance: none !important;
