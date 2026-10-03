@@ -1309,6 +1309,7 @@ function createBlockInfo(id, url) {
     disableLink: disableLink,
     keywordMatch: keywordMatch,
     password: password,
+    prevPastePassword: gOptions["prevPastePassword"],
     customMsg: customMsg,
     unblockTime: unblockTime,
     delaySecs: delaySecs,

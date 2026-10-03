@@ -194,6 +194,36 @@ describe('processBlockInfo', () => {
     expect(passwordSubmit.onclick).toBeInstanceOf(Function);
   });
 
+  test('should prevent pasting into password input when prevPastePassword is enabled', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      password: 'mysecret',
+      prevPastePassword: true
+    };
+    window.processBlockInfo(info);
+
+    const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+    passwordInput.dispatchEvent(pasteEvent);
+
+    expect(pasteEvent.defaultPrevented).toBe(true);
+  });
+
+  test('should allow pasting into password input when prevPastePassword is disabled', () => {
+    const info = {
+      blockedURL: 'http://example.com',
+      blockedSet: 'Test Set',
+      password: 'mysecret',
+      prevPastePassword: false
+    };
+    window.processBlockInfo(info);
+
+    const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+    passwordInput.dispatchEvent(pasteEvent);
+
+    expect(pasteEvent.defaultPrevented).toBe(false);
+  });
+
   test('should display custom message if provided', () => {
     const info = {
       blockedURL: 'http://example.com',

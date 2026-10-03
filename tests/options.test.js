@@ -124,6 +124,26 @@ describe('options.js tests', () => {
             expect(() => global.confirmAccess({ oa: 1, password: 'secret', hpp: false })).not.toThrow();
         });
 
+        it('blocks paste on promptPasswordInput when prevPastePassword=true', () => {
+            global.confirmAccess({ oa: 1, password: 'secret', hpp: true, prevPastePassword: true });
+            const input = document.getElementById('promptPasswordInput');
+            expect(typeof input.onpaste).toBe('function');
+
+            const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+            input.dispatchEvent(pasteEvent);
+            expect(pasteEvent.defaultPrevented).toBe(true);
+        });
+
+        it('allows paste on promptPasswordInput when prevPastePassword=false', () => {
+            global.confirmAccess({ oa: 1, password: 'secret', hpp: true, prevPastePassword: false });
+            const input = document.getElementById('promptPasswordInput');
+            expect(input.onpaste).toBeNull();
+
+            const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+            input.dispatchEvent(pasteEvent);
+            expect(pasteEvent.defaultPrevented).toBe(false);
+        });
+
         it('shows access code prompt for oa=2 (text display)', () => {
             expect(() => global.confirmAccess({ oa: 2, accessCodeImage: false })).not.toThrow();
             expect(jQueryMock).toHaveBeenCalledWith('#promptAccessCode');

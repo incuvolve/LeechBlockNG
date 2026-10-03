@@ -744,6 +744,9 @@ function confirmAccess(options) {
 		$("#promptPasswordInput").val("");
 		if (ppp) {
 			$("#promptPasswordInput").on("paste", onPaste);
+			document.getElementById("promptPasswordInput").onpaste = onPaste;
+		} else {
+			document.getElementById("promptPasswordInput").onpaste = null;
 		}
 		$("#promptPassword").dialog("open");
 		$("#promptPasswordInput").focus();

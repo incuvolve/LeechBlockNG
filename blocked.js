@@ -86,6 +86,11 @@ function processBlockInfo(info) {
 	if (passwordInput && passwordSubmit) {
 		passwordInput.focus();
 		passwordSubmit.onclick = onSubmitPassword;
+		if (info.prevPastePassword) {
+			passwordInput.onpaste = function(e) { e.preventDefault(); };
+		} else {
+			passwordInput.onpaste = null;
+		}
 	}
 
 	let customMsgDiv = document.getElementById("ivbCustomMsgDiv");

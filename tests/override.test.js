@@ -176,11 +176,41 @@ describe('override.js', () => {
             expect(mockJQuery.attr).toHaveBeenCalledWith('type', 'password');
         });
 
+        it('should block paste on promptPasswordInput when ora==1 and prevPastePassword=true', () => {
+            global.confirmAccess({ ora: 1, password: 'secret', hpp: true, orp: null, orcode: null, prevPastePassword: true });
+            const input = document.getElementById('promptPasswordInput');
+            expect(typeof input.onpaste).toBe('function');
+
+            const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+            input.dispatchEvent(pasteEvent);
+            expect(pasteEvent.defaultPrevented).toBe(true);
+        });
+
+        it('should allow paste on promptPasswordInput when ora==1 and prevPastePassword=false', () => {
+            global.confirmAccess({ ora: 1, password: 'secret', hpp: true, orp: null, orcode: null, prevPastePassword: false });
+            const input = document.getElementById('promptPasswordInput');
+            expect(input.onpaste).toBeNull();
+
+            const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+            input.dispatchEvent(pasteEvent);
+            expect(pasteEvent.defaultPrevented).toBe(false);
+        });
+
         it('should open password prompt when ora==9 and orp is set', () => {
             global.confirmAccess({ ora: 9, orp: 'mypass', password: null, hpp: false, orcode: null });
             expect(jQueryMock).toHaveBeenCalledWith('#promptPassword');
             expect(mockJQuery.attr).toHaveBeenCalledWith('type', 'password');
             expect(mockJQuery.dialog).toHaveBeenCalledWith('open');
+        });
+
+        it('should block paste on promptPasswordInput when ora==9 and prevPastePassword=true', () => {
+            global.confirmAccess({ ora: 9, orp: 'mypass', password: null, hpp: false, orcode: null, prevPastePassword: true });
+            const input = document.getElementById('promptPasswordInput');
+            expect(typeof input.onpaste).toBe('function');
+
+            const pasteEvent = new Event('paste', { bubbles: true, cancelable: true });
+            input.dispatchEvent(pasteEvent);
+            expect(pasteEvent.defaultPrevented).toBe(true);
         });
 
         it('should show form when ora is 0 and gOverrideMins is not set', () => {
