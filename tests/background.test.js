@@ -896,6 +896,42 @@ describe('background.js tests', () => {
             expect(browserMock.tabs.update).toHaveBeenCalledWith(302, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
         });
 
+        it('blocks page reached by in-page navigation ("navigated" message)', () => {
+            const tabs = [];
+            tabs[310] = { url: 'http://example.com/articles/1', referrer: 'http://search.com/', loaded: true, loadedTime: 0, focused: true, incog: false, audible: false, allowedHost: null, allowedPath: null, allowedSet: 0, allowedEndTime: 0 };
+            global.setBackgroundState({
+                gGotOptions: true, gNumSets: 1,
+                gOptions: {
+                    processActiveTabs: false,
+                    regexpBlock1: 'example\\.com',
+                    regexpAllow1: 'example\\.com/articles',
+                    timedata1: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    times1: '0000-2400',
+                    days1: [true, true, true, true, true, true, true],
+                    limitMins1: '', allFocused: false,
+                    blockURL1: 'moz-extension://test-id/blocked.html?$S&$U',
+                    closeTab1: false, applyFilter1: false, minBlock1: '',
+                    activeBlock1: false,
+                    oret: 0,
+                },
+                gTabs: tabs,
+            });
+            global.createRegExps();
+
+            // Navigating within the allowed section must not block
+            global.handleMessage({ type: 'navigated', url: 'http://example.com/articles/2', referrer: 'http://example.com/articles/1' },
+                { tab: { id: 310, active: true } }, jest.fn());
+            expect(browserMock.tabs.update).not.toHaveBeenCalled();
+
+            // Navigating to the blocked section must block, even without activeBlock
+            global.handleMessage({ type: 'navigated', url: 'http://example.com/', referrer: 'http://example.com/articles/2' },
+                { tab: { id: 310, active: true } }, jest.fn());
+            const state = global.getBackgroundState();
+            expect(state.gTabs[310].url).toBe('http://example.com/');
+            expect(state.gTabs[310].referrer).toBe('http://example.com/articles/2');
+            expect(browserMock.tabs.update).toHaveBeenCalledWith(310, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
+        });
+
         it('closes tab when closeTab1 option is set', () => {
             global.setBackgroundState({
                 gGotOptions: true, gNumSets: 1,
@@ -1801,6 +1837,59 @@ describe('background.js tests', () => {
             const state = global.getBackgroundState();
             // Tab was initialized but url not changed (frameId != 0)
             expect(state.gTabs[1100].url).toBe('about:blank');
+        });
+
+        describe('preloaded pages (Safari Top Hit preload)', () => {
+            const blockOptions = {
+                processActiveTabs: false,
+                regexpBlock1: 'blocked\\.example\\.com',
+                regexpAllow1: '',
+                timedata1: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                times1: '0000-2400',
+                days1: [true, true, true, true, true, true, true],
+                limitMins1: '', allFocused: false,
+                blockURL1: 'moz-extension://test-id/blocked.html?$S&$U',
+                closeTab1: false, applyFilter1: false, minBlock1: '',
+                oret: 0,
+            };
+
+            beforeEach(() => {
+                browserMock.tabs.update.mockClear();
+                global.setBackgroundState({
+                    gGotOptions: true, gNumSets: 1, gOptions: blockOptions, gTabs: [],
+                    gPendingAllows: [], gDelayedTabIds: {}, gDelayAllowances: [],
+                });
+                global.createRegExps();
+            });
+
+            it('blocks navigation in a normal tab immediately', () => {
+                global.handleTabCreated({ id: 1200, active: true, windowId: 5 });
+                handleBeforeNavigate({ tabId: 1200, frameId: 0, url: 'http://blocked.example.com/' });
+                expect(browserMock.tabs.update).toHaveBeenCalledWith(1200, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
+            });
+
+            it('does not block a page preloaded in a hidden tab', () => {
+                global.handleTabCreated({ id: 1201, active: false, windowId: -1 });
+                handleBeforeNavigate({ tabId: 1201, frameId: 0, url: 'http://blocked.example.com/' });
+                expect(global.getBackgroundState().gTabs[1201].preload).toBe(true);
+                expect(browserMock.tabs.update).not.toHaveBeenCalled();
+
+                // Still hidden: page finishing its load must not block either
+                global.handleTabUpdated(1201, { status: 'complete' },
+                    { id: 1201, active: false, incognito: false, audible: false, windowId: -1, url: 'http://blocked.example.com/' });
+                expect(browserMock.tabs.update).not.toHaveBeenCalled();
+            });
+
+            it('blocks a preloaded page as soon as it is shown in a window', () => {
+                global.handleTabCreated({ id: 1202, active: false, windowId: -1 });
+                handleBeforeNavigate({ tabId: 1202, frameId: 0, url: 'http://blocked.example.com/' });
+                expect(browserMock.tabs.update).not.toHaveBeenCalled();
+
+                global.handleTabUpdated(1202, { url: '', title: '', status: 'loading' },
+                    { id: 1202, active: true, incognito: false, audible: false, windowId: 5, url: '' });
+                expect(global.getBackgroundState().gTabs[1202].preload).toBe(false);
+                expect(browserMock.tabs.update).toHaveBeenCalledWith(1202, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
+            });
         });
 
         it('processes main-frame navigation and updates tab URL', () => {

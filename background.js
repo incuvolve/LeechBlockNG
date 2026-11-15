@@ -8,6 +8,7 @@ const EXTENSION_URL = browser.runtime.getURL("");
 const BLOCKED_PAGE_URL = browser.runtime.getURL(BLOCKED_PAGE);
 const DELAYED_PAGE_URL = browser.runtime.getURL(DELAYED_PAGE);
 const PASSWORD_PAGE_URL = browser.runtime.getURL(PASSWORD_PAGE);
+const WINDOW_ID_NONE = -1; // same as browser.windows.WINDOW_ID_NONE (not available on iOS)
 
 function log(message) {
   console.log("[ivBlock] " + message);
@@ -59,6 +60,7 @@ function initTab(id) {
       focused: false,
       loaded: false,
       loadedTime: 0,
+      preload: false,
     };
     return true;
   }
@@ -428,6 +430,9 @@ function processTabs(active) {
     for (let tab of tabs) {
       initTab(tab.id);
 
+      // Preloaded page is now shown in a window?
+      let shown = clearPreload(tab);
+
       let focus =
         tab.active &&
         (gAllFocused || !gFocusWindowId || tab.windowId == gFocusWindowId) &&
@@ -448,7 +453,7 @@ function processTabs(active) {
 
       if (gTabs[tab.id].loaded) {
         // Check tab to see if page should be blocked
-        let blocked = checkTab(tab.id, false, true);
+        let blocked = checkTab(tab.id, false, !shown);
 
         if (!blocked && tab.active) {
           updateTimer(tab.id);
@@ -466,6 +471,20 @@ function processTabs(active) {
   }
 }
 
+// Clear preload state of a tab once it belongs to a window (returns true if cleared)
+//
+function clearPreload(tab) {
+  if (
+    gTabs[tab.id] &&
+    gTabs[tab.id].preload &&
+    (tab.active || (tab.windowId !== undefined && tab.windowId != WINDOW_ID_NONE))
+  ) {
+    gTabs[tab.id].preload = false;
+    return true;
+  }
+  return false;
+}
+
 // Check the URL of a tab and applies block if necessary (returns true if blocked)
 //
 function checkTab(id, isBeforeNav, isRepeat) {
@@ -479,6 +498,12 @@ function checkTab(id, isBeforeNav, isRepeat) {
       host2.endsWith("." + host1) ||
       host1.endsWith("." + host2)
     );
+  }
+
+  // Never block a page that is being preloaded in the background (see
+  // handleTabCreated); it is checked once it is shown in a window
+  if (gTabs[id].preload) {
+    return false; // not blocked
   }
 
   let url = gTabs[id].url;
@@ -1953,6 +1978,28 @@ function handleMessage(message, sender, sendResponse) {
       gTabs[sender.tab.id].url = getCleanURL(message.url);
       break;
 
+    case "navigated": {
+      // URL changed without a new page load (e.g. History API in single-page apps)
+      let tabId = sender.tab.id;
+      initTab(tabId);
+
+      clockPageTime(tabId, false, false);
+
+      gTabs[tabId].loaded = true;
+      gTabs[tabId].url = getCleanURL(message.url);
+      gTabs[tabId].referrer = message.referrer;
+
+      if (gGotOptions) {
+        // Check tab to see if page should be blocked (as for a new page load)
+        let blocked = checkTab(tabId, false, false);
+
+        if (!blocked && sender.tab.active) {
+          updateTimer(tabId);
+        }
+      }
+      break;
+    }
+
     case "lockdown":
       if (!message.endTime) {
         // Lockdown canceled
@@ -2007,6 +2054,14 @@ function handleTabCreated(tab) {
 
   initTab(tab.id);
 
+  // Safari preloads pages (e.g. the Top Hit while typing in the address bar)
+  // in a hidden tab that does not belong to any window. Redirecting such a
+  // tab to the blocking page makes Safari replace the *visible* tab instead,
+  // so blocking is deferred until the preloaded page is actually shown.
+  if (tab.windowId == WINDOW_ID_NONE && !tab.active) {
+    gTabs[tab.id].preload = true;
+  }
+
   if (tab.openerTabId) {
     // Inherit properties from opener tab
     gTabs[tab.id].allowedHost = gTabs[tab.openerTabId].allowedHost;
@@ -2020,6 +2075,9 @@ function handleTabUpdated(tabId, changeInfo, tab) {
   //log("handleTabUpdated: " + tabId);
 
   initTab(tabId);
+
+  // Preloaded page is now shown in a window?
+  let shown = clearPreload(tab);
 
   if (!gGotOptions) {
     return;
@@ -2035,6 +2093,12 @@ function handleTabUpdated(tabId, changeInfo, tab) {
 
   if (changeInfo.url) {
     gTabs[tabId].url = getCleanURL(changeInfo.url);
+  }
+
+  if (shown && changeInfo.status != "complete") {
+    // Check tab now rather than waiting for page to finish loading
+    // (treated as "before navigation" since page may not have loaded yet)
+    checkTab(tabId, true, false);
   }
 
   if (changeInfo.status && changeInfo.status == "complete") {
