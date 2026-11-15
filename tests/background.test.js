@@ -896,6 +896,42 @@ describe('background.js tests', () => {
             expect(browserMock.tabs.update).toHaveBeenCalledWith(302, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
         });
 
+        it('blocks page reached by in-page navigation ("navigated" message)', () => {
+            const tabs = [];
+            tabs[310] = { url: 'http://example.com/articles/1', referrer: 'http://search.com/', loaded: true, loadedTime: 0, focused: true, incog: false, audible: false, allowedHost: null, allowedPath: null, allowedSet: 0, allowedEndTime: 0 };
+            global.setBackgroundState({
+                gGotOptions: true, gNumSets: 1,
+                gOptions: {
+                    processActiveTabs: false,
+                    regexpBlock1: 'example\\.com',
+                    regexpAllow1: 'example\\.com/articles',
+                    timedata1: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    times1: '0000-2400',
+                    days1: [true, true, true, true, true, true, true],
+                    limitMins1: '', allFocused: false,
+                    blockURL1: 'moz-extension://test-id/blocked.html?$S&$U',
+                    closeTab1: false, applyFilter1: false, minBlock1: '',
+                    activeBlock1: false,
+                    oret: 0,
+                },
+                gTabs: tabs,
+            });
+            global.createRegExps();
+
+            // Navigating within the allowed section must not block
+            global.handleMessage({ type: 'navigated', url: 'http://example.com/articles/2', referrer: 'http://example.com/articles/1' },
+                { tab: { id: 310, active: true } }, jest.fn());
+            expect(browserMock.tabs.update).not.toHaveBeenCalled();
+
+            // Navigating to the blocked section must block, even without activeBlock
+            global.handleMessage({ type: 'navigated', url: 'http://example.com/', referrer: 'http://example.com/articles/2' },
+                { tab: { id: 310, active: true } }, jest.fn());
+            const state = global.getBackgroundState();
+            expect(state.gTabs[310].url).toBe('http://example.com/');
+            expect(state.gTabs[310].referrer).toBe('http://example.com/articles/2');
+            expect(browserMock.tabs.update).toHaveBeenCalledWith(310, expect.objectContaining({ url: expect.stringContaining('blocked.html') }));
+        });
+
         it('closes tab when closeTab1 option is set', () => {
             global.setBackgroundState({
                 gGotOptions: true, gNumSets: 1,

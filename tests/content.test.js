@@ -175,6 +175,25 @@ describe('content.js', () => {
             expect(global.browser.runtime.sendMessage).toHaveBeenCalledWith({ type: "referrer", referrer: global.document.referrer });
         });
 
+        it('checkNavigated should report URL changes without a page load', () => {
+            const prevURL = global.document.URL;
+            global.browser.runtime.sendMessage.mockClear();
+
+            global.checkNavigated();
+            expect(global.browser.runtime.sendMessage).not.toHaveBeenCalled();
+
+            global.document.URL = 'http://test.com/other';
+            global.checkNavigated();
+            expect(global.browser.runtime.sendMessage).toHaveBeenCalledTimes(1);
+            expect(global.browser.runtime.sendMessage).toHaveBeenCalledWith({ type: "navigated", url: 'http://test.com/other', referrer: prevURL });
+
+            global.checkNavigated();
+            expect(global.browser.runtime.sendMessage).toHaveBeenCalledTimes(1);
+
+            global.document.URL = prevURL;
+            global.checkNavigated();
+        });
+
         it('updateTimer should create and update timer element', () => {
             global.updateTimer('10:00', 0, 0);
             expect(createElementSpy).toHaveBeenCalledWith('div');

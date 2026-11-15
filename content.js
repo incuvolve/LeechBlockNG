@@ -13,6 +13,7 @@ const TIMER_LOCATIONS = [
 
 var gTimer;
 var gAlert;
+var gPageURL = document.URL;
 
 // Notify background script that page has loaded
 //
@@ -22,6 +23,20 @@ function notifyLoaded() {
 
 	// Send URL of referring page to background script
 	browser.runtime.sendMessage({ type: "referrer", referrer: document.referrer });
+}
+
+// Notify background script if URL has changed without a new page load
+// (single-page apps use the History API, which Safari does not reliably
+// report via tabs.onUpdated, so the background script would otherwise keep
+// checking the URL the page was originally loaded with)
+//
+function checkNavigated() {
+	let url = document.URL;
+	if (url != gPageURL) {
+		let prevURL = gPageURL;
+		gPageURL = url;
+		browser.runtime.sendMessage({ type: "navigated", url: url, referrer: prevURL });
+	}
 }
 
 // Update timer
@@ -227,8 +242,14 @@ window.addEventListener("focus", onFocus);
 window.addEventListener("blur", onBlur);
 window.addEventListener("pagehide", onPageHide);
 
+// Detect in-page navigation (pushState/replaceState fire no event, hence the timer)
+window.addEventListener("popstate", checkNavigated);
+window.addEventListener("hashchange", checkNavigated);
+window.setInterval(checkNavigated, 1000);
+
 // Expose functions for testing purposes
 window.notifyLoaded = notifyLoaded;
+window.checkNavigated = checkNavigated;
 window.updateTimer = updateTimer;
 window.showAlert = showAlert;
 window.hideAlert = hideAlert;

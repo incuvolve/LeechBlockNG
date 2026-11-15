@@ -1953,6 +1953,28 @@ function handleMessage(message, sender, sendResponse) {
       gTabs[sender.tab.id].url = getCleanURL(message.url);
       break;
 
+    case "navigated": {
+      // URL changed without a new page load (e.g. History API in single-page apps)
+      let tabId = sender.tab.id;
+      initTab(tabId);
+
+      clockPageTime(tabId, false, false);
+
+      gTabs[tabId].loaded = true;
+      gTabs[tabId].url = getCleanURL(message.url);
+      gTabs[tabId].referrer = message.referrer;
+
+      if (gGotOptions) {
+        // Check tab to see if page should be blocked (as for a new page load)
+        let blocked = checkTab(tabId, false, false);
+
+        if (!blocked && sender.tab.active) {
+          updateTimer(tabId);
+        }
+      }
+      break;
+    }
+
     case "lockdown":
       if (!message.endTime) {
         // Lockdown canceled
